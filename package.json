@@ -1,8 +1,8 @@
 {
-  "name": "project-name",
+  "name": "fix-anderson-12751",
   "repository": {
     "type" : "git",
-    "url" : ""
+    "url" : "https://github.com/ildar-meyker/fix-anderson-12751.git"
   },
   "version": "0.0.1",
   "description": "",
