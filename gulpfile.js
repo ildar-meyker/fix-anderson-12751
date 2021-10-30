@@ -71,7 +71,7 @@ gulp.task("filelist", function () {
 
 gulp.task("scripts", function () {
 	return gulp
-		.src("src/js/main.js")
+		.src("src/js/*.js")
 		.pipe(webpack(require("./webpack.config.js"), compiler))
 		.pipe(gulp.dest("public/js/"));
 });

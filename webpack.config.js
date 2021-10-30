@@ -4,12 +4,16 @@ const path = require("path");
 // This is main configuration object that tells Webpackw what to do.
 module.exports = {
 	//path to entry paint
-	entry: "./src/js/main.js",
+	entry: "",
+
+	entry: {
+		partyConfig: "./src/js/partyConfig.js",
+	},
 
 	//path and filename of the final output
 	output: {
 		path: path.resolve(__dirname, "public/js"),
-		filename: "bundle.js",
+		filename: "[name].js",
 	},
 
 	module: {

@@ -1,9 +1,0 @@
-.party-config__box {
-  padding: 30px 40px;
-  border: 1px solid #d1d1d1;
-  border-radius: 2px;
-  box-shadow: 0px 5px 9.2px 0.8px rgba(0, 0, 0, 0.1);
-  background: #fff; }
-
-.party-config__box--confetti {
-  background: #fff url(../images/confetti.jpeg) no-repeat 50% 100%; }
