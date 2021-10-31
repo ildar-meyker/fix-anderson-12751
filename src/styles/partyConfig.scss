@@ -1,16 +1,4 @@
 .party-config {
-	&__box {
-		padding: 30px 40px;
-		border: 1px solid #d1d1d1;
-		border-radius: 2px;
-		box-shadow: 0px 5px 9.2px 0.8px rgba(0, 0, 0, 0.1);
-		background: #fff;
-
-		&--confetti {
-			background: #fff url(../images/confetti.jpeg) no-repeat 50% 100%;
-		}
-	}
-
 	&__layout {
 		display: flex;
 
@@ -24,5 +12,123 @@
 			flex: 0 0 auto;
 			width: 245px;
 		}
+	}
+
+	&__promo {
+		padding: 100px 55px;
+		margin: 0 1px;
+		background: url(../images/promo.jpeg) no-repeat 50% 50%;
+		background-size: cover;
+
+		&__text {
+			padding: 40px;
+			max-width: 575px;
+			background: rgba(#c44890, 0.9);
+			color: #fff;
+		}
+
+		&__title {
+			font-family: "BebasNeue";
+			font-size: 50px;
+			font-weight: 700;
+			line-height: 1;
+		}
+
+		&__desc {
+			font-size: 18px;
+			line-height: (28/18);
+		}
+	}
+
+	&__group {
+		margin: 30px 0;
+		padding: 30px 40px;
+		border: 1px solid #d1d1d1;
+		border-radius: 2px;
+		box-shadow: 0px 5px 9.2px 0.8px rgba(0, 0, 0, 0.1);
+		background: #fff;
+
+		&--confetti {
+			background: #fff url(../images/confetti.jpeg) no-repeat 50% 100%;
+			margin-bottom: 0;
+		}
+	}
+
+	&__about {
+		margin-top: 0;
+		text-align: center;
+
+		&__text {
+			max-width: 1000px;
+			margin: 0 auto;
+		}
+
+		&__title {
+			font-family: "BebasNeue";
+			font-size: 50px;
+			font-weight: 700;
+			line-height: 1;
+			color: #c44890;
+		}
+
+		&__desc {
+			margin-top: 20px;
+			font-size: 16px;
+			line-height: (24/16);
+		}
+
+		&__btn {
+			margin-top: 25px;
+		}
+	}
+
+	&__steps {
+		display: flex;
+		margin: 20px -10px 35px -10px;
+		font-family: "PT Serif Caption";
+
+		&__col {
+			flex: 0 0 auto;
+			width: 20%;
+			padding: 0 10px;
+			display: flex;
+			flex-direction: column;
+		}
+
+		&__step {
+			margin: 0 auto 17px auto;
+			width: 60/25 + em;
+			height: 60/25 + em;
+			border-radius: 50%;
+			border: 1px dashed #555451;
+			font-size: 25px;
+			line-height: (58/25);
+		}
+
+		&__desc {
+			flex-grow: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 16px;
+			font-weight: 700;
+			line-height: (24/16);
+		}
+	}
+
+	&__attn {
+		margin: 10px 0 20px 0;
+		padding: 13px 0;
+		background: url(../images/pink-bubbles.png);
+		font-family: "SummerFont";
+		font-size: 48px;
+		text-transform: uppercase;
+		text-align: center;
+		color: #fff;
+	}
+
+	&__sep {
+		border-top: 1px dashed #76665c;
+		margin: 10px 0 20px 0;
 	}
 }
