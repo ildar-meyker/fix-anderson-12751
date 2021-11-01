@@ -1,3 +1,6 @@
+.party-config a::after {
+  display: none; }
+
 .party-config__layout {
   display: flex; }
   .party-config__layout__left {
@@ -7,6 +10,113 @@
   .party-config__layout__right {
     flex: 0 0 auto;
     width: 245px; }
+
+.party-config__tabs {
+  display: flex;
+  align-items: center;
+  margin-left: -0.5em;
+  margin-top: -0.6em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-family: "SummerFont";
+  font-size: 30px;
+  font-weight: 700; }
+  .party-config__tabs__item {
+    transition: color 0.2s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 1em 0.5em 1em 2.5em;
+    margin-left: -0.5em;
+    background: url(../images/arrow-green.png) no-repeat 0 50%;
+    background-size: auto 100%;
+    color: #231300; }
+    .party-config__tabs__item:before {
+      content: " ";
+      position: absolute;
+      width: 2em;
+      height: 100%;
+      left: 100%;
+      top: 0;
+      height: 100%;
+      background: url(../images/arrow-green.png) no-repeat 100% 50%;
+      background-size: auto 100%; }
+    .party-config__tabs__item:hover {
+      color: #fff; }
+    .party-config__tabs__item.active {
+      z-index: 10 !important;
+      padding: 1.3em 0.5em 1.3em 1.5em;
+      background-image: url(../images/arrow-pink.png);
+      color: #fff; }
+      .party-config__tabs__item.active:before {
+        width: 2.3em;
+        background-image: url(../images/arrow-pink.png); }
+      .party-config__tabs__item.active .party-config__tabs__icon {
+        display: flex; }
+        .party-config__tabs__item.active .party-config__tabs__icon svg {
+          fill: #fff; }
+    .party-config__tabs__item.history {
+      z-index: auto !important;
+      padding-left: 1.5em !important;
+      background-image: url(../images/arrow-olive.png); }
+      .party-config__tabs__item.history:before {
+        background-image: url(../images/arrow-olive.png); }
+      .party-config__tabs__item.history .party-config__tabs__icon {
+        display: flex; }
+      .party-config__tabs__item.history:hover {
+        color: #67af26; }
+        .party-config__tabs__item.history:hover .party-config__tabs__icon svg {
+          fill: #67af26; }
+    .party-config__tabs__item:nth-child(5) {
+      z-index: 1; }
+    .party-config__tabs__item:nth-child(4) {
+      z-index: 2; }
+    .party-config__tabs__item:nth-child(3) {
+      z-index: 3; }
+    .party-config__tabs__item:nth-child(2) {
+      z-index: 4; }
+    .party-config__tabs__item:nth-child(1) {
+      margin-left: 0;
+      padding-left: 1.5em !important;
+      z-index: 5; }
+  .party-config__tabs__icon {
+    margin-right: 10px;
+    display: none; }
+    .party-config__tabs__icon svg {
+      transition: all 0.2s;
+      width: 1.2em;
+      height: 1.2em; }
+
+.party-config__image {
+  background-position: 50% 50%;
+  background-size: cover; }
+  .party-config__image:before {
+    content: " ";
+    padding-top: 100%;
+    display: block; }
+
+.party-config__goods__title {
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  font-family: "SummerFont";
+  font-size: 48px;
+  line-height: 1; }
+
+.party-config__goods__row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px; }
+
+.party-config__goods__col {
+  padding: 0 10px;
+  margin-bottom: 20px;
+  flex: 0 0 auto;
+  width: 33.33%;
+  max-width: 300px;
+  min-width: 250px; }
+
+.party-config__goods__counter {
+  margin-left: auto; }
 
 .party-config__promo {
   padding: 100px 55px;
@@ -37,9 +147,17 @@
   .party-config__group--confetti {
     background: #fff url(../images/confetti.jpeg) no-repeat 50% 100%;
     margin-bottom: 0; }
+  .party-config__group--mt-0 {
+    margin-top: 0; }
+  .party-config__group__footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; }
+    .party-config__group__footer > * {
+      margin: 10px 15px; }
 
 .party-config__about {
-  margin-top: 0;
   text-align: center; }
   .party-config__about__text {
     max-width: 1000px;
@@ -97,3 +215,33 @@
 .party-config__sep {
   border-top: 1px dashed #76665c;
   margin: 10px 0 20px 0; }
+
+.party-config__btn-apply {
+  transition: all 0.2s;
+  display: inline-block;
+  padding: 13px 30px;
+  border-radius: 4px;
+  background: #7bc339;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "PT Serif Caption";
+  font-size: 18px;
+  cursor: pointer;
+  color: #fff !important; }
+  .party-config__btn-apply:hover {
+    background: #6faf33; }
+
+.party-config__btn-next {
+  transition: all 0.2s;
+  display: inline-block;
+  padding: 0 30px 12px 30px;
+  border-radius: 4px;
+  background: #7bc339;
+  text-align: center;
+  font-family: "SummerFont";
+  font-size: 40px;
+  line-height: 0.8;
+  cursor: pointer;
+  color: #fff !important; }
+  .party-config__btn-next:hover {
+    background: #6faf33; }
