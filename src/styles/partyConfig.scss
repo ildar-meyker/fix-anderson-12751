@@ -134,18 +134,18 @@
 		}
 	}
 
-	&__image {
-		background-position: 50% 50%;
-		background-size: cover;
-
-		&:before {
-			content: " ";
-			padding-top: 100%;
-			display: block;
-		}
-	}
-
 	&__goods {
+		&__image {
+			background-position: 50% 50%;
+			background-size: cover;
+
+			&:before {
+				content: " ";
+				padding-top: 100%;
+				display: block;
+			}
+		}
+
 		&__title {
 			margin-bottom: 25px;
 			text-transform: uppercase;
@@ -316,6 +316,77 @@
 		}
 	}
 
+	&__heroes {
+		margin: -20px -10px 0 -10px;
+		display: flex;
+		flex-wrap: wrap;
+
+		&__col {
+			flex: 0 0 auto;
+			width: 33.33%;
+			max-width: 300px;
+			min-width: 250px;
+			padding: 0 10px;
+			margin-top: 20px;
+		}
+
+		&__item {
+			position: relative;
+
+			&:hover {
+				.party-config__heroes__desc {
+					opacity: 1;
+				}
+			}
+		}
+
+		&__image {
+			background-position: 50% 50%;
+			background-size: cover;
+
+			&:before {
+				content: " ";
+				padding-top: 75%;
+				display: block;
+			}
+		}
+
+		&__desc {
+			transition: all 0.2s;
+			background: rgba(#fff, 0.9);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			padding: 0 10px 25px 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-family: "PT Serif Caption";
+			font-size: 18px;
+			text-align: center;
+			color: #c44890;
+			opacity: 0;
+
+			&__2 {
+				font-size: 14/18 + em;
+			}
+		}
+
+		&__btn {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			padding: 25px;
+
+			> * {
+				display: block !important;
+			}
+		}
+	}
+
 	&__attn {
 		margin: 10px 0 20px 0;
 		padding: 13px 0;
@@ -346,7 +417,7 @@
 		color: #fff !important;
 
 		&:hover {
-			background: darken(#7bc339, 5%);
+			background: lighten(#7bc339, 10%);
 		}
 	}
 
@@ -364,7 +435,31 @@
 		color: #fff !important;
 
 		&:hover {
-			background: darken(#7bc339, 5%);
+			background: lighten(#7bc339, 10%);
+		}
+	}
+
+	&__btn-pink {
+		transition: all 0.2s;
+		display: inline-block;
+		padding: 0 30px 12px 30px;
+		border-radius: 4px;
+		background: #c44890 url(../images/pink-bubbles.png);
+		text-transform: lowercase;
+		text-align: center;
+		font-family: "SummerFont";
+		font-size: 40px;
+		font-weight: 700;
+		line-height: 0.8;
+		cursor: pointer;
+		color: #fff !important;
+
+		&:hover {
+			filter: brightness(1.1);
+		}
+
+		&.active {
+			background: #7bc339;
 		}
 	}
 }
