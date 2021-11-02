@@ -115,6 +115,28 @@
   max-width: 300px;
   min-width: 250px; }
 
+.party-config__goods__item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  font-family: "PT Serif Caption"; }
+
+.party-config__goods__desc {
+  margin-top: auto; }
+
+.party-config__goods__price-row {
+  display: flex; }
+
+.party-config__goods__price {
+  font-family: "BebasNeue";
+  font-size: 39px;
+  font-weight: 500;
+  color: #553023; }
+
 .party-config__goods__counter {
   margin-left: auto; }
 
