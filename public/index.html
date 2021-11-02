@@ -36,6 +36,7 @@
     <link rel="preload" as="style" href="https://cafe-anderson.ru/local/templates/anderson_new_design/css/datepicker-anderson.css" />
     <link rel="preload" as="style" href="https://cafe-anderson.ru/local/templates/anderson_new_design/css/jquery.jscrollpane.css" />
     <link rel="preload" as="style" href="https://cafe-anderson.ru/local/templates/anderson_new_design/css/sumoselect.css" />
+    <link rel="preload" as="style" href="https://cafe-anderson.ru/local/templates/anderson_new_design/css/fotorama.css" />
     <link rel="preload" as="style" href="https://cafe-anderson.ru/local/templates/anderson_new_design/css/tooltipster.bundle.css" />
     <link rel="preload" as="style" href="https://cafe-anderson.ru/local/templates/anderson_new_design/css/simplebar.css" />
     <link rel="preload" as="style" href="https://cafe-anderson.ru/local/templates/anderson_new_design/css/main_global.css" />
@@ -944,8 +945,9 @@
                                 </div>
                             </div>
 
-                            <nav class="party-config__tabs">
-                                <a href="#" class="party-config__tabs__item active">
+                            <div id="party-config__tabs-fake" class="party-config__tabs-fake"><div>&nbsp;</div></div>
+                            <nav id="party-config__tabs" class="party-config__tabs">
+                                <a href="#party-config__group-1" class="party-config__tabs__item active">
                                     <div class="party-config__tabs__icon">
                                         <svg>
                                             <use xlink:href="/data/include/sprites/top-nav.svg#getting-way" />
@@ -955,7 +957,7 @@
                                         Способ получения
                                     </div>
                                 </a>
-                                <a href="#" class="party-config__tabs__item">
+                                <a href="#party-config__group-2" class="party-config__tabs__item">
                                     <div class="party-config__tabs__icon">
                                         <svg>
                                             <use xlink:href="/data/include/sprites/top-nav.svg#calendar" />
@@ -965,7 +967,7 @@
                                         Когда
                                     </div>
                                 </a>
-                                <a href="#" class="party-config__tabs__item">
+                                <a href="#party-config__group-3" class="party-config__tabs__item">
                                     <div class="party-config__tabs__icon">
                                         <svg>
                                             <use xlink:href="/data/include/sprites/top-nav.svg#animation" />
@@ -975,7 +977,7 @@
                                         Анимация
                                     </div>
                                 </a>
-                                <a href="#" class="party-config__tabs__item">
+                                <a href="#party-config__group-4" class="party-config__tabs__item">
                                     <div class="party-config__tabs__icon">
                                         <svg>
                                             <use xlink:href="/data/include/sprites/top-nav.svg#eat" />
@@ -985,7 +987,7 @@
                                         Еда и торт
                                     </div>
                                 </a>
-                                <a href="#" class="party-config__tabs__item">
+                                <a href="#party-config__group-5" class="party-config__tabs__item">
                                     <div class="party-config__tabs__icon">
                                         <svg>
                                             <use xlink:href="/data/include/sprites/top-nav.svg#order" />
@@ -1000,11 +1002,9 @@
                             <div class="party-config__layout">
                                 <div class="party-config__layout__left">
                                     
-                                    <div>
+                                    <div id="party-config__groups">
                 
-                                        <div class="party-config__group party-config__group--mt-0">
-
-                                            
+                                        <div id="party-config__group-1" class="party-config__group party-config__group--mt-0">
 
                                             <form action="" method="POST">
             
@@ -1110,7 +1110,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="party-config__group">
+                                        <div id="party-config__group-2" class="party-config__group">
                                             <form class="required">
                                                 <div class="event-builder-tab__body">
                                                     <div class="event-builder-when">
@@ -1157,7 +1157,7 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        <div class="party-config__group">
+                                        <div id="party-config__group-3" class="party-config__group">
 
                                             <div class="event-builder-tab__body">
 
@@ -1310,7 +1310,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="party-config__group">
+                                        <div id="party-config__group-4" class="party-config__group">
                                             <div class="event-builder-tab__body">
                                                 <form>
 
@@ -1617,7 +1617,7 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        <div class="party-config__group party-config__group--confetti">
+                                        <div id="party-config__group-5" class="party-config__group party-config__group--confetti">
                                             <form action="" method="POST">
                                            
                                                 <div class="event-builder-contact">
@@ -2383,6 +2383,7 @@
     <script src="https://cafe-anderson.ru/local/templates/anderson_new_design/js/scripts/owl.carousel.js?r=909d47bd6bd2ebe46aef6c3efb7ee76a"></script>
     <script src="https://cafe-anderson.ru/local/templates/anderson_new_design/js/scripts/datepicker.min.js?r=e4b6f43916f3e128d6abf539337a836c"></script>
     <script src="https://cafe-anderson.ru/local/templates/anderson_new_design/js/scripts/jquery.sumoselect.js?r=f247f6afe42f112ead1114952073d7fa"></script>
+    <script src="https://cafe-anderson.ru/local/templates/anderson_new_design/js/scripts/fotorama.js?r=c0f742193173603907a54e05ccadd885"></script>
     <script src="https://cafe-anderson.ru/local/templates/anderson_new_design/js/scripts/tooltip.js?r=777f9f77c9c4deba0f8ce4d67c390b71"></script>
     <script src="https://cafe-anderson.ru/local/templates/anderson_new_design/js/scripts/datepicker-anderson.js?r=7b61d30af891356acb52318fcb941d48"></script>
     <script src="https://cafe-anderson.ru/local/templates/anderson_new_design/js/scripts/main.js?r=faefacf841b1e83f4c1f0a6ac8a33bad"></script>
@@ -2400,6 +2401,7 @@
 
     
     <script src="https://cdn.jsdelivr.net/npm/sticksy@0.2.0/dist/sticksy.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-throttle-debounce@1.0.0/jquery.ba-throttle-debounce.min.js"></script>
     <script src="js/partyConfig.js"></script>
  
 </body>

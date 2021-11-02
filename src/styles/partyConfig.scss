@@ -18,19 +18,40 @@
 		}
 	}
 
+	&__tabs-fake {
+		font-family: "SummerFont";
+		font-size: 30px;
+		height: 0;
+
+		> div {
+			display: block;
+			padding: 1.3em 0;
+		}
+
+		&.active {
+			height: auto;
+		}
+	}
+
 	&__tabs {
 		display: flex;
 		align-items: center;
 		margin-left: -0.5em;
-		margin-top: -0.6em;
 		text-transform: uppercase;
 		white-space: nowrap;
 		font-family: "SummerFont";
 		font-size: 30px;
 		font-weight: 700;
 
+		&.fixed {
+			animation: partyConfigDown 0.2s;
+			position: fixed;
+			z-index: 100;
+			top: 0;
+		}
+
 		&__item {
-			transition: color 0.2s;
+			transition: color 0.2s !important;
 			position: relative;
 			display: flex;
 			align-items: center;
@@ -474,6 +495,12 @@
 				display: none;
 			}
 		}
+
+		&__tabs {
+			&.fixed {
+				top: 30px;
+			}
+		}
 	}
 }
 
@@ -526,5 +553,15 @@
 				}
 			}
 		}
+	}
+}
+
+@keyframes partyConfigDown {
+	from {
+		transform: translateY(-100%);
+	}
+
+	to {
+		transform: translateY(0%);
 	}
 }
