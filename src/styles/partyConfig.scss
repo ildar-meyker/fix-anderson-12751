@@ -460,6 +460,62 @@
 		margin: 10px 0 20px 0;
 	}
 
+	&__result {
+		font-family: "PT Serif Caption";
+		font-size: 16px;
+		line-height: 18/16;
+
+		&__item {
+			margin-top: 13px;
+		}
+
+		&__name {
+			position: relative;
+			padding-right: 10px;
+
+			&:before {
+				content: " ";
+				position: absolute;
+				border-bottom: 1px dashed #76665c;
+				bottom: 0.2em;
+				left: 0;
+				right: 10px;
+			}
+
+			&__text {
+				position: relative;
+				display: inline;
+				padding-right: 10px;
+				background: #fff;
+			}
+		}
+
+		&__sum {
+			> * {
+				display: inline;
+			}
+		}
+
+		&__price {
+			padding-right: 10px;
+			font-size: 15px;
+			font-style: italic;
+			color: #b4b4b4;
+		}
+
+		&__count {
+			padding-right: 10px;
+			font-size: 15px;
+			font-style: italic;
+			color: #b4b4b4;
+		}
+
+		&__total {
+			white-space: nowrap;
+			font-weight: 700;
+		}
+	}
+
 	&__btn-apply {
 		transition: all 0.2s;
 		display: inline-block;
@@ -691,6 +747,25 @@
 
 		label {
 			display: block;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.party-config {
+		&__result {
+			&__item {
+				display: flex;
+			}
+
+			&__name {
+				flex-grow: 1;
+			}
+
+			&__sum {
+				margin-left: auto;
+				white-space: nowrap;
+			}
 		}
 	}
 }

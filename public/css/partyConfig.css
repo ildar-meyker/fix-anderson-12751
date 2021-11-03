@@ -334,6 +334,43 @@
   border-top: 1px dashed #76665c;
   margin: 10px 0 20px 0; }
 
+.party-config__result {
+  font-family: "PT Serif Caption";
+  font-size: 16px;
+  line-height: 18/16; }
+  .party-config__result__item {
+    margin-top: 13px; }
+  .party-config__result__name {
+    position: relative;
+    padding-right: 10px; }
+    .party-config__result__name:before {
+      content: " ";
+      position: absolute;
+      border-bottom: 1px dashed #76665c;
+      bottom: 0.2em;
+      left: 0;
+      right: 10px; }
+    .party-config__result__name__text {
+      position: relative;
+      display: inline;
+      padding-right: 10px;
+      background: #fff; }
+  .party-config__result__sum > * {
+    display: inline; }
+  .party-config__result__price {
+    padding-right: 10px;
+    font-size: 15px;
+    font-style: italic;
+    color: #b4b4b4; }
+  .party-config__result__count {
+    padding-right: 10px;
+    font-size: 15px;
+    font-style: italic;
+    color: #b4b4b4; }
+  .party-config__result__total {
+    white-space: nowrap;
+    font-weight: 700; }
+
 .party-config__btn-apply {
   transition: all 0.2s;
   display: inline-block;
@@ -472,6 +509,15 @@
     font-size: 30px; }
   .party-config label {
     display: block; } }
+
+@media (min-width: 768px) {
+  .party-config__result__item {
+    display: flex; }
+  .party-config__result__name {
+    flex-grow: 1; }
+  .party-config__result__sum {
+    margin-left: auto;
+    white-space: nowrap; } }
 
 @-webkit-keyframes partyConfigDown {
   from {
