@@ -2,6 +2,9 @@
   margin-right: 0 !important;
   margin-left: 0 !important; }
 
+.event-builder-plus__icon {
+  text-align: center; }
+
 .party-config a::after {
   display: none; }
 
@@ -180,8 +183,8 @@
     width: 50%; }
   .party-config__goods__props .SelectBox {
     padding: 0.7em 1em;
-    font-size: 1.5rem;
-    border-radius: 4px; }
+    border-radius: 4px;
+    font-size: 15px; }
 
 .party-config__promo {
   padding: 100px 55px;
@@ -371,6 +374,9 @@
     white-space: nowrap;
     font-weight: 700; }
 
+.party-config__comment {
+  margin-top: 10px; }
+
 .party-config__btn-apply {
   transition: all 0.2s;
   display: inline-block;
@@ -442,7 +448,7 @@
   .party-config__heroes {
     position: relative; }
     .party-config__heroes__row {
-      margin: 0 6px; }
+      margin: 0 -6px; }
     .party-config__heroes__col {
       margin-top: 12px;
       padding: 0 6px;
@@ -478,6 +484,8 @@
     .party-config__goods__props__col {
       width: 100%;
       margin-top: 5px; }
+    .party-config__goods__props .SelectBox {
+      font-size: 12px; }
   .party-config__group {
     padding: 30px 15px; }
     .party-config__group__footer {
@@ -517,7 +525,10 @@
     flex-grow: 1; }
   .party-config__result__sum {
     margin-left: auto;
-    white-space: nowrap; } }
+    white-space: nowrap; }
+  .party-config__comment {
+    max-width: 680px;
+    margin: 0 auto; } }
 
 @-webkit-keyframes partyConfigDown {
   from {

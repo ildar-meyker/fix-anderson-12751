@@ -3,6 +3,10 @@
 	margin-left: 0 !important;
 }
 
+.event-builder-plus__icon {
+	text-align: center;
+}
+
 .party-config {
 	a::after {
 		display: none;
@@ -251,8 +255,8 @@
 
 			.SelectBox {
 				padding: 0.7em 1em;
-				font-size: 1.5rem;
 				border-radius: 4px;
+				font-size: 15px;
 			}
 		}
 	}
@@ -516,6 +520,10 @@
 		}
 	}
 
+	&__comment {
+		margin-top: 10px;
+	}
+
 	&__btn-apply {
 		transition: all 0.2s;
 		display: inline-block;
@@ -617,7 +625,7 @@
 			position: relative;
 
 			&__row {
-				margin: 0 6px;
+				margin: 0 -6px;
 			}
 
 			&__col {
@@ -682,6 +690,10 @@
 				&__col {
 					width: 100%;
 					margin-top: 5px;
+				}
+
+				.SelectBox {
+					font-size: 12px;
 				}
 			}
 		}
@@ -766,6 +778,11 @@
 				margin-left: auto;
 				white-space: nowrap;
 			}
+		}
+
+		&__comment {
+			max-width: 680px;
+			margin: 0 auto;
 		}
 	}
 }
