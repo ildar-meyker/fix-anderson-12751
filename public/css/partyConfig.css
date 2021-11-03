@@ -1,5 +1,16 @@
+.event-builder--party-config {
+  margin-right: 0 !important;
+  margin-left: 0 !important; }
+
 .party-config a::after {
   display: none; }
+
+.party-config__title {
+  font-family: "SummerFont";
+  font-size: 48px;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 6px; }
 
 .party-config__layout {
   display: flex; }
@@ -117,6 +128,12 @@
   font-size: 48px;
   line-height: 1; }
 
+.party-config__goods__name {
+  margin-bottom: 15px;
+  font-size: 17px;
+  line-height: 1;
+  color: #2e1a13; }
+
 .party-config__goods__row {
   display: flex;
   flex-wrap: wrap;
@@ -148,10 +165,23 @@
   font-family: "BebasNeue";
   font-size: 39px;
   font-weight: 500;
+  line-height: 1;
   color: #553023; }
 
 .party-config__goods__counter {
   margin-left: auto; }
+
+.party-config__goods__props {
+  display: flex;
+  margin: 10px -3px 0 -3px; }
+  .party-config__goods__props__col {
+    flex: 0 0 auto;
+    padding: 0 3px;
+    width: 50%; }
+  .party-config__goods__props .SelectBox {
+    padding: 0.7em 1em;
+    font-size: 1.5rem;
+    border-radius: 4px; }
 
 .party-config__promo {
   padding: 100px 55px;
@@ -238,9 +268,9 @@
     line-height: 1.5; }
 
 .party-config__heroes__row {
-  margin: -20px -10px 0 -10px;
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  margin: 0 -10px; }
 
 .party-config__heroes__col {
   flex: 0 0 auto;
@@ -360,42 +390,88 @@
     width: 100%; }
   .party-config__layout__right {
     display: none; }
-  .party-config__tabs.fixed {
-    top: 30px; } }
+  .party-config__tabs-clone, .party-config__tabs {
+    display: none; }
+  .party-config__steps {
+    flex-wrap: wrap;
+    margin-top: 10px; }
+    .party-config__steps__col {
+      width: 50%;
+      margin-top: 10px; } }
 
 @media (max-width: 767.98px) {
+  .party-config__title {
+    font-size: 40px; }
   .party-config__heroes {
-    position: relative;
-    padding: 0 15px; }
+    position: relative; }
+    .party-config__heroes__row {
+      margin: 0 6px; }
     .party-config__heroes__col {
-      display: none;
-      width: 100%;
-      max-width: 400px;
-      margin-right: auto;
-      margin-left: auto; }
-      .party-config__heroes__col:first-child {
-        display: block !important; }
-    .party-config__heroes__prev, .party-config__heroes__next {
-      position: absolute;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-              transform: translateY(-50%);
-      background: url(../images/icons/arrow-right.svg) no-repeat 50% 50%;
-      background-size: 50% 50%;
-      width: 40px;
-      height: 40px;
-      display: none; }
-    .party-config__heroes__prev {
-      left: -25px;
-      -webkit-transform: translateY(-50%) scale(-1);
-              transform: translateY(-50%) scale(-1); }
-    .party-config__heroes__next {
-      right: -25px; }
+      margin-top: 12px;
+      padding: 0 6px;
+      width: 50%; }
     .party-config__heroes__btn {
       padding: 0; }
       .party-config__heroes__btn > * {
         border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0; } }
+        border-bottom-left-radius: 0; }
+    .party-config__heroes__image:before {
+      padding-top: 100%; }
+  .party-config__goods__title {
+    margin-bottom: 15px;
+    font-size: 40px; }
+  .party-config__goods__row {
+    margin: 0 -6px; }
+  .party-config__goods__col {
+    margin-bottom: 12px;
+    padding: 0 6px;
+    width: 50%; }
+  .party-config__goods__name {
+    margin-bottom: 5px;
+    font-size: 14px;
+    overflow: hidden; }
+  .party-config__goods__price-row {
+    display: block; }
+  .party-config__goods__price {
+    font-size: 23px; }
+  .party-config__goods__counter {
+    margin-left: 0; }
+  .party-config__goods__props {
+    display: block; }
+    .party-config__goods__props__col {
+      width: 100%;
+      margin-top: 5px; }
+  .party-config__group {
+    padding: 30px 15px; }
+    .party-config__group__footer {
+      justify-content: right; }
+      .party-config__group__footer > * {
+        margin: 10px 0; }
+  .party-config__promo {
+    padding: 30px 15px; }
+    .party-config__promo__text {
+      max-width: 350px;
+      padding: 15px; }
+    .party-config__promo__title {
+      font-size: 26px; }
+    .party-config__promo__desc {
+      font-size: 14px; }
+  .party-config__steps__desc {
+    font-size: 11px; }
+  .party-config__about__text {
+    max-width: 500px; }
+  .party-config__about__title {
+    font-size: 26px; }
+  .party-config__attn {
+    margin-right: -20px;
+    margin-left: -20px;
+    font-size: 30px; }
+  .party-config__btn-apply {
+    font-size: 14px; }
+  .party-config__btn-pink {
+    font-size: 30px; }
+  .party-config label {
+    display: block; } }
 
 @-webkit-keyframes partyConfigDown {
   from {
