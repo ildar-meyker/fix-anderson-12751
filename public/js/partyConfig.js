@@ -109,8 +109,8 @@ PartyConfig.StickyTabs = {
     if (this._scrollHandlingFrozen) return;
     var scrollTop = $(window).scrollTop();
     var state = scrollTop > this._tabsOffset;
-    $("#party-config__tabs-fake").toggleClass("active", state);
-    $("#party-config__tabs").toggleClass("fixed", state);
+    $("#party-config__nav-desktop-clone").toggleClass("active", state);
+    $("#party-config__nav-desktop").toggleClass("fixed", state);
 
     this._setActiveGroup();
   },
@@ -132,10 +132,10 @@ PartyConfig.StickyTabs = {
     this._setActiveTab(index);
   },
   _updateTabsOffset: function _updateTabsOffset() {
-    this._tabsOffset = $("#party-config__tabs-fake").offset().top;
+    this._tabsOffset = $("#party-config__nav-desktop-clone").offset().top;
   },
   _setActiveTab: function _setActiveTab(index) {
-    $("#party-config__tabs").children().removeClass("active history").eq(index).addClass("active").prevAll().addClass("history");
+    $("#party-config__nav-desktop").children().removeClass("active history").eq(index).addClass("active").prevAll().addClass("history");
   },
   _setActiveGroup: function _setActiveGroup() {
     var _this2 = this;
@@ -179,7 +179,7 @@ PartyConfig.StickyTabs = {
   init: function init() {
     $(window).on("scroll", $.throttle(100, this._handleWindowScroll.bind(this)));
     $(window).on("resize", $.throttle(250, this._handleWindowResize.bind(this)));
-    $(document).on("click", ".party-config__tabs__item", this._handleTabClick.bind(this));
+    $(document).on("click", ".party-config__nav-desktop__item", this._handleTabClick.bind(this));
 
     this._updateTabsOffset();
 

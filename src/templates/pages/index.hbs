@@ -893,7 +893,7 @@
                                 </div>
                             </div>
 
-                            <div class="party-config__group party-config__group--mt-0 party-config__about">
+                            <div class="party-config__group active party-config__group--mt-0 party-config__about">
                                 <div class="party-config__about__title">ВАС ЖДЕТ:</div>
                                 <div class="party-config__steps">
                                     <div class="party-config__steps__col">
@@ -940,63 +940,77 @@
                                         веселый и незабываемый праздник мы привезём с собой!
                                     </div>
                                     <div class="party-config__about__btn">
-                                        <a href="#" class="holiday-menu-card-line__btn">Собрать праздник!</a>
+                                        <a href="#" class="holiday-menu-card-line__btn js-party-config-start">Собрать праздник!</a>
                                     </div>
                                 </div>
                             </div>
 
-                            <div id="party-config__tabs-fake" class="party-config__tabs-fake"><div>&nbsp;</div></div>
-                            <nav id="party-config__tabs" class="party-config__tabs">
-                                <a href="#party-config__group-1" class="party-config__tabs__item active">
-                                    <div class="party-config__tabs__icon">
+                            <div id="party-config__nav-desktop-clone" class="party-config__nav-desktop-clone"><div>&nbsp;</div></div>
+                            <nav id="party-config__nav-desktop" class="party-config__nav-desktop">
+                                <a href="#party-config__group-1" class="party-config__nav-desktop__item active">
+                                    <div class="party-config__nav-desktop__icon">
                                         <svg>
                                             <use xlink:href="/data/include/sprites/top-nav.svg#getting-way" />
                                         </svg>
                                     </div>
-                                    <div class="party-config__tabs__text">
+                                    <div class="party-config__nav-desktop__text">
                                         Способ получения
                                     </div>
                                 </a>
-                                <a href="#party-config__group-2" class="party-config__tabs__item">
-                                    <div class="party-config__tabs__icon">
+                                <a href="#party-config__group-2" class="party-config__nav-desktop__item">
+                                    <div class="party-config__nav-desktop__icon">
                                         <svg>
                                             <use xlink:href="/data/include/sprites/top-nav.svg#calendar" />
                                         </svg>
                                     </div>
-                                    <div class="party-config__tabs__text">
-                                        Когда
+                                    <div class="party-config__nav-desktop__text">
+                                        Когда?
                                     </div>
                                 </a>
-                                <a href="#party-config__group-3" class="party-config__tabs__item">
-                                    <div class="party-config__tabs__icon">
+                                <a href="#party-config__group-3" class="party-config__nav-desktop__item">
+                                    <div class="party-config__nav-desktop__icon">
                                         <svg>
                                             <use xlink:href="/data/include/sprites/top-nav.svg#animation" />
                                         </svg>
                                     </div>
-                                    <div class="party-config__tabs__text">
+                                    <div class="party-config__nav-desktop__text">
                                         Анимация
                                     </div>
                                 </a>
-                                <a href="#party-config__group-4" class="party-config__tabs__item">
-                                    <div class="party-config__tabs__icon">
+                                <a href="#party-config__group-4" class="party-config__nav-desktop__item">
+                                    <div class="party-config__nav-desktop__icon">
                                         <svg>
                                             <use xlink:href="/data/include/sprites/top-nav.svg#eat" />
                                         </svg>
                                     </div>
-                                    <div class="party-config__tabs__text">
+                                    <div class="party-config__nav-desktop__text">
                                         Еда и торт
                                     </div>
                                 </a>
-                                <a href="#party-config__group-5" class="party-config__tabs__item">
-                                    <div class="party-config__tabs__icon">
+                                <a href="#party-config__group-5" class="party-config__nav-desktop__item">
+                                    <div class="party-config__nav-desktop__icon">
                                         <svg>
                                             <use xlink:href="/data/include/sprites/top-nav.svg#order" />
                                         </svg>
                                     </div>
-                                    <div class="party-config__tabs__text">
+                                    <div class="party-config__nav-desktop__text">
                                         Где?
                                     </div>
                                 </a>
+                            </nav>
+
+                            <nav class="party-config__nav-mobile">
+                                <div class="party-config__nav-mobile__crop">
+                                    <div class="party-config__nav-mobile__scroll">
+                                        <div class="party-config__nav-mobile__edge"></div>
+                                        <a href="#" class="party-config__nav-mobile__item active">1. СПОСОБ <br>ПОЛУЧЕНИЯ</a>
+                                        <a href="#" class="party-config__nav-mobile__item">2. КОГДА?</a>
+                                        <a href="#" class="party-config__nav-mobile__item">3. АНИМАЦИЯ</a>
+                                        <a href="#" class="party-config__nav-mobile__item">4. ЕДА И <br>ТОРТ</a>
+                                        <a href="#" class="party-config__nav-mobile__item">5. ГДЕ?</a>
+                                        <div class="party-config__nav-mobile__edge"></div>
+                                    </div>
+                                </div>
                             </nav>
                             
                             <div class="party-config__layout">
@@ -1153,7 +1167,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="party-config__group__footer">
-                                                    <a href="#" class="party-config__btn-next">продолжить</a>
+                                                    <a href="#" class="party-config__btn-next js-party-config-next" data-to="">продолжить</a>
                                                 </div>
                                             </form>
                                         </div>
@@ -1306,7 +1320,7 @@
                                             </div>
                                             
                                             <div class="party-config__group__footer">
-                                                <a href="#" class="party-config__btn-next">продолжить</a>
+                                                <a href="#" class="party-config__btn-next js-party-config-next" data-to="">продолжить</a>
                                             </div>
 
                                         </div>
@@ -1612,7 +1626,7 @@
                                                     </div>
                                                     
                                                     <div class="party-config__group__footer">
-                                                        <a href="#" class="party-config__btn-next">продолжить</a>
+                                                        <a href="#" class="party-config__btn-next js-party-config-next" data-to="">продолжить</a>
                                                     </div>
 
                                                 </form>

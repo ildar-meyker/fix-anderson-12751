@@ -25,17 +25,17 @@
     flex: 0 0 auto;
     width: 245px; }
 
-.party-config__tabs-fake {
+.party-config__nav-desktop-clone {
   font-family: "SummerFont";
   font-size: 30px;
   height: 0; }
-  .party-config__tabs-fake > div {
+  .party-config__nav-desktop-clone > div {
     display: block;
     padding: 1.3em 0; }
-  .party-config__tabs-fake.active {
+  .party-config__nav-desktop-clone.active {
     height: auto; }
 
-.party-config__tabs {
+.party-config__nav-desktop {
   display: flex;
   align-items: center;
   margin-left: -0.5em;
@@ -44,13 +44,13 @@
   font-family: "SummerFont";
   font-size: 30px;
   font-weight: 700; }
-  .party-config__tabs.fixed {
+  .party-config__nav-desktop.fixed {
     -webkit-animation: partyConfigDown 0.2s;
             animation: partyConfigDown 0.2s;
     position: fixed;
     z-index: 100;
     top: 0; }
-  .party-config__tabs__item {
+  .party-config__nav-desktop__item {
     transition: color 0.2s !important;
     position: relative;
     display: flex;
@@ -60,7 +60,7 @@
     background: url(../images/arrow-green.png) no-repeat 0 50%;
     background-size: auto 100%;
     color: #231300; }
-    .party-config__tabs__item:before {
+    .party-config__nav-desktop__item:before {
       content: " ";
       position: absolute;
       width: 2em;
@@ -70,51 +70,86 @@
       height: 100%;
       background: url(../images/arrow-green.png) no-repeat 100% 50%;
       background-size: auto 100%; }
-    .party-config__tabs__item:hover {
+    .party-config__nav-desktop__item:hover {
       color: #fff; }
-    .party-config__tabs__item.active {
+    .party-config__nav-desktop__item.active {
       z-index: 10 !important;
       padding: 1.3em 0.5em 1.3em 1.5em;
       background-image: url(../images/arrow-pink.png);
       color: #fff; }
-      .party-config__tabs__item.active:before {
+      .party-config__nav-desktop__item.active:before {
         width: 2.3em;
         background-image: url(../images/arrow-pink.png); }
-      .party-config__tabs__item.active .party-config__tabs__icon {
+      .party-config__nav-desktop__item.active .party-config__nav-desktop__icon {
         display: flex; }
-        .party-config__tabs__item.active .party-config__tabs__icon svg {
+        .party-config__nav-desktop__item.active .party-config__nav-desktop__icon svg {
           fill: #fff; }
-    .party-config__tabs__item.history {
+    .party-config__nav-desktop__item.history {
       z-index: auto !important;
       padding-left: 1.5em !important;
       background-image: url(../images/arrow-olive.png); }
-      .party-config__tabs__item.history:before {
+      .party-config__nav-desktop__item.history:before {
         background-image: url(../images/arrow-olive.png); }
-      .party-config__tabs__item.history .party-config__tabs__icon {
+      .party-config__nav-desktop__item.history .party-config__nav-desktop__icon {
         display: flex; }
-      .party-config__tabs__item.history:hover {
+      .party-config__nav-desktop__item.history:hover {
         color: #67af26; }
-        .party-config__tabs__item.history:hover .party-config__tabs__icon svg {
+        .party-config__nav-desktop__item.history:hover .party-config__nav-desktop__icon svg {
           fill: #67af26; }
-    .party-config__tabs__item:nth-child(5) {
+    .party-config__nav-desktop__item:nth-child(5) {
       z-index: 1; }
-    .party-config__tabs__item:nth-child(4) {
+    .party-config__nav-desktop__item:nth-child(4) {
       z-index: 2; }
-    .party-config__tabs__item:nth-child(3) {
+    .party-config__nav-desktop__item:nth-child(3) {
       z-index: 3; }
-    .party-config__tabs__item:nth-child(2) {
+    .party-config__nav-desktop__item:nth-child(2) {
       z-index: 4; }
-    .party-config__tabs__item:nth-child(1) {
+    .party-config__nav-desktop__item:nth-child(1) {
       margin-left: 0;
       padding-left: 1.5em !important;
       z-index: 5; }
-  .party-config__tabs__icon {
+  .party-config__nav-desktop__icon {
     margin-right: 10px;
     display: none; }
-    .party-config__tabs__icon svg {
+    .party-config__nav-desktop__icon svg {
       transition: all 0.2s;
       width: 1.2em;
       height: 1.2em; }
+
+.party-config__nav-mobile {
+  display: none;
+  padding-top: 30px;
+  background: #fff; }
+  .party-config__nav-mobile__crop {
+    overflow: hidden; }
+  .party-config__nav-mobile__scroll {
+    display: flex;
+    white-space: nowrap;
+    overflow: auto;
+    padding-bottom: 20px;
+    margin-bottom: -35px;
+    align-items: center; }
+  .party-config__nav-mobile__item {
+    margin: 0 15px;
+    font-family: "SummerFont";
+    font-size: 36px;
+    line-height: 1;
+    color: #d5d3d4; }
+    .party-config__nav-mobile__item.active {
+      color: #c44890; }
+    .party-config__nav-mobile__item:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      margin-top: -0.2em;
+      right: -23px;
+      width: 0.3em;
+      height: 0.3em;
+      background: url(../images/icons/arrow-right.svg) no-repeat 50% 50%;
+      background-size: contain; }
+  .party-config__nav-mobile__edge {
+    flex: 0 0 auto;
+    width: 37%; }
 
 .party-config__goods__image {
   background-position: 50% 50%;
@@ -433,8 +468,10 @@
     width: 100%; }
   .party-config__layout__right {
     display: none; }
-  .party-config__tabs-clone, .party-config__tabs {
+  .party-config__nav-desktop-clone, .party-config__nav-desktop {
     display: none; }
+  .party-config__nav-mobile.active {
+    display: block; }
   .party-config__steps {
     flex-wrap: wrap;
     margin-top: 10px; }
@@ -487,7 +524,9 @@
     .party-config__goods__props .SelectBox {
       font-size: 12px; }
   .party-config__group {
-    padding: 30px 15px; }
+    padding: 30px 15px;
+    box-shadow: none;
+    border: 0; }
     .party-config__group__footer {
       justify-content: right; }
       .party-config__group__footer > * {

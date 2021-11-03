@@ -35,7 +35,7 @@
 		}
 	}
 
-	&__tabs-fake {
+	&__nav-desktop-clone {
 		font-family: "SummerFont";
 		font-size: 30px;
 		height: 0;
@@ -50,7 +50,7 @@
 		}
 	}
 
-	&__tabs {
+	&__nav-desktop {
 		display: flex;
 		align-items: center;
 		margin-left: -0.5em;
@@ -105,7 +105,7 @@
 					background-image: url(../images/arrow-pink.png);
 				}
 
-				.party-config__tabs__icon {
+				.party-config__nav-desktop__icon {
 					display: flex;
 
 					svg {
@@ -123,14 +123,14 @@
 					background-image: url(../images/arrow-olive.png);
 				}
 
-				.party-config__tabs__icon {
+				.party-config__nav-desktop__icon {
 					display: flex;
 				}
 
 				&:hover {
 					color: #67af26;
 
-					.party-config__tabs__icon {
+					.party-config__nav-desktop__icon {
 						svg {
 							fill: #67af26;
 						}
@@ -169,6 +169,55 @@
 				width: 1.2em;
 				height: 1.2em;
 			}
+		}
+	}
+
+	&__nav-mobile {
+		display: none;
+		padding-top: 30px;
+		background: #fff;
+
+		&__crop {
+			overflow: hidden;
+		}
+
+		&__scroll {
+			display: flex;
+			white-space: nowrap;
+			overflow: auto;
+			padding-bottom: 20px;
+			margin-bottom: -35px;
+			align-items: center;
+		}
+
+		&__item {
+			margin: 0 15px;
+			font-family: "SummerFont";
+			font-size: 36px;
+			line-height: 1;
+			color: #d5d3d4;
+
+			&.active {
+				color: #c44890;
+			}
+
+			&:before {
+				content: "";
+				position: absolute;
+				top: 50%;
+				margin-top: -0.2em;
+				right: -23px;
+				width: 0.3em;
+				height: 0.3em;
+				background: url(../images/icons/arrow-right.svg) no-repeat 50%
+					50%;
+				background-size: contain;
+			}
+		}
+
+		&__edge {
+			flex: 0 0 auto;
+			width: 37%;
 		}
 	}
 
@@ -598,9 +647,15 @@
 			}
 		}
 
-		&__tabs-clone,
-		&__tabs {
+		&__nav-desktop-clone,
+		&__nav-desktop {
 			display: none;
+		}
+
+		&__nav-mobile {
+			&.active {
+				display: block;
+			}
 		}
 
 		&__steps {
@@ -699,7 +754,14 @@
 		}
 
 		&__group {
+			// display: none;
 			padding: 30px 15px;
+			box-shadow: none;
+			border: 0;
+
+			// &.active {
+			// 	display: block;
+			// }
 
 			&__footer {
 				justify-content: right;

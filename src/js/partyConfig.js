@@ -19,8 +19,8 @@ PartyConfig.StickyTabs = {
 		const scrollTop = $(window).scrollTop();
 		const state = scrollTop > this._tabsOffset;
 
-		$("#party-config__tabs-fake").toggleClass("active", state);
-		$("#party-config__tabs").toggleClass("fixed", state);
+		$("#party-config__nav-desktop-clone").toggleClass("active", state);
+		$("#party-config__nav-desktop").toggleClass("fixed", state);
 
 		this._setActiveGroup();
 	},
@@ -49,11 +49,11 @@ PartyConfig.StickyTabs = {
 	},
 
 	_updateTabsOffset() {
-		this._tabsOffset = $("#party-config__tabs-fake").offset().top;
+		this._tabsOffset = $("#party-config__nav-desktop-clone").offset().top;
 	},
 
 	_setActiveTab(index) {
-		$("#party-config__tabs")
+		$("#party-config__nav-desktop")
 			.children()
 			.removeClass("active history")
 			.eq(index)
@@ -116,7 +116,7 @@ PartyConfig.StickyTabs = {
 
 		$(document).on(
 			"click",
-			".party-config__tabs__item",
+			".party-config__nav-desktop__item",
 			this._handleTabClick.bind(this)
 		);
 
