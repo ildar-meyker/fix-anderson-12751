@@ -1,4 +1,4 @@
-.event-builder--party-config {
+.event-builder--party-editor {
 	margin-right: 0 !important;
 	margin-left: 0 !important;
 }
@@ -7,9 +7,17 @@
 	text-align: center;
 }
 
-.party-config {
+.party-editor {
+	&[v-cloak] {
+		display: none;
+	}
+
 	a::after {
 		display: none;
+	}
+
+	&__content {
+		padding: 20px 0 50px 0 !important;
 	}
 
 	&__title {
@@ -35,21 +43,6 @@
 		}
 	}
 
-	&__nav-desktop-clone {
-		font-family: "SummerFont";
-		font-size: 30px;
-		height: 0;
-
-		> div {
-			display: block;
-			padding: 1.3em 0;
-		}
-
-		&.active {
-			height: auto;
-		}
-	}
-
 	&__nav-desktop {
 		display: flex;
 		align-items: center;
@@ -59,13 +52,6 @@
 		font-family: "SummerFont";
 		font-size: 30px;
 		font-weight: 700;
-
-		&.fixed {
-			animation: partyConfigDown 0.2s;
-			position: fixed;
-			z-index: 100;
-			top: 0;
-		}
 
 		&__item {
 			transition: color 0.2s !important;
@@ -105,7 +91,7 @@
 					background-image: url(../images/arrow-pink.png);
 				}
 
-				.party-config__nav-desktop__icon {
+				.party-editor__nav-desktop__icon {
 					display: flex;
 
 					svg {
@@ -123,19 +109,25 @@
 					background-image: url(../images/arrow-olive.png);
 				}
 
-				.party-config__nav-desktop__icon {
+				.party-editor__nav-desktop__icon {
 					display: flex;
 				}
 
 				&:hover {
 					color: #67af26;
 
-					.party-config__nav-desktop__icon {
+					.party-editor__nav-desktop__icon {
 						svg {
 							fill: #67af26;
 						}
 					}
 				}
+			}
+
+			&.locked {
+				cursor: default;
+				color: #67b125 !important;
+				opacity: 0;
 			}
 
 			&:nth-child(5) {
@@ -173,51 +165,53 @@
 	}
 
 	&__nav-mobile {
-		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		visibility: hidden;
 		padding-top: 30px;
 		background: #fff;
 
-		&__crop {
-			overflow: hidden;
-		}
-
-		&__scroll {
+		&__slider {
 			display: flex;
 			white-space: nowrap;
-			overflow: auto;
-			padding-bottom: 20px;
-			margin-bottom: -35px;
 			align-items: center;
 		}
 
 		&__item {
-			margin: 0 15px;
+			padding: 0 15px;
 			font-family: "SummerFont";
 			font-size: 36px;
 			line-height: 1;
-			color: #d5d3d4;
-
-			&.active {
-				color: #c44890;
-			}
+			color: #d5d3d4 !important;
 
 			&:before {
 				content: "";
 				position: absolute;
 				top: 50%;
-				margin-top: -0.2em;
-				right: -23px;
+				right: -7px;
 				width: 0.3em;
 				height: 0.3em;
 				background: url(../images/icons/arrow-right.svg) no-repeat 50%
 					50%;
 				background-size: contain;
 			}
+
+			&--last {
+				&:before {
+					display: none;
+				}
+			}
 		}
 
-		&__edge {
-			flex: 0 0 auto;
-			width: 37%;
+		.slick-current a {
+			color: #c44890 !important;
+		}
+
+		.slick-track {
+			display: flex;
+			align-items: center;
 		}
 	}
 
@@ -444,7 +438,7 @@
 			position: relative;
 
 			&:hover {
-				.party-config__heroes__desc {
+				.party-editor__heroes__desc {
 					opacity: 1;
 				}
 			}
@@ -573,6 +567,26 @@
 		margin-top: 10px;
 	}
 
+	&__btn-start {
+		transition: all 0.2s;
+		display: inline-block;
+		white-space: nowrap;
+		text-align: center;
+		text-transform: uppercase;
+		font-family: "SummerFont";
+		font-size: 3.7rem;
+		line-height: 1;
+		padding: 1rem 5.4rem;
+		background: #c44890;
+		border-radius: 50px;
+		color: #fff !important;
+		cursor: pointer;
+
+		&:hover {
+			background: lighten(#c44890, 5%);
+		}
+	}
+
 	&__btn-apply {
 		transition: all 0.2s;
 		display: inline-block;
@@ -635,7 +649,23 @@
 }
 
 @media (max-width: 1026.98px) {
-	.party-config {
+	.party-editor {
+		&__mobile-only {
+			display: block;
+		}
+
+		&__content {
+			padding: 50px 0 !important;
+		}
+
+		&__page {
+			display: none;
+
+			&.active {
+				display: block;
+			}
+		}
+
 		&__layout {
 			&__left {
 				padding-right: 0;
@@ -647,14 +677,14 @@
 			}
 		}
 
-		&__nav-desktop-clone,
 		&__nav-desktop {
 			display: none;
 		}
 
 		&__nav-mobile {
 			&.active {
-				display: block;
+				position: static;
+				visibility: visible;
 			}
 		}
 
@@ -671,7 +701,7 @@
 }
 
 @media (max-width: 767.98px) {
-	.party-config {
+	.party-editor {
 		&__title {
 			font-size: 40px;
 		}
@@ -754,17 +784,17 @@
 		}
 
 		&__group {
-			// display: none;
+			margin: 0;
 			padding: 30px 15px;
 			box-shadow: none;
 			border: 0;
 
-			// &.active {
-			// 	display: block;
-			// }
-
 			&__footer {
 				justify-content: right;
+
+				&--center {
+					justify-content: center;
+				}
 
 				> * {
 					margin: 10px 0;
@@ -826,7 +856,7 @@
 }
 
 @media (min-width: 768px) {
-	.party-config {
+	.party-editor {
 		&__result {
 			&__item {
 				display: flex;
@@ -849,12 +879,17 @@
 	}
 }
 
-@keyframes partyConfigDown {
-	from {
-		transform: translateY(-100%);
-	}
+@media (min-width: 1027px) {
+	.party-editor {
+		&__mobile-only {
+			display: none;
+		}
 
-	to {
-		transform: translateY(0%);
+		&__page {
+			&.locked {
+				height: 0;
+				overflow: hidden;
+			}
+		}
 	}
 }

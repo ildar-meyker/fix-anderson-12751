@@ -7,7 +7,7 @@ module.exports = {
 	entry: "",
 
 	entry: {
-		partyConfig: "./src/js/partyConfig.js",
+		partyEditor: "./src/js/partyEditor.js",
 	},
 
 	//path and filename of the final output

@@ -54,9 +54,10 @@
 
     <link rel="preload" href="https://cafe-anderson.ru/local/templates/anderson_new_design/js//new/bundle.js" as="script">
 
-    <link rel="stylesheet" href="css/partyConfig.css">
 
-    
+    <script src="js/modernizr-output.js"></script>
+    <link rel="stylesheet" href="css/party-editor.css">
+
 
 </head>
 
@@ -848,7 +849,7 @@
             </header>
         </div>
 
-        <main class="   v3">
+        <main class="party-editor__content">
 
             <div class="c-layout">
                 <!--'start_frame_cache_breadcrumb'-->
@@ -873,587 +874,636 @@
                 <!--'end_frame_cache_breadcrumb'-->
                 <!--event-builder-->
                 <div class="holiday-builder">
-                    <div class="event-builder event-builder--party-config">
+                    <div class="event-builder event-builder--party-editor">
 
-                        <div class="party-config">
+                        <script type="text/template" id="party-editor-data">
 
-                            <div class="party-config__promo">
-                                <div class="party-config__promo__text">
-                                    <div class="party-config__promo__title">
-                                        ПРИВЕЗЕМ ПРАЗДНИК К ВАМ
-                                        ДОМОЙ, НА ДАЧУ, В ПАРК ИЛИ
-                                        В ГОСТИ!
+                            {
+                                "dishes": [
+                                    {
+                                    "title": "ГОРЯЧИЕ БЛЮДА",
+                                    "items": [
+                                        {
+                                        "id": 1,
+                                        "title": "Запеченные наггетсы из индейки в овсяных хлопьях с огуречными палочками и сметаной",
+                                        "image_url": "https://cafe-anderson.ru/upload/iblock/644/cca91fbb_e654_11e9_ab3b_b8ca3a5da470_d3f95aed_eac8_11e9_ab3b_b8ca3a5da470.jpg",
+                                        "price": 400,
+                                        "count": 0
+                                        },
+                                        {
+                                        "id": 2,
+                                        "title": "Рыбные котлеты с картофельным пюре с горошком и огуречным салатом",
+                                        "image_url": "https://cafe-anderson.ru/upload/iblock/098/197ba32d_b9d5_11e9_ab3a_b8ca3a5da470_8f4fb6b4_d488_11e9_ab3a_b8ca3a5da470.resize1.jpg",
+                                        "price": 460,
+                                        "count": 0
+                                        },
+                                        {
+                                        "id": 3,
+                                        "title": "Овощная тележка 205г",
+                                        "image_url": "https://cafe-anderson.ru/upload/iblock/aef/77c4b286_9227_11e7_91fb_00505697e2f5_5fe4d1da_ad3d_11e9_ab3a_b8ca3a5da470.resize1.jpg",
+                                        "price": 220,
+                                        "count": 0
+                                        },
+                                        {
+                                        "id": 4,
+                                        "title": "Картофельный тортик с сосисками гриль 245г",
+                                        "image_url": "https://cafe-anderson.ru/upload/iblock/b80/3a3ff323_9227_11e7_91fb_00505697e2f5_377686ad_7082_11e8_8d60_000c2903c811.resize1.jpg",
+                                        "price": 290,
+                                        "count": 0
+                                        }
+                                    ]
+                                    }
+                                ],
+
+                                "animations": [
+                                   {
+                                       "id": 1,
+                                       "title": "Зайчики в трамвайчике",
+                                       "image_url": "images/temp/2-4/1.jpeg",
+                                       "price": 9500,
+                                       "maxKidsCount": 8,
+                                       "newKidsPrice": 1000,
+                                       "minAge": 2,
+                                       "maxAge": 5,
+                                       "selected": false
+                                   }, 
+                                   {
+                                       "id": 2,
+                                       "title": "Кот По",
+                                       "image_url": "images/temp/2-4/2.jpeg",
+                                       "price": 6000,
+                                       "maxKidsCount": 8,
+                                       "newKidsPrice": 1000,
+                                       "minAge": 2,
+                                       "maxAge": 4,
+                                       "selected": false
+                                   },
+                                   {
+                                       "id": 3,
+                                       "title": "ТУСА КАРАПУЗА",
+                                       "image_url": "images/temp/2-4/3.jpeg",
+                                       "price": 13000,
+                                       "maxKidsCount": 8,
+                                       "newKidsPrice": 1000,
+                                       "minAge": 2,
+                                       "maxAge": 4,
+                                       "selected": false
+                                   },
+                                   {
+                                       "id": 4,
+                                       "title": "МИ-МИ-МИШКИ ВЕДУТ РАССЛЕДОВАНИЕ!",
+                                       "image_url": "images/temp/2-4/4.jpeg",
+                                       "price": 9500,
+                                       "maxKidsCount": 8,
+                                       "newKidsPrice": 1000,
+                                       "minAge": 2,
+                                       "maxAge": 4,
+                                       "selected": false
+                                   },
+                                   {
+                                       "id": 5,
+                                       "title": "MONSTRO LAB",
+                                       "image_url": "images/temp/5-7/1.jpeg",
+                                       "price": 11500,
+                                       "maxKidsCount": 8,
+                                       "newKidsPrice": 1000,
+                                       "minAge": 5,
+                                       "maxAge": 7,
+                                       "selected": false
+                                   },
+                                   {
+                                       "id": 6,
+                                       "title": "ДИСКОSTAR СО ЗВЁЗДОЧКОЙ",
+                                       "image_url": "images/temp/5-7/2.jpeg",
+                                       "price": 16000,
+                                       "maxKidsCount": 8,
+                                       "newKidsPrice": 1000,
+                                       "minAge": 5,
+                                       "maxAge": 7,
+                                       "selected": false
+                                   },
+                                   {
+                                       "id": 7,
+                                       "title": "ПОДУШКИ! НА СТАРТ!",
+                                       "image_url": "images/temp/5-7/3.jpeg",
+                                       "price": 9500,
+                                       "maxKidsCount": 8,
+                                       "newKidsPrice": 1000,
+                                       "minAge": 5,
+                                       "maxAge": 7,
+                                       "selected": false
+                                   },
+                                   {
+                                       "id": 8,
+                                       "title": "НА АБОРДАЖ!",
+                                       "image_url": "images/temp/5-7/4.jpeg",
+                                       "price": 12000,
+                                       "maxKidsCount": 8,
+                                       "newKidsPrice": 1000,
+                                       "minAge": 5,
+                                       "maxAge": 7,
+                                       "selected": false
+                                   },
+                                   {
+                                       "id": 9,
+                                       "title": "ПАППЕТ-ШОУ",
+                                       "image_url": "images/temp/5-7/5.jpeg",
+                                       "price": 15000,
+                                       "maxKidsCount": 8,
+                                       "newKidsPrice": 1000,
+                                       "minAge": 5,
+                                       "maxAge": 7,
+                                       "selected": false
+                                   },
+                                   {
+                                       "id": 10,
+                                       "title": "ВЕЧЕРИНКА НА УШАХ",
+                                       "image_url": "images/temp/5-7/6.jpeg",
+                                       "price": 17000,
+                                       "maxKidsCount": 8,
+                                       "newKidsPrice": 1000,
+                                       "minAge": 5,
+                                       "maxAge": 7,
+                                       "selected": false
+                                   },
+                                   {
+                                       "id": 11,
+                                       "title": "ИГРОПОЛИС",
+                                       "image_url": "images/temp/5-7/7.jpeg",
+                                       "price": 6000,
+                                       "maxKidsCount": 8,
+                                       "newKidsPrice": 1000,
+                                       "minAge": 5,
+                                       "maxAge": 7,
+                                       "selected": false
+                                   },
+                                   {
+                                       "id": 12,
+                                       "title": "ДОГАДАЙСЯ",
+                                       "image_url": "images/temp/5-7/8.jpeg",
+                                       "price": 5000,
+                                       "maxKidsCount": 8,
+                                       "newKidsPrice": 1000,
+                                       "minAge": 5,
+                                       "maxAge": 7,
+                                       "selected": false
+                                   },
+                                   {
+                                       "id": 13,
+                                       "title": "JUST DANCE",
+                                       "image_url": "images/temp/5-7/9.png",
+                                       "price": 6500,
+                                       "maxKidsCount": 8,
+                                       "newKidsPrice": 1000,
+                                       "minAge": 5,
+                                       "maxAge": 7,
+                                       "selected": false
+                                   },
+                                   {
+                                       "id": 14,
+                                       "title": "ПОЛЕТ НОРМАЛЬНЫЙ",
+                                       "image_url": "images/temp/5-7/10.jpeg",
+                                       "price": 26000,
+                                       "maxKidsCount": 8,
+                                       "newKidsPrice": 1000,
+                                       "minAge": 5,
+                                       "maxAge": 7,
+                                       "selected": false
+                                   }
+                                ]
+                            }
+                        </script>
+
+                        <div id="party-editor" class="party-editor"  v-cloak>
+
+                            <div id="party-editor__page-1" :class="['party-editor__page', {active: state.currentPage === 1}]">
+                                <div class="party-editor__promo">
+                                    <div class="party-editor__promo__text">
+                                        <div class="party-editor__promo__title">
+                                            ПРИВЕЗЕМ ПРАЗДНИК К ВАМ
+                                            ДОМОЙ, НА ДАЧУ, В ПАРК ИЛИ
+                                            В ГОСТИ!
+                                        </div>
+                                        <div class="party-editor__promo__desc">
+                                            Хотите поздравить малыша прямо утром не выходя
+                                            из дома? Нужно развлечь шуструю компанию
+                                            любознательных детей? Решили сделать сюрприз
+                                            бабушке или мужу? Ура! Мы уже выезжаем к вам!
+                                        </div>
                                     </div>
-                                    <div class="party-config__promo__desc">
-                                        Хотите поздравить малыша прямо утром не выходя
-                                        из дома? Нужно развлечь шуструю компанию
-                                        любознательных детей? Решили сделать сюрприз
-                                        бабушке или мужу? Ура! Мы уже выезжаем к вам!
+                                </div>
+
+                                <div class="party-editor__group active party-editor__group--mt-0 party-editor__about">
+                                    <div class="party-editor__about__title">ВАС ЖДЕТ:</div>
+                                    <div class="party-editor__steps">
+                                        <div class="party-editor__steps__col">
+                                            <div class="party-editor__steps__step">1</div>
+                                            <div class="party-editor__steps__desc">
+                                                Отличное настроение
+                                            </div>
+                                        </div>
+                                        <div class="party-editor__steps__col">
+                                            <div class="party-editor__steps__step">2</div>
+                                            <div class="party-editor__steps__desc">
+                                                Поздравление от большого
+                                                плюшевого медведя Густава
+                                            </div>
+                                        </div>
+                                        <div class="party-editor__steps__col">
+                                            <div class="party-editor__steps__step">3</div>
+                                            <div class="party-editor__steps__desc">
+                                                Увлекательная программа (5
+                                                эксклюзивных тематических
+                                                сценариев на любой возраст)
+                                            </div>
+                                        </div>
+                                        <div class="party-editor__steps__col">
+                                            <div class="party-editor__steps__step">4</div>
+                                            <div class="party-editor__steps__desc">
+                                                Именинный торт
+                                            </div>
+                                        </div>
+                                        <div class="party-editor__steps__col">
+                                            <div class="party-editor__steps__step">5</div>
+                                            <div class="party-editor__steps__desc">
+                                                Праздничное меню
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="party-editor__about__text">
+                                        <div class="party-editor__about__title">
+                                            ВСЕ ЭТО МЫ БЕРЕЖНО ПРИГОТОВИМ, ПОДГОТОВИМ И ДОСТАВИМ
+                                            ПО НУЖНОМУ АДРЕСУ!
+                                        </div>
+                                        <div class="party-editor__about__desc">
+                                            Стоимость праздника зависит от выбранного набора услуг и количества гостей. Оставляйте заявку, а самый
+                                            веселый и незабываемый праздник мы привезём с собой!
+                                        </div>
+                                        <div class="party-editor__about__btn">
+                                            <a href="#" class="party-editor__btn-start" @click.prevent="startEditor()">Собрать праздник!</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="party-config__group active party-config__group--mt-0 party-config__about">
-                                <div class="party-config__about__title">ВАС ЖДЕТ:</div>
-                                <div class="party-config__steps">
-                                    <div class="party-config__steps__col">
-                                        <div class="party-config__steps__step">1</div>
-                                        <div class="party-config__steps__desc">
-                                            Отличное настроение
-                                        </div>
-                                    </div>
-                                    <div class="party-config__steps__col">
-                                        <div class="party-config__steps__step">2</div>
-                                        <div class="party-config__steps__desc">
-                                            Поздравление от большого
-                                            плюшевого медведя Густава
-                                        </div>
-                                    </div>
-                                    <div class="party-config__steps__col">
-                                        <div class="party-config__steps__step">3</div>
-                                        <div class="party-config__steps__desc">
-                                            Увлекательная программа (5
-                                            эксклюзивных тематических
-                                            сценариев на любой возраст)
-                                        </div>
-                                    </div>
-                                    <div class="party-config__steps__col">
-                                        <div class="party-config__steps__step">4</div>
-                                        <div class="party-config__steps__desc">
-                                            Именинный торт
-                                        </div>
-                                    </div>
-                                    <div class="party-config__steps__col">
-                                        <div class="party-config__steps__step">5</div>
-                                        <div class="party-config__steps__desc">
-                                            Праздничное меню
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="party-config__about__text">
-                                    <div class="party-config__about__title">
-                                        ВСЕ ЭТО МЫ БЕРЕЖНО ПРИГОТОВИМ, ПОДГОТОВИМ И ДОСТАВИМ
-                                        ПО НУЖНОМУ АДРЕСУ!
-                                    </div>
-                                    <div class="party-config__about__desc">
-                                        Стоимость праздника зависит от выбранного набора услуг и количества гостей. Оставляйте заявку, а самый
-                                        веселый и незабываемый праздник мы привезём с собой!
-                                    </div>
-                                    <div class="party-config__about__btn">
-                                        <a href="#" class="holiday-menu-card-line__btn js-party-config-start">Собрать праздник!</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="party-config__nav-desktop-clone" class="party-config__nav-desktop-clone"><div>&nbsp;</div></div>
-                            <nav id="party-config__nav-desktop" class="party-config__nav-desktop">
-                                <a href="#party-config__group-1" class="party-config__nav-desktop__item active">
-                                    <div class="party-config__nav-desktop__icon">
+                            <nav id="party-editor__nav-desktop" class="party-editor__nav-desktop">
+                                <a href="#party-editor__page-2" 
+                                    :class="[
+                                        'party-editor__nav-desktop__item', 
+                                        {active: state.currentPage <= 2 },
+                                        {history: state.currentPage > 2}
+                                    ]"
+                                    @click.prevent="switchToPage(2, true)">
+                                    <div class="party-editor__nav-desktop__icon">
                                         <svg>
                                             <use xlink:href="/data/include/sprites/top-nav.svg#getting-way" />
                                         </svg>
                                     </div>
-                                    <div class="party-config__nav-desktop__text">
-                                        Способ получения
+                                    <div class="party-editor__nav-desktop__text">
+                                        Ввод данных
                                     </div>
                                 </a>
-                                <a href="#party-config__group-2" class="party-config__nav-desktop__item">
-                                    <div class="party-config__nav-desktop__icon">
-                                        <svg>
-                                            <use xlink:href="/data/include/sprites/top-nav.svg#calendar" />
-                                        </svg>
-                                    </div>
-                                    <div class="party-config__nav-desktop__text">
-                                        Когда?
-                                    </div>
-                                </a>
-                                <a href="#party-config__group-3" class="party-config__nav-desktop__item">
-                                    <div class="party-config__nav-desktop__icon">
+                                <a href="#party-editor__page-3" 
+                                    :class="[
+                                        'party-editor__nav-desktop__item', 
+                                        {active: state.currentPage === 3}, 
+                                        {locked: !state.isEditingEnabled},
+                                        {history: state.currentPage > 3}
+                                    ]"
+                                    @click.prevent="switchToPage(3, true)">
+                                    <div class="party-editor__nav-desktop__icon">
                                         <svg>
                                             <use xlink:href="/data/include/sprites/top-nav.svg#animation" />
                                         </svg>
                                     </div>
-                                    <div class="party-config__nav-desktop__text">
+                                    <div class="party-editor__nav-desktop__text">
                                         Анимация
                                     </div>
                                 </a>
-                                <a href="#party-config__group-4" class="party-config__nav-desktop__item">
-                                    <div class="party-config__nav-desktop__icon">
+                                <a href="#party-editor__page-4" 
+                                    :class="[
+                                        'party-editor__nav-desktop__item', 
+                                        {active: state.currentPage === 4}, 
+                                        {locked: !state.isEditingEnabled},
+                                        {history: state.currentPage > 4}
+                                    ]"
+                                    @click.prevent="switchToPage(4, true)">
+                                    <div class="party-editor__nav-desktop__icon">
                                         <svg>
                                             <use xlink:href="/data/include/sprites/top-nav.svg#eat" />
                                         </svg>
                                     </div>
-                                    <div class="party-config__nav-desktop__text">
-                                        Еда и торт
+                                    <div class="party-editor__nav-desktop__text">
+                                        Праздничное меню
                                     </div>
                                 </a>
-                                <a href="#party-config__group-5" class="party-config__nav-desktop__item">
-                                    <div class="party-config__nav-desktop__icon">
+                                <a href="#party-editor__page-5" 
+                                    :class="[
+                                        'party-editor__nav-desktop__item', 
+                                        {active: state.currentPage === 5}, 
+                                        {locked: !state.isEditingEnabled}
+                                    ]"
+                                    @click.prevent="switchToPage(5, true)">
+                                    <div class="party-editor__nav-desktop__icon">
                                         <svg>
                                             <use xlink:href="/data/include/sprites/top-nav.svg#order" />
                                         </svg>
                                     </div>
-                                    <div class="party-config__nav-desktop__text">
-                                        Где?
+                                    <div class="party-editor__nav-desktop__text">
+                                        Итог
                                     </div>
                                 </a>
                             </nav>
 
-                            <nav class="party-config__nav-mobile">
-                                <div class="party-config__nav-mobile__crop">
-                                    <div class="party-config__nav-mobile__scroll">
-                                        <div class="party-config__nav-mobile__edge"></div>
-                                        <a href="#" class="party-config__nav-mobile__item active">1. СПОСОБ <br>ПОЛУЧЕНИЯ</a>
-                                        <a href="#" class="party-config__nav-mobile__item">2. КОГДА?</a>
-                                        <a href="#" class="party-config__nav-mobile__item">3. АНИМАЦИЯ</a>
-                                        <a href="#" class="party-config__nav-mobile__item">4. ЕДА И <br>ТОРТ</a>
-                                        <a href="#" class="party-config__nav-mobile__item">5. ГДЕ?</a>
-                                        <div class="party-config__nav-mobile__edge"></div>
-                                    </div>
+                            <nav :class="['party-editor__nav-mobile', {active: state.currentPage !== 1}]">
+                                <div id="party-editor__nav-mobile__slider" class="party-editor__nav-mobile__slider">
+                                    <a href="#party-editor__page-2" class="party-editor__nav-mobile__item"
+                                        @click.prevent="switchToPage(2, true)">Ввод данных</a>
+                                    <a href="#party-editor__page-3" class="party-editor__nav-mobile__item"
+                                        @click.prevent="switchToPage(3, true)">Анимация</a>
+                                    <a href="#party-editor__page-4" class="party-editor__nav-mobile__item"
+                                        @click.prevent="switchToPage(4, true)">Праздничное меню</a>
+                                    <a href="#party-editor__page-5" class="party-editor__nav-mobile__item party-editor__nav-mobile__item--last"
+                                        @click.prevent="switchToPage(5, true)">Итог</a>
                                 </div>
                             </nav>
                             
-                            <div class="party-config__layout">
-                                <div class="party-config__layout__left">
+                            <div class="party-editor__layout">
+                                <div class="party-editor__layout__left">
                                     
-                                    <div id="party-config__groups">
-                
-                                        <div id="party-config__group-1" class="party-config__group party-config__group--mt-0">
-
-                                            <form action="" method="POST">
-            
-                                                <div class="event-builder-contact">
-                                                    <div>
-                                                        <div class="party-config__title">Способ получения:</div>
-                                                        
-                                                        <div class="event-builder-contact-price">
-                                                            <div class="event-builder-contact-price__item">
-                                                                <div class="c-radio-custom-2">
-                                                                    <input type="radio" id="event-builder-contact-price-01" name="delivery_price" value="2000">
-                                                                    <label for="event-builder-contact-price-01">Доставка</label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="event-builder-contact-price__item">
-                                                                <div class="c-radio-custom-2">
-                                                                    <input type="radio" id="event-builder-contact-price-02" name="delivery_price" value="3000">
-                                                                    <label for="event-builder-contact-price-02">Забронировать заказ</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="party-config__sep"></div>
-                                                    <div>
-                                                        <div class="party-config__title">1. Доставка</div>
-                                                        
-                                                        <div class="event-builder-contact-price">
-                                                            <div class="event-builder-contact-price__item">
-                                                                <div class="c-radio-custom-2">
-                                                                    <input type="radio" id="event-builder-contact-price-01" name="delivery_price" value="2000">
-                                                                    <label for="event-builder-contact-price-01">До МКАД - <b>2000 ₽</b></label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="event-builder-contact-price__item">
-                                                                <div class="c-radio-custom-2">
-                                                                    <input type="radio" id="event-builder-contact-price-02" name="delivery_price" value="3000">
-                                                                    <label for="event-builder-contact-price-02">От 5 км. от МКАД - <b>3000 ₽</b></label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="event-builder-contact-price__item">
-                                                                <div class="c-radio-custom-2">
-                                                                    <input type="radio" id="event-builder-contact-price-03" name="delivery_price" value="5000">
-                                                                    <label for="event-builder-contact-price-03">До 35 км. от МКАД - <b>5000 ₽</b></label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div class="party-config__title">2. Адрес доставки праздника</div>
-                                                        <div class="event-builder-tab-list-block__line event-builder-tab-list-block__line-3">
-                                                            <div class="event-builder-tab-list-block__control ">
-                                                                <label class="c-label" for="holiday-builder-street">Улица: <span class="c-obligatory-field">*</span></label>
-                                                                <input class="c-input" type="text" id="holiday-builder-street" required="" placeholder="Улица" name="street" data-animate="N">
-                                                            </div>
-                                                            <div class="event-builder-tab-list-block__control ">
-                                                                <label class="c-label" for="holiday-builder-house">Дом: <span class="c-obligatory-field">*</span></label>
-                                                                <input class="c-input" type="text" id="holiday-builder-house" required="" placeholder="Дом" name="house" data-animate="N">
-
-                                                            </div>
-                                                            <div class="event-builder-tab-list-block__control ">
-                                                                <label class="c-label" for="holiday-builder-apartment">Квартира: <span class="c-obligatory-field">*</span></label>
-                                                                <input class="c-input" type="text" id="holiday-builder-apartment" required="" placeholder="Квартира" name="flat" data-animate="N">
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div>
-                                                        <div class="party-config__title">3. Контакты заказчика</div>
-                                                        <div class="event-builder-tab-list-block__line">
-                                                            <div class="event-builder-tab-list-block__control ">
-                                                                <label class="c-label" for="holiday-builder-client">Ваше имя: <span class="c-obligatory-field">*</span></label>
-                                                                <input class="c-input" type="text" id="holiday-builder-client" required="" placeholder="Ваше имя" name="user_name" data-animate="N">
-
-                                                            </div>
-                                                            <div class="event-builder-tab-list-block__control ">
-                                                                <label class="c-label" for="holiday-builder-child">Имя ребенка: <span class="c-obligatory-field">*</span></label>
-                                                                <input class="c-input" type="text" id="holiday-builder-child" required="" placeholder="Имя ребенка" name="child_name" data-animate="N">
-
-                                                            </div>
-                                                            <div class="event-builder-tab-list-block__control ">
-                                                                <label class="c-label" for="holiday-builder-email">E-mail: <span class="c-obligatory-field">*</span></label>
-                                                                <input class="c-input" type="text" id="holiday-builder-email" required="" placeholder="...@..." name="email" data-animate="N">
-                                                            </div>
-                                                            <div class="event-builder-tab-list-block__control ">
-                                                                <label class="c-label" for="holiday-builder-phone">Телефон: <span class="c-obligatory-field">*</span></label>
-                                                                <input class="c-input js-input--tel" type="text" id="holiday-builder-phone" required="" placeholder="+7 () -  -" maxlength="15" name="phone" data-animate="N">
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                    
-                                            </form>
-
-                                            <div class="party-config__group__footer">
-                                                <a href="#" class="party-config__btn-apply">
-                                                    Подтвердить данные и собрать праздник!
-                                                </a>
-                                                <a href="#" class="party-config__btn-apply">
-                                                    Я только посмотреть! (без ввода данных)
-                                                </a>
-                                            </div>
-
-                                        </div>
-                                        <div id="party-config__group-2" class="party-config__group">
-                                            <form class="required">
-                                                <div class="event-builder-tab__body">
-                                                    <div class="event-builder-when">
+                                    <div id="party-editor__groups">
                                         
-                                                        <div class="event-builder-when__item">
-                                                            <div class="event-builder-when-form">
-                                                                <div class="event-builder-when-form__item">
-                                                                    <div class="event-builder-when-guest">
-                                                                        <div class="event-builder-when-guest__item">
-                                                                            <div class="party-config__title">Сколько будет маленьких гостей?</div>
-                                                                            <div class="event-builder-when-guest__count">
-                                                                                <input class="c-input" type="text" name="child" value="1" id="child">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="event-builder-when-guest__item" style="padding-right: 20px;">
-                                                                            <div class="party-config__title">Возраст</div>
-                                                                            <div class="event-builder-when-guest__count">
-                                                                                <input class="c-input" type="text" name="age" value="0" id="age">
-                                                                            </div>
-                                                                        </div>
-                                                        
+                                        <div id="party-editor__page-2"  :class="['party-editor__page', {active: state.currentPage === 2}]">
+                                            <div class="party-editor__group party-editor__group--mt-0">
+
+                                                <form action="" method="POST">
+                
+                                                    <div class="event-builder-contact">
+                                                        <div>
+                                                            <div class="party-editor__title">Способ получения:</div>
+                                                            
+                                                            <div class="event-builder-contact-price">
+                                                                <div class="event-builder-contact-price__item">
+                                                                    <div class="c-radio-custom-2">
+                                                                        <input id="gettingWay-1" type="radio" value="2000">
+                                                                        <label for="gettingWay-1">Доставка</label>
                                                                     </div>
-
-                                                                    <div class="event-builder-when-note">
-                                                                        <p>ПОЧЕМУ НАМ ВАЖНО ЗНАТЬ ЗАРАНЕЕ КОЛИЧЕСТВО ВАШИХ ГОСТЕЙ?</p>
-                                                                        <ol>
-                                                                            <li>
-                                                                                1. Все наши анимационные программы рассчитаны на команду из 8 детей, исходя из этой цифры, планируется реквизит, подарки и расходные материалы. Если на праздник без предупреждения пришло больше детей, чем оговаривалось — мы, к сожалению, не сможем уделить внимание всем.
-
-                                                                            </li>
-                                                                            <li>
-                                                                                2. Мы всегда заботимся о безопасности наших маленьких гостей и поэтому дети на празднике должны находиться только в сопровождении взрослых, которые несут ответственность за их жизнь и здоровье (до 10 человек — один сопровождающий, более 10 — двое, более 18 детей — трое)
-                                                                            </li>
-                                                                        </ol>
+                                                                </div>
+                                                                <div class="event-builder-contact-price__item">
+                                                                    <div class="c-radio-custom-2">
+                                                                        <input id="gettingWay-2" type="radio" value="3000">
+                                                                        <label for="gettingWay-2">Забронировать заказ</label>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="party-editor__sep"></div>
+                                                        <div>
+                                                            <div class="party-editor__title">1. Доставка</div>
+                                                            
+                                                            <div class="event-builder-contact-price">
+                                                                <div class="event-builder-contact-price__item">
+                                                                    <div class="c-radio-custom-2">
+                                                                        <input id="deliveryPrice-1" type="radio" name="delivery_price" value="2000" v-model="state.deliveryPrice">
+                                                                        <label for="deliveryPrice-1">До МКАД - <b>2000 ₽</b></label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="event-builder-contact-price__item">
+                                                                    <div class="c-radio-custom-2">
+                                                                        <input id="deliveryPrice-2" type="radio" name="delivery_price" value="3000" v-model="state.deliveryPrice">
+                                                                        <label for="deliveryPrice-2">От 5 км. от МКАД - <b>3000 ₽</b></label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="event-builder-contact-price__item">
+                                                                    <div class="c-radio-custom-2">
+                                                                        <input id="deliveryPrice-3" type="radio" name="delivery_price" value="5000" v-model="state.deliveryPrice">
+                                                                        <label for="deliveryPrice-3">До 35 км. от МКАД - <b>5000 ₽</b></label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="party-editor__title">2. Адрес доставки праздника</div>
+                                                            <div class="event-builder-tab-list-block__line event-builder-tab-list-block__line-3">
+                                                                <div class="event-builder-tab-list-block__control ">
+                                                                    <label class="c-label" for="holiday-builder-street">Улица: <span class="c-obligatory-field">*</span></label>
+                                                                    <input class="c-input" type="text" id="holiday-builder-street" required="" placeholder="Улица" name="street" v-model="state.deliveryStreetName">
+                                                                </div>
+                                                                <div class="event-builder-tab-list-block__control ">
+                                                                    <label class="c-label" for="holiday-builder-house">Дом: <span class="c-obligatory-field">*</span></label>
+                                                                    <input class="c-input" type="text" id="holiday-builder-house" required="" placeholder="Дом" name="house" v-model="state.deliveryBuildingNumber">
+
+                                                                </div>
+                                                                <div class="event-builder-tab-list-block__control ">
+                                                                    <label class="c-label" for="holiday-builder-apartment">Квартира: <span class="c-obligatory-field">*</span></label>
+                                                                    <input class="c-input" type="text" id="holiday-builder-apartment" required="" placeholder="Квартира" name="flat" v-model="state.deliveryFlatNumber">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div>
+                                                            <div class="party-editor__title">3. Контакты заказчика</div>
+                                                            <div class="event-builder-tab-list-block__line">
+                                                                <div class="event-builder-tab-list-block__control ">
+                                                                    <label class="c-label" for="holiday-builder-client">Ваше имя: <span class="c-obligatory-field">*</span></label>
+                                                                    <input class="c-input" type="text" id="holiday-builder-client" required="" placeholder="Ваше имя" name="user_name" v-model="state.clientName">
+
+                                                                </div>
+                                                                <div class="event-builder-tab-list-block__control ">
+                                                                    <label class="c-label" for="holiday-builder-child">Имя ребенка: <span class="c-obligatory-field">*</span></label>
+                                                                    <input class="c-input" type="text" id="holiday-builder-child" required="" placeholder="Имя ребенка" name="child_name" v-model="state.clientKidName">
+
+                                                                </div>
+                                                                <div class="event-builder-tab-list-block__control ">
+                                                                    <label class="c-label" for="holiday-builder-email">E-mail: <span class="c-obligatory-field">*</span></label>
+                                                                    <input class="c-input" type="text" id="holiday-builder-email" required="" placeholder="...@..." name="email" v-model="state.clientEmail">
+                                                                </div>
+                                                                <div class="event-builder-tab-list-block__control ">
+                                                                    <label class="c-label" for="holiday-builder-phone">Телефон: <span class="c-obligatory-field">*</span></label>
+                                                                    <input class="c-input js-input--tel" type="text" id="holiday-builder-phone" required="" placeholder="+7 () -  -" maxlength="15" name="phone" v-model="state.clientPhone">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
 
                                                     </div>
-                                                </div>
-                                                <div class="party-config__group__footer">
-                                                    <a href="#" class="party-config__btn-next js-party-config-next" data-to="">продолжить</a>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div id="party-config__group-3" class="party-config__group">
+                                        
+                                                </form>
 
-                                            <div class="event-builder-tab__body">
-
-                                                <ol>
-                                                    <li class="">
-                                                        <div class="event-builder-change-card__body" style="display: block">
-                                                            <div class="party-config__title">ВЫБЕРИТЕ ГЕРОЯ ДЛЯ ПРОВЕДЕНИЯ ПРАЗДНИКА</div>
-                                                            <p>Профессиональный актер создаст праздничное настроение в образе любимого героя.</p>
-                                                            <p>В стоимость входит:</p>
-                                                            <p>- Работа одного аниматора на 1 час, для группы детей до 8 человек;</p>
-                                                            <p>- Музыкальное оформление праздника;</p>
-                                                            <p>- Игры подходящие возрасту ребёнка.</p>
-                                                        </div>
-                                                    </li>
-                                                </ol>
                                                 
 
-                                                <div class="party-config__heroes">
-
-                                                    <div class="party-config__heroes__row">
-                                                        <div class="party-config__heroes__col">
-                                                            <div class="party-config__heroes__item">
-                                                                <div class="party-config__heroes__image" style="background-image: url(images/temp/1.jpeg);"></div>
-                                                                <div class="party-config__heroes__desc">
-                                                                    <div>
-                                                                        <div class="party-config__heroes__desc__1">до 8 детей 9500 ₽ + 1000 ₽</div>
-                                                                        <div class="party-config__heroes__desc__2">за каждого дополнительного ребенка</div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="party-config__heroes__btn">
-                                                                    <a href="#" class="party-config__btn-pink active">В корзине</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="party-config__heroes__col">
-                                                            <div class="party-config__heroes__item">
-                                                                <div class="party-config__heroes__image" style="background-image: url(images/temp/2.jpeg);"></div>
-                                                                <div class="party-config__heroes__desc">
-                                                                    <div>
-                                                                        <div class="party-config__heroes__desc__1">до 8 детей 9500 ₽ + 1000 ₽</div>
-                                                                        <div class="party-config__heroes__desc__2">за каждого дополнительного ребенка</div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="party-config__heroes__btn">
-                                                                    <a href="#" class="party-config__btn-pink">В корзину</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="party-config__heroes__col">
-                                                            <div class="party-config__heroes__item">
-                                                                <div class="party-config__heroes__image" style="background-image: url(images/temp/3.jpeg);"></div>
-                                                                <div class="party-config__heroes__desc">
-                                                                    <div>
-                                                                        <div class="party-config__heroes__desc__1">до 8 детей 9500 ₽ + 1000 ₽</div>
-                                                                        <div class="party-config__heroes__desc__2">за каждого дополнительного ребенка</div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="party-config__heroes__btn">
-                                                                    <a href="#" class="party-config__btn-pink">В корзину</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="party-config__heroes__col">
-                                                            <div class="party-config__heroes__item">
-                                                                <div class="party-config__heroes__image" style="background-image: url(images/temp/4.jpeg);"></div>
-                                                                <div class="party-config__heroes__desc">
-                                                                    <div>
-                                                                        <div class="party-config__heroes__desc__1">до 8 детей 9500 ₽ + 1000 ₽</div>
-                                                                        <div class="party-config__heroes__desc__2">за каждого дополнительного ребенка</div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="party-config__heroes__btn">
-                                                                    <a href="#" class="party-config__btn-pink">В корзину</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="party-config__heroes__col">
-                                                            <div class="party-config__heroes__item">
-                                                                <div class="party-config__heroes__image" style="background-image: url(images/temp/5.jpeg);"></div>
-                                                                <div class="party-config__heroes__desc">
-                                                                    <div>
-                                                                        <div class="party-config__heroes__desc__1">до 8 детей 9500 ₽ + 1000 ₽</div>
-                                                                        <div class="party-config__heroes__desc__2">за каждого дополнительного ребенка</div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="party-config__heroes__btn">
-                                                                    <a href="#" class="party-config__btn-pink">В корзину</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="party-config__heroes__col">
-                                                            <div class="party-config__heroes__item">
-                                                                <div class="party-config__heroes__image" style="background-image: url(images/temp/6.jpeg);"></div>
-                                                                <div class="party-config__heroes__desc">
-                                                                    <div>
-                                                                        <div class="party-config__heroes__desc__1">до 8 детей 9500 ₽ + 1000 ₽</div>
-                                                                        <div class="party-config__heroes__desc__2">за каждого дополнительного ребенка</div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="party-config__heroes__btn">
-                                                                    <a href="#" class="party-config__btn-pink">В корзину</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="party-config__heroes__col">
-                                                            <div class="party-config__heroes__item">
-                                                                <div class="party-config__heroes__image" style="background-image: url(images/temp/7.jpeg);"></div>
-                                                                <div class="party-config__heroes__desc">
-                                                                    <div>
-                                                                        <div class="party-config__heroes__desc__1">до 8 детей 9500 ₽ + 1000 ₽</div>
-                                                                        <div class="party-config__heroes__desc__2">за каждого дополнительного ребенка</div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="party-config__heroes__btn">
-                                                                    <a href="#" class="party-config__btn-pink">В корзину</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="party-config__heroes__col">
-                                                            <div class="party-config__heroes__item">
-                                                                <div class="party-config__heroes__image" style="background-image: url(images/temp/8.jpeg);"></div>
-                                                                <div class="party-config__heroes__desc">
-                                                                    <div>
-                                                                        <div class="party-config__heroes__desc__1">до 8 детей 9500 ₽ + 1000 ₽</div>
-                                                                        <div class="party-config__heroes__desc__2">за каждого дополнительного ребенка</div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="party-config__heroes__btn">
-                                                                    <a href="#" class="party-config__btn-pink">В корзину</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <a href="#" class="party-config__heroes__prev"></a>
-                                                    <a href="#" class="party-config__heroes__next"></a>
-
-                                                </div>
                                             </div>
+                                            <div class="party-editor__group">
+                                                <form class="required">
+                                                    <div class="event-builder-tab__body">
+                                                        <div class="event-builder-when">
                                             
-                                            <div class="party-config__group__footer">
-                                                <a href="#" class="party-config__btn-next js-party-config-next" data-to="">продолжить</a>
-                                            </div>
-
-                                        </div>
-                                        <div id="party-config__group-4" class="party-config__group">
-                                            <div class="event-builder-tab__body">
-                                                <form>
-
-
-                                                    <div class="party-config__goods__title">Горячие блюда</div>
-                                                    <div class="party-config__goods__row">
-                                                        <div class="party-config__goods__col">
-                                                            <div class="party-config__goods__item">
+                                                            <div class="event-builder-when__item">
+                                                                <div class="event-builder-when-form">
+                                                                    <div class="event-builder-when-form__item">
+                                                                        <div class="event-builder-when-guest">
+                                                                            <div class="event-builder-when-guest__item">
+                                                                                <div class="party-editor__title">Сколько будет маленьких гостей?</div>
+                                                                                <div class="event-builder-when-guest__count">
+                                                                                    <input class="c-input" type="text" v-model="state.kidsCount">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="event-builder-when-guest__item" style="padding-right: 20px;">
+                                                                                <div class="party-editor__title">Возраст</div>
+                                                                                <div class="event-builder-when-guest__count">
+                                                                                    <input class="c-input" type="text" v-model="state.kidsAge">
+                                                                                </div>
+                                                                            </div>
                                                             
-                                                                <div class="party-config__goods__image" style="background-image:url(https://cafe-anderson.ru/upload/iblock/644/cca91fbb_e654_11e9_ab3b_b8ca3a5da470_d3f95aed_eac8_11e9_ab3b_b8ca3a5da470.jpg);"></div>
-                                                                <div class="c-card-catalog-3__body">
-                                                                    <div class="party-config__goods__name">Запеченные наггетсы из индейки в овсяных хлопьях с огуречными палочками и сметаной</div>
-                                                                    <div class="party-config__goods__desc">
-                                                                        <div class="party-config__goods__price-row">
-                                                                            <div class="party-config__goods__price">400 ₽</div>
-                                                                            <div class="party-config__goods__counter">
-                                                                                <div class="c-card-catalog__count">
-                                                                                    <div class="c-counter">
-                                                                                        <button type="button" class="but c-counter__btn dec">-</button>
-                                                                                        <input type="text" class="c-counter__field fieldCount" value="0" name="items[145211]" data-key="menu" data-id="145211" id="item_145211">
-                                                                                        <button type="button" class="but c-counter__btn inc">+</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="event-builder-when-note">
+                                                                            <p>ПОЧЕМУ НАМ ВАЖНО ЗНАТЬ ЗАРАНЕЕ КОЛИЧЕСТВО ВАШИХ ГОСТЕЙ?</p>
+                                                                            <ol>
+                                                                                <li>
+                                                                                    1. Все наши анимационные программы рассчитаны на команду из 8 детей, исходя из этой цифры, планируется реквизит, подарки и расходные материалы. Если на праздник без предупреждения пришло больше детей, чем оговаривалось — мы, к сожалению, не сможем уделить внимание всем.
+
+                                                                                </li>
+                                                                                <li>
+                                                                                    2. Мы всегда заботимся о безопасности наших маленьких гостей и поэтому дети на празднике должны находиться только в сопровождении взрослых, которые несут ответственность за их жизнь и здоровье (до 10 человек — один сопровождающий, более 10 — двое, более 18 детей — трое)
+                                                                                </li>
+                                                                            </ol>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="party-config__goods__col">
-                                                            <div class="party-config__goods__item">
-                                                              
-                                                                <div class="party-config__goods__image" style="background-image:url(https://cafe-anderson.ru/upload/iblock/098/197ba32d_b9d5_11e9_ab3a_b8ca3a5da470_8f4fb6b4_d488_11e9_ab3a_b8ca3a5da470.resize1.jpg);"></div>
-                                                                <div class="c-card-catalog-3__body">
-                                                                    <div class="party-config__goods__name">Рыбные котлеты с картофельным пюре с горошком и огуречным салатом</div>
-                                                                    <div class="party-config__goods__desc">
-                                                                        <div class="party-config__goods__price-row">
-                                                                            <div class="party-config__goods__price">460 ₽</div>
-                                                                            <div class="party-config__goods__counter">
-                                                                                <div class="c-card-catalog__count">
-                                                                                    <div class="c-counter">
-                                                                                        <button type="button" class="but c-counter__btn dec">-</button>
-                                                                                        <input type="text" class="c-counter__field fieldCount" value="0" name="items[145211]" data-key="menu" data-id="145211" id="item_145211">
-                                                                                        <button type="button" class="but c-counter__btn inc">+</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="party-config__goods__col">
-                                                            <div class="party-config__goods__item">
-                                                           
-                                                                <div class="party-config__goods__image" style="background-image:url(https://cafe-anderson.ru/upload/iblock/aef/77c4b286_9227_11e7_91fb_00505697e2f5_5fe4d1da_ad3d_11e9_ab3a_b8ca3a5da470.resize1.jpg);"></div>
-                                                                <div class="c-card-catalog-3__body">
-                                                                    <div class="party-config__goods__name">Овощная тележка 205г</div>
-                                                                    <div class="party-config__goods__desc">
-                                                                        <div class="party-config__goods__price-row">
-                                                                            <div class="party-config__goods__price">220 ₽</div>
-                                                                            <div class="party-config__goods__counter">
-                                                                                <div class="c-card-catalog__count">
-                                                                                    <div class="c-counter">
-                                                                                        <button type="button" class="but c-counter__btn dec">-</button>
-                                                                                        <input type="text" class="c-counter__field fieldCount" value="0" name="items[145211]" data-key="menu" data-id="145211" id="item_145211">
-                                                                                        <button type="button" class="but c-counter__btn inc">+</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="party-config__goods__col">
-                                                            <div class="party-config__goods__item">
-                                                         
-                                                                <div class="party-config__goods__image" style="background-image:url(https://cafe-anderson.ru/upload/iblock/b80/3a3ff323_9227_11e7_91fb_00505697e2f5_377686ad_7082_11e8_8d60_000c2903c811.resize1.jpg);"></div>
-                                                                <div class="c-card-catalog-3__body">
-                                                                    <div class="party-config__goods__name">Картофельный тортик с сосисками гриль 245г</div>
-                                                                    <div class="party-config__goods__desc">
-                                                                        <div class="party-config__goods__price-row">
-                                                                            <div class="party-config__goods__price">290 ₽</div>
-                                                                            <div class="party-config__goods__counter">
-                                                                                <div class="c-card-catalog__count">
-                                                                                    <div class="c-counter">
-                                                                                        <button type="button" class="but c-counter__btn dec">-</button>
-                                                                                        <input type="text" class="c-counter__field fieldCount" value="0" name="items[145211]" data-key="menu" data-id="145211" id="item_145211">
-                                                                                        <button type="button" class="but c-counter__btn inc">+</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+
                                                         </div>
                                                     </div>
+                                                    <div class="party-editor__group__footer party-editor__group__footer--center" v-show="!state.isEditingEnabled">
+                                                        <a href="#" class="party-editor__btn-apply" @click.prevent="enableEditing()">
+                                                            Подтвердить данные и собрать праздник!
+                                                        </a>
+                                                        <a href="#" class="party-editor__btn-apply" @click.prevent="enableEditing()">
+                                                            Я только посмотреть! (без ввода данных)
+                                                        </a>
+                                                    </div>
+                                                    <div class="party-editor__group__footer party-editor__mobile-only" v-show="state.isEditingEnabled">
+                                                        <a href="#" class="party-editor__btn-next" @click.prevent="switchToPage(3, true)">продолжить</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div id="party-editor__page-3"  :class="['party-editor__page', {active: state.currentPage === 3}, {locked: !state.isEditingEnabled}]">
+                                            <div class="party-editor__group">
+
+                                                <div class="event-builder-tab__body">
+
+                                                    <ol>
+                                                        <li class="">
+                                                            <div class="event-builder-change-card__body" style="display: block">
+                                                                <div class="party-editor__title">ВЫБЕРИТЕ ГЕРОЯ ДЛЯ ПРОВЕДЕНИЯ ПРАЗДНИКА</div>
+                                                                <p>Профессиональный актер создаст праздничное настроение в образе любимого героя.</p>
+                                                                <p>В стоимость входит:</p>
+                                                                <p>- Работа одного аниматора на 1 час, для группы детей до 8 человек;</p>
+                                                                <p>- Музыкальное оформление праздника;</p>
+                                                                <p>- Игры подходящие возрасту ребёнка.</p>
+                                                            </div>
+                                                        </li>
+                                                    </ol>
+                                                    
+
+                                                    <div class="party-editor__heroes">
+
+                                                        <div class="party-editor__heroes__row">
+                                                            <div class="party-editor__heroes__col" v-for="program in animations" :key="program.id">
+                                                                <div class="party-editor__heroes__item">
+                                                                    <div class="party-editor__heroes__image" :style="'background-image: url(' + program.image_url + ');'"></div>
+                                                                    <div class="party-editor__heroes__desc">
+                                                                        <div>
+                                                                            <div class="party-editor__heroes__desc__1">до \{{ program.maxKidsCount }} детей \{{ program.price }} ₽ + \{{ program.newKidsPrice }} ₽</div>
+                                                                            <div class="party-editor__heroes__desc__2">за каждого дополнительного ребенка</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="party-editor__heroes__btn">
+                                                                        <a href="#" :class="['party-editor__btn-pink', {active: program.selected}]" 
+                                                                            @click.prevent="program.selected = !program.selected">
+                                                                                \{{ program.selected ? 'В корзине': 'В корзину' }}
+                                                                            </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            
+                                                        </div>
+
+                                                        <a href="#" class="party-editor__heroes__prev"></a>
+                                                        <a href="#" class="party-editor__heroes__next"></a>
+
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="party-editor__group__footer party-editor__mobile-only">
+                                                    <a href="#" class="party-editor__btn-next" @click.prevent="switchToPage(4, true)">продолжить</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div id="party-editor__page-4"  :class="['party-editor__page', {active: state.currentPage === 4}, {locked: !state.isEditingEnabled}]">
+                                            <div class="party-editor__group">
+                                                <div class="event-builder-tab__body">
+
+                                                    <div v-for="category in dishes">
+                                                        <div class="party-editor__goods__title">\{{ category.title }}</div>
+                                                        <div class="party-editor__goods__row">
+                                                            <div class="party-editor__goods__col" v-for="(item, index) in category.items">
+                                                                <div class="party-editor__goods__item">
+                                                                    <div class="party-editor__goods__image" :style="'background-image:url(' + item.image_url + ');'"></div>
+                                                                    <div class="c-card-catalog-3__body">
+                                                                        <div class="party-editor__goods__name">\{{ item.title }}</div>
+                                                                        <div class="party-editor__goods__desc">
+                                                                            <div class="party-editor__goods__price-row">
+                                                                                <div class="party-editor__goods__price">\{{ item.price }} ₽</div>
+                                                                                <div class="party-editor__goods__counter">
+                                                                                    <div class="c-card-catalog__count">
+                                                                                        <div class="c-counter">
+                                                                                            <button type="button" class="but c-counter__btn dec" @click="decreaseCount(category.items[index])">-</button>
+                                                                                            <input type="text" class="c-counter__field fieldCount" v-model="category.items[index].count">
+                                                                                            <button type="button" class="but c-counter__btn inc" @click="increaseCount(category.items[index])">+</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    
+
                                                     <div class="event-builder-plus">
                                                         <div class="event-builder-plus__icon">+</div>
                                                     </div>
-                            
-                                                </form>
 
-                                                <form>
-                                                    
-                                                    <div class="party-config__goods__title">Торты</div>
-
-                                                    <div class="party-config__goods__row">
-                                                        <div class="party-config__goods__col">
-                                                            <div class="party-config__goods__item">
-                                          
-                                                                <div class="party-config__goods__image" style="background-image:url(https://cafe-anderson.ru/upload/resize_cache/iblock/d15/576_384_1/acz3BXrIx5R97LNTV46dr.jpg);"  data-src=""></div>
+                                                    <div class="party-editor__goods__title">Торты</div>
+                                                    <div class="party-editor__goods__row">
+                                                        <div class="party-editor__goods__col">
+                                                            <div class="party-editor__goods__item">
+                                        
+                                                                <div class="party-editor__goods__image" style="background-image:url(https://cafe-anderson.ru/upload/resize_cache/iblock/d15/576_384_1/acz3BXrIx5R97LNTV46dr.jpg);"  data-src=""></div>
                                                                 <div class="c-card-catalog-3__body">
-                                                                    <div class="party-config__goods__name ">Торт &quot;Пломбирный Поп Ит&quot;</div>
+                                                                    <div class="party-editor__goods__name ">Торт &quot;Пломбирный Поп Ит&quot;</div>
                                                                     
 
-                                                                    <div class="party-config__goods__desc">
+                                                                    <div class="party-editor__goods__desc">
                                                                         <div class="c-card-catalog-3__weight">Вес: 2000г</div>
-                                                                        <div class="party-config__goods__price-row">
-                                                                            <div class="party-config__goods__price">3 900 ₽</div>
-                                                                            <div class="party-config__goods__counter">
+                                                                        <div class="party-editor__goods__price-row">
+                                                                            <div class="party-editor__goods__price">3 900 ₽</div>
+                                                                            <div class="party-editor__goods__counter">
                                                                                 <div class="c-card-catalog__count">
                                                                                     <div class="c-counter">
                                                                                         <button type="button" class="but c-counter__btn dec" >
                                         -
                                     </button>
-                                                                                        <input type="text" class="c-counter__field fieldCount" value="0" name="items[164672]"  data-key="cake" data-check="Y">
+                                                                                        <input type="text" class="c-counter__field fieldCount" value="0">
                                                                                         <button type="button" class="but c-counter__btn inc" >+
                                     </button>
                                                                                     </div>
@@ -1464,13 +1514,13 @@
                                                                     </div>
 
                                                                     <!--  helper: keeps price row on the same line -->
-                                                                    <div class="party-config__goods__props" style="visibility: hidden;">
-                                                                        <div class="party-config__goods__props__col">
+                                                                    <div class="party-editor__goods__props" style="visibility: hidden;">
+                                                                        <div class="party-editor__goods__props__col">
                                                                             <select class="c-select " placeholder="Вес">
                                                                                 <option>Торт &quot;Мишка&quot; медовик 2000г</option>
                                                                             </select>
                                                                         </div>
-                                                                        <div class="party-config__goods__props__col">
+                                                                        <div class="party-editor__goods__props__col">
                                                                             <select class="c-select " placeholder="Вес">
                                                                                 <option>Торт &quot;Мишка&quot; медовик 2000г</option>
                                                                             </select>
@@ -1481,24 +1531,24 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="party-config__goods__col">
-                                                            <div class="party-config__goods__item">
+                                                        <div class="party-editor__goods__col">
+                                                            <div class="party-editor__goods__item">
                                                         
-                                                                <div class="party-config__goods__image" style="background-image:url(https://cafe-anderson.ru/upload/resize_cache/iblock/934/576_384_1/234.jpg);"  data-src=""></div>
+                                                                <div class="party-editor__goods__image" style="background-image:url(https://cafe-anderson.ru/upload/resize_cache/iblock/934/576_384_1/234.jpg);"  data-src=""></div>
                                                                 <div class="c-card-catalog-3__body">
-                                                                    <div class="party-config__goods__name ">Торт &quot;Мишка&quot;</div>
+                                                                    <div class="party-editor__goods__name ">Торт &quot;Мишка&quot;</div>
                                                                     
-                                                                    <div class="party-config__goods__desc">
+                                                                    <div class="party-editor__goods__desc">
                                                                         <div class="c-card-catalog-3__weight">Вес: 2000г</div>
-                                                                        <div class="party-config__goods__price-row">
-                                                                            <div class="party-config__goods__price">
+                                                                        <div class="party-editor__goods__price-row">
+                                                                            <div class="party-editor__goods__price">
                                                                                 3 900 ₽
                                                                             </div>
-                                                                            <div class="party-config__goods__counter">
+                                                                            <div class="party-editor__goods__counter">
                                                                                 <div class="c-card-catalog__count">
                                                                                     <div class="c-counter">
                                                                                         <button type="button" class="but c-counter__btn dec" >-</button>
-                                                                                        <input type="text" class="c-counter__field fieldCount" value="0" name="items[]"  data-key="cake" data-check="Y">
+                                                                                        <input type="text" class="c-counter__field fieldCount" value="0">
                                                                                         <button type="button" class="but c-counter__btn inc" >+</button>
                                                                                     </div>
                                                                                 </div>
@@ -1507,15 +1557,15 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="party-config__goods__props">
-                                                                        <div class="party-config__goods__props__col">
+                                                                    <div class="party-editor__goods__props">
+                                                                        <div class="party-editor__goods__props__col">
                                                                             <select class="c-select" placeholder="Вес">
                                                                                 <option>Торт &quot;Мишка&quot; медовик 2000г</option>
                                                                                 <option>Торт &quot;Мишка&quot; чернично-шоколадный 2100г</option>
                                                                                 <option>Торт &quot;Мишка&quot; шоколадный 2100г</option>
                                                                             </select>
                                                                         </div>
-                                                                        <div class="party-config__goods__props__col">
+                                                                        <div class="party-editor__goods__props__col">
                                                                             <select class="c-select" placeholder="Вес">
                                                                                 <option>Медовик</option>
                                                                                 <option>Чернично-шоколадная</option>
@@ -1527,27 +1577,24 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="party-config__goods__col">
-                                                            <div class="party-config__goods__item">
-                                                         
-                                                                <div class="party-config__goods__image " style="background-image:url(https://cafe-anderson.ru/upload/resize_cache/iblock/2cf/576_384_1/Anderson7305_1.jpg);"  data-src=""></div>
+                                                        <div class="party-editor__goods__col">
+                                                            <div class="party-editor__goods__item">
+                                                        
+                                                                <div class="party-editor__goods__image " style="background-image:url(https://cafe-anderson.ru/upload/resize_cache/iblock/2cf/576_384_1/Anderson7305_1.jpg);"  data-src=""></div>
                                                                 <div class="c-card-catalog-3__body">
-                                                                    <div class="party-config__goods__name ">Торт &quot;Единорожка&quot;</div>
-                                                                    <div class="party-config__goods__desc">
+                                                                    <div class="party-editor__goods__name ">Торт &quot;Единорожка&quot;</div>
+                                                                    <div class="party-editor__goods__desc">
                                                                         <div class="c-card-catalog-3__weight">Вес: 2000г</div>
-                                                                        <div class="party-config__goods__price-row">
-                                                                            <div class="party-config__goods__price">
+                                                                        <div class="party-editor__goods__price-row">
+                                                                            <div class="party-editor__goods__price">
                                                                                 3 900 ₽
                                                                             </div>
-                                                                            <div class="party-config__goods__counter">
+                                                                            <div class="party-editor__goods__counter">
                                                                                 <div class="c-card-catalog__count" >
                                                                                     <div class="c-counter">
-                                                                                        <button type="button" class="but c-counter__btn dec" >
-                                        -
-                                    </button>
-                                                                                        <input type="text" class="c-counter__field fieldCount" value="0" name="items[]"  data-key="cake" data-check="Y">
-                                                                                        <button type="button" class="but c-counter__btn inc" >+
-                                    </button>
+                                                                                        <button type="button" class="but c-counter__btn dec">-</button>
+                                                                                        <input type="text" class="c-counter__field fieldCount" value="0">
+                                                                                        <button type="button" class="but c-counter__btn inc">+</button>
                                                                                     </div>
                                                                                 </div>
 
@@ -1555,15 +1602,15 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="party-config__goods__props">
-                                                                        <div class="party-config__goods__props__col">
+                                                                    <div class="party-editor__goods__props">
+                                                                        <div class="party-editor__goods__props__col">
                                                                             <select class="c-select" placeholder="Вес">
                                                                                 <option>Торт &quot;Мишка&quot; медовик 2000г</option>
                                                                                 <option>Торт &quot;Мишка&quot; чернично-шоколадный 2100г</option>
                                                                                 <option>Торт &quot;Мишка&quot; шоколадный 2100г</option>
                                                                             </select>
                                                                         </div>
-                                                                        <div class="party-config__goods__props__col">
+                                                                        <div class="party-editor__goods__props__col">
                                                                             <select class="c-select" placeholder="Вес">
                                                                                 <option>Медовик</option>
                                                                                 <option>Чернично-шоколадная</option>
@@ -1575,26 +1622,23 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="party-config__goods__col">
-                                                            <div class="party-config__goods__item">
-                                                       
-                                                                <div class="party-config__goods__image " style="background-image:url(https://cafe-anderson.ru/upload/resize_cache/iblock/246/576_384_1/rog-edinoroga.jpg);"  data-src=""></div>
+                                                        <div class="party-editor__goods__col">
+                                                            <div class="party-editor__goods__item">
+                                                    
+                                                                <div class="party-editor__goods__image " style="background-image:url(https://cafe-anderson.ru/upload/resize_cache/iblock/246/576_384_1/rog-edinoroga.jpg);"  data-src=""></div>
                                                                 <div class="c-card-catalog-3__body">
-                                                                    <div class="party-config__goods__name ">Торт &quot;Единорог в креме&quot;</div>
+                                                                    <div class="party-editor__goods__name ">Торт &quot;Единорог в креме&quot;</div>
                                                                     <div class="c-card-catalog-3__weight">Вес: 2000г</div>
 
-                                                                    <div class="party-config__goods__desc" >
-                                                                        <div class="party-config__goods__price-row">
-                                                                            <div class="party-config__goods__price">3 900 ₽</div>
-                                                                            <div class="party-config__goods__counter">
+                                                                    <div class="party-editor__goods__desc" >
+                                                                        <div class="party-editor__goods__price-row">
+                                                                            <div class="party-editor__goods__price">3 900 ₽</div>
+                                                                            <div class="party-editor__goods__counter">
                                                                                 <div class="c-card-catalog__count" >
                                                                                     <div class="c-counter">
-                                                                                        <button type="button" class="but c-counter__btn dec" >
-                                        -
-                                    </button>
-                                                                                        <input type="text" class="c-counter__field fieldCount" value="0" name="items[]"  data-key="cake" data-check="Y">
-                                                                                        <button type="button" class="but c-counter__btn inc" >+
-                                    </button>
+                                                                                        <button type="button" class="but c-counter__btn dec">-</button>
+                                                                                        <input type="text" class="c-counter__field fieldCount" value="0">
+                                                                                        <button type="button" class="but c-counter__btn inc">+</button>
                                                                                     </div>
                                                                                 </div>
 
@@ -1603,15 +1647,15 @@
                                                                             
                                                                     </div>
 
-                                                                    <div class="party-config__goods__props">
-                                                                        <div class="party-config__goods__props__col">
+                                                                    <div class="party-editor__goods__props">
+                                                                        <div class="party-editor__goods__props__col">
                                                                             <select class="c-select" placeholder="Вес">
                                                                                 <option>Торт &quot;Мишка&quot; медовик 2000г</option>
                                                                                 <option>Торт &quot;Мишка&quot; чернично-шоколадный 2100г</option>
                                                                                 <option>Торт &quot;Мишка&quot; шоколадный 2100г</option>
                                                                             </select>
                                                                         </div>
-                                                                        <div class="party-config__goods__props__col">
+                                                                        <div class="party-editor__goods__props__col">
                                                                             <select class="c-select" placeholder="Вес">
                                                                                 <option>Медовик</option>
                                                                                 <option>Чернично-шоколадная</option>
@@ -1624,239 +1668,164 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
-                                                    <div class="party-config__group__footer">
-                                                        <a href="#" class="party-config__btn-next js-party-config-next" data-to="">продолжить</a>
-                                                    </div>
 
-                                                </form>
+                                                    <div class="party-editor__group__footer party-editor__mobile-only">
+                                                        <a href="#" class="party-editor__btn-next" @click.prevent="switchToPage(5, true)">продолжить</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div id="party-config__group-5" class="party-config__group party-config__group--confetti">
-                                            <form action="" method="POST">
-                                           
-                                                <div class="event-builder-contact">
-                                                    <div>
-                                                        <div class="party-config__title">Доставка</div>
-                                                        
-                                                        <div class="event-builder-contact-price">
-                                                            <div class="event-builder-contact-price__item">
-                                                                <div class="c-radio-custom-2">
-                                                                    <input type="radio" id="event-builder-contact-price-01" name="delivery_price" value="2000">
-                                                                    <label for="event-builder-contact-price-01">До МКАД - <b>2000 ₽</b></label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="event-builder-contact-price__item">
-                                                                <div class="c-radio-custom-2">
-                                                                    <input type="radio" id="event-builder-contact-price-02" name="delivery_price" value="3000">
-                                                                    <label for="event-builder-contact-price-02">От 5 км. от МКАД - <b>3000 ₽</b></label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="event-builder-contact-price__item">
-                                                                <div class="c-radio-custom-2">
-                                                                    <input type="radio" id="event-builder-contact-price-03" name="delivery_price" value="5000">
-                                                                    <label for="event-builder-contact-price-03">До 35 км. от МКАД - <b>5000 ₽</b></label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div class="party-config__title">Адрес доставки праздника</div>
-                                                        <div class="event-builder-tab-list-block__line event-builder-tab-list-block__line-3">
-                                                            <div class="event-builder-tab-list-block__control ">
-                                                                <label class="c-label" for="holiday-builder-street">Улица: <span class="c-obligatory-field">*</span></label>
-                                                                <input class="c-input" type="text" id="holiday-builder-street" required="" placeholder="Улица" name="street" data-animate="N">
-                                                            </div>
-                                                            <div class="event-builder-tab-list-block__control ">
-                                                                <label class="c-label" for="holiday-builder-house">Дом: <span class="c-obligatory-field">*</span></label>
-                                                                <input class="c-input" type="text" id="holiday-builder-house" required="" placeholder="Дом" name="house" data-animate="N">
-
-                                                            </div>
-                                                            <div class="event-builder-tab-list-block__control ">
-                                                                <label class="c-label" for="holiday-builder-apartment">Квартира: <span class="c-obligatory-field">*</span></label>
-                                                                <input class="c-input" type="text" id="holiday-builder-apartment" required="" placeholder="Квартира" name="flat" data-animate="N">
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div>
-                                                        <div class="party-config__title">Контакты заказчика</div>
-                                                        <div class="event-builder-tab-list-block__line">
-                                                            <div class="event-builder-tab-list-block__control ">
-                                                                <label class="c-label" for="holiday-builder-client">Ваше имя: <span class="c-obligatory-field">*</span></label>
-                                                                <input class="c-input" type="text" id="holiday-builder-client" required="" placeholder="Ваше имя" name="user_name" data-animate="N">
-
-                                                            </div>
-                                                            <div class="event-builder-tab-list-block__control ">
-                                                                <label class="c-label" for="holiday-builder-child">Имя ребенка: <span class="c-obligatory-field">*</span></label>
-                                                                <input class="c-input" type="text" id="holiday-builder-child" required="" placeholder="Имя ребенка" name="child_name" data-animate="N">
-
-                                                            </div>
-                                                            <div class="event-builder-tab-list-block__control ">
-                                                                <label class="c-label" for="holiday-builder-email">E-mail: <span class="c-obligatory-field">*</span></label>
-                                                                <input class="c-input" type="text" id="holiday-builder-email" required="" placeholder="...@..." name="email" data-animate="N">
-                                                            </div>
-                                                            <div class="event-builder-tab-list-block__control ">
-                                                                <label class="c-label" for="holiday-builder-phone">Телефон: <span class="c-obligatory-field">*</span></label>
-                                                                <input class="c-input js-input--tel" type="text" id="holiday-builder-phone" required="" placeholder="+7 () -  -" maxlength="15" name="phone" data-animate="N">
-                                                            </div>
-                                                        </div>
-
+                                        <div id="party-editor__page-5"  :class="['party-editor__page', {active: state.currentPage === 5}, {locked: !state.isEditingEnabled}]">
+                                            <div class="party-editor__group party-editor__group--confetti">
+                                                <form action="" method="POST">
+                                            
+                                                    <div class="party-editor__attn">
+                                                        пожалуйста, проверьте ваш заказ:
                                                     </div>
 
-                                                </div>
-                                                <div class="party-config__attn">
-                                                пожалуйста, проверьте ваш заказ:
-                                                </div>
-
-                                                <div class="event-builder-tab-list-block" id="menu-confirm">
-                                                    <div class="event-builder-tab-list-block__head">
-                                                        <svg class="c-symbol symbol-builder-eat"><use xlink:href="/data/include/sprites/top-nav.svg#eat"></use></svg>
-                                                        <div class="party-config__title">еда и торт</div>
-                                                    </div>
-                                                
-                                                    <div class="party-config__result">
-                                                        <div class="party-config__result__item">
-                                                            <div class="party-config__result__name">
-                                                                <div class="party-config__result__name__text">Мышонок, котлетки из индейки с картофельным пюре</div>
-                                                            </div>
-                                                            <div class="party-config__result__sum">
-                                                                <div class="party-config__result__price">Цена за 1 шт.:</div>
-                                                                <div class="party-config__result__count">Всего в заказе: 7 шт.</div>
-                                                                <div class="party-config__result__total">12 000 ₽</div>
-                                                            </div>
+                                                    <div class="event-builder-tab-list-block" id="menu-confirm">
+                                                        <div class="event-builder-tab-list-block__head">
+                                                            <svg class="c-symbol symbol-builder-eat"><use xlink:href="/data/include/sprites/top-nav.svg#eat"></use></svg>
+                                                            <div class="party-editor__title">еда и торт</div>
                                                         </div>
-
-                                                        <div class="party-config__result__item">
-                                                            <div class="party-config__result__name">
-                                                                <div class="party-config__result__name__text">Монстр Lab (для детей 5-7 лет)</div>
-                                                            </div>
-                                                            <div class="party-config__result__sum">
-                                                                <div class="party-config__result__price">Цена за 1 шт.:</div>
-                                                                <div class="party-config__result__count">Всего в заказе: 7 шт.</div>
-                                                                <div class="party-config__result__total">12 000 ₽</div>
-                                                            </div>
-                                                        </div>
-                                                         
-                                                    </div>
                                                     
-                                                </div>
-                                                
-                                                <div class="event-builder-tab-list-block">
-                                                    <div class="event-builder-tab-list-block__head">
-                                                        <svg class="c-symbol symbol-builder-animation"><use xlink:href="/data/include/sprites/top-nav.svg#animation"></use></svg>
-                                                        <div class="party-config__title">Анимация</div>
-
-                                                    </div>
-                                                    <div class="event-builder-tab-list-block__content" id="animations-confirm">
-                                                    
-                                                        <div class="party-config__result">
-                                                            <div class="party-config__result__item">
-                                                                <div class="party-config__result__name">
-                                                                    <div class="party-config__result__name__text">Мышонок, котлетки из индейки с картофельным пюре</div>
+                                                        <div class="party-editor__result">
+                                                            <div class="party-editor__result__item">
+                                                                <div class="party-editor__result__name">
+                                                                    <div class="party-editor__result__name__text">Мышонок, котлетки из индейки с картофельным пюре</div>
                                                                 </div>
-                                                                <div class="party-config__result__sum">
-                                                                    <div class="party-config__result__price">Цена за 1 шт.:</div>
-                                                                    <div class="party-config__result__count">Всего в заказе: 7 шт.</div>
-                                                                    <div class="party-config__result__total">12 000 ₽</div>
+                                                                <div class="party-editor__result__sum">
+                                                                    <div class="party-editor__result__price">Цена за 1 шт.:</div>
+                                                                    <div class="party-editor__result__count">Всего в заказе: 7 шт.</div>
+                                                                    <div class="party-editor__result__total">12 000 ₽</div>
                                                                 </div>
                                                             </div>
 
-                                                            <div class="party-config__result__item">
-                                                                <div class="party-config__result__name">
-                                                                    <div class="party-config__result__name__text">Монстр Lab (для детей 5-7 лет)</div>
+                                                            <div class="party-editor__result__item">
+                                                                <div class="party-editor__result__name">
+                                                                    <div class="party-editor__result__name__text">Монстр Lab (для детей 5-7 лет)</div>
                                                                 </div>
-                                                                <div class="party-config__result__sum">
-                                                                    <div class="party-config__result__price">Цена за 1 шт.:</div>
-                                                                    <div class="party-config__result__count">Всего в заказе: 7 шт.</div>
-                                                                    <div class="party-config__result__total">12 000 ₽</div>
+                                                                <div class="party-editor__result__sum">
+                                                                    <div class="party-editor__result__price">Цена за 1 шт.:</div>
+                                                                    <div class="party-editor__result__count">Всего в заказе: 7 шт.</div>
+                                                                    <div class="party-editor__result__total">12 000 ₽</div>
                                                                 </div>
                                                             </div>
                                                             
                                                         </div>
-
-                                            
-                                        </div>
-                                                </div>
-
-                                                <div class="event-builder-tab-list-block">
-                                                    <div class="event-builder-tab-list-block__head">
-                                                        <svg class="c-symbol symbol-builder-place"><use xlink:href="/data/include/sprites/top-nav.svg#place"></use></svg>
-                                                        <div class="party-config__title">Доставка</div>
-                                                    </div>
-
-                                                    <div class="event-builder-tab-list-block__content" id="delivery-confirm">
                                                         
-                                                        <div class="party-config__result">
-                                                            <div class="party-config__result__item">
-                                                                <div class="party-config__result__name">
-                                                                    <div class="party-config__result__name__text">От 5 км. от МКАД</div>
-                                                                </div>
-                                                                <div class="party-config__result__sum">
-                                                                    <div class="party-config__result__total">12 000 ₽</div>
-                                                                </div>
-                                                            </div>
+                                                    </div>
+                                                    
+                                                    <div class="event-builder-tab-list-block">
+                                                        <div class="event-builder-tab-list-block__head">
+                                                            <svg class="c-symbol symbol-builder-animation"><use xlink:href="/data/include/sprites/top-nav.svg#animation"></use></svg>
+                                                            <div class="party-editor__title">Анимация</div>
 
                                                         </div>
+                                                        <div class="event-builder-tab-list-block__content" id="animations-confirm">
                                                         
+                                                            <div class="party-editor__result">
+                                                                <div class="party-editor__result__item">
+                                                                    <div class="party-editor__result__name">
+                                                                        <div class="party-editor__result__name__text">Мышонок, котлетки из индейки с картофельным пюре</div>
+                                                                    </div>
+                                                                    <div class="party-editor__result__sum">
+                                                                        <div class="party-editor__result__price">Цена за 1 шт.:</div>
+                                                                        <div class="party-editor__result__count">Всего в заказе: 7 шт.</div>
+                                                                        <div class="party-editor__result__total">12 000 ₽</div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="party-editor__result__item">
+                                                                    <div class="party-editor__result__name">
+                                                                        <div class="party-editor__result__name__text">Монстр Lab (для детей 5-7 лет)</div>
+                                                                    </div>
+                                                                    <div class="party-editor__result__sum">
+                                                                        <div class="party-editor__result__price">Цена за 1 шт.:</div>
+                                                                        <div class="party-editor__result__count">Всего в заказе: 7 шт.</div>
+                                                                        <div class="party-editor__result__total">12 000 ₽</div>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+
+                                                
+                                            </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="event-builder-tab-list-block">
-                                          
-                                                    <div class="party-config__comment">
+                                                    <div class="event-builder-tab-list-block">
+                                                        <div class="event-builder-tab-list-block__head">
+                                                            <svg class="c-symbol symbol-builder-place"><use xlink:href="/data/include/sprites/top-nav.svg#place"></use></svg>
+                                                            <div class="party-editor__title">Доставка</div>
+                                                        </div>
 
-                                                        <div class="event-builder-tab-list-block__control event-builder-tab-list-block__control_col_5">
-                                                            <label class="c-label c-label_center" for="event-builder-comment">Вы можете добавить комментарий к своему заказу:</label>
-                                                            <textarea class="event-builder-input__textarea" id="event-builder-comment" name="comment"></textarea>
-
-                                                            <div class="cake-order-final-coupon">
-                                                                <div class="cake-order-final-coupon__left">
-                                                                    <input type="text" name="coupon" class="c-input" placeholder="введите купон">
+                                                        <div class="event-builder-tab-list-block__content" id="delivery-confirm">
+                                                            
+                                                            <div class="party-editor__result">
+                                                                <div class="party-editor__result__item">
+                                                                    <div class="party-editor__result__name">
+                                                                        <div class="party-editor__result__name__text">От 5 км. от МКАД</div>
+                                                                    </div>
+                                                                    <div class="party-editor__result__sum">
+                                                                        <div class="party-editor__result__total">12 000 ₽</div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="cake-order-final-coupon__right">
-                                                                    <button class="c-button c-button__default" id="recalc_order" type="button">Применить купон</button>
-                                                                </div>
-                                                            </div>
-
-                                                            <style>
-                                                                .event-builder .event-builder-tab-list-block__control_col_5 {
-                                                                    -webkit-box-flex: 0;
-                                                                    -ms-flex: 0 0 60%;
-                                                                    flex: 0 0 60%;
-                                                                }
-                                                            </style>
-                                                            <div class="event-builder-summary">
-                                                                <span class="event-builder-icon__summary"></span>
-                                                                <span class="event-builder-summary__head_1">ИТОГО:</span>
-                                                                <span class="event-builder-summary__head_2" id="full_price">0 ₽</span>
 
                                                             </div>
-                                                            <div>
-                                                                <div class="c-personal-data">
-                                                                    <div class="c-personal-data__item">
-                                                                        <label data-bx-user-consent="{&quot;id&quot;:1,&quot;sec&quot;:&quot;ois5kl&quot;,&quot;autoSave&quot;:true,&quot;actionUrl&quot;:&quot;\/bitrix\/components\/bitrix\/main.userconsent.request\/ajax.php&quot;,&quot;replace&quot;:{&quot;button_caption&quot;:&quot;\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f!&quot;,&quot;fields&quot;:[&quot;Email&quot;,&quot;\u0422\u0435\u043b\u0435\u0444\u043e\u043d&quot;,&quot;\u0418\u043c\u044f&quot;,&quot;IP-\u0430\u0434\u0440\u0435\u0441&quot;]},&quot;url&quot;:null}" class="main-user-consent-request">
-        <input type="checkbox" name="regulations" id="regulations" value="Y" >
-        <label class="c-checkbox" for="regulations"><a>С условиями</a> предоставления услуги ознакомлен.</label>
-                                                                        </label>
+                                                            
+                                                        </div>
+                                                    </div>
 
-                                                                        <div type="text/html" data-bx-template="main-user-consent-request-loader" style="display: none">
-                                                                            <div class="main-user-consent-request-popup">
-                                                                                <div class="main-user-consent-request-popup-cont">
-                                                                                    <div data-bx-head="" class="main-user-consent-request-popup-header"></div>
-                                                                                    <div class="main-user-consent-request-popup-body">
-                                                                                        <div data-bx-loader="" class="main-user-consent-request-loader">
-                                                                                            <svg class="main-user-consent-request-circular" viewBox="25 25 50 50">
-                        <circle class="main-user-consent-request-path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
-                        </svg>
-                                                                                        </div>
-                                                                                        <div data-bx-content="" class="main-user-consent-request-popup-content">
-                                                                                            <div class="main-user-consent-request-popup-textarea-block">
-                                                                                                <div data-bx-textarea="" class="main-user-consent-request-popup-text" disabled></div>
+                                                    <div class="event-builder-tab-list-block">
+                                            
+                                                        <div class="party-editor__comment">
+
+                                                            <div class="event-builder-tab-list-block__control event-builder-tab-list-block__control_col_5">
+                                                                <label class="c-label c-label_center" for="event-builder-comment">Вы можете добавить комментарий к своему заказу:</label>
+                                                                <textarea class="event-builder-input__textarea" id="event-builder-comment" name="comment"></textarea>
+
+                                                                <div class="cake-order-final-coupon">
+                                                                    <div class="cake-order-final-coupon__left">
+                                                                        <input type="text" name="coupon" class="c-input" placeholder="введите купон">
+                                                                    </div>
+                                                                    <div class="cake-order-final-coupon__right">
+                                                                        <button class="c-button c-button__default" id="recalc_order" type="button">Применить купон</button>
+                                                                    </div>
+                                                                </div>
+
+                               
+                                                                <div class="event-builder-summary">
+                                                                    <span class="event-builder-icon__summary"></span>
+                                                                    <span class="event-builder-summary__head_1">ИТОГО:</span>
+                                                                    <span class="event-builder-summary__head_2" id="full_price">0 ₽</span>
+
+                                                                </div>
+                                                                <div>
+                                                                    <div class="c-personal-data">
+                                                                        <div class="c-personal-data__item">
+                                                                            <label data-bx-user-consent="{&quot;id&quot;:1,&quot;sec&quot;:&quot;ois5kl&quot;,&quot;autoSave&quot;:true,&quot;actionUrl&quot;:&quot;\/bitrix\/components\/bitrix\/main.userconsent.request\/ajax.php&quot;,&quot;replace&quot;:{&quot;button_caption&quot;:&quot;\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f!&quot;,&quot;fields&quot;:[&quot;Email&quot;,&quot;\u0422\u0435\u043b\u0435\u0444\u043e\u043d&quot;,&quot;\u0418\u043c\u044f&quot;,&quot;IP-\u0430\u0434\u0440\u0435\u0441&quot;]},&quot;url&quot;:null}" class="main-user-consent-request">
+            <input type="checkbox" name="regulations" id="regulations" value="Y" >
+            <label class="c-checkbox" for="regulations"><a>С условиями</a> предоставления услуги ознакомлен.</label>
+                                                                            </label>
+
+                                                                            <div type="text/html" data-bx-template="main-user-consent-request-loader" style="display: none">
+                                                                                <div class="main-user-consent-request-popup">
+                                                                                    <div class="main-user-consent-request-popup-cont">
+                                                                                        <div data-bx-head="" class="main-user-consent-request-popup-header"></div>
+                                                                                        <div class="main-user-consent-request-popup-body">
+                                                                                            <div data-bx-loader="" class="main-user-consent-request-loader">
+                                                                                                <svg class="main-user-consent-request-circular" viewBox="25 25 50 50">
+                            <circle class="main-user-consent-request-path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
+                            </svg>
                                                                                             </div>
-                                                                                            <div class="main-user-consent-request-popup-buttons">
-                                                                                                <span data-bx-btn-accept="" class="main-user-consent-request-popup-button main-user-consent-request-popup-button-acc">Y</span>
-                                                                                                <span data-bx-btn-reject="" class="main-user-consent-request-popup-button main-user-consent-request-popup-button-rej">N</span>
+                                                                                            <div data-bx-content="" class="main-user-consent-request-popup-content">
+                                                                                                <div class="main-user-consent-request-popup-textarea-block">
+                                                                                                    <div data-bx-textarea="" class="main-user-consent-request-popup-text" disabled></div>
+                                                                                                </div>
+                                                                                                <div class="main-user-consent-request-popup-buttons">
+                                                                                                    <span data-bx-btn-accept="" class="main-user-consent-request-popup-button main-user-consent-request-popup-button-acc">Y</span>
+                                                                                                    <span data-bx-btn-reject="" class="main-user-consent-request-popup-button main-user-consent-request-popup-button-rej">N</span>
+                                                                                                </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -1864,76 +1833,76 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+
+                                                                </div>
+
+                                                                <div class="party-editor__group__footer">
+                                                                    <button type="button" class="party-editor__btn-apply">
+                                                                        Оформить заказ
+                                                                    </button>
                                                                 </div>
 
                                                             </div>
 
-                                                            <div class="party-config__group__footer">
-                                                                <button type="button" class="party-config__btn-apply">
-                                                                    Оформить заказ
-                                                                </button>
-                                                            </div>
-
                                                         </div>
-
                                                     </div>
-                                                </div>
-                                            </form>
+                                                </form>
+                                            </div>
                                         </div>
 
                                     </div>
                                 </div>
                                 <!--CHECK-->
-                                <div class="party-config__layout__right" id="check_menu">
-                                    <div class="event-builder-check__body js-sticky-widget">
+                                <div class="party-editor__layout__right" id="check_menu">
+                                    <div class="event-builder-check__body js-party-editor-sticky-total">
                                         <div class="event-builder-check__header">Чек</div>
                                         <div class="event-builder-check__hr"></div>
 
                                         <div class="event-builder-check__line">
                                             <div class="event-builder-check__icon">
                                                 <svg>
-                        <use xlink:href="/data/include/sprites/top-nav.svg#decor"/>
-                    </svg>
+                                                    <use xlink:href="/data/include/sprites/top-nav.svg#decor"/>
+                                                </svg>
                                             </div>
                                             <div class="event-builder-check__title">Анимация</div>
                                         </div>
                                         <div>
-                                            <div class="event-builder-check__price" id="animations-price">0 ₽</div>
+                                            <div class="event-builder-check__price">\{{ animationsPrice }} ₽</div>
                                         </div>
                                         <div class="event-builder-check__hr"></div>
 
                                         <div class="event-builder-check__line">
                                             <div class="event-builder-check__icon">
                                                 <svg>
-                        <use xlink:href="/data/include/sprites/top-nav.svg#main"/>
-                    </svg>
+                                                    <use xlink:href="/data/include/sprites/top-nav.svg#main"/>
+                                                </svg>
                                             </div>
                                             <div class="event-builder-check__title">Еда и торт</div>
                                         </div>
                                         <div class="event-builder-check__hr"></div>
                                         <div id="step5-price">
-                                            <div class="event-builder-check__price" id="menu-price">0 ₽</div>
+                                            <div class="event-builder-check__price">\{{ dishesPrice }} ₽</div>
                                         </div>
                                         <div class="event-builder-check__hr"></div>
-                                      
+                                    
                                         <div class="event-builder-check__line">
                                             <div class="event-builder-check__icon">
                                                 <svg>
-                        <use xlink:href="/data/include/sprites/top-nav.svg#main"/>
-                    </svg>
+                                                    <use xlink:href="/data/include/sprites/top-nav.svg#main"/>
+                                                </svg>
                                             </div>
                                             <div class="event-builder-check__title">Доставка</div>
                                         </div>
                                         <div class="event-builder-check__hr"></div>
                                         <div id="step5-price">
-                                            <div class="event-builder-check__price" id="delivery-price">0 ₽</div>
+                                            <div class="event-builder-check__price">\{{ deliveryPrice }} ₽</div>
                                         </div>
                                         <div class="event-builder-check__hr"></div>
 
                                         <div class="event-builder-check-result">
 
                                             <div class="event-builder-check-result__text">ИТОГО:</div>
-                                            <div class="event-builder-check-result__price" id="summary-price">0 ₽</div>
+                                            <div class="event-builder-check-result__price">\{{ totalPrice }} ₽</div>
                                         </div>
 
                                         <div class="promocode__block">
@@ -1941,14 +1910,17 @@
                                                 <input type="text" class="c-input" placeholder="Промокод">
                                                 <a href="javascript:void(0)" id="set_coupon" class="c-button c-button__default btn-in_input">
                                                     <svg id="symbol-arr-right" viewBox="0 0 10 17.8">
-                            <path d="M8.17,5.39,4.13.81C2.65-.85-.11,1.24,1.37,2.92L4.45,6.4,6,8.15c.15.17.41.4.64.64-.35.33-.78.65-1,.87-.63.64-1.26,1.28-1.86,1.94a24.15,24.15,0,0,0-3,4.08C-.35,17.6,2.86,18.94,4,17a22.77,22.77,0,0,1,3.27-4.09c1-1,2.83-2.26,3.17-3.71S9.08,6.41,8.17,5.39" transform="translate(-0.54 -0.2)"></path>
-                        </svg>
+                                                        <path d="M8.17,5.39,4.13.81C2.65-.85-.11,1.24,1.37,2.92L4.45,6.4,6,8.15c.15.17.41.4.64.64-.35.33-.78.65-1,.87-.63.64-1.26,1.28-1.86,1.94a24.15,24.15,0,0,0-3,4.08C-.35,17.6,2.86,18.94,4,17a22.77,22.77,0,0,1,3.27-4.09c1-1,2.83-2.26,3.17-3.71S9.08,6.41,8.17,5.39" transform="translate(-0.54 -0.2)"></path>
+                                                    </svg>
                                                 </a>
                                             </div>
                                         </div>
 
-                                        <a href="javascript:void(0)" class="event-builder-check__button gotonext">Далее</a>
-                                        <a href="javascript:void(0)" class="event-builder-check__button gotoprev">Назад</a>
+                                        <div v-show="state.isEditingEnabled">
+                                            <a href="#" class="event-builder-check__button" @click.prevent="switchToPrev()" v-show="state.currentPage > 1">Назад</a>
+                                            <a href="#" class="event-builder-check__button" @click.prevent="switchToNext()" v-show="state.currentPage < 5 && state.currentPage > 1">Далее</a>
+                                            <a href="#" class="event-builder-check__button" @click.prevent="reset()">Сбросить</a>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -1961,6 +1933,7 @@
                 </div>
             </div>
         </main>
+
     </div>
     <footer class="footer ">
         <section class="c-layout">
@@ -2368,9 +2341,10 @@
     <script src="https://cafe-anderson.ru/local/templates/anderson_new_design/js/class.js"></script>
 
     
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sticksy@0.2.0/dist/sticksy.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-throttle-debounce@1.0.0/jquery.ba-throttle-debounce.min.js"></script>
-    <script src="js/partyConfig.js"></script>
+    <script src="js/partyEditor.js"></script>
  
 </body>
 
