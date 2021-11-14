@@ -93,6 +93,18 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 var PartyEditor = {
   NavMobile: {
     _$slider: $(),
@@ -190,49 +202,72 @@ $(function () {
           isEditingEnabled: false,
           kidsCount: 1,
           kidsAge: "",
-          deliveryPrice: 0,
           deliveryStreetName: "",
           deliveryBuildingNumber: "",
           deliveryFlatNumber: "",
           clientName: "",
           clientKidName: "",
           clientEmail: "",
-          clientPhone: ""
+          clientPhone: "",
+          selectedDeliveryWay: 0,
+          selectedAnimations: [],
+          selectedDishes: [],
+          comment: ""
         },
-        dishes: [],
-        animations: []
+        deliveryWays: [{
+          title: "До МКАД",
+          price: 2000
+        }, {
+          title: "От 5 км. от МКАД",
+          price: 3000
+        }, {
+          title: "До 35 км. от МКАД",
+          price: 5000
+        }],
+        animations: [],
+        dishes: []
       };
     },
     computed: {
       dishesPrice: function dishesPrice() {
         var total = 0;
-        this.dishes.forEach(function (category) {
-          category.items.forEach(function (product) {
-            total += product.count * product.price;
-          });
+        this.selectedDishes.forEach(function (product) {
+          total += product.count * product.price;
         });
         return total;
       },
       animationsPrice: function animationsPrice() {
-        var _this2 = this;
-
         var total = 0;
-        this.animations.forEach(function (program) {
-          if (program.selected) {
-            total += program.price;
-
-            if (_this2.state.kidsCount && _this2.state.kidsCount > program.maxKidsCount) {
-              total += (_this2.state.kidsCount - program.maxKidsCount) * program.newKidsPrice;
-            }
-          }
+        this.selectedAnimations.forEach(function (program) {
+          total += program.price + program.newKidsPrice;
         });
         return total;
       },
       deliveryPrice: function deliveryPrice() {
-        return parseFloat(this.state.deliveryPrice);
+        return this.deliveryWays[this.state.selectedDeliveryWay].price;
       },
       totalPrice: function totalPrice() {
         return this.dishesPrice + this.animationsPrice + this.deliveryPrice;
+      },
+      selectedDishes: function selectedDishes() {
+        var selected = [];
+        this.dishes.forEach(function (category) {
+          selected.push.apply(selected, _toConsumableArray(category.items.filter(function (product) {
+            return product.count > 0;
+          })));
+        });
+        return selected;
+      },
+      selectedAnimations: function selectedAnimations() {
+        var _this2 = this;
+
+        var selected = JSON.parse(JSON.stringify(this.animations.filter(function (program) {
+          return program.selected;
+        })));
+        return selected.map(function (program) {
+          program.newKidsPrice = _this2.state.kidsCount && _this2.state.kidsCount > program.maxKidsCount ? (_this2.state.kidsCount - program.maxKidsCount) * program.newKidsPrice : 0;
+          return program;
+        });
       }
     },
     watch: {
@@ -282,6 +317,13 @@ $(function () {
         var newPageId = this.state.currentPage - 1;
         if (newPageId < 1) return;
         this.switchToPage(newPageId, true);
+      },
+      formatPrice: function formatPrice(value) {
+        return new Intl.NumberFormat("ru-RU", {
+          style: "currency",
+          currency: "RUB",
+          maximumFractionDigits: 0
+        }).format(value);
       },
       reset: function reset() {
         PartyEditor.scrollTop(0);

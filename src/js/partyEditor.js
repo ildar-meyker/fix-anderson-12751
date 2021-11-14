@@ -119,7 +119,6 @@ $(function () {
 					kidsCount: 1,
 					kidsAge: "",
 
-					deliveryPrice: 0,
 					deliveryStreetName: "",
 					deliveryBuildingNumber: "",
 					deliveryFlatNumber: "",
@@ -128,9 +127,29 @@ $(function () {
 					clientKidName: "",
 					clientEmail: "",
 					clientPhone: "",
+
+					selectedDeliveryWay: 0,
+					selectedAnimations: [],
+					selectedDishes: [],
+
+					comment: "",
 				},
-				dishes: [],
+				deliveryWays: [
+					{
+						title: "До МКАД",
+						price: 2000,
+					},
+					{
+						title: "От 5 км. от МКАД",
+						price: 3000,
+					},
+					{
+						title: "До 35 км. от МКАД",
+						price: 5000,
+					},
+				],
 				animations: [],
+				dishes: [],
 			};
 		},
 
@@ -138,10 +157,8 @@ $(function () {
 			dishesPrice() {
 				let total = 0;
 
-				this.dishes.forEach((category) => {
-					category.items.forEach((product) => {
-						total += product.count * product.price;
-					});
+				this.selectedDishes.forEach((product) => {
+					total += product.count * product.price;
 				});
 
 				return total;
@@ -150,32 +167,56 @@ $(function () {
 			animationsPrice() {
 				let total = 0;
 
-				this.animations.forEach((program) => {
-					if (program.selected) {
-						total += program.price;
-
-						if (
-							this.state.kidsCount &&
-							this.state.kidsCount > program.maxKidsCount
-						) {
-							total +=
-								(this.state.kidsCount - program.maxKidsCount) *
-								program.newKidsPrice;
-						}
-					}
+				this.selectedAnimations.forEach((program) => {
+					total += program.price + program.newKidsPrice;
 				});
 
 				return total;
 			},
 
 			deliveryPrice() {
-				return parseFloat(this.state.deliveryPrice);
+				return this.deliveryWays[this.state.selectedDeliveryWay].price;
 			},
 
 			totalPrice() {
 				return (
 					this.dishesPrice + this.animationsPrice + this.deliveryPrice
 				);
+			},
+
+			selectedDishes() {
+				let selected = [];
+
+				this.dishes.forEach((category) => {
+					selected.push(
+						...category.items.filter((product) => {
+							return product.count > 0;
+						})
+					);
+				});
+
+				return selected;
+			},
+
+			selectedAnimations() {
+				const selected = JSON.parse(
+					JSON.stringify(
+						this.animations.filter((program) => {
+							return program.selected;
+						})
+					)
+				);
+
+				return selected.map((program) => {
+					program.newKidsPrice =
+						this.state.kidsCount &&
+						this.state.kidsCount > program.maxKidsCount
+							? (this.state.kidsCount - program.maxKidsCount) *
+							  program.newKidsPrice
+							: 0;
+
+					return program;
+				});
 			},
 		},
 
@@ -241,6 +282,14 @@ $(function () {
 				const newPageId = this.state.currentPage - 1;
 				if (newPageId < 1) return;
 				this.switchToPage(newPageId, true);
+			},
+
+			formatPrice(value) {
+				return new Intl.NumberFormat("ru-RU", {
+					style: "currency",
+					currency: "RUB",
+					maximumFractionDigits: 0,
+				}).format(value);
 			},
 
 			reset() {
