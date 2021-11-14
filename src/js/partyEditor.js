@@ -130,7 +130,7 @@ $(function () {
 
 					selectedDeliveryWay: 0,
 					selectedAnimations: [],
-					selectedDishes: [],
+					selectedDishes: {},
 
 					comment: "",
 				},
@@ -232,6 +232,28 @@ $(function () {
 				},
 				deep: true,
 			},
+
+			selectedAnimations: {
+				handler: function (newValue) {
+					this.state.selectedAnimations = newValue.map((program) => {
+						return program.id;
+					});
+				},
+				deep: true,
+			},
+
+			selectedDishes: {
+				handler: function (newValue) {
+					const dishes = {};
+
+					newValue.forEach((product) => {
+						dishes[product.id] = { count: product.count };
+					});
+
+					this.state.selectedDishes = dishes;
+				},
+				deep: true,
+			},
 		},
 
 		methods: {
@@ -310,9 +332,24 @@ $(function () {
 				}
 			}
 
-			const data = JSON.parse($("#party-editor-data").text());
-			this.animations = data.animations;
-			this.dishes = data.dishes;
+			const serverData = JSON.parse($("#party-editor-data").text());
+
+			this.animations = serverData.animations;
+			this.animations.forEach((program) => {
+				if (this.state.selectedAnimations.includes(program.id)) {
+					program.selected = true;
+				}
+			});
+
+			this.dishes = serverData.dishes;
+			this.dishes.forEach((category) => {
+				category.items.forEach((product) => {
+					if (product.id in this.state.selectedDishes) {
+						product.count =
+							this.state.selectedDishes[product.id].count;
+					}
+				});
+			});
 		},
 
 		mounted() {

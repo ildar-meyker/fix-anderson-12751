@@ -211,7 +211,7 @@ $(function () {
           clientPhone: "",
           selectedDeliveryWay: 0,
           selectedAnimations: [],
-          selectedDishes: [],
+          selectedDishes: {},
           comment: ""
         },
         deliveryWays: [{
@@ -278,6 +278,26 @@ $(function () {
           }
         },
         deep: true
+      },
+      selectedAnimations: {
+        handler: function handler(newValue) {
+          this.state.selectedAnimations = newValue.map(function (program) {
+            return program.id;
+          });
+        },
+        deep: true
+      },
+      selectedDishes: {
+        handler: function handler(newValue) {
+          var dishes = {};
+          newValue.forEach(function (product) {
+            dishes[product.id] = {
+              count: product.count
+            };
+          });
+          this.state.selectedDishes = dishes;
+        },
+        deep: true
       }
     },
     methods: {
@@ -334,6 +354,8 @@ $(function () {
       }
     },
     beforeMount: function beforeMount() {
+      var _this3 = this;
+
       if (Modernizr.localstorage) {
         var storageData = localStorage.getItem("party-editor");
 
@@ -342,9 +364,21 @@ $(function () {
         }
       }
 
-      var data = JSON.parse($("#party-editor-data").text());
-      this.animations = data.animations;
-      this.dishes = data.dishes;
+      var serverData = JSON.parse($("#party-editor-data").text());
+      this.animations = serverData.animations;
+      this.animations.forEach(function (program) {
+        if (_this3.state.selectedAnimations.includes(program.id)) {
+          program.selected = true;
+        }
+      });
+      this.dishes = serverData.dishes;
+      this.dishes.forEach(function (category) {
+        category.items.forEach(function (product) {
+          if (product.id in _this3.state.selectedDishes) {
+            product.count = _this3.state.selectedDishes[product.id].count;
+          }
+        });
+      });
     },
     mounted: function mounted() {
       PartyEditor.NavMobile.init(this.state.currentPage - 2);
