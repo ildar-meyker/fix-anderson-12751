@@ -254,6 +254,8 @@ $(function () {
 				},
 				deep: true,
 			},
+
+			"state.kidsAge"(newValue) {},
 		},
 
 		methods: {
@@ -317,10 +319,10 @@ $(function () {
 			reset() {
 				PartyEditor.scrollTop(0);
 
-				setTimeout(function () {
+				setTimeout(() => {
 					localStorage.removeItem("party-editor");
 					window.location.reload();
-				}, 400);
+				}, 1000);
 			},
 		},
 

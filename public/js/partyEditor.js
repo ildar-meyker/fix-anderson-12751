@@ -298,7 +298,8 @@ $(function () {
           this.state.selectedDishes = dishes;
         },
         deep: true
-      }
+      },
+      "state.kidsAge": function stateKidsAge(newValue) {}
     },
     methods: {
       startEditor: function startEditor() {
@@ -350,7 +351,7 @@ $(function () {
         setTimeout(function () {
           localStorage.removeItem("party-editor");
           window.location.reload();
-        }, 400);
+        }, 1000);
       }
     },
     beforeMount: function beforeMount() {
