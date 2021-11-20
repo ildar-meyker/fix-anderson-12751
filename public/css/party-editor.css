@@ -498,7 +498,12 @@
     margin-top: 10px; }
     .party-editor__steps__col {
       width: 50%;
-      margin-top: 10px; } }
+      margin-top: 10px; }
+  .party-editor__group {
+    border: 0;
+    box-shadow: none; }
+    .party-editor__group:first-child {
+      margin-top: 0; } }
 
 @media (max-width: 767.98px) {
   .party-editor__title {
@@ -545,10 +550,7 @@
     .party-editor__goods__props .SelectBox {
       font-size: 12px; }
   .party-editor__group {
-    margin: 0;
-    padding: 30px 15px;
-    box-shadow: none;
-    border: 0; }
+    padding: 30px 15px; }
     .party-editor__group__footer {
       justify-content: right; }
       .party-editor__group__footer--center {

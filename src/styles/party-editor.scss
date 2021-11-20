@@ -697,6 +697,15 @@
 				margin-top: 10px;
 			}
 		}
+
+		&__group {
+			border: 0;
+			box-shadow: none;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
 	}
 }
 
@@ -784,10 +793,7 @@
 		}
 
 		&__group {
-			margin: 0;
 			padding: 30px 15px;
-			box-shadow: none;
-			border: 0;
 
 			&__footer {
 				justify-content: right;
