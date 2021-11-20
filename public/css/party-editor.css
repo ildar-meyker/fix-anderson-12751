@@ -477,8 +477,6 @@
     background: #7bc339; }
 
 @media (max-width: 1026.98px) {
-  .party-editor__mobile-only {
-    display: block; }
   .party-editor__content {
     padding: 50px 0 !important; }
   .party-editor__page {
