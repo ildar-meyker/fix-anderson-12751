@@ -64,10 +64,35 @@
   .party-editor__layout__left {
     padding-right: 25px;
     flex: 0 0 auto;
-    width: calc(100% - 245px); }
+    width: calc(100% - 345px);
+    position: relative;
+    z-index: 100; }
   .party-editor__layout__right {
     flex: 0 0 auto;
+    width: 345px; }
+
+.party-editor__fixed {
+  display: flex; }
+  .party-editor__fixed__check {
+    position: relative;
+    z-index: 100;
+    flex: 0 0 auto;
     width: 245px; }
+    .party-editor__fixed__check__body {
+      padding: 15px 20px;
+      border: 1px solid #d1d1d1;
+      border-radius: 4px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 9.2px 0.8px;
+      background: url(../images/olive-bg.jpeg);
+      font-family: "PT Serif Caption"; }
+  .party-editor__fixed__nav__rotate {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+    -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+    height: 0;
+    padding-bottom: 100%;
+    margin-left: 115px; }
 
 .party-editor__nav-desktop {
   display: flex;

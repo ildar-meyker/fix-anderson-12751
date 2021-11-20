@@ -81,12 +81,12 @@ const PartyEditor = {
 
 			$(window).on(
 				"scroll",
-				$.debounce(100, this._handleWindowScroll.bind(this))
+				$.throttle(250, this._handleWindowScroll.bind(this))
 			);
 
 			$(window).on(
 				"resize",
-				$.debounce(100, this._handleWindowResize.bind(this))
+				$.throttle(250, this._handleWindowResize.bind(this))
 			);
 		},
 	},
@@ -280,18 +280,18 @@ $(function () {
 				product.count = newCount < 0 ? 0 : newCount;
 			},
 
-			switchToPage(pageId, withScroll) {
+			scrollToPage(pageId) {
+				PartyEditor.scrollTop(
+					$("#party-editor__page-" + pageId).offset().top
+				);
+			},
+
+			switchToPage(pageId) {
 				this.state.currentPage = pageId;
 
 				PartyEditor.NavMobile.switchToSlide(pageId - 2);
 
-				if (window.matchMedia("(min-width: 1027px)").matches) {
-					if (withScroll) {
-						PartyEditor.scrollTop(
-							$("#party-editor__page-" + pageId).offset().top
-						);
-					}
-				} else {
+				if (window.matchMedia("(max-width: 1026.98px)").matches) {
 					$("html, body").scrollTop(0);
 				}
 			},
@@ -299,13 +299,13 @@ $(function () {
 			switchToNext() {
 				const newPageId = this.state.currentPage + 1;
 				if (newPageId > 5) return;
-				this.switchToPage(newPageId, true);
+				this.scrollToPage(newPageId);
 			},
 
 			switchToPrev() {
 				const newPageId = this.state.currentPage - 1;
 				if (newPageId < 1) return;
-				this.switchToPage(newPageId, true);
+				this.scrollToPage(newPageId);
 			},
 
 			formatPrice(value) {

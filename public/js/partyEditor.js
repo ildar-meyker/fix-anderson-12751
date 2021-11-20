@@ -175,8 +175,8 @@ var PartyEditor = {
     },
     init: function init() {
       this._$pages = $(".party-editor__page");
-      $(window).on("scroll", $.debounce(100, this._handleWindowScroll.bind(this)));
-      $(window).on("resize", $.debounce(100, this._handleWindowResize.bind(this)));
+      $(window).on("scroll", $.throttle(250, this._handleWindowScroll.bind(this)));
+      $(window).on("resize", $.throttle(250, this._handleWindowResize.bind(this)));
     }
   },
   initStickyTotal: function initStickyTotal() {
@@ -317,27 +317,26 @@ $(function () {
         var newCount = product.count - 1;
         product.count = newCount < 0 ? 0 : newCount;
       },
-      switchToPage: function switchToPage(pageId, withScroll) {
+      scrollToPage: function scrollToPage(pageId) {
+        PartyEditor.scrollTop($("#party-editor__page-" + pageId).offset().top);
+      },
+      switchToPage: function switchToPage(pageId) {
         this.state.currentPage = pageId;
         PartyEditor.NavMobile.switchToSlide(pageId - 2);
 
-        if (window.matchMedia("(min-width: 1027px)").matches) {
-          if (withScroll) {
-            PartyEditor.scrollTop($("#party-editor__page-" + pageId).offset().top);
-          }
-        } else {
+        if (window.matchMedia("(max-width: 1026.98px)").matches) {
           $("html, body").scrollTop(0);
         }
       },
       switchToNext: function switchToNext() {
         var newPageId = this.state.currentPage + 1;
         if (newPageId > 5) return;
-        this.switchToPage(newPageId, true);
+        this.scrollToPage(newPageId);
       },
       switchToPrev: function switchToPrev() {
         var newPageId = this.state.currentPage - 1;
         if (newPageId < 1) return;
-        this.switchToPage(newPageId, true);
+        this.scrollToPage(newPageId);
       },
       formatPrice: function formatPrice(value) {
         return new Intl.NumberFormat("ru-RU", {

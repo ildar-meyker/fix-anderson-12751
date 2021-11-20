@@ -1170,85 +1170,18 @@
                                 </div>
                             </div>
 
-                            <nav id="party-editor__nav-desktop" class="party-editor__nav-desktop">
-                                <a href="#party-editor__page-2" 
-                                    :class="[
-                                        'party-editor__nav-desktop__item', 
-                                        {active: state.currentPage <= 2 },
-                                        {history: state.currentPage > 2}
-                                    ]"
-                                    @click.prevent="switchToPage(2, true)">
-                                    <div class="party-editor__nav-desktop__icon">
-                                        <svg>
-                                            <use xlink:href="data/include/sprites/top-nav.svg#getting-way" />
-                                        </svg>
-                                    </div>
-                                    <div class="party-editor__nav-desktop__text">
-                                        Ввод данных
-                                    </div>
-                                </a>
-                                <a href="#party-editor__page-3" 
-                                    :class="[
-                                        'party-editor__nav-desktop__item', 
-                                        {active: state.currentPage === 3}, 
-                                        {locked: !state.isEditingEnabled},
-                                        {history: state.currentPage > 3}
-                                    ]"
-                                    @click.prevent="switchToPage(3, true)">
-                                    <div class="party-editor__nav-desktop__icon">
-                                        <svg>
-                                            <use xlink:href="data/include/sprites/top-nav.svg#animation" />
-                                        </svg>
-                                    </div>
-                                    <div class="party-editor__nav-desktop__text">
-                                        Анимация
-                                    </div>
-                                </a>
-                                <a href="#party-editor__page-4" 
-                                    :class="[
-                                        'party-editor__nav-desktop__item', 
-                                        {active: state.currentPage === 4}, 
-                                        {locked: !state.isEditingEnabled},
-                                        {history: state.currentPage > 4}
-                                    ]"
-                                    @click.prevent="switchToPage(4, true)">
-                                    <div class="party-editor__nav-desktop__icon">
-                                        <svg>
-                                            <use xlink:href="data/include/sprites/top-nav.svg#eat" />
-                                        </svg>
-                                    </div>
-                                    <div class="party-editor__nav-desktop__text">
-                                        Праздничное меню
-                                    </div>
-                                </a>
-                                <a href="#party-editor__page-5" 
-                                    :class="[
-                                        'party-editor__nav-desktop__item', 
-                                        {active: state.currentPage === 5}, 
-                                        {locked: !state.isEditingEnabled}
-                                    ]"
-                                    @click.prevent="switchToPage(5, true)">
-                                    <div class="party-editor__nav-desktop__icon">
-                                        <svg>
-                                            <use xlink:href="data/include/sprites/top-nav.svg#order" />
-                                        </svg>
-                                    </div>
-                                    <div class="party-editor__nav-desktop__text">
-                                        Итог
-                                    </div>
-                                </a>
-                            </nav>
+                            
 
                             <nav :class="['party-editor__nav-mobile', {active: state.currentPage !== 1}]">
                                 <div id="party-editor__nav-mobile__slider" class="party-editor__nav-mobile__slider">
                                     <a href="#party-editor__page-2" class="party-editor__nav-mobile__item"
-                                        @click.prevent="switchToPage(2, true)">Ввод данных</a>
+                                        @click.prevent="switchToPage(2)">Ввод данных</a>
                                     <a href="#party-editor__page-3" class="party-editor__nav-mobile__item"
-                                        @click.prevent="switchToPage(3, true)">Анимация</a>
+                                        @click.prevent="switchToPage(3)">Анимация</a>
                                     <a href="#party-editor__page-4" class="party-editor__nav-mobile__item"
-                                        @click.prevent="switchToPage(4, true)">Праздничное меню</a>
+                                        @click.prevent="switchToPage(4)">Праздничное меню</a>
                                     <a href="#party-editor__page-5" class="party-editor__nav-mobile__item party-editor__nav-mobile__item--last"
-                                        @click.prevent="switchToPage(5, true)">Итог</a>
+                                        @click.prevent="switchToPage(5)">Итог</a>
                                 </div>
                             </nav>
                             
@@ -1408,7 +1341,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="party-editor__group__footer party-editor__mobile-only" v-show="state.isEditingEnabled">
-                                                        <a href="#" class="party-editor__btn-next" @click.prevent="switchToPage(3, true)">продолжить</a>
+                                                        <a href="#" class="party-editor__btn-next" @click.prevent="switchToPage(3)">продолжить</a>
                                                     </div>
                                                 </form>
                                             </div>
@@ -1463,7 +1396,7 @@
                                                 </div>
                                                 
                                                 <div class="party-editor__group__footer party-editor__mobile-only">
-                                                    <a href="#" class="party-editor__btn-next" @click.prevent="switchToPage(4, true)">продолжить</a>
+                                                    <a href="#" class="party-editor__btn-next" @click.prevent="switchToPage(4)">продолжить</a>
                                                 </div>
 
                                             </div>
@@ -1505,7 +1438,7 @@
                                                     </div>
 
                                                     <div class="party-editor__group__footer party-editor__mobile-only">
-                                                        <a href="#" class="party-editor__btn-next" @click.prevent="switchToPage(5, true)">продолжить</a>
+                                                        <a href="#" class="party-editor__btn-next" @click.prevent="switchToPage(5)">продолжить</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1659,79 +1592,165 @@
 
                                     </div>
                                 </div>
-                                <!--CHECK-->
                                 <div class="party-editor__layout__right">
-                                    <div class="event-builder-check__body js-party-editor-sticky-total">
-                                        <div class="event-builder-check__header">Чек</div>
-                                        <div class="event-builder-check__hr"></div>
 
-                                        <div class="event-builder-check__line">
-                                            <div class="event-builder-check__icon">
-                                                <svg>
-                                                    <use xlink:href="data/include/sprites/top-nav.svg#decor"/>
-                                                </svg>
+                                    <div class="js-party-editor-sticky-total">
+
+                                        <div class="party-editor__fixed">
+                                            <div class="party-editor__fixed__check">
+
+                                                <div class="party-editor__fixed__check__body">
+                                                    <div class="event-builder-check__header">Чек</div>
+                                                    <div class="event-builder-check__hr"></div>
+
+                                                    <div class="event-builder-check__line">
+                                                        <div class="event-builder-check__icon">
+                                                            <svg>
+                                                                <use xlink:href="data/include/sprites/top-nav.svg#decor"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="event-builder-check__title">Анимация</div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="event-builder-check__price">{{ formatPrice(animationsPrice) }}</div>
+                                                    </div>
+                                                    <div class="event-builder-check__hr"></div>
+
+                                                    <div class="event-builder-check__line">
+                                                        <div class="event-builder-check__icon">
+                                                            <svg>
+                                                                <use xlink:href="data/include/sprites/top-nav.svg#main"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="event-builder-check__title">Еда и торт</div>
+                                                    </div>
+                                                    <div class="event-builder-check__hr"></div>
+                                                    <div>
+                                                        <div class="event-builder-check__price">{{ formatPrice(dishesPrice) }}</div>
+                                                    </div>
+                                                    <div class="event-builder-check__hr"></div>
+                                                
+                                                    <div class="event-builder-check__line">
+                                                        <div class="event-builder-check__icon">
+                                                            <svg>
+                                                                <use xlink:href="data/include/sprites/top-nav.svg#main"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="event-builder-check__title">Доставка</div>
+                                                    </div>
+                                                    <div class="event-builder-check__hr"></div>
+                                                    <div>
+                                                        <div class="event-builder-check__price">{{ formatPrice(deliveryPrice) }}</div>
+                                                    </div>
+                                                    <div class="event-builder-check__hr"></div>
+
+                                                    <div class="event-builder-check-result">
+
+                                                        <div class="event-builder-check-result__text">ИТОГО:</div>
+                                                        <div class="event-builder-check-result__price">{{ formatPrice(totalPrice) }}</div>
+                                                    </div>
+
+                                                    <div class="promocode__block">
+                                                        <div class="input">
+                                                            <input type="text" class="c-input" placeholder="Промокод">
+                                                            <a href="javascript:void(0)" id="set_coupon" class="c-button c-button__default btn-in_input">
+                                                                <svg id="symbol-arr-right" viewBox="0 0 10 17.8">
+                                                                    <path d="M8.17,5.39,4.13.81C2.65-.85-.11,1.24,1.37,2.92L4.45,6.4,6,8.15c.15.17.41.4.64.64-.35.33-.78.65-1,.87-.63.64-1.26,1.28-1.86,1.94a24.15,24.15,0,0,0-3,4.08C-.35,17.6,2.86,18.94,4,17a22.77,22.77,0,0,1,3.27-4.09c1-1,2.83-2.26,3.17-3.71S9.08,6.41,8.17,5.39" transform="translate(-0.54 -0.2)"></path>
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div v-show="state.isEditingEnabled">
+                                                        <a href="#" class="event-builder-check__button" @click.prevent="switchToPrev()" v-show="state.currentPage > 1">Назад</a>
+                                                        <a href="#" class="event-builder-check__button" @click.prevent="switchToNext()" v-show="state.currentPage < 5 && state.currentPage > 1">Далее</a>
+                                                        <a href="#" class="event-builder-check__button" @click.prevent="reset()">Сбросить</a>
+                                                    </div>
+
+                                                </div>
                                             </div>
-                                            <div class="event-builder-check__title">Анимация</div>
-                                        </div>
-                                        <div>
-                                            <div class="event-builder-check__price">{{ formatPrice(animationsPrice) }}</div>
-                                        </div>
-                                        <div class="event-builder-check__hr"></div>
+                                            <div class="party-editor__fixed__nav">
 
-                                        <div class="event-builder-check__line">
-                                            <div class="event-builder-check__icon">
-                                                <svg>
-                                                    <use xlink:href="data/include/sprites/top-nav.svg#main"/>
-                                                </svg>
+                                                <div class="party-editor__fixed__nav__rotate">
+
+                                                    <nav class="party-editor__nav-desktop">
+                                                        <a href="#party-editor__page-2" 
+                                                            :class="[
+                                                                'party-editor__nav-desktop__item', 
+                                                                {active: state.currentPage <= 2 },
+                                                                {history: state.currentPage > 2}
+                                                            ]"
+                                                            @click.prevent="scrollToPage(2)">
+                                                            <div class="party-editor__nav-desktop__icon">
+                                                                <svg>
+                                                                    <use xlink:href="data/include/sprites/top-nav.svg#getting-way" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="party-editor__nav-desktop__text">
+                                                                Ввод данных
+                                                            </div>
+                                                        </a>
+                                                        <a href="#party-editor__page-3" 
+                                                            :class="[
+                                                                'party-editor__nav-desktop__item', 
+                                                                {active: state.currentPage === 3}, 
+                                                                {locked: !state.isEditingEnabled},
+                                                                {history: state.currentPage > 3}
+                                                            ]"
+                                                            @click.prevent="scrollToPage(3)">
+                                                            <div class="party-editor__nav-desktop__icon">
+                                                                <svg>
+                                                                    <use xlink:href="data/include/sprites/top-nav.svg#animation" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="party-editor__nav-desktop__text">
+                                                                Анимация
+                                                            </div>
+                                                        </a>
+                                                        <a href="#party-editor__page-4" 
+                                                            :class="[
+                                                                'party-editor__nav-desktop__item', 
+                                                                {active: state.currentPage === 4}, 
+                                                                {locked: !state.isEditingEnabled},
+                                                                {history: state.currentPage > 4}
+                                                            ]"
+                                                            @click.prevent="scrollToPage(4)">
+                                                            <div class="party-editor__nav-desktop__icon">
+                                                                <svg>
+                                                                    <use xlink:href="data/include/sprites/top-nav.svg#eat" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="party-editor__nav-desktop__text">
+                                                                Праздничное меню
+                                                            </div>
+                                                        </a>
+                                                        <a href="#party-editor__page-5" 
+                                                            :class="[
+                                                                'party-editor__nav-desktop__item', 
+                                                                {active: state.currentPage === 5}, 
+                                                                {locked: !state.isEditingEnabled}
+                                                            ]"
+                                                            @click.prevent="scrollToPage(5)">
+                                                            <div class="party-editor__nav-desktop__icon">
+                                                                <svg>
+                                                                    <use xlink:href="data/include/sprites/top-nav.svg#order" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="party-editor__nav-desktop__text">
+                                                                Итог
+                                                            </div>
+                                                        </a>
+                                                    </nav>
+                                                
+                                                </div>
+                                                
                                             </div>
-                                            <div class="event-builder-check__title">Еда и торт</div>
-                                        </div>
-                                        <div class="event-builder-check__hr"></div>
-                                        <div>
-                                            <div class="event-builder-check__price">{{ formatPrice(dishesPrice) }}</div>
-                                        </div>
-                                        <div class="event-builder-check__hr"></div>
-                                    
-                                        <div class="event-builder-check__line">
-                                            <div class="event-builder-check__icon">
-                                                <svg>
-                                                    <use xlink:href="data/include/sprites/top-nav.svg#main"/>
-                                                </svg>
-                                            </div>
-                                            <div class="event-builder-check__title">Доставка</div>
-                                        </div>
-                                        <div class="event-builder-check__hr"></div>
-                                        <div>
-                                            <div class="event-builder-check__price">{{ formatPrice(deliveryPrice) }}</div>
-                                        </div>
-                                        <div class="event-builder-check__hr"></div>
-
-                                        <div class="event-builder-check-result">
-
-                                            <div class="event-builder-check-result__text">ИТОГО:</div>
-                                            <div class="event-builder-check-result__price">{{ formatPrice(totalPrice) }}</div>
-                                        </div>
-
-                                        <div class="promocode__block">
-                                            <div class="input">
-                                                <input type="text" class="c-input" placeholder="Промокод">
-                                                <a href="javascript:void(0)" id="set_coupon" class="c-button c-button__default btn-in_input">
-                                                    <svg id="symbol-arr-right" viewBox="0 0 10 17.8">
-                                                        <path d="M8.17,5.39,4.13.81C2.65-.85-.11,1.24,1.37,2.92L4.45,6.4,6,8.15c.15.17.41.4.64.64-.35.33-.78.65-1,.87-.63.64-1.26,1.28-1.86,1.94a24.15,24.15,0,0,0-3,4.08C-.35,17.6,2.86,18.94,4,17a22.77,22.77,0,0,1,3.27-4.09c1-1,2.83-2.26,3.17-3.71S9.08,6.41,8.17,5.39" transform="translate(-0.54 -0.2)"></path>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div v-show="state.isEditingEnabled">
-                                            <a href="#" class="event-builder-check__button" @click.prevent="switchToPrev()" v-show="state.currentPage > 1">Назад</a>
-                                            <a href="#" class="event-builder-check__button" @click.prevent="switchToNext()" v-show="state.currentPage < 5 && state.currentPage > 1">Далее</a>
-                                            <a href="#" class="event-builder-check__button" @click.prevent="reset()">Сбросить</a>
                                         </div>
 
                                     </div>
+
+                                    
                                 </div>
-                                <!-- / CHECK-->
                             </div>
                             
                         </div>
