@@ -14,6 +14,41 @@
 .party-editor .c-input {
   color: #3a3a3a; }
 
+.party-editor__counter {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 5px;
+  background: #7cbd41;
+  font-family: "PT Serif Caption";
+  font-size: 18px; }
+  .party-editor__counter.empty {
+    background: #bdde9f; }
+  .party-editor__counter input,
+  .party-editor__counter button {
+    flex: 0 0 auto;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    font-family: inherit;
+    text-align: center;
+    color: #fff; }
+  .party-editor__counter input {
+    width: 1.5em !important;
+    font-size: 1em !important; }
+  .party-editor__counter button {
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 0.86957em;
+    height: 0.86957em;
+    border-radius: 50%;
+    font-size: 1.27778em;
+    cursor: pointer; }
+    .party-editor__counter button:hover {
+      background: #6faa3a; }
+
 .party-editor__content {
   padding: 20px 0 50px 0 !important; }
 
@@ -584,6 +619,8 @@
     display: block; } }
 
 @media (min-width: 768px) {
+  .party-editor__counter {
+    font-size: 26px; }
   .party-editor__result__item {
     display: flex; }
   .party-editor__result__name {

@@ -1485,12 +1485,10 @@
                                                                             <div class="party-editor__goods__price-row">
                                                                                 <div class="party-editor__goods__price">\{{ formatPrice(product.price) }}</div>
                                                                                 <div class="party-editor__goods__counter">
-                                                                                    <div class="c-card-catalog__count">
-                                                                                        <div class="c-counter">
-                                                                                            <button type="button" class="but c-counter__btn dec" @click="decreaseCount(category.items[index])">-</button>
-                                                                                            <input type="text" class="c-counter__field fieldCount" v-model="category.items[index].count">
-                                                                                            <button type="button" class="but c-counter__btn inc" @click="increaseCount(category.items[index])">+</button>
-                                                                                        </div>
+                                                                                    <div :class="['party-editor__counter', {'empty': category.items[index].count == 0}]">
+                                                                                        <button type="button" @click="decreaseCount(category.items[index])">&minus;</button>
+                                                                                        <input type="text" v-model="category.items[index].count">
+                                                                                        <button type="button" @click="increaseCount(category.items[index])">&plus;</button>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

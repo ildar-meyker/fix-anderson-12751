@@ -20,6 +20,52 @@
 		color: #3a3a3a;
 	}
 
+	&__counter {
+		display: inline-flex;
+		align-items: center;
+		padding: 2px;
+		border-radius: 5px;
+		background: #7cbd41;
+		font-family: "PT Serif Caption";
+		font-size: 18px;
+
+		&.empty {
+			background: lighten(#7cbd41, 25%);
+		}
+
+		input,
+		button {
+			flex: 0 0 auto;
+			border: 0;
+			padding: 0;
+			background: transparent;
+			font-family: inherit;
+			text-align: center;
+			color: #fff;
+		}
+
+		input {
+			width: 1.5em !important;
+			font-size: 1em !important;
+		}
+
+		button {
+			transition: all 0.2s;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 20/23 + em;
+			height: 20/23 + em;
+			border-radius: 50%;
+			font-size: 23/18 + em;
+			cursor: pointer;
+
+			&:hover {
+				background: #6faa3a;
+			}
+		}
+	}
+
 	&__content {
 		padding: 20px 0 50px 0 !important;
 	}
@@ -863,6 +909,10 @@
 
 @media (min-width: 768px) {
 	.party-editor {
+		&__counter {
+			font-size: 26px;
+		}
+
 		&__result {
 			&__item {
 				display: flex;
