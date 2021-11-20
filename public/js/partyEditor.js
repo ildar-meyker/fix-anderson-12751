@@ -137,7 +137,7 @@ var PartyEditor = {
     _calcCurrentPage: function _calcCurrentPage() {
       var _this = this;
 
-      if (window.matchMedia("(max-width: 1026.98px)").matches) return;
+      if (window.matchMedia("(max-width: 1199.98px)").matches) return;
       var pagesVisiblity = [];
 
       this._$pages.each(function (index, element) {
@@ -324,8 +324,8 @@ $(function () {
         this.state.currentPage = pageId;
         PartyEditor.NavMobile.switchToSlide(pageId - 2);
 
-        if (window.matchMedia("(max-width: 1026.98px)").matches) {
-          $("html, body").scrollTop(0);
+        if (window.matchMedia("(max-width: 1199.98px)").matches) {
+          $("html, body").scrollTop($("#party-editor__nav-mobile").offset().top);
         }
       },
       switchToNext: function switchToNext() {

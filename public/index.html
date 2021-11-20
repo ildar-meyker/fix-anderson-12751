@@ -1172,7 +1172,7 @@
 
                             
 
-                            <nav :class="['party-editor__nav-mobile', {active: state.currentPage !== 1}]">
+                            <nav id="party-editor__nav-mobile" :class="['party-editor__nav-mobile', {active: state.currentPage !== 1}]">
                                 <div id="party-editor__nav-mobile__slider" class="party-editor__nav-mobile__slider">
                                     <a href="#party-editor__page-2" class="party-editor__nav-mobile__item"
                                         @click.prevent="switchToPage(2)">Ввод данных</a>
@@ -1241,18 +1241,18 @@
                                                         </div>
                                                         <div>
                                                             <div class="party-editor__title">2. Адрес доставки праздника</div>
-                                                            <div class="event-builder-tab-list-block__line event-builder-tab-list-block__line-3">
-                                                                <div class="event-builder-tab-list-block__control ">
-                                                                    <label class="c-label" for="holiday-builder-street">Улица: <span class="c-obligatory-field">*</span></label>
+                                                            <div class="party-editor__form__row">
+                                                                <div class="party-editor__form__col party-editor__form__col--sm-12">
+                                                                    <label class="party-editor__form__label" for="holiday-builder-street">Улица: <span class="c-obligatory-field">*</span></label>
                                                                     <input class="c-input" type="text" id="holiday-builder-street" required="" placeholder="Улица" name="street" v-model="state.deliveryStreetName">
                                                                 </div>
-                                                                <div class="event-builder-tab-list-block__control ">
-                                                                    <label class="c-label" for="holiday-builder-house">Дом: <span class="c-obligatory-field">*</span></label>
+                                                                <div class="party-editor__form__col party-editor__form__col--sm-6">
+                                                                    <label class="party-editor__form__label" for="holiday-builder-house">Дом: <span class="c-obligatory-field">*</span></label>
                                                                     <input class="c-input" type="text" id="holiday-builder-house" required="" placeholder="Дом" name="house" v-model="state.deliveryBuildingNumber">
 
                                                                 </div>
-                                                                <div class="event-builder-tab-list-block__control ">
-                                                                    <label class="c-label" for="holiday-builder-apartment">Квартира: <span class="c-obligatory-field">*</span></label>
+                                                                <div class="party-editor__form__col party-editor__form__col--sm-6">
+                                                                    <label class="party-editor__form__label" for="holiday-builder-apartment">Квартира: <span class="c-obligatory-field">*</span></label>
                                                                     <input class="c-input" type="text" id="holiday-builder-apartment" required="" placeholder="Квартира" name="flat" v-model="state.deliveryFlatNumber">
                                                                 </div>
                                                             </div>
@@ -1260,23 +1260,23 @@
                                                         </div>
                                                         <div>
                                                             <div class="party-editor__title">3. Контакты заказчика</div>
-                                                            <div class="event-builder-tab-list-block__line">
-                                                                <div class="event-builder-tab-list-block__control ">
-                                                                    <label class="c-label" for="holiday-builder-client">Ваше имя: <span class="c-obligatory-field">*</span></label>
+                                                            <div class="party-editor__form__row">
+                                                                <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-12">
+                                                                    <label class="party-editor__form__label" for="holiday-builder-client">Ваше имя: <span class="c-obligatory-field">*</span></label>
                                                                     <input class="c-input" type="text" id="holiday-builder-client" required="" placeholder="Ваше имя" name="user_name" v-model="state.clientName">
 
                                                                 </div>
-                                                                <div class="event-builder-tab-list-block__control ">
-                                                                    <label class="c-label" for="holiday-builder-child">Имя ребенка: <span class="c-obligatory-field">*</span></label>
+                                                                <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-12">
+                                                                    <label class="party-editor__form__label" for="holiday-builder-child">Имя ребенка: <span class="c-obligatory-field">*</span></label>
                                                                     <input class="c-input" type="text" id="holiday-builder-child" required="" placeholder="Имя ребенка" name="child_name" v-model="state.clientKidName">
 
                                                                 </div>
-                                                                <div class="event-builder-tab-list-block__control ">
-                                                                    <label class="c-label" for="holiday-builder-email">E-mail: <span class="c-obligatory-field">*</span></label>
+                                                                <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-6">
+                                                                    <label class="party-editor__form__label" for="holiday-builder-email">E-mail: <span class="c-obligatory-field">*</span></label>
                                                                     <input class="c-input" type="text" id="holiday-builder-email" required="" placeholder="...@..." name="email" v-model="state.clientEmail">
                                                                 </div>
-                                                                <div class="event-builder-tab-list-block__control ">
-                                                                    <label class="c-label" for="holiday-builder-phone">Телефон: <span class="c-obligatory-field">*</span></label>
+                                                                <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-6">
+                                                                    <label class="party-editor__form__label" for="holiday-builder-phone">Телефон: <span class="c-obligatory-field">*</span></label>
                                                                     <input class="c-input js-input--tel" type="text" id="holiday-builder-phone" required="" placeholder="+7 () -  -" maxlength="15" name="phone" v-model="state.clientPhone">
                                                                 </div>
                                                             </div>
@@ -1305,7 +1305,7 @@
                                                                                     <input class="c-input" type="text" v-model="state.kidsCount">
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="event-builder-when-guest__item" style="padding-right: 20px;">
+                                                                            <div class="event-builder-when-guest__item">
                                                                                 <div class="party-editor__title">Возраст</div>
                                                                                 <div class="event-builder-when-guest__count">
                                                                                     <input class="c-input" type="text" v-model="state.kidsAge" placeholder="5,6,9" >
@@ -1530,42 +1530,40 @@
                                             
                                                         <div class="party-editor__comment">
 
-                                                            <div class="event-builder-tab-list-block__control event-builder-tab-list-block__control_col_5">
-                                                                <label class="c-label c-label_center" for="event-builder-comment">Вы можете добавить комментарий к своему заказу:</label>
-                                                                <textarea class="event-builder-input__textarea" id="event-builder-comment" v-model="state.comment"></textarea>
+                                                            <label class="party-editor__form__label text-center" for="event-builder-comment">Вы можете добавить комментарий к своему заказу:</label>
+                                                            <textarea class="event-builder-input__textarea" id="event-builder-comment" v-model="state.comment"></textarea>
 
-                                                                <div class="event-builder-summary">
-                                                                    <span class="event-builder-icon__summary"></span>
-                                                                    <span class="event-builder-summary__head_1">ИТОГО:</span>
-                                                                    <span class="event-builder-summary__head_2">{{ formatPrice(totalPrice) }}</span>
+                                                            <div class="event-builder-summary">
+                                                                <span class="event-builder-icon__summary"></span>
+                                                                <span class="event-builder-summary__head_1">ИТОГО:</span>
+                                                                <span class="event-builder-summary__head_2">{{ formatPrice(totalPrice) }}</span>
 
-                                                                </div>
-                                                                <div>
-                                                                    <div class="c-personal-data">
-                                                                        <div class="c-personal-data__item">
-                                                                            <label data-bx-user-consent="{&quot;id&quot;:1,&quot;sec&quot;:&quot;ois5kl&quot;,&quot;autoSave&quot;:true,&quot;actionUrl&quot;:&quot;\/bitrix\/components\/bitrix\/main.userconsent.request\/ajax.php&quot;,&quot;replace&quot;:{&quot;button_caption&quot;:&quot;\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f!&quot;,&quot;fields&quot;:[&quot;Email&quot;,&quot;\u0422\u0435\u043b\u0435\u0444\u043e\u043d&quot;,&quot;\u0418\u043c\u044f&quot;,&quot;IP-\u0430\u0434\u0440\u0435\u0441&quot;]},&quot;url&quot;:null}" class="main-user-consent-request">
-                                                                                <input type="checkbox" name="regulations" id="regulations" value="Y" >
-                                                                                <label class="c-checkbox" for="regulations"><a>С условиями</a> предоставления услуги ознакомлен.</label>
-                                                                            </label>
+                                                            </div>
+                                                            <div>
+                                                                <div class="c-personal-data">
+                                                                    <div class="c-personal-data__item">
+                                                                        <label data-bx-user-consent="{&quot;id&quot;:1,&quot;sec&quot;:&quot;ois5kl&quot;,&quot;autoSave&quot;:true,&quot;actionUrl&quot;:&quot;\/bitrix\/components\/bitrix\/main.userconsent.request\/ajax.php&quot;,&quot;replace&quot;:{&quot;button_caption&quot;:&quot;\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f!&quot;,&quot;fields&quot;:[&quot;Email&quot;,&quot;\u0422\u0435\u043b\u0435\u0444\u043e\u043d&quot;,&quot;\u0418\u043c\u044f&quot;,&quot;IP-\u0430\u0434\u0440\u0435\u0441&quot;]},&quot;url&quot;:null}" class="main-user-consent-request">
+                                                                            <input type="checkbox" name="regulations" id="regulations" value="Y" >
+                                                                            <label class="c-checkbox" for="regulations"><a>С условиями</a> предоставления услуги ознакомлен.</label>
+                                                                        </label>
 
-                                                                            <div type="text/html" data-bx-template="main-user-consent-request-loader" style="display: none">
-                                                                                <div class="main-user-consent-request-popup">
-                                                                                    <div class="main-user-consent-request-popup-cont">
-                                                                                        <div data-bx-head="" class="main-user-consent-request-popup-header"></div>
-                                                                                        <div class="main-user-consent-request-popup-body">
-                                                                                            <div data-bx-loader="" class="main-user-consent-request-loader">
-                                                                                                <svg class="main-user-consent-request-circular" viewBox="25 25 50 50">
-                            <circle class="main-user-consent-request-path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
-                            </svg>
+                                                                        <div type="text/html" data-bx-template="main-user-consent-request-loader" style="display: none">
+                                                                            <div class="main-user-consent-request-popup">
+                                                                                <div class="main-user-consent-request-popup-cont">
+                                                                                    <div data-bx-head="" class="main-user-consent-request-popup-header"></div>
+                                                                                    <div class="main-user-consent-request-popup-body">
+                                                                                        <div data-bx-loader="" class="main-user-consent-request-loader">
+                                                                                            <svg class="main-user-consent-request-circular" viewBox="25 25 50 50">
+                        <circle class="main-user-consent-request-path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
+                        </svg>
+                                                                                        </div>
+                                                                                        <div data-bx-content="" class="main-user-consent-request-popup-content">
+                                                                                            <div class="main-user-consent-request-popup-textarea-block">
+                                                                                                <div data-bx-textarea="" class="main-user-consent-request-popup-text" disabled></div>
                                                                                             </div>
-                                                                                            <div data-bx-content="" class="main-user-consent-request-popup-content">
-                                                                                                <div class="main-user-consent-request-popup-textarea-block">
-                                                                                                    <div data-bx-textarea="" class="main-user-consent-request-popup-text" disabled></div>
-                                                                                                </div>
-                                                                                                <div class="main-user-consent-request-popup-buttons">
-                                                                                                    <span data-bx-btn-accept="" class="main-user-consent-request-popup-button main-user-consent-request-popup-button-acc">Y</span>
-                                                                                                    <span data-bx-btn-reject="" class="main-user-consent-request-popup-button main-user-consent-request-popup-button-rej">N</span>
-                                                                                                </div>
+                                                                                            <div class="main-user-consent-request-popup-buttons">
+                                                                                                <span data-bx-btn-accept="" class="main-user-consent-request-popup-button main-user-consent-request-popup-button-acc">Y</span>
+                                                                                                <span data-bx-btn-reject="" class="main-user-consent-request-popup-button main-user-consent-request-popup-button-rej">N</span>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -1573,16 +1571,16 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
-                                                                </div>
-
-                                                                <div class="party-editor__group__footer">
-                                                                    <button type="button" class="party-editor__btn-apply">
-                                                                        Оформить заказ
-                                                                    </button>
                                                                 </div>
 
                                                             </div>
+
+                                                            <div class="party-editor__group__footer">
+                                                                <button type="button" class="party-editor__btn-apply">
+                                                                    Оформить заказ
+                                                                </button>
+                                                            </div>
+
 
                                                         </div>
                                                     </div>

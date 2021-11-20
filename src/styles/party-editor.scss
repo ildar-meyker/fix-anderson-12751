@@ -17,7 +17,37 @@
 	}
 
 	.c-input {
+		font-size: 1.5rem !important;
+		font-style: italic;
 		color: #3a3a3a;
+	}
+
+	.text-center {
+		text-align: center !important;
+	}
+
+	&__form {
+		&__label {
+			margin-bottom: 1rem;
+			display: block;
+			font-family: "PT Serif Caption";
+			font-style: italic;
+			font-size: 1.6rem;
+			color: #553023;
+		}
+
+		&__row {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 0 -10px;
+		}
+
+		&__col {
+			flex: 0 0 auto;
+			width: 33.33%;
+			margin-bottom: 10px;
+			padding: 0 10px;
+		}
 	}
 
 	&__counter {
@@ -120,7 +150,8 @@
 				transform-origin: 0 0;
 				height: 0;
 				padding-bottom: 100%;
-				margin-left: 115px;
+				position: relative;
+				left: 115px;
 			}
 		}
 	}
@@ -730,7 +761,7 @@
 	}
 }
 
-@media (max-width: 1026.98px) {
+@media (max-width: 1199.98px) {
 	.party-editor {
 		&__content {
 			padding: 50px 0 !important;
@@ -933,8 +964,19 @@
 			font-size: 30px;
 		}
 
-		label {
-			display: block;
+		&__form {
+			&__col {
+				padding-right: 5px;
+				padding-left: 5px;
+
+				&--sm-12 {
+					width: 100%;
+				}
+
+				&--sm-6 {
+					width: 50%;
+				}
+			}
 		}
 	}
 }
@@ -967,7 +1009,7 @@
 	}
 }
 
-@media (min-width: 1027px) {
+@media (min-width: 1200px) {
 	.party-editor {
 		&__mobile-only {
 			display: none;
@@ -977,6 +1019,18 @@
 			&.locked {
 				height: 0;
 				overflow: hidden;
+			}
+		}
+	}
+}
+
+@media (min-width: 1600px) {
+	.party-editor {
+		&__form {
+			&__col {
+				&--lg-3 {
+					width: 25%;
+				}
 			}
 		}
 	}

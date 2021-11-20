@@ -34,7 +34,7 @@ const PartyEditor = {
 		},
 
 		_calcCurrentPage() {
-			if (window.matchMedia("(max-width: 1026.98px)").matches) return;
+			if (window.matchMedia("(max-width: 1199.98px)").matches) return;
 
 			const pagesVisiblity = [];
 
@@ -291,8 +291,10 @@ $(function () {
 
 				PartyEditor.NavMobile.switchToSlide(pageId - 2);
 
-				if (window.matchMedia("(max-width: 1026.98px)").matches) {
-					$("html, body").scrollTop(0);
+				if (window.matchMedia("(max-width: 1199.98px)").matches) {
+					$("html, body").scrollTop(
+						$("#party-editor__nav-mobile").offset().top
+					);
 				}
 			},
 
