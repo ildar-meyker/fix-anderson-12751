@@ -71,7 +71,7 @@
 				border: 1px solid rgb(209, 209, 209);
 				border-radius: 4px;
 				box-shadow: rgba(#000, 0.1) 0px 5px 9.2px 0.8px;
-				background: url(../images/olive-bg.jpeg);
+				background: url(../images/party-editor/olive-bg.jpeg);
 				font-family: "PT Serif Caption";
 			}
 		}
@@ -120,7 +120,7 @@
 	&__promo {
 		padding: 100px 55px;
 		margin: 0 1px;
-		background: url(../images/promo.jpeg) no-repeat 50% 50%;
+		background: url(../images/party-editor/promo.jpeg) no-repeat 50% 50%;
 		background-size: cover;
 
 		&__text {
@@ -213,7 +213,8 @@
 		background: #fff;
 
 		&--confetti {
-			background: #fff url(../images/confetti.jpeg) no-repeat 50% 100%;
+			background: #fff url(../images/party-editor/confetti.jpeg) no-repeat
+				50% 100%;
 			margin-bottom: 0;
 		}
 
@@ -258,7 +259,8 @@
 			align-items: center;
 			padding: 1em 0.5em 1em 2.5em;
 			margin-left: -0.5em;
-			background: url(../images/arrow-green.png) no-repeat 0 50%;
+			background: url(../images/party-editor/arrow-green.png) no-repeat 0
+				50%;
 			background-size: auto 100%;
 			color: #231300;
 
@@ -270,7 +272,8 @@
 				left: 100%;
 				top: 0;
 				height: 100%;
-				background: url(../images/arrow-green.png) no-repeat 100% 50%;
+				background: url(../images/party-editor/arrow-green.png)
+					no-repeat 100% 50%;
 				background-size: auto 100%;
 			}
 
@@ -281,12 +284,12 @@
 			&.active {
 				z-index: 10 !important;
 				padding: 1.3em 0.5em 1.3em 1.5em;
-				background-image: url(../images/arrow-pink.png);
+				background-image: url(../images/party-editor/arrow-pink.png);
 				color: #fff;
 
 				&:before {
 					width: 2.3em;
-					background-image: url(../images/arrow-pink.png);
+					background-image: url(../images/party-editor/arrow-pink.png);
 				}
 
 				.party-editor__nav-desktop__icon {
@@ -301,10 +304,10 @@
 			&.history {
 				z-index: auto !important;
 				padding-left: 1.5em !important;
-				background-image: url(../images/arrow-olive.png);
+				background-image: url(../images/party-editor/arrow-olive.png);
 
 				&:before {
-					background-image: url(../images/arrow-olive.png);
+					background-image: url(../images/party-editor/arrow-olive.png);
 				}
 
 				.party-editor__nav-desktop__icon {
@@ -391,8 +394,8 @@
 				right: -7px;
 				width: 0.3em;
 				height: 0.3em;
-				background: url(../images/icons/arrow-right.svg) no-repeat 50%
-					50%;
+				background: url(../images/party-editor/sprite-icons/arrow-right.svg)
+					no-repeat 50% 50%;
 				background-size: contain;
 			}
 
@@ -576,7 +579,7 @@
 	&__attn {
 		margin: 10px 0 20px 0;
 		padding: 13px 0;
-		background: url(../images/pink-bubbles.png);
+		background: url(../images/party-editor/pink-bubbles.png);
 		font-family: "SummerFont";
 		font-size: 48px;
 		text-transform: uppercase;
@@ -758,7 +761,7 @@
 		display: inline-block;
 		padding: 0 30px 12px 30px;
 		border-radius: 4px;
-		background: #c44890 url(../images/pink-bubbles.png);
+		background: #c44890 url(../images/party-editor/pink-bubbles.png);
 		text-transform: lowercase;
 		text-align: center;
 		font-family: "SummerFont";

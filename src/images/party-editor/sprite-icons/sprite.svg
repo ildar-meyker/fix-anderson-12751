@@ -1,4 +1,8 @@
 <svg width="0" height="0" class="hidden">
+  <symbol version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" id="close">
+    <title>Vector-svg</title>
+    <path id="Layer" d="M16.36 15L30 28.64L28.64 30L15 16.36L1.36 30L0 28.64L13.64 15L0 1.36L1.36 0L15 13.64L28.64 0L30 1.36L16.36 15Z"></path>
+  </symbol>
   <symbol version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 427 427" id="bubble-checked">
     <title>enter-svg</title>
     <g id="Layer">
