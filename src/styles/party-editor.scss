@@ -435,7 +435,7 @@
 
 		&__col {
 			flex: 0 0 auto;
-			width: 300px;
+			width: 33.33%;
 			padding: 0 10px;
 			margin-top: 20px;
 		}
@@ -469,7 +469,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			padding: 0 10px 25px 10px;
+			padding: 0 10px 65px 10px;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -534,7 +534,7 @@
 			padding: 0 10px;
 			margin-bottom: 20px;
 			flex: 0 0 auto;
-			width: 300px;
+			width: 33.33%;
 		}
 
 		&__item {
@@ -1014,8 +1014,23 @@
 	}
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 999.98px) {
 	.party-editor {
+		&__heroes {
+			&__desc {
+				display: none;
+			}
+
+			&__btn {
+				padding: 0;
+
+				> * {
+					border-bottom-right-radius: 0;
+					border-bottom-left-radius: 0;
+				}
+			}
+		}
+
 		&__popup {
 			&__col-image {
 				width: 200px;
@@ -1098,16 +1113,6 @@
 			&__col {
 				margin-top: 12px;
 				padding: 0 6px;
-				width: 50%;
-			}
-
-			&__btn {
-				padding: 0;
-
-				> * {
-					border-bottom-right-radius: 0;
-					border-bottom-left-radius: 0;
-				}
 			}
 
 			&__image {
@@ -1130,7 +1135,6 @@
 			&__col {
 				margin-bottom: 12px;
 				padding: 0 6px;
-				width: 50%;
 			}
 
 			&__name {
@@ -1210,11 +1214,17 @@
 	}
 }
 
-@media (max-width: 500px) {
+@media (max-width: 549.98px) {
 	.party-editor {
 		&__heroes {
-			&__desc {
-				display: none;
+			&__col {
+				width: 50%;
+			}
+		}
+
+		&__goods {
+			&__col {
+				width: 50%;
 			}
 		}
 
@@ -1281,6 +1291,11 @@
 
 @media (min-width: 1600px) {
 	.party-editor {
+		&__center {
+			max-width: 1560px;
+			padding: 0;
+		}
+
 		&__form {
 			&__col {
 				&--lg-3 {
