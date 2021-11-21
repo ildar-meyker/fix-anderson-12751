@@ -113,6 +113,9 @@ $(function () {
 			return {
 				errors: {},
 
+				isPopupOpen: false,
+				popupProgram: {},
+
 				state: {
 					currentPage: 1,
 					isEditorStarted: false,
@@ -309,12 +312,33 @@ $(function () {
 				product.count = newCount < 0 ? 0 : newCount;
 			},
 
+			openProgramInPopup(program) {
+				this.popupProgram = program;
+				this.isPopupOpen = true;
+			},
+
+			closePopup() {
+				this.isPopupOpen = false;
+			},
+
 			toggleAnimation(program, event) {
 				if (!this.isDataConfirmed) {
 					console.log(event);
 				}
 
 				program.selected = !program.selected;
+			},
+
+			scrollToNext() {
+				const newPageId = this.state.currentPage + 1;
+				if (newPageId > 5) return;
+				this.scrollToPage(newPageId);
+			},
+
+			scrollToPrev() {
+				const newPageId = this.state.currentPage - 1;
+				if (newPageId < 1) return;
+				this.scrollToPage(newPageId);
 			},
 
 			scrollToPage(pageId) {
@@ -333,18 +357,6 @@ $(function () {
 						$("#party-editor__nav-mobile").offset().top
 					);
 				}
-			},
-
-			switchToNext() {
-				const newPageId = this.state.currentPage + 1;
-				if (newPageId > 5) return;
-				this.scrollToPage(newPageId);
-			},
-
-			switchToPrev() {
-				const newPageId = this.state.currentPage - 1;
-				if (newPageId < 1) return;
-				this.scrollToPage(newPageId);
 			},
 
 			formatPrice(value) {

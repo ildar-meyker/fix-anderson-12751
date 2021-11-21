@@ -505,6 +505,7 @@
     color: #646464; }
 
 .party-editor__popup {
+  display: none;
   position: fixed;
   z-index: 999999;
   top: 0;
@@ -514,6 +515,8 @@
   overflow: auto;
   background: rgba(0, 0, 0, 0.1);
   font-size: 0; }
+  .party-editor__popup.active {
+    display: block; }
   .party-editor__popup:before {
     content: "";
     display: inline-block;
@@ -781,7 +784,7 @@
     margin-left: -20px;
     font-size: 30px; }
   .party-editor__popup__body {
-    padding: 30px 15px; }
+    padding: 60px 15px 30px 15px; }
   .party-editor__popup__col-desc {
     padding-left: 15px; }
   .party-editor__popup__title {
@@ -799,11 +802,12 @@
       width: 50%; } }
 
 @media (max-width: 500px) {
+  .party-editor__heroes__desc {
+    display: none; }
   .party-editor__popup__row {
     display: block; }
   .party-editor__popup__col-image {
-    width: auto;
-    margin: -30px -15px 0 -15px; }
+    width: auto; }
   .party-editor__popup__col-desc {
     width: auto;
     padding-left: 0;

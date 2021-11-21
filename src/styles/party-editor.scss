@@ -701,6 +701,7 @@
 	}
 
 	&__popup {
+		display: none;
 		position: fixed;
 		z-index: 999999;
 		top: 0;
@@ -710,6 +711,10 @@
 		overflow: auto;
 		background: rgba(#000, 0.1);
 		font-size: 0;
+
+		&.active {
+			display: block;
+		}
 
 		&:before {
 			content: "";
@@ -1141,7 +1146,7 @@
 
 		&__popup {
 			&__body {
-				padding: 30px 15px;
+				padding: 60px 15px 30px 15px;
 			}
 
 			&__col-desc {
@@ -1180,6 +1185,12 @@
 
 @media (max-width: 500px) {
 	.party-editor {
+		&__heroes {
+			&__desc {
+				display: none;
+			}
+		}
+
 		&__popup {
 			&__row {
 				display: block;
@@ -1187,7 +1198,6 @@
 
 			&__col-image {
 				width: auto;
-				margin: -30px -15px 0 -15px;
 			}
 
 			&__col-desc {

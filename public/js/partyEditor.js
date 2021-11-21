@@ -197,6 +197,8 @@ $(function () {
     data: function data() {
       return {
         errors: {},
+        isPopupOpen: false,
+        popupProgram: {},
         state: {
           currentPage: 1,
           isEditorStarted: false,
@@ -339,12 +341,29 @@ $(function () {
         var newCount = product.count - 1;
         product.count = newCount < 0 ? 0 : newCount;
       },
+      openProgramInPopup: function openProgramInPopup(program) {
+        this.popupProgram = program;
+        this.isPopupOpen = true;
+      },
+      closePopup: function closePopup() {
+        this.isPopupOpen = false;
+      },
       toggleAnimation: function toggleAnimation(program, event) {
         if (!this.isDataConfirmed) {
           console.log(event);
         }
 
         program.selected = !program.selected;
+      },
+      scrollToNext: function scrollToNext() {
+        var newPageId = this.state.currentPage + 1;
+        if (newPageId > 5) return;
+        this.scrollToPage(newPageId);
+      },
+      scrollToPrev: function scrollToPrev() {
+        var newPageId = this.state.currentPage - 1;
+        if (newPageId < 1) return;
+        this.scrollToPage(newPageId);
       },
       scrollToPage: function scrollToPage(pageId) {
         PartyEditor.scrollTop($("#party-editor__page-" + pageId).offset().top);
@@ -356,16 +375,6 @@ $(function () {
         if (window.matchMedia("(max-width: 1199.98px)").matches) {
           $("html, body").scrollTop($("#party-editor__nav-mobile").offset().top);
         }
-      },
-      switchToNext: function switchToNext() {
-        var newPageId = this.state.currentPage + 1;
-        if (newPageId > 5) return;
-        this.scrollToPage(newPageId);
-      },
-      switchToPrev: function switchToPrev() {
-        var newPageId = this.state.currentPage - 1;
-        if (newPageId < 1) return;
-        this.scrollToPage(newPageId);
       },
       formatPrice: function formatPrice(value) {
         return new Intl.NumberFormat("ru-RU", {
