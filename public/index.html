@@ -807,7 +807,7 @@
             </header>
         </div>
 
-        <main class="party-editor__content">
+        <main class="party-editor__wrapper">
 
             <div class="c-layout">
                 <!--'start_frame_cache_breadcrumb'-->
@@ -830,11 +830,39 @@
                     </ul>
                 </nav>
 
+                <aside class="party-editor__tooltip">
+                    <div class="party-editor__tooltip__title">
+                        <i>
+                            <svg class="icon">
+                                <use xlink:href="images/icons/sprite-tooltip.svg#people"></use>
+                            </svg>
+                        </i>
+                        <span>Вы изменили возраст!</span>
+                    </div>
+                    <div class="party-editor__tooltip__desc">
+                        Анимационные программы не
+                        подходящие под указанный
+                        возраст будут убраны из корзины
+                    </div>
+                </aside>
 
+                <div style="height: 50px;"></div>
 
-                
-
-
+                <aside class="party-editor__tooltip">
+                    <div class="party-editor__tooltip__desc">
+                        Для корректного подсчета праздника,
+                        пожалуйста заполните свои данные и
+                        нажмите кнопку
+                    </div>
+                    <div class="party-editor__tooltip__title party-editor__tooltip__title--bottom">
+                        <i>
+                            <svg class="icon">
+                                <use xlink:href="images/icons/sprite-tooltip.svg#bubble-checked"></use>
+                            </svg>
+                        </i>
+                        <span>Подтвердить данные</span>
+                    </div>
+                </aside>
 
                 <!--'end_frame_cache_breadcrumb'-->
                 <!--event-builder-->
@@ -1126,37 +1154,37 @@
 
                                 <div class="party-editor__group active party-editor__group--mt-0 party-editor__about">
                                     <div class="party-editor__about__title">ВАС ЖДЕТ:</div>
-                                    <div class="party-editor__steps">
-                                        <div class="party-editor__steps__col">
-                                            <div class="party-editor__steps__step">1</div>
-                                            <div class="party-editor__steps__desc">
+                                    <div class="party-editor__about__steps">
+                                        <div class="party-editor__about__steps__col">
+                                            <div class="party-editor__about__steps__step">1</div>
+                                            <div class="party-editor__about__steps__desc">
                                                 Отличное настроение
                                             </div>
                                         </div>
-                                        <div class="party-editor__steps__col">
-                                            <div class="party-editor__steps__step">2</div>
-                                            <div class="party-editor__steps__desc">
+                                        <div class="party-editor__about__steps__col">
+                                            <div class="party-editor__about__steps__step">2</div>
+                                            <div class="party-editor__about__steps__desc">
                                                 Поздравление от большого
                                                 плюшевого медведя Густава
                                             </div>
                                         </div>
-                                        <div class="party-editor__steps__col">
-                                            <div class="party-editor__steps__step">3</div>
-                                            <div class="party-editor__steps__desc">
+                                        <div class="party-editor__about__steps__col">
+                                            <div class="party-editor__about__steps__step">3</div>
+                                            <div class="party-editor__about__steps__desc">
                                                 Увлекательная программа (5
                                                 эксклюзивных тематических
                                                 сценариев на любой возраст)
                                             </div>
                                         </div>
-                                        <div class="party-editor__steps__col">
-                                            <div class="party-editor__steps__step">4</div>
-                                            <div class="party-editor__steps__desc">
+                                        <div class="party-editor__about__steps__col">
+                                            <div class="party-editor__about__steps__step">4</div>
+                                            <div class="party-editor__about__steps__desc">
                                                 Именинный торт
                                             </div>
                                         </div>
-                                        <div class="party-editor__steps__col">
-                                            <div class="party-editor__steps__step">5</div>
-                                            <div class="party-editor__steps__desc">
+                                        <div class="party-editor__about__steps__col">
+                                            <div class="party-editor__about__steps__step">5</div>
+                                            <div class="party-editor__about__steps__desc">
                                                 Праздничное меню
                                             </div>
                                         </div>
@@ -1204,7 +1232,7 @@
                 
                                                     <div class="event-builder-contact">
                                                         <div>
-                                                            <div class="party-editor__title">Способ получения:</div>
+                                                            <div class="party-editor__group__title">Способ получения:</div>
                                                             
                                                             <div class="event-builder-contact-price">
                                                                 <div class="event-builder-contact-price__item">
@@ -1223,7 +1251,7 @@
                                                         </div>
                                                         <div class="party-editor__sep"></div>
                                                         <div>
-                                                            <div class="party-editor__title">1. Доставка</div>
+                                                            <div class="party-editor__group__title">1. Доставка</div>
                                                             
                                                             <div class="event-builder-contact-price">
                                                                 <div class="event-builder-contact-price__item">
@@ -1247,7 +1275,7 @@
                                                             </div>
                                                         </div>
                                                         <div>
-                                                            <div class="party-editor__title">2. Адрес доставки праздника</div>
+                                                            <div class="party-editor__group__title">2. Адрес доставки праздника</div>
                                                             <div class="party-editor__form__row">
                                                                 <div class="party-editor__form__col party-editor__form__col--sm-12">
                                                                     <label class="party-editor__form__label" for="holiday-builder-street">Улица: <span class="c-obligatory-field">*</span></label>
@@ -1269,7 +1297,7 @@
 
                                                         </div>
                                                         <div>
-                                                            <div class="party-editor__title">3. Контакты заказчика</div>
+                                                            <div class="party-editor__group__title">3. Контакты заказчика</div>
                                                             <div class="party-editor__form__row">
                                                                 <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-12">
                                                                     <label class="party-editor__form__label" for="holiday-builder-client">Ваше имя: <span class="c-obligatory-field">*</span></label>
@@ -1312,21 +1340,21 @@
                                                                     <div class="event-builder-when-form__item">
                                                                         <div class="event-builder-when-guest">
                                                                             <div class="event-builder-when-guest__item">
-                                                                                <div class="party-editor__title">Сколько будет маленьких гостей?</div>
+                                                                                <div class="party-editor__group__title">Сколько будет маленьких гостей?</div>
                                                                                 <div class="event-builder-when-guest__count">
                                                                                     <input :class="['c-input', {'error': errors.kids_count}]" type="text" name="kids_count" required v-model="state.kidsCount">
                                                                                     <div class="party-editor__form__error" v-if="errors.kids_count">{{ errors.kids_count }}</div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="event-builder-when-guest__item">
-                                                                                <div class="party-editor__title">Возраст от</div>
+                                                                                <div class="party-editor__group__title">Возраст от</div>
                                                                                 <div class="event-builder-when-guest__count">
                                                                                     <input :class="['c-input', {'error': errors.kids_age_from}]" type="text" name="kids_age_from" required v-model="state.kidsAgeFrom">
                                                                                     <div class="party-editor__form__error" v-if="errors.kids_age_from">{{ errors.kids_age_from }}</div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="event-builder-when-guest__item">
-                                                                                <div class="party-editor__title">до</div>
+                                                                                <div class="party-editor__group__title">до</div>
                                                                                 <div class="event-builder-when-guest__count">
                                                                                     <input :class="['c-input', {'error': errors.kids_age_to}]" type="text" name="kids_age_to" required v-model="state.kidsAgeTo">
                                                                                     <div class="party-editor__form__error" v-if="errors.kids_age_to">{{ errors.kids_age_to }}</div>
@@ -1375,7 +1403,7 @@
                                                     <ol>
                                                         <li class="">
                                                             <div class="event-builder-change-card__body" style="display: block">
-                                                                <div class="party-editor__title">ВЫБЕРИТЕ ГЕРОЯ ДЛЯ ПРОВЕДЕНИЯ ПРАЗДНИКА</div>
+                                                                <div class="party-editor__group__title">ВЫБЕРИТЕ ГЕРОЯ ДЛЯ ПРОВЕДЕНИЯ ПРАЗДНИКА</div>
                                                                 <p>Профессиональный актер создаст праздничное настроение в образе любимого героя.</p>
                                                                 <p>В стоимость входит:</p>
                                                                 <p>- Работа одного аниматора на 1 час, для группы детей до 8 человек;</p>
@@ -1476,7 +1504,7 @@
 
                                                         <div class="event-builder-tab-list-block__head">
                                                             <svg class="c-symbol symbol-builder-eat"><use xlink:href="data/include/sprites/top-nav.svg#eat"></use></svg>
-                                                            <div class="party-editor__title">еда и торт</div>
+                                                            <div class="party-editor__group__title">еда и торт</div>
                                                         </div>
                                                     
                                                         <div class="party-editor__result">
@@ -1500,7 +1528,7 @@
                                                     <div class="event-builder-tab-list-block"  v-show="selectedAnimations.length">
                                                         <div class="event-builder-tab-list-block__head">
                                                             <svg class="c-symbol symbol-builder-animation"><use xlink:href="data/include/sprites/top-nav.svg#animation"></use></svg>
-                                                            <div class="party-editor__title">Анимация</div>
+                                                            <div class="party-editor__group__title">Анимация</div>
 
                                                         </div>
                                                         <div class="event-builder-tab-list-block__content">
@@ -1527,7 +1555,7 @@
                                                     <div class="event-builder-tab-list-block">
                                                         <div class="event-builder-tab-list-block__head">
                                                             <svg class="c-symbol symbol-builder-place"><use xlink:href="data/include/sprites/top-nav.svg#place"></use></svg>
-                                                            <div class="party-editor__title">Доставка</div>
+                                                            <div class="party-editor__group__title">Доставка</div>
                                                         </div>
 
                                                         <div class="event-builder-tab-list-block__content" id="delivery-confirm">

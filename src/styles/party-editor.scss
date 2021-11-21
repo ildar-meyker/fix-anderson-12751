@@ -36,91 +36,8 @@
 		white-space: nowrap;
 	}
 
-	&__form {
-		&__label {
-			margin-bottom: 1rem;
-			display: block;
-			font-family: "PT Serif Caption";
-			font-style: italic;
-			font-size: 1.6rem;
-			color: #553023;
-		}
-
-		&__error {
-			margin-top: 5px;
-			color: #b62922;
-		}
-
-		&__row {
-			display: flex;
-			flex-wrap: wrap;
-			margin: 0 -10px;
-		}
-
-		&__col {
-			flex: 0 0 auto;
-			width: 33.33%;
-			margin-bottom: 10px;
-			padding: 0 10px;
-		}
-	}
-
-	&__counter {
-		display: inline-flex;
-		align-items: center;
-		padding: 2px;
-		border-radius: 5px;
-		background: #7cbd41;
-		font-family: "PT Serif Caption";
-		font-size: 18px;
-
-		&.empty {
-			background: lighten(#7cbd41, 25%);
-		}
-
-		input,
-		button {
-			flex: 0 0 auto;
-			border: 0;
-			padding: 0;
-			background: transparent;
-			font-family: inherit;
-			text-align: center;
-			color: #fff;
-		}
-
-		input {
-			width: 1.5em !important;
-			font-size: 1em !important;
-		}
-
-		button {
-			transition: all 0.2s;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 20/23 + em;
-			height: 20/23 + em;
-			border-radius: 50%;
-			font-size: 23/18 + em;
-			cursor: pointer;
-
-			&:hover {
-				background: #6faa3a;
-			}
-		}
-	}
-
-	&__content {
+	&__wrapper {
 		padding: 20px 0 50px 0 !important;
-	}
-
-	&__title {
-		font-family: "SummerFont";
-		font-size: 48px;
-		line-height: 1;
-		text-transform: uppercase;
-		margin-bottom: 6px;
 	}
 
 	&__layout {
@@ -167,6 +84,159 @@
 				padding-bottom: 100%;
 				position: relative;
 				left: 115px;
+			}
+		}
+	}
+
+	&__form {
+		&__label {
+			margin-bottom: 1rem;
+			display: block;
+			font-family: "PT Serif Caption";
+			font-style: italic;
+			font-size: 1.6rem;
+			color: #553023;
+		}
+
+		&__error {
+			margin-top: 5px;
+			color: #b62922;
+		}
+
+		&__row {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 0 -10px;
+		}
+
+		&__col {
+			flex: 0 0 auto;
+			width: 33.33%;
+			margin-bottom: 10px;
+			padding: 0 10px;
+		}
+	}
+
+	&__promo {
+		padding: 100px 55px;
+		margin: 0 1px;
+		background: url(../images/promo.jpeg) no-repeat 50% 50%;
+		background-size: cover;
+
+		&__text {
+			padding: 40px;
+			max-width: 575px;
+			background: rgba(#c44890, 0.9);
+			color: #fff;
+		}
+
+		&__title {
+			font-family: "BebasNeue";
+			font-size: 50px;
+			font-weight: 700;
+			line-height: 1;
+		}
+
+		&__desc {
+			font-size: 18px;
+			line-height: (28/18);
+		}
+	}
+
+	&__about {
+		text-align: center;
+
+		&__text {
+			max-width: 1000px;
+			margin: 0 auto;
+		}
+
+		&__title {
+			font-family: "BebasNeue";
+			font-size: 50px;
+			font-weight: 700;
+			line-height: 1;
+			color: #c44890;
+		}
+
+		&__steps {
+			display: flex;
+			margin: 20px -10px 35px -10px;
+			font-family: "PT Serif Caption";
+
+			&__col {
+				flex: 0 0 auto;
+				width: 20%;
+				padding: 0 10px;
+				display: flex;
+				flex-direction: column;
+			}
+
+			&__step {
+				margin: 0 auto 17px auto;
+				width: 60/25 + em;
+				height: 60/25 + em;
+				border-radius: 50%;
+				border: 1px dashed #555451;
+				font-size: 25px;
+				line-height: (58/25);
+			}
+
+			&__desc {
+				flex-grow: 1;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 16px;
+				font-weight: 700;
+				line-height: (24/16);
+			}
+		}
+
+		&__desc {
+			margin-top: 20px;
+			font-size: 16px;
+			line-height: (24/16);
+		}
+
+		&__btn {
+			margin-top: 25px;
+		}
+	}
+
+	&__group {
+		margin: 30px 0;
+		padding: 30px 40px;
+		border: 1px solid #d1d1d1;
+		border-radius: 2px;
+		box-shadow: 0px 5px 9.2px 0.8px rgba(0, 0, 0, 0.1);
+		background: #fff;
+
+		&--confetti {
+			background: #fff url(../images/confetti.jpeg) no-repeat 50% 100%;
+			margin-bottom: 0;
+		}
+
+		&--mt-0 {
+			margin-top: 0;
+		}
+
+		&__title {
+			font-family: "SummerFont";
+			font-size: 48px;
+			line-height: 1;
+			text-transform: uppercase;
+			margin-bottom: 6px;
+		}
+
+		&__footer {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+
+			> * {
+				margin: 10px 15px;
 			}
 		}
 	}
@@ -343,6 +413,77 @@
 		}
 	}
 
+	&__heroes {
+		&__row {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 0 -10px;
+		}
+
+		&__col {
+			flex: 0 0 auto;
+			width: 300px;
+			padding: 0 10px;
+			margin-top: 20px;
+		}
+
+		&__item {
+			position: relative;
+
+			&:hover {
+				.party-editor__heroes__desc {
+					opacity: 1;
+				}
+			}
+		}
+
+		&__image {
+			background-position: 50% 50%;
+			background-size: cover;
+
+			&:before {
+				content: " ";
+				padding-top: 75%;
+				display: block;
+			}
+		}
+
+		&__desc {
+			transition: all 0.2s;
+			background: rgba(#fff, 0.9);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			padding: 0 10px 25px 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-family: "PT Serif Caption";
+			font-size: 18px;
+			text-align: center;
+			color: #c44890;
+			opacity: 0;
+
+			&__2 {
+				font-size: 14/18 + em;
+			}
+		}
+
+		&__btn {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			padding: 25px;
+
+			> * {
+				display: block !important;
+			}
+		}
+	}
+
 	&__goods {
 		&__image {
 			background-position: 50% 50%;
@@ -432,193 +573,6 @@
 		}
 	}
 
-	&__promo {
-		padding: 100px 55px;
-		margin: 0 1px;
-		background: url(../images/promo.jpeg) no-repeat 50% 50%;
-		background-size: cover;
-
-		&__text {
-			padding: 40px;
-			max-width: 575px;
-			background: rgba(#c44890, 0.9);
-			color: #fff;
-		}
-
-		&__title {
-			font-family: "BebasNeue";
-			font-size: 50px;
-			font-weight: 700;
-			line-height: 1;
-		}
-
-		&__desc {
-			font-size: 18px;
-			line-height: (28/18);
-		}
-	}
-
-	&__group {
-		margin: 30px 0;
-		padding: 30px 40px;
-		border: 1px solid #d1d1d1;
-		border-radius: 2px;
-		box-shadow: 0px 5px 9.2px 0.8px rgba(0, 0, 0, 0.1);
-		background: #fff;
-
-		&--confetti {
-			background: #fff url(../images/confetti.jpeg) no-repeat 50% 100%;
-			margin-bottom: 0;
-		}
-
-		&--mt-0 {
-			margin-top: 0;
-		}
-
-		&__footer {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-wrap: wrap;
-
-			> * {
-				margin: 10px 15px;
-			}
-		}
-	}
-
-	&__about {
-		text-align: center;
-
-		&__text {
-			max-width: 1000px;
-			margin: 0 auto;
-		}
-
-		&__title {
-			font-family: "BebasNeue";
-			font-size: 50px;
-			font-weight: 700;
-			line-height: 1;
-			color: #c44890;
-		}
-
-		&__desc {
-			margin-top: 20px;
-			font-size: 16px;
-			line-height: (24/16);
-		}
-
-		&__btn {
-			margin-top: 25px;
-		}
-	}
-
-	&__steps {
-		display: flex;
-		margin: 20px -10px 35px -10px;
-		font-family: "PT Serif Caption";
-
-		&__col {
-			flex: 0 0 auto;
-			width: 20%;
-			padding: 0 10px;
-			display: flex;
-			flex-direction: column;
-		}
-
-		&__step {
-			margin: 0 auto 17px auto;
-			width: 60/25 + em;
-			height: 60/25 + em;
-			border-radius: 50%;
-			border: 1px dashed #555451;
-			font-size: 25px;
-			line-height: (58/25);
-		}
-
-		&__desc {
-			flex-grow: 1;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-size: 16px;
-			font-weight: 700;
-			line-height: (24/16);
-		}
-	}
-
-	&__heroes {
-		&__row {
-			display: flex;
-			flex-wrap: wrap;
-			margin: 0 -10px;
-		}
-
-		&__col {
-			flex: 0 0 auto;
-			width: 300px;
-			padding: 0 10px;
-			margin-top: 20px;
-		}
-
-		&__item {
-			position: relative;
-
-			&:hover {
-				.party-editor__heroes__desc {
-					opacity: 1;
-				}
-			}
-		}
-
-		&__image {
-			background-position: 50% 50%;
-			background-size: cover;
-
-			&:before {
-				content: " ";
-				padding-top: 75%;
-				display: block;
-			}
-		}
-
-		&__desc {
-			transition: all 0.2s;
-			background: rgba(#fff, 0.9);
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			padding: 0 10px 25px 10px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-family: "PT Serif Caption";
-			font-size: 18px;
-			text-align: center;
-			color: #c44890;
-			opacity: 0;
-
-			&__2 {
-				font-size: 14/18 + em;
-			}
-		}
-
-		&__btn {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			padding: 25px;
-
-			> * {
-				display: block !important;
-			}
-		}
-	}
-
 	&__attn {
 		margin: 10px 0 20px 0;
 		padding: 13px 0;
@@ -628,11 +582,6 @@
 		text-transform: uppercase;
 		text-align: center;
 		color: #fff;
-	}
-
-	&__sep {
-		border-top: 1px dashed #76665c;
-		margin: 10px 0 20px 0;
 	}
 
 	&__result {
@@ -693,6 +642,59 @@
 
 	&__comment {
 		margin-top: 10px;
+	}
+
+	&__tooltip {
+		position: relative;
+		max-width: 220/10 + em;
+		padding: 20px;
+		box-shadow: 0 0 10px rgba(#000, 0.1);
+		background: #fff;
+		font-family: "PT Serif Caption";
+		font-size: 14px;
+
+		&:before {
+			content: " ";
+			width: 20px;
+			height: 20px;
+			background: #fff;
+			transform: rotate(-45deg);
+			transform-origin: 0 0;
+			position: absolute;
+			top: 100%;
+			left: 20px;
+		}
+
+		&__title {
+			display: flex;
+			align-items: center;
+			text-transform: uppercase;
+			font-weight: bold;
+			color: #c44890;
+
+			&--bottom {
+				margin-top: 0.5em;
+			}
+
+			i {
+				width: 2em;
+				line-height: 0;
+
+				svg {
+					fill: #c44890;
+					width: 2em;
+					height: 2em;
+				}
+			}
+
+			span {
+				padding-left: 1em;
+			}
+		}
+
+		&__desc {
+			color: #646464;
+		}
 	}
 
 	&__btn-start {
@@ -774,11 +776,62 @@
 			background: #7bc339;
 		}
 	}
+
+	&__counter {
+		display: inline-flex;
+		align-items: center;
+		padding: 2px;
+		border-radius: 5px;
+		background: #7cbd41;
+		font-family: "PT Serif Caption";
+		font-size: 18px;
+
+		&.empty {
+			background: lighten(#7cbd41, 25%);
+		}
+
+		input,
+		button {
+			flex: 0 0 auto;
+			border: 0;
+			padding: 0;
+			background: transparent;
+			font-family: inherit;
+			text-align: center;
+			color: #fff;
+		}
+
+		input {
+			width: 1.5em !important;
+			font-size: 1em !important;
+		}
+
+		button {
+			transition: all 0.2s;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 20/23 + em;
+			height: 20/23 + em;
+			border-radius: 50%;
+			font-size: 23/18 + em;
+			cursor: pointer;
+
+			&:hover {
+				background: #6faa3a;
+			}
+		}
+	}
+
+	&__sep {
+		border-top: 1px dashed #76665c;
+		margin: 10px 0 20px 0;
+	}
 }
 
 @media (max-width: 1199.98px) {
 	.party-editor {
-		&__content {
+		&__wrapper {
 			padding: 50px 0 !important;
 		}
 
@@ -801,24 +854,15 @@
 			}
 		}
 
-		&__nav-desktop {
-			display: none;
-		}
-
-		&__nav-mobile {
-			&.active {
-				position: static;
-				visibility: visible;
-			}
-		}
-
-		&__steps {
-			flex-wrap: wrap;
-			margin-top: 10px;
-
-			&__col {
-				width: 50%;
+		&__about {
+			&__steps {
+				flex-wrap: wrap;
 				margin-top: 10px;
+
+				&__col {
+					width: 50%;
+					margin-top: 10px;
+				}
 			}
 		}
 
@@ -831,6 +875,17 @@
 			}
 		}
 
+		&__nav-desktop {
+			display: none;
+		}
+
+		&__nav-mobile {
+			&.active {
+				position: static;
+				visibility: visible;
+			}
+		}
+
 		label {
 			display: block;
 		}
@@ -839,8 +894,57 @@
 
 @media (max-width: 767.98px) {
 	.party-editor {
-		&__title {
-			font-size: 40px;
+		&__promo {
+			padding: 30px 15px;
+
+			&__text {
+				max-width: 350px;
+				padding: 15px;
+			}
+
+			&__title {
+				font-size: 26px;
+			}
+
+			&__desc {
+				font-size: 14px;
+			}
+		}
+
+		&__about {
+			&__title {
+				font-size: 26px;
+			}
+
+			&__steps {
+				&__desc {
+					font-size: 11px;
+				}
+			}
+
+			&__text {
+				max-width: 500px;
+			}
+		}
+
+		&__group {
+			padding: 30px 15px;
+
+			&__title {
+				font-size: 40px;
+			}
+
+			&__footer {
+				justify-content: right;
+
+				&--center {
+					justify-content: center;
+				}
+
+				> * {
+					margin: 10px 0;
+				}
+			}
 		}
 
 		&__heroes {
@@ -920,55 +1024,6 @@
 			}
 		}
 
-		&__group {
-			padding: 30px 15px;
-
-			&__footer {
-				justify-content: right;
-
-				&--center {
-					justify-content: center;
-				}
-
-				> * {
-					margin: 10px 0;
-				}
-			}
-		}
-
-		&__promo {
-			padding: 30px 15px;
-
-			&__text {
-				max-width: 350px;
-				padding: 15px;
-			}
-
-			&__title {
-				font-size: 26px;
-			}
-
-			&__desc {
-				font-size: 14px;
-			}
-		}
-
-		&__steps {
-			&__desc {
-				font-size: 11px;
-			}
-		}
-
-		&__about {
-			&__text {
-				max-width: 500px;
-			}
-
-			&__title {
-				font-size: 26px;
-			}
-		}
-
 		&__attn {
 			margin-right: -20px;
 			margin-left: -20px;
@@ -1002,10 +1057,6 @@
 
 @media (min-width: 768px) {
 	.party-editor {
-		&__counter {
-			font-size: 26px;
-		}
-
 		&__result {
 			&__item {
 				display: flex;
@@ -1024,6 +1075,10 @@
 		&__comment {
 			max-width: 680px;
 			margin: 0 auto;
+		}
+
+		&__counter {
+			font-size: 26px;
 		}
 	}
 }
