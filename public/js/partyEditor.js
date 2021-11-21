@@ -199,6 +199,7 @@ $(function () {
         errors: {},
         isPopupOpen: false,
         popupProgram: {},
+        confirmTooltipTimer: null,
         state: {
           currentPage: 1,
           isEditorStarted: false,
@@ -335,9 +336,19 @@ $(function () {
         this.switchToPage(3);
       },
       increaseCount: function increaseCount(product) {
+        if (!this.state.isDataConfirmed) {
+          this.showConfirmTooltip(event);
+          return;
+        }
+
         product.count++;
       },
       decreaseCount: function decreaseCount(product) {
+        if (!this.state.isDataConfirmed) {
+          this.showConfirmTooltip(event);
+          return;
+        }
+
         var newCount = product.count - 1;
         product.count = newCount < 0 ? 0 : newCount;
       },
@@ -349,11 +360,49 @@ $(function () {
         this.isPopupOpen = false;
       },
       toggleAnimation: function toggleAnimation(program, event) {
-        if (!this.isDataConfirmed) {
-          console.log(event);
+        if (!this.state.isDataConfirmed) {
+          this.showConfirmTooltip(event);
+          return;
         }
 
         program.selected = !program.selected;
+      },
+      showConfirmTooltip: function showConfirmTooltip(event) {
+        var _this3 = this;
+
+        clearTimeout(this.confirmTooltipTimer);
+        var $tooltip = $("#party-editor__confirm-tooltip");
+        var tooltipWidth = $tooltip.outerWidth();
+        var windowWidth = $(window).width();
+        var $target = $(event.target);
+        var targetOffset = $target.offset();
+        var targetWidth = $target.outerWidth();
+        var left = targetOffset.left + targetWidth / 2;
+        var top = targetOffset.top;
+        var calcLeft = left - 30;
+        var calcRight = left + tooltipWidth - 30;
+        var fixLeft = 0;
+
+        if (calcLeft < 15) {
+          fixLeft = 15 - calcLeft;
+        }
+
+        if (calcRight > windowWidth - 15) {
+          fixLeft = windowWidth - 15 - calcRight;
+        }
+
+        $tooltip.css({
+          top: top,
+          left: left + fixLeft
+        }).addClass("active").find(".party-editor__tooltip__angle").css({
+          marginLeft: -fixLeft
+        });
+        this.confirmTooltipTimer = setTimeout(function () {
+          _this3.hideConfirmTooltip();
+        }, 5000);
+      },
+      hideConfirmTooltip: function hideConfirmTooltip() {
+        $("#party-editor__confirm-tooltip").removeClass("active");
       },
       scrollToNext: function scrollToNext() {
         var newPageId = this.state.currentPage + 1;
@@ -392,7 +441,7 @@ $(function () {
       }
     },
     beforeMount: function beforeMount() {
-      var _this3 = this;
+      var _this4 = this;
 
       if (Modernizr.localstorage) {
         var storageData = localStorage.getItem("party-editor");
@@ -405,15 +454,15 @@ $(function () {
       var serverData = JSON.parse($("#party-editor-data").text());
       this.animations = serverData.animations;
       this.animations.forEach(function (program) {
-        if (_this3.state.selectedAnimations.includes(program.id)) {
+        if (_this4.state.selectedAnimations.includes(program.id)) {
           program.selected = true;
         }
       });
       this.dishes = serverData.dishes;
       this.dishes.forEach(function (category) {
         category.items.forEach(function (product) {
-          if (product.id in _this3.state.selectedDishes) {
-            product.count = _this3.state.selectedDishes[product.id].count;
+          if (product.id in _this4.state.selectedDishes) {
+            product.count = _this4.state.selectedDishes[product.id].count;
           }
         });
       });

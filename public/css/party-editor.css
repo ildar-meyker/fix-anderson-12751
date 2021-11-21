@@ -5,6 +5,9 @@
 .event-builder-plus__icon {
   text-align: center; }
 
+.mobile-menu-new {
+  z-index: 200; }
+
 .party-editor[v-cloak] {
   display: none; }
 
@@ -25,6 +28,11 @@
 
 .party-editor .nowrap {
   white-space: nowrap; }
+
+.party-editor__center {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 22px; }
 
 .party-editor__wrapper {
   padding: 20px 0 50px 0 !important; }
@@ -465,15 +473,26 @@
   margin-top: 10px; }
 
 .party-editor__tooltip {
-  position: relative;
-  max-width: 22em;
+  transition: opacity 0.2s;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 110;
+  width: 290px;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   background: #fff;
   font-family: "PT Serif Caption";
-  font-size: 14px; }
-  .party-editor__tooltip:before {
-    content: " ";
+  font-size: 14px;
+  -webkit-transform: translate(-30px, -100%);
+          transform: translate(-30px, -100%);
+  margin-top: -20px; }
+  .party-editor__tooltip.active {
+    visibility: visible;
+    opacity: 1; }
+  .party-editor__tooltip__angle {
     width: 20px;
     height: 20px;
     background: #fff;
@@ -713,6 +732,9 @@
     width: calc(100% - 200px); } }
 
 @media (max-width: 767.98px) {
+  .party-editor__center {
+    padding-right: 0;
+    padding-left: 0; }
   .party-editor__promo {
     padding: 30px 15px; }
     .party-editor__promo__text {

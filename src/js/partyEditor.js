@@ -116,6 +116,8 @@ $(function () {
 				isPopupOpen: false,
 				popupProgram: {},
 
+				confirmTooltipTimer: null,
+
 				state: {
 					currentPage: 1,
 					isEditorStarted: false,
@@ -304,10 +306,20 @@ $(function () {
 			},
 
 			increaseCount(product) {
+				if (!this.state.isDataConfirmed) {
+					this.showConfirmTooltip(event);
+					return;
+				}
+
 				product.count++;
 			},
 
 			decreaseCount(product) {
+				if (!this.state.isDataConfirmed) {
+					this.showConfirmTooltip(event);
+					return;
+				}
+
 				const newCount = product.count - 1;
 				product.count = newCount < 0 ? 0 : newCount;
 			},
@@ -322,11 +334,59 @@ $(function () {
 			},
 
 			toggleAnimation(program, event) {
-				if (!this.isDataConfirmed) {
-					console.log(event);
+				if (!this.state.isDataConfirmed) {
+					this.showConfirmTooltip(event);
+					return;
 				}
 
 				program.selected = !program.selected;
+			},
+
+			showConfirmTooltip(event) {
+				clearTimeout(this.confirmTooltipTimer);
+
+				const $tooltip = $("#party-editor__confirm-tooltip");
+				const tooltipWidth = $tooltip.outerWidth();
+				const windowWidth = $(window).width();
+
+				const $target = $(event.target);
+				const targetOffset = $target.offset();
+				const targetWidth = $target.outerWidth();
+
+				let left = targetOffset.left + targetWidth / 2;
+				let top = targetOffset.top;
+
+				const calcLeft = left - 30;
+				const calcRight = left + tooltipWidth - 30;
+
+				let fixLeft = 0;
+
+				if (calcLeft < 15) {
+					fixLeft = 15 - calcLeft;
+				}
+
+				if (calcRight > windowWidth - 15) {
+					fixLeft = windowWidth - 15 - calcRight;
+				}
+
+				$tooltip
+					.css({
+						top: top,
+						left: left + fixLeft,
+					})
+					.addClass("active")
+					.find(".party-editor__tooltip__angle")
+					.css({
+						marginLeft: -fixLeft,
+					});
+
+				this.confirmTooltipTimer = setTimeout(() => {
+					this.hideConfirmTooltip();
+				}, 5000);
+			},
+
+			hideConfirmTooltip() {
+				$("#party-editor__confirm-tooltip").removeClass("active");
 			},
 
 			scrollToNext() {
