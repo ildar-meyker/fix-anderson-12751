@@ -196,12 +196,15 @@ $(function () {
     el: "#party-editor",
     data: function data() {
       return {
+        errors: {},
         state: {
           currentPage: 1,
           isEditorStarted: false,
           isEditingEnabled: false,
+          isDataConfirmed: false,
           kidsCount: 1,
-          kidsAge: "",
+          kidsAgeFrom: "",
+          kidsAgeTo: "",
           deliveryStreetName: "",
           deliveryBuildingNumber: "",
           deliveryFlatNumber: "",
@@ -273,6 +276,10 @@ $(function () {
     watch: {
       state: {
         handler: function handler(state) {
+          if (Object.keys(this.errors).length) {
+            this.validate();
+          }
+
           if (Modernizr.localstorage) {
             localStorage.setItem("party-editor", JSON.stringify(state));
           }
@@ -298,17 +305,32 @@ $(function () {
           this.state.selectedDishes = dishes;
         },
         deep: true
-      },
-      "state.kidsAge": function stateKidsAge(newValue) {}
+      }
     },
     methods: {
       startEditor: function startEditor() {
         this.state.isEditorStarted = true;
-        this.switchToPage(2, true);
+        this.switchToPage(2);
       },
       enableEditing: function enableEditing() {
         this.state.isEditingEnabled = true;
-        this.switchToPage(3, true);
+        this.switchToPage(3);
+      },
+      validate: function validate() {
+        this.errors = {};
+        var self = this;
+        $("#party-editor input[required]").each(function () {
+          if ($(this).val().trim() === "") {
+            self.errors[$(this).attr("name")] = "Поле не заполнено";
+          }
+        });
+      },
+      confirmData: function confirmData() {
+        this.validate();
+        if (Object.keys(this.errors).length) return;
+        this.state.isEditingEnabled = true;
+        this.state.isDataConfirmed = true;
+        this.switchToPage(3);
       },
       increaseCount: function increaseCount(product) {
         product.count++;
@@ -316,6 +338,13 @@ $(function () {
       decreaseCount: function decreaseCount(product) {
         var newCount = product.count - 1;
         product.count = newCount < 0 ? 0 : newCount;
+      },
+      toggleAnimation: function toggleAnimation(program, event) {
+        if (!this.isDataConfirmed) {
+          console.log(event);
+        }
+
+        program.selected = !program.selected;
       },
       scrollToPage: function scrollToPage(pageId) {
         PartyEditor.scrollTop($("#party-editor__page-" + pageId).offset().top);

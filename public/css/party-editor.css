@@ -15,9 +15,16 @@
   font-size: 1.5rem !important;
   font-style: italic;
   color: #3a3a3a; }
+  .party-editor .c-input.error {
+    box-shadow: none;
+    border-color: #b62922;
+    background-image: none; }
 
 .party-editor .text-center {
   text-align: center !important; }
+
+.party-editor .nowrap {
+  white-space: nowrap; }
 
 .party-editor__form__label {
   margin-bottom: 1rem;
@@ -26,6 +33,10 @@
   font-style: italic;
   font-size: 1.6rem;
   color: #553023; }
+
+.party-editor__form__error {
+  margin-top: 5px;
+  color: #b62922; }
 
 .party-editor__form__row {
   display: flex;
@@ -588,7 +599,9 @@
     border: 0;
     box-shadow: none; }
     .party-editor__group:first-child {
-      margin-top: 0; } }
+      margin-top: 0; }
+  .party-editor label {
+    display: block; } }
 
 @media (max-width: 767.98px) {
   .party-editor__title {
