@@ -130,6 +130,8 @@ var PartyEditor = {
     _$pages: $(),
     _handleWindowScroll: function _handleWindowScroll(e) {
       this._calcCurrentPage();
+
+      PartyEditor.Vue.hideConfirmTooltip();
     },
     _handleWindowResize: function _handleWindowResize(e) {
       this._calcCurrentPage();
@@ -355,9 +357,11 @@ $(function () {
       openProgramInPopup: function openProgramInPopup(program) {
         this.popupProgram = program;
         this.isPopupOpen = true;
+        this.hideConfirmTooltip();
       },
       closePopup: function closePopup() {
         this.isPopupOpen = false;
+        this.hideConfirmTooltip();
       },
       toggleAnimation: function toggleAnimation(program, event) {
         if (!this.state.isDataConfirmed) {

@@ -456,7 +456,7 @@
 
 			&:before {
 				content: " ";
-				padding-top: 75%;
+				padding-top: 100%;
 				display: block;
 			}
 		}
@@ -664,7 +664,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		z-index: 110;
+		z-index: 1100;
 		width: 290px;
 		padding: 20px;
 		box-shadow: 0 5px 10px rgba(#000, 0.2);
@@ -725,7 +725,7 @@
 	&__popup {
 		display: none;
 		position: fixed;
-		z-index: 999999;
+		z-index: 1000;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -1114,12 +1114,6 @@
 				margin-top: 12px;
 				padding: 0 6px;
 			}
-
-			&__image {
-				&:before {
-					padding-top: 100%;
-				}
-			}
 		}
 
 		&__goods {
@@ -1294,6 +1288,18 @@
 		&__center {
 			max-width: 1560px;
 			padding: 0;
+		}
+
+		&__heroes {
+			&__col {
+				width: 25%;
+			}
+		}
+
+		&__goods {
+			&__col {
+				width: 25%;
+			}
 		}
 
 		&__form {

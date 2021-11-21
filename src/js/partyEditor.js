@@ -27,6 +27,7 @@ const PartyEditor = {
 
 		_handleWindowScroll(e) {
 			this._calcCurrentPage();
+			PartyEditor.Vue.hideConfirmTooltip();
 		},
 
 		_handleWindowResize(e) {
@@ -327,10 +328,12 @@ $(function () {
 			openProgramInPopup(program) {
 				this.popupProgram = program;
 				this.isPopupOpen = true;
+				this.hideConfirmTooltip();
 			},
 
 			closePopup() {
 				this.isPopupOpen = false;
+				this.hideConfirmTooltip();
 			},
 
 			toggleAnimation(program, event) {

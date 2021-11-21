@@ -320,7 +320,7 @@
   background-size: cover; }
   .party-editor__heroes__image:before {
     content: " ";
-    padding-top: 75%;
+    padding-top: 100%;
     display: block; }
 
 .party-editor__heroes__desc {
@@ -479,7 +479,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 110;
+  z-index: 1100;
   width: 290px;
   padding: 20px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -526,7 +526,7 @@
 .party-editor__popup {
   display: none;
   position: fixed;
-  z-index: 999999;
+  z-index: 1000;
   top: 0;
   left: 0;
   width: 100%;
@@ -774,8 +774,6 @@
     .party-editor__heroes__col {
       margin-top: 12px;
       padding: 0 6px; }
-    .party-editor__heroes__image:before {
-      padding-top: 100%; }
   .party-editor__goods__title {
     margin-bottom: 15px;
     font-size: 40px; }
@@ -862,5 +860,9 @@
   .party-editor__center {
     max-width: 1560px;
     padding: 0; }
+  .party-editor__heroes__col {
+    width: 25%; }
+  .party-editor__goods__col {
+    width: 25%; }
   .party-editor__form__col--lg-3 {
     width: 25%; } }
