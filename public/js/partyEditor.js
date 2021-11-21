@@ -106,6 +106,21 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 var PartyEditor = {
+  _$tooltips: $(),
+  _isTooltipWasOpen: false,
+  _handleWindowScroll: function _handleWindowScroll(e) {
+    this.closeAllTooltips();
+  },
+  closeAllTooltips: function closeAllTooltips() {
+    if (!this._isTooltipWasOpen) return;
+
+    this._$tooltips.removeClass("active");
+
+    this._isTooltipWasOpen = false;
+  },
+  setTooltipWasOpen: function setTooltipWasOpen() {
+    this._isTooltipWasOpen = true;
+  },
   NavMobile: {
     _$slider: $(),
     switchToSlide: function switchToSlide(index) {
@@ -130,8 +145,6 @@ var PartyEditor = {
     _$pages: $(),
     _handleWindowScroll: function _handleWindowScroll(e) {
       this._calcCurrentPage();
-
-      PartyEditor.Vue.hideConfirmTooltip();
     },
     _handleWindowResize: function _handleWindowResize(e) {
       this._calcCurrentPage();
@@ -181,16 +194,18 @@ var PartyEditor = {
       $(window).on("resize", $.throttle(250, this._handleWindowResize.bind(this)));
     }
   },
-  initStickyTotal: function initStickyTotal() {
-    new Sticksy(".js-party-editor-sticky-total", {
-      topSpacing: 20,
-      listen: true
-    });
-  },
   scrollTop: function scrollTop(offset) {
     $("html, body").animate({
       scrollTop: offset
     });
+  },
+  init: function init() {
+    this._$tooltips = $(".party-editor__tooltip");
+    new Sticksy(".js-party-editor-sticky-total", {
+      topSpacing: 20,
+      listen: true
+    });
+    $(window).on("scroll", $.throttle(250, this._handleWindowScroll.bind(this)));
   }
 };
 $(function () {
@@ -201,7 +216,7 @@ $(function () {
         errors: {},
         isPopupOpen: false,
         popupProgram: {},
-        confirmTooltipTimer: null,
+        tooltipTimers: {},
         state: {
           currentPage: 1,
           isEditorStarted: false,
@@ -330,24 +345,33 @@ $(function () {
           }
         });
       },
-      confirmData: function confirmData() {
+      confirmData: function confirmData(event) {
+        var _this3 = this;
+
         this.validate();
-        if (Object.keys(this.errors).length) return;
+
+        if (Object.keys(this.errors).length) {
+          setTimeout(function () {
+            _this3.showTooltip("#party-editor__errors-tooltip", event);
+          }, 100);
+          return;
+        }
+
         this.state.isEditingEnabled = true;
         this.state.isDataConfirmed = true;
         this.switchToPage(3);
       },
-      increaseCount: function increaseCount(product) {
+      increaseCount: function increaseCount(product, event) {
         if (!this.state.isDataConfirmed) {
-          this.showConfirmTooltip(event);
+          this.showTooltip("#party-editor__confirm-tooltip", event);
           return;
         }
 
         product.count++;
       },
-      decreaseCount: function decreaseCount(product) {
+      decreaseCount: function decreaseCount(product, event) {
         if (!this.state.isDataConfirmed) {
-          this.showConfirmTooltip(event);
+          this.showTooltip("#party-editor__confirm-tooltip", event);
           return;
         }
 
@@ -357,25 +381,25 @@ $(function () {
       openProgramInPopup: function openProgramInPopup(program) {
         this.popupProgram = program;
         this.isPopupOpen = true;
-        this.hideConfirmTooltip();
+        this.hideTooltip("#party-editor__confirm-tooltip");
       },
       closePopup: function closePopup() {
         this.isPopupOpen = false;
-        this.hideConfirmTooltip();
+        this.hideTooltip("#party-editor__confirm-tooltip");
       },
       toggleAnimation: function toggleAnimation(program, event) {
         if (!this.state.isDataConfirmed) {
-          this.showConfirmTooltip(event);
+          this.showTooltip("#party-editor__confirm-tooltip", event);
           return;
         }
 
         program.selected = !program.selected;
       },
-      showConfirmTooltip: function showConfirmTooltip(event) {
-        var _this3 = this;
+      showTooltip: function showTooltip(selector, event) {
+        var _this4 = this;
 
-        clearTimeout(this.confirmTooltipTimer);
-        var $tooltip = $("#party-editor__confirm-tooltip");
+        clearTimeout(this.tooltipTimers[selector]);
+        var $tooltip = $(selector);
         var tooltipWidth = $tooltip.outerWidth();
         var windowWidth = $(window).width();
         var $target = $(event.target);
@@ -401,12 +425,13 @@ $(function () {
         }).addClass("active").find(".party-editor__tooltip__angle").css({
           marginLeft: -fixLeft
         });
-        this.confirmTooltipTimer = setTimeout(function () {
-          _this3.hideConfirmTooltip();
+        PartyEditor.setTooltipWasOpen();
+        this.tooltipTimers[selector] = setTimeout(function () {
+          _this4.hideTooltip(selector);
         }, 5000);
       },
-      hideConfirmTooltip: function hideConfirmTooltip() {
-        $("#party-editor__confirm-tooltip").removeClass("active");
+      hideTooltip: function hideTooltip(selector) {
+        $(selector).removeClass("active");
       },
       scrollToNext: function scrollToNext() {
         var newPageId = this.state.currentPage + 1;
@@ -445,7 +470,7 @@ $(function () {
       }
     },
     beforeMount: function beforeMount() {
-      var _this4 = this;
+      var _this5 = this;
 
       if (Modernizr.localstorage) {
         var storageData = localStorage.getItem("party-editor");
@@ -458,15 +483,15 @@ $(function () {
       var serverData = JSON.parse($("#party-editor-data").text());
       this.animations = serverData.animations;
       this.animations.forEach(function (program) {
-        if (_this4.state.selectedAnimations.includes(program.id)) {
+        if (_this5.state.selectedAnimations.includes(program.id)) {
           program.selected = true;
         }
       });
       this.dishes = serverData.dishes;
       this.dishes.forEach(function (category) {
         category.items.forEach(function (product) {
-          if (product.id in _this4.state.selectedDishes) {
-            product.count = _this4.state.selectedDishes[product.id].count;
+          if (product.id in _this5.state.selectedDishes) {
+            product.count = _this5.state.selectedDishes[product.id].count;
           }
         });
       });
@@ -474,7 +499,7 @@ $(function () {
     mounted: function mounted() {
       PartyEditor.NavMobile.init(this.state.currentPage - 2);
       PartyEditor.NavDesktop.init();
-      PartyEditor.initStickyTotal();
+      PartyEditor.init();
     }
   });
 });

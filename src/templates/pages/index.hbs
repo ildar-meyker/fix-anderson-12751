@@ -864,6 +864,21 @@
                     <div class="party-editor__tooltip__angle"></div>
                 </aside>
 
+                <aside id="party-editor__errors-tooltip" class="party-editor__tooltip">
+                    <div class="party-editor__tooltip__desc">
+                        Проверьте, пожалуйста, заполненные поля. 
+                    </div>
+                    <div class="party-editor__tooltip__title party-editor__tooltip__title--bottom">
+                        <i>
+                            <svg class="icon">
+                                <use xlink:href="images/party-editor/sprite-icons/sprite.svg#bubble-checked"></use>
+                            </svg>
+                        </i>
+                        <span>Исправьте ошибки</span>
+                    </div>
+                    <div class="party-editor__tooltip__angle"></div>
+                </aside>
+
                 <!--'end_frame_cache_breadcrumb'-->
                 <!--event-builder-->
                 <div class="holiday-builder">
@@ -1394,7 +1409,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="party-editor__group__footer party-editor__group__footer--center">
-                                                        <a href="#" class="party-editor__btn-apply" @click.prevent="confirmData()"  v-show="!state.isDataConfirmed">
+                                                        <a href="#" class="party-editor__btn-apply" @click.prevent="confirmData($event)"  v-show="!state.isDataConfirmed">
                                                             Подтвердить данные и собрать праздник!
                                                         </a>
                                                         <a href="#" class="party-editor__btn-apply" @click.prevent="enableEditing()"  v-show="!state.isEditingEnabled">
@@ -1480,9 +1495,9 @@
                                                                                 <div class="party-editor__goods__price">\{{ formatPrice(product.price) }}</div>
                                                                                 <div class="party-editor__goods__counter">
                                                                                     <div :class="['party-editor__counter', {'empty': category.items[index].count == 0}]">
-                                                                                        <button type="button" @click="decreaseCount(category.items[index])">&minus;</button>
+                                                                                        <button type="button" @click="decreaseCount(category.items[index], $event)">&minus;</button>
                                                                                         <input type="text" v-model="category.items[index].count">
-                                                                                        <button type="button" @click="increaseCount(category.items[index])">&plus;</button>
+                                                                                        <button type="button" @click="increaseCount(category.items[index], $event)">&plus;</button>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

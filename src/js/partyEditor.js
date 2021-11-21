@@ -1,4 +1,23 @@
 const PartyEditor = {
+	_$tooltips: $(),
+
+	_isTooltipWasOpen: false,
+
+	_handleWindowScroll(e) {
+		this.closeAllTooltips();
+	},
+
+	closeAllTooltips() {
+		if (!this._isTooltipWasOpen) return;
+
+		this._$tooltips.removeClass("active");
+		this._isTooltipWasOpen = false;
+	},
+
+	setTooltipWasOpen() {
+		this._isTooltipWasOpen = true;
+	},
+
 	NavMobile: {
 		_$slider: $(),
 
@@ -27,7 +46,6 @@ const PartyEditor = {
 
 		_handleWindowScroll(e) {
 			this._calcCurrentPage();
-			PartyEditor.Vue.hideConfirmTooltip();
 		},
 
 		_handleWindowResize(e) {
@@ -92,17 +110,24 @@ const PartyEditor = {
 		},
 	},
 
-	initStickyTotal() {
-		new Sticksy(".js-party-editor-sticky-total", {
-			topSpacing: 20,
-			listen: true,
-		});
-	},
-
 	scrollTop(offset) {
 		$("html, body").animate({
 			scrollTop: offset,
 		});
+	},
+
+	init() {
+		this._$tooltips = $(".party-editor__tooltip");
+
+		new Sticksy(".js-party-editor-sticky-total", {
+			topSpacing: 20,
+			listen: true,
+		});
+
+		$(window).on(
+			"scroll",
+			$.throttle(250, this._handleWindowScroll.bind(this))
+		);
 	},
 };
 
@@ -117,7 +142,7 @@ $(function () {
 				isPopupOpen: false,
 				popupProgram: {},
 
-				confirmTooltipTimer: null,
+				tooltipTimers: {},
 
 				state: {
 					currentPage: 1,
@@ -295,10 +320,18 @@ $(function () {
 				});
 			},
 
-			confirmData() {
+			confirmData(event) {
 				this.validate();
 
-				if (Object.keys(this.errors).length) return;
+				if (Object.keys(this.errors).length) {
+					setTimeout(() => {
+						this.showTooltip(
+							"#party-editor__errors-tooltip",
+							event
+						);
+					}, 100);
+					return;
+				}
 
 				this.state.isEditingEnabled = true;
 				this.state.isDataConfirmed = true;
@@ -306,18 +339,18 @@ $(function () {
 				this.switchToPage(3);
 			},
 
-			increaseCount(product) {
+			increaseCount(product, event) {
 				if (!this.state.isDataConfirmed) {
-					this.showConfirmTooltip(event);
+					this.showTooltip("#party-editor__confirm-tooltip", event);
 					return;
 				}
 
 				product.count++;
 			},
 
-			decreaseCount(product) {
+			decreaseCount(product, event) {
 				if (!this.state.isDataConfirmed) {
-					this.showConfirmTooltip(event);
+					this.showTooltip("#party-editor__confirm-tooltip", event);
 					return;
 				}
 
@@ -328,27 +361,27 @@ $(function () {
 			openProgramInPopup(program) {
 				this.popupProgram = program;
 				this.isPopupOpen = true;
-				this.hideConfirmTooltip();
+				this.hideTooltip("#party-editor__confirm-tooltip");
 			},
 
 			closePopup() {
 				this.isPopupOpen = false;
-				this.hideConfirmTooltip();
+				this.hideTooltip("#party-editor__confirm-tooltip");
 			},
 
 			toggleAnimation(program, event) {
 				if (!this.state.isDataConfirmed) {
-					this.showConfirmTooltip(event);
+					this.showTooltip("#party-editor__confirm-tooltip", event);
 					return;
 				}
 
 				program.selected = !program.selected;
 			},
 
-			showConfirmTooltip(event) {
-				clearTimeout(this.confirmTooltipTimer);
+			showTooltip(selector, event) {
+				clearTimeout(this.tooltipTimers[selector]);
 
-				const $tooltip = $("#party-editor__confirm-tooltip");
+				const $tooltip = $(selector);
 				const tooltipWidth = $tooltip.outerWidth();
 				const windowWidth = $(window).width();
 
@@ -383,13 +416,15 @@ $(function () {
 						marginLeft: -fixLeft,
 					});
 
-				this.confirmTooltipTimer = setTimeout(() => {
-					this.hideConfirmTooltip();
+				PartyEditor.setTooltipWasOpen();
+
+				this.tooltipTimers[selector] = setTimeout(() => {
+					this.hideTooltip(selector);
 				}, 5000);
 			},
 
-			hideConfirmTooltip() {
-				$("#party-editor__confirm-tooltip").removeClass("active");
+			hideTooltip(selector) {
+				$(selector).removeClass("active");
 			},
 
 			scrollToNext() {
@@ -471,7 +506,7 @@ $(function () {
 		mounted() {
 			PartyEditor.NavMobile.init(this.state.currentPage - 2);
 			PartyEditor.NavDesktop.init();
-			PartyEditor.initStickyTotal();
+			PartyEditor.init();
 		},
 	});
 });
