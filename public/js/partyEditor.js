@@ -121,79 +121,6 @@ var PartyEditor = {
   setTooltipWasOpen: function setTooltipWasOpen() {
     this._isTooltipWasOpen = true;
   },
-  NavMobile: {
-    _$slider: $(),
-    switchToSlide: function switchToSlide(index) {
-      this._$slider.slick("slickGoTo", index);
-    },
-    init: function init(index) {
-      this._$slider = $("#party-editor__nav-mobile__slider");
-
-      this._$slider.slick({
-        initialSlide: index,
-        centerMode: true,
-        variableWidth: true,
-        infinite: false,
-        arrows: false,
-        draggable: false,
-        touchMove: false,
-        swipe: false
-      });
-    }
-  },
-  NavDesktop: {
-    _$pages: $(),
-    _handleWindowScroll: function _handleWindowScroll(e) {
-      this._calcCurrentPage();
-    },
-    _handleWindowResize: function _handleWindowResize(e) {
-      this._calcCurrentPage();
-    },
-    _calcCurrentPage: function _calcCurrentPage() {
-      var _this = this;
-
-      if (window.matchMedia("(max-width: 1199.98px)").matches) return;
-      var pagesVisiblity = [];
-
-      this._$pages.each(function (index, element) {
-        pagesVisiblity.push(_this._percentWithinViewport($(element)));
-      });
-
-      var indexOfMaxVisible = pagesVisiblity.reduce(function (iMax, x, i, arr) {
-        return x > arr[iMax] ? i : iMax;
-      }, 0);
-      PartyEditor.Vue.switchToPage(indexOfMaxVisible + 1);
-    },
-    _percentWithinViewport: function _percentWithinViewport($element) {
-      var elementTop = $element.offset().top;
-      var scrollTop = $(window).scrollTop();
-      var spaceTop = elementTop - scrollTop;
-      var elementHeight = $element.height();
-      var screenHeight = $(window).height();
-      var scrollBottom = scrollTop + screenHeight;
-      var bottomElement = elementTop + $element.height();
-      var spaceBottom = bottomElement - scrollBottom;
-      var heightInScreen = elementHeight - spaceBottom;
-      var percentage;
-
-      if (spaceTop < 0) {
-        heightInScreen -= spaceTop * -1;
-      }
-
-      if (spaceBottom < 0) {
-        heightInScreen -= spaceBottom * -1;
-      }
-
-      percentage = heightInScreen / screenHeight * 100;
-      percentage = percentage < 0 ? 0 : percentage;
-      return percentage;
-    },
-    init: function init() {
-      this._$pages = $(".party-editor__page");
-      $(window).on("scroll", $.throttle(250, this._handleWindowScroll.bind(this)));
-      $(window).on("resize", $.throttle(250, this._handleWindowResize.bind(this)));
-    }
-  },
   scrollTop: function scrollTop(offset) {
     $("html, body").animate({
       scrollTop: offset
@@ -206,6 +133,98 @@ var PartyEditor = {
       listen: true
     });
     $(window).on("scroll", $.throttle(250, this._handleWindowScroll.bind(this)));
+  }
+};
+PartyEditor.NavMobile = {
+  _$slider: $(),
+  switchToSlide: function switchToSlide(index) {
+    this._$slider.slick("slickGoTo", index);
+  },
+  init: function init(index) {
+    this._$slider = $("#party-editor__nav-mobile__slider");
+
+    this._$slider.slick({
+      initialSlide: index,
+      centerMode: true,
+      variableWidth: true,
+      infinite: false,
+      arrows: false,
+      draggable: false,
+      touchMove: false,
+      swipe: false
+    });
+  }
+};
+PartyEditor.NavDesktop = {
+  _$pages: $(),
+  _handleWindowScroll: function _handleWindowScroll(e) {
+    this._calcCurrentPage();
+  },
+  _handleWindowResize: function _handleWindowResize(e) {
+    this._calcCurrentPage();
+  },
+  _calcCurrentPage: function _calcCurrentPage() {
+    var _this = this;
+
+    if (window.matchMedia("(max-width: 1199.98px)").matches) return;
+    var pagesVisiblity = [];
+
+    this._$pages.each(function (index, element) {
+      pagesVisiblity.push(_this._percentWithinViewport($(element)));
+    });
+
+    var indexOfMaxVisible = pagesVisiblity.reduce(function (iMax, x, i, arr) {
+      return x > arr[iMax] ? i : iMax;
+    }, 0);
+    PartyEditor.Vue.switchToPage(indexOfMaxVisible + 1);
+  },
+  _percentWithinViewport: function _percentWithinViewport($element) {
+    var elementTop = $element.offset().top;
+    var scrollTop = $(window).scrollTop();
+    var spaceTop = elementTop - scrollTop;
+    var elementHeight = $element.height();
+    var screenHeight = $(window).height();
+    var scrollBottom = scrollTop + screenHeight;
+    var bottomElement = elementTop + $element.height();
+    var spaceBottom = bottomElement - scrollBottom;
+    var heightInScreen = elementHeight - spaceBottom;
+    var percentage;
+
+    if (spaceTop < 0) {
+      heightInScreen -= spaceTop * -1;
+    }
+
+    if (spaceBottom < 0) {
+      heightInScreen -= spaceBottom * -1;
+    }
+
+    percentage = heightInScreen / screenHeight * 100;
+    percentage = percentage < 0 ? 0 : percentage;
+    return percentage;
+  },
+  init: function init() {
+    this._$pages = $(".party-editor__page");
+    $(window).on("scroll", $.throttle(250, this._handleWindowScroll.bind(this)));
+    $(window).on("resize", $.throttle(250, this._handleWindowResize.bind(this)));
+  }
+};
+PartyEditor.Calendar = {
+  _handleDropdownButton: function _handleDropdownButton(e) {
+    e.preventDefault();
+    this.toggleDropdown();
+  },
+  openDropdown: function openDropdown() {
+    $("#party-editor__clndr__dropdown").addClass("active");
+  },
+  closeDropdown: function closeDropdown() {
+    $("#party-editor__clndr__dropdown").removeClass("active");
+  },
+  toggleDropdown: function toggleDropdown() {
+    var $dropdown = $("#party-editor__clndr__dropdown");
+    $dropdown.toggleClass("active", !$dropdown.hasClass("active"));
+  },
+  init: function init() {
+    $(document).on("click", ".party-editor__clndr__dropdown__button", this._handleDropdownButton.bind(this));
   }
 };
 $(function () {
@@ -340,7 +359,7 @@ $(function () {
       validate: function validate() {
         this.errors = {};
         var self = this;
-        $("#party-editor input[required]").each(function () {
+        $("#party-editor input[required]:visible").each(function () {
           if ($(this).val().trim() === "") {
             self.errors[$(this).attr("name")] = "Поле не заполнено";
           }
@@ -500,6 +519,7 @@ $(function () {
     mounted: function mounted() {
       PartyEditor.NavMobile.init(this.state.currentPage - 2);
       PartyEditor.NavDesktop.init();
+      PartyEditor.Calendar.init();
       PartyEditor.init();
     }
   });

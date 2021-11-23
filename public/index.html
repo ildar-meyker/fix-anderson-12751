@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="https://opt-1183421.ssl.1c-bitrix-cdn.ru/bitrix/cache/css/s2/anderson_new_design/template_b65ca62fb329b09a5e1b287bd5f5f1c6/template_b65ca62fb329b09a5e1b287bd5f5f1c6_v1.css?16372497092130856" />
     <link rel="stylesheet" href="https://cafe-anderson.ru/local/templates/anderson_new_design/css/slick.css" />
     <link rel="stylesheet" href="https://cafe-anderson.ru/local/templates/anderson_new_design/css/slick-theme.css" />
+    <link rel="stylesheet" href="https://cafe-anderson.ru/local/templates/anderson_new_design/css/sumoselect.css">
     <link rel="stylesheet" href="https://cafe-anderson.ru/local/templates/anderson_new_design/css/index.css?r=9b93432722f8f5a5d147c7c1ca4f865c" />
+    <link rel="stylesheet" href="https://cafe-anderson.ru/local/templates/anderson_new_design/css/simplebar.css">
     <link rel="stylesheet" href="css/party-editor.css">
 
 </head>
@@ -1253,7 +1255,7 @@
                                         <div id="party-editor__page-2"  :class="['party-editor__page', {active: state.currentPage === 2}]">
                                             <div class="party-editor__group party-editor__group--mt-0">
 
-                                                <form action="" method="POST">
+                                                <form action="#" method="POST">
                 
                                                     <div class="event-builder-contact">
                                                         <div>
@@ -1352,123 +1354,70 @@
                                                         </div>
 
                                                         <div v-show="state.selectedGettingWay == 1">
-                                                            <div class="holiday-space-list">
-                                                                <div class="holiday">
-                                                                    <div class="holiday-space">
-                                                                        <div class="loft-booking loft-booking__nopad">
-                                                                            <div class="holiday-space-list">
-                                                                                <div class="loft-booking loft-booking__nopad">
-                                                                                    <div class="loft-booking__body">
-                                                                                        <div class="calendar">
-                                                                                            <div class="calendar-title">
-                                                                                                <div class="calendar-selector_wrapper">
-                                                                                                    <div class="calendar-title__wrapper">
-                                                                                                        <div class="calendar-title__caption">Для того, чтобы забронировать зал, выберите кафе</div>
-                                                                                                        <div class="calendar-title__control">
-                                                                                                            <svg class="c-symbol symbol-narrow-down">
-                                                                                                                <use xlink:href="/data/include/sprites/some.svg#symbol-narrow-down"/>
-                                                                                                            </svg>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div id="hsl-addr-selector" class="calendar-selector calendar-selector_hidden">
-                                                                                                        <div class="calendar-selector__head"></div>
-                                                                                                        <div class="calendar-selector__body">
-                                                                                                            <div class="calendar-selector__control">
-                                                                                                                <input type="text" name="calendar-selector__address" class="calendar-selector__input" autocomplete="off" placeholder="Все">
-                                                                                                            </div>
-                                                                                                            <ul class="calendar-selector__list">
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="388">АндерСон «Пятая Авеню» на Маршала Бирюзова</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="379">АндерСон Братиславская</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="165560">АндерСон Бутово</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="61959">АндерСон в Воронеже</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="375">АндерСон в ЖК Каскад на набережной Туполева</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="121735">АндерСон в Краснодаре</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="408">АндерСон в Московском</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="414">АндерСон в Тюмени</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="162341">АндерСон Воронцовский парк</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="403">АндерСон Гагаринский</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="162342">АндерСон Галерея Аэропорт</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="372">АндерСон Гиляровского</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="131807">АндерСон Домодедово</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="87426">АндерСон Донской Олимп</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="396">АндерСон ЖК Шуваловский</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="61949">АндерСон Жулебино ТЦ «Динамит»</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="393">АндерСон Королев</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="387">АндерСон Красносельская</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="411">АндерСон Крылатское</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="166031">АндерСон Кунцево Плаза</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="402">АндерСон Медведково</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="56079">АндерСон Митино ТРЦ «Ладья»</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="84817">АндерСон на Большой Семеновской</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="395">АндерСон на Даче. ВДНХ.</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="400">АндерСон на Кусковской</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="85784">АндерСон на Льва Толстого</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="85786">АндерСон на Маршала Жукова</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="386">АндерСон на Обручева</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="376">АндерСон Островитянова</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="412">АндерСон парк Царицыно</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="151517">АндерСон Пушкино</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="371">АндерСон Сокол</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="120806">АндерСон Таганская улица 36</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="390">АндерСон Таганский парк</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="158190">АндерСон ТРК «FORT ЯСЕНЕВО»</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="162343">АндерСон ТЦ Калужский</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="134309">Андерсон Фили Град</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="381">АндерСон Формула Кино в ТРЦ «Фестиваль»</a>
-                                                                                                                </li>
-                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="85785">Вилла АндерСон</a>
-                                                                                                                </li>
-                                                                                                            </ul>
-                                                                                                        </div>
-                                                                                                        <div class="calendar-selector__footer"></div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
+                                                            <aside class="party-editor__clndr">
+                                                                <div class="party-editor__clndr__header">
+                                                                    <div class="party-editor__clndr__dropdown" id="party-editor__clndr__dropdown">
+                                                                        <button class="party-editor__clndr__dropdown__button">
+                                                                            <span>Для того, чтобы забронировать зал, выберите кафе</span>
+                                                                            <svg>
+                                                                                <use xlink:href="data/include/sprites/some.svg#symbol-narrow-down"></use>
+                                                                            </svg>
+                                                                        </button>
+                                                                        <div class="party-editor__clndr__dropdown__panel">
+                                                                            <button class="party-editor__clndr__dropdown__button">
+                                                                                <span>Для того, чтобы забронировать зал, выберите кафе</span>
+                                                                                <svg>
+                                                                                    <use xlink:href="data/include/sprites/some.svg#symbol-narrow-down"></use>
+                                                                                </svg>
+                                                                            </button>
+                                                                            <div class="party-editor__clndr__dropdown__filter">
+                                                                                <input type="text" placeholder="Все">
+                                                                            </div>
+                                                                            <div class="party-editor__clndr__dropdown__list" data-simplebar>
+                                                                                <div><a href="#">АндерСон «Пятая Авеню» на Маршала Бирюзова</a></div> 
+                                                                                <div><a href="#">АндерСон Братиславская</a></div> 
+                                                                                <div><a href="#">АндерСон Бутово</a></div> 
+                                                                                <div><a href="#">АндерСон в Воронеже</a></div> 
+                                                                                <div><a href="#">АндерСон в ЖК Каскад на набережной Туполева</a></div> 
+                                                                                <div><a href="#">АндерСон в Краснодаре</a></div> 
+                                                                                <div><a href="#">АндерСон в Московском</a></div> 
+                                                                                <div><a href="#">АндерСон в Тюмени</a></div> 
+                                                                                <div><a href="#">АндерСон Воронцовский парк</a></div> 
+                                                                                <div><a href="#">АндерСон Гагаринский</a></div> 
+                                                                                <div><a href="#">АндерСон Галерея Аэропорт</a></div> 
+                                                                                <div><a href="#">АндерСон Гиляровского</a></div> 
+                                                                                <div><a href="#">АндерСон Домодедово</a></div> 
+                                                                                <div><a href="#">АндерСон Донской Олимп</a></div> 
+                                                                                <div><a href="#">АндерСон ЖК Шуваловский</a></div> 
+                                                                                <div><a href="#">АндерСон Жулебино ТЦ «Динамит»</a></div> 
+                                                                                <div><a href="#">АндерСон Королев</a></div> 
+                                                                                <div><a href="#">АндерСон Красносельская</a></div> 
+                                                                                <div><a href="#">АндерСон Крылатское</a></div> 
+                                                                                <div><a href="#">АндерСон Кунцево Плаза</a></div> 
+                                                                                <div><a href="#">АндерСон Медведково</a></div> 
+                                                                                <div><a href="#">АндерСон Митино ТРЦ «Ладья»</a></div> 
+                                                                                <div><a href="#">АндерСон на Большой Семеновской</a></div> 
+                                                                                <div><a href="#">АндерСон на Даче. ВДНХ.</a></div> 
+                                                                                <div><a href="#">АндерСон на Кусковской</a></div> 
+                                                                                <div><a href="#">АндерСон на Льва Толстого</a></div> 
+                                                                                <div><a href="#">АндерСон на Маршала Жукова</a></div> 
+                                                                                <div><a href="#">АндерСон на Обручева</a></div> 
+                                                                                <div><a href="#">АндерСон Островитянова</a></div> 
+                                                                                <div><a href="#">АндерСон парк Царицыно</a></div> 
+                                                                                <div><a href="#">АндерСон Пушкино</a></div> 
+                                                                                <div><a href="#">АндерСон Сокол</a></div> 
+                                                                                <div><a href="#">АндерСон Таганская улица 36</a></div> 
+                                                                                <div><a href="#">АндерСон Таганский парк</a></div> 
+                                                                                <div><a href="#">АндерСон ТРК «FORT ЯСЕНЕВО»</a></div> 
+                                                                                <div><a href="#">АндерСон ТЦ Калужский</a></div> 
+                                                                                <div><a href="#">Андерсон Фили Град</a></div> 
+                                                                                <div><a href="#">АндерСон Формула Кино в ТРЦ «Фестиваль»</a></div> 
+                                                                                <div><a href="#">Вилла АндерСон</a></div> 
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </aside>
                                                         </div>
 
                                                     </div>
@@ -1640,7 +1589,7 @@
                                         </div>
                                         <div id="party-editor__page-5"  :class="['party-editor__page', {active: state.currentPage === 5}, {locked: !state.isEditingEnabled}]">
                                             <div class="party-editor__group party-editor__group--confetti">
-                                                <form action="" method="POST">
+                                                <form action="#" method="POST">
                                             
                                                     <div class="party-editor__attn">
                                                         пожалуйста, проверьте ваш заказ:
@@ -1986,7 +1935,7 @@
 
                     <div class="footer-col__left-item">
                         <div class="subscribe-form" id="subscribe-form">
-                            <form action="" class="subscribe-form" method="POST">
+                            <form action="#" class="subscribe-form" method="POST">
                                 <div class="footer-search">
                                     <input class="footer-search__input" type="text" placeholder="Ваш email" name="EMAIL" value="">
                                     <button class="footer-search__btn subscribe__btn" data-action="add" data-id="">Подписаться</button>
@@ -2333,11 +2282,15 @@
     <div class="cd-top"></div>
  
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script> 
-    <script src="https://cafe-anderson.ru/local/templates/anderson_new_design/js/scripts/slick.js?r=b5eb17de1358bee70307f0abfe3858d2"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-throttle-debounce@1.0.0/jquery.ba-throttle-debounce.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sticksy@0.2.0/dist/sticksy.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="js/partyEditor.js"></script>
+
+    <script src="https://cafe-anderson.ru/local/templates/anderson_new_design/js/scripts/simplebar.js?r=b004fc11169323f6816552e6b7eb0296"></script>
+    <script src="https://cafe-anderson.ru/local/templates/anderson_new_design/js/scripts/slick.js?r=b5eb17de1358bee70307f0abfe3858d2"></script>
+    <script src="https://cafe-anderson.ru/local/templates/anderson_new_design/js/scripts/owl.carousel.js?r=909d47bd6bd2ebe46aef6c3efb7ee76a"></script>
+    <script src="https://cafe-anderson.ru/local/templates/anderson_new_design/js/scripts/jquery.sumoselect.js?r=f247f6afe42f112ead1114952073d7fa"></script>
  
 </body>
 

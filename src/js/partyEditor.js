@@ -18,98 +18,6 @@ const PartyEditor = {
 		this._isTooltipWasOpen = true;
 	},
 
-	NavMobile: {
-		_$slider: $(),
-
-		switchToSlide(index) {
-			this._$slider.slick("slickGoTo", index);
-		},
-
-		init(index) {
-			this._$slider = $("#party-editor__nav-mobile__slider");
-
-			this._$slider.slick({
-				initialSlide: index,
-				centerMode: true,
-				variableWidth: true,
-				infinite: false,
-				arrows: false,
-				draggable: false,
-				touchMove: false,
-				swipe: false,
-			});
-		},
-	},
-
-	NavDesktop: {
-		_$pages: $(),
-
-		_handleWindowScroll(e) {
-			this._calcCurrentPage();
-		},
-
-		_handleWindowResize(e) {
-			this._calcCurrentPage();
-		},
-
-		_calcCurrentPage() {
-			if (window.matchMedia("(max-width: 1199.98px)").matches) return;
-
-			const pagesVisiblity = [];
-
-			this._$pages.each((index, element) => {
-				pagesVisiblity.push(this._percentWithinViewport($(element)));
-			});
-
-			const indexOfMaxVisible = pagesVisiblity.reduce(
-				(iMax, x, i, arr) => (x > arr[iMax] ? i : iMax),
-				0
-			);
-
-			PartyEditor.Vue.switchToPage(indexOfMaxVisible + 1);
-		},
-
-		_percentWithinViewport($element) {
-			const elementTop = $element.offset().top;
-			const scrollTop = $(window).scrollTop();
-			const spaceTop = elementTop - scrollTop;
-			const elementHeight = $element.height();
-			const screenHeight = $(window).height();
-			const scrollBottom = scrollTop + screenHeight;
-			const bottomElement = elementTop + $element.height();
-			const spaceBottom = bottomElement - scrollBottom;
-			let heightInScreen = elementHeight - spaceBottom;
-			let percentage;
-
-			if (spaceTop < 0) {
-				heightInScreen -= spaceTop * -1;
-			}
-
-			if (spaceBottom < 0) {
-				heightInScreen -= spaceBottom * -1;
-			}
-
-			percentage = (heightInScreen / screenHeight) * 100;
-			percentage = percentage < 0 ? 0 : percentage;
-
-			return percentage;
-		},
-
-		init() {
-			this._$pages = $(".party-editor__page");
-
-			$(window).on(
-				"scroll",
-				$.throttle(250, this._handleWindowScroll.bind(this))
-			);
-
-			$(window).on(
-				"resize",
-				$.throttle(250, this._handleWindowResize.bind(this))
-			);
-		},
-	},
-
 	scrollTop(offset) {
 		$("html, body").animate({
 			scrollTop: offset,
@@ -127,6 +35,127 @@ const PartyEditor = {
 		$(window).on(
 			"scroll",
 			$.throttle(250, this._handleWindowScroll.bind(this))
+		);
+	},
+};
+
+PartyEditor.NavMobile = {
+	_$slider: $(),
+
+	switchToSlide(index) {
+		this._$slider.slick("slickGoTo", index);
+	},
+
+	init(index) {
+		this._$slider = $("#party-editor__nav-mobile__slider");
+
+		this._$slider.slick({
+			initialSlide: index,
+			centerMode: true,
+			variableWidth: true,
+			infinite: false,
+			arrows: false,
+			draggable: false,
+			touchMove: false,
+			swipe: false,
+		});
+	},
+};
+
+PartyEditor.NavDesktop = {
+	_$pages: $(),
+
+	_handleWindowScroll(e) {
+		this._calcCurrentPage();
+	},
+
+	_handleWindowResize(e) {
+		this._calcCurrentPage();
+	},
+
+	_calcCurrentPage() {
+		if (window.matchMedia("(max-width: 1199.98px)").matches) return;
+
+		const pagesVisiblity = [];
+
+		this._$pages.each((index, element) => {
+			pagesVisiblity.push(this._percentWithinViewport($(element)));
+		});
+
+		const indexOfMaxVisible = pagesVisiblity.reduce(
+			(iMax, x, i, arr) => (x > arr[iMax] ? i : iMax),
+			0
+		);
+
+		PartyEditor.Vue.switchToPage(indexOfMaxVisible + 1);
+	},
+
+	_percentWithinViewport($element) {
+		const elementTop = $element.offset().top;
+		const scrollTop = $(window).scrollTop();
+		const spaceTop = elementTop - scrollTop;
+		const elementHeight = $element.height();
+		const screenHeight = $(window).height();
+		const scrollBottom = scrollTop + screenHeight;
+		const bottomElement = elementTop + $element.height();
+		const spaceBottom = bottomElement - scrollBottom;
+		let heightInScreen = elementHeight - spaceBottom;
+		let percentage;
+
+		if (spaceTop < 0) {
+			heightInScreen -= spaceTop * -1;
+		}
+
+		if (spaceBottom < 0) {
+			heightInScreen -= spaceBottom * -1;
+		}
+
+		percentage = (heightInScreen / screenHeight) * 100;
+		percentage = percentage < 0 ? 0 : percentage;
+
+		return percentage;
+	},
+
+	init() {
+		this._$pages = $(".party-editor__page");
+
+		$(window).on(
+			"scroll",
+			$.throttle(250, this._handleWindowScroll.bind(this))
+		);
+
+		$(window).on(
+			"resize",
+			$.throttle(250, this._handleWindowResize.bind(this))
+		);
+	},
+};
+
+PartyEditor.Calendar = {
+	_handleDropdownButton(e) {
+		e.preventDefault();
+
+		this.toggleDropdown();
+	},
+
+	openDropdown() {
+		$("#party-editor__clndr__dropdown").addClass("active");
+	},
+
+	closeDropdown() {
+		$("#party-editor__clndr__dropdown").removeClass("active");
+	},
+
+	toggleDropdown() {
+		const $dropdown = $("#party-editor__clndr__dropdown");
+		$dropdown.toggleClass("active", !$dropdown.hasClass("active"));
+	},
+
+	init() {
+		$(document).on(
+			"click",
+			".party-editor__clndr__dropdown__button",
+			this._handleDropdownButton.bind(this)
 		);
 	},
 };
@@ -314,7 +343,7 @@ $(function () {
 
 				const self = this;
 
-				$("#party-editor input[required]").each(function () {
+				$("#party-editor input[required]:visible").each(function () {
 					if ($(this).val().trim() === "") {
 						self.errors[$(this).attr("name")] = "Поле не заполнено";
 					}
@@ -507,6 +536,7 @@ $(function () {
 		mounted() {
 			PartyEditor.NavMobile.init(this.state.currentPage - 2);
 			PartyEditor.NavDesktop.init();
+			PartyEditor.Calendar.init();
 			PartyEditor.init();
 		},
 	});
