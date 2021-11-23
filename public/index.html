@@ -490,12 +490,10 @@
                             <!--'start_frame_cache_auth_data'-->
                             <div class="header-2020-cabinet js-header-cabinet">
                                 <svg class="c-symbol symbol-cabinet" id="to-personal">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                 xlink:href="data/include/sprites/all.svg#symbol-cabinet"></use>
-                        </svg>
-
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        xlink:href="data/include/sprites/all.svg#symbol-cabinet"></use>
+                                </svg>
                                 <a href="" class="header-2020-cabinet__text">Войти</a>
-
                             </div>
                             <!--'end_frame_cache_auth_data'-->
                         </div>
@@ -1162,7 +1160,7 @@
                             }
                         </script>
 
-                        <div id="party-editor" class="party-editor"  v-cloak>
+                        <div id="party-editor" class="party-editor" v-cloak>
 
                             <div id="party-editor__page-1" :class="['party-editor__page', {active: state.currentPage === 1}]">
                                 <div class="party-editor__promo">
@@ -1250,7 +1248,7 @@
                             <div class="party-editor__layout">
                                 <div class="party-editor__layout__left">
                                     
-                                    <div id="party-editor__groups">
+                                    <div>
                                         
                                         <div id="party-editor__page-2"  :class="['party-editor__page', {active: state.currentPage === 2}]">
                                             <div class="party-editor__group party-editor__group--mt-0">
@@ -1264,14 +1262,14 @@
                                                             <div class="event-builder-contact-price">
                                                                 <div class="event-builder-contact-price__item">
                                                                     <div class="c-radio-custom-2">
-                                                                        <input id="gettingWay1" type="radio" name="gettingWay" value="0" v-model="state.selectedGettingWay">
-                                                                        <label for="gettingWay1">Доставка</label>
+                                                                        <input id="party-editor__radio-gettingWay1" type="radio" name="gettingWay" value="0" v-model="state.selectedGettingWay">
+                                                                        <label for="party-editor__radio-gettingWay1">Доставка</label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="event-builder-contact-price__item">
                                                                     <div class="c-radio-custom-2">
-                                                                        <input id="gettingWay2" type="radio" name="gettingWay" value="1" v-model="state.selectedGettingWay">
-                                                                        <label for="gettingWay2">Забронировать заказ</label>
+                                                                        <input id="party-editor__radio-gettingWay2" type="radio" name="gettingWay" value="1" v-model="state.selectedGettingWay">
+                                                                        <label for="party-editor__radio-gettingWay2">Забронировать заказ</label>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1285,20 +1283,20 @@
                                                                 <div class="event-builder-contact-price">
                                                                     <div class="event-builder-contact-price__item">
                                                                         <div class="c-radio-custom-2">
-                                                                            <input id="deliveryWay1" type="radio" name="deliveryWay" value="0" v-model="state.selectedDeliveryWay">
-                                                                            <label for="deliveryWay1">До МКАД - <b class="nowrap">2000 ₽</b></label>
+                                                                            <input id="party-editor__radio-deliveryWay1" type="radio" name="deliveryWay" value="0" v-model="state.selectedDeliveryWay">
+                                                                            <label for="party-editor__radio-deliveryWay1">До МКАД - <b class="nowrap">2000 ₽</b></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="event-builder-contact-price__item">
                                                                         <div class="c-radio-custom-2">
-                                                                            <input id="deliveryWay2" type="radio" name="deliveryWay" value="1" v-model="state.selectedDeliveryWay">
-                                                                            <label for="deliveryWay2">От 5 км. от МКАД - <b class="nowrap">3000 ₽</b></label>
+                                                                            <input id="party-editor__radio-deliveryWay2" type="radio" name="deliveryWay" value="1" v-model="state.selectedDeliveryWay">
+                                                                            <label for="party-editor__radio-deliveryWay2">От 5 км. от МКАД - <b class="nowrap">3000 ₽</b></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="event-builder-contact-price__item">
                                                                         <div class="c-radio-custom-2">
-                                                                            <input id="deliveryWay3" type="radio" name="deliveryWay" value="2" v-model="state.selectedDeliveryWay">
-                                                                            <label for="deliveryWay3">До 35 км. от МКАД - <b class="nowrap">5000 ₽</b></label>
+                                                                            <input id="party-editor__radio-deliveryWay3" type="radio" name="deliveryWay" value="2" v-model="state.selectedDeliveryWay">
+                                                                            <label for="party-editor__radio-deliveryWay3">До 35 км. от МКАД - <b class="nowrap">5000 ₽</b></label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1307,19 +1305,19 @@
                                                                 <div class="party-editor__group__title">2. Адрес доставки праздника</div>
                                                                 <div class="party-editor__form__row">
                                                                     <div class="party-editor__form__col party-editor__form__col--sm-12">
-                                                                        <label class="party-editor__form__label" for="holiday-builder-street">Улица: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.street}]" type="text" id="holiday-builder-street" required="" placeholder="Улица" name="street" v-model="state.deliveryStreetName">
+                                                                        <label class="party-editor__form__label">Улица: <span class="c-obligatory-field">*</span></label>
+                                                                        <input :class="['c-input', {'error': errors.street}]" type="text" required="" placeholder="Улица" name="street" v-model="state.deliveryStreetName">
                                                                         <div class="party-editor__form__error" v-if="errors.street">{{ errors.street }}</div>
                                                                     </div>
                                                                     <div class="party-editor__form__col party-editor__form__col--sm-6">
-                                                                        <label class="party-editor__form__label" for="holiday-builder-house">Дом: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.house}]" type="text" id="holiday-builder-house" required="" placeholder="Дом" name="house" v-model="state.deliveryBuildingNumber">
+                                                                        <label class="party-editor__form__label">Дом: <span class="c-obligatory-field">*</span></label>
+                                                                        <input :class="['c-input', {'error': errors.house}]" type="text" required="" placeholder="Дом" name="house" v-model="state.deliveryBuildingNumber">
                                                                         <div class="party-editor__form__error" v-if="errors.house">{{ errors.house }}</div>
 
                                                                     </div>
                                                                     <div class="party-editor__form__col party-editor__form__col--sm-6">
-                                                                        <label class="party-editor__form__label" for="holiday-builder-apartment">Квартира: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.flat}]" type="text" id="holiday-builder-apartment" required="" placeholder="Квартира" name="flat" v-model="state.deliveryFlatNumber">
+                                                                        <label class="party-editor__form__label">Квартира: <span class="c-obligatory-field">*</span></label>
+                                                                        <input :class="['c-input', {'error': errors.flat}]" type="text" required="" placeholder="Квартира" name="flat" v-model="state.deliveryFlatNumber">
                                                                         <div class="party-editor__form__error" v-if="errors.flat">{{ errors.flat }}</div>
                                                                     </div>
                                                                 </div>
@@ -1329,23 +1327,23 @@
                                                                 <div class="party-editor__group__title">3. Контакты заказчика</div>
                                                                 <div class="party-editor__form__row">
                                                                     <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-12">
-                                                                        <label class="party-editor__form__label" for="holiday-builder-client">Ваше имя: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.user_name}]" type="text" id="holiday-builder-client" required="" placeholder="Ваше имя" name="user_name" v-model="state.clientName">
+                                                                        <label class="party-editor__form__label">Ваше имя: <span class="c-obligatory-field">*</span></label>
+                                                                        <input :class="['c-input', {'error': errors.user_name}]" type="text" required="" placeholder="Ваше имя" name="user_name" v-model="state.clientName">
                                                                         <div class="party-editor__form__error" v-if="errors.user_name">{{ errors.user_name }}</div>
                                                                     </div>
                                                                     <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-12">
-                                                                        <label class="party-editor__form__label" for="holiday-builder-child">Имя ребенка: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.child_name}]" type="text" id="holiday-builder-child" required="" placeholder="Имя ребенка" name="child_name" v-model="state.clientKidName">
+                                                                        <label class="party-editor__form__label">Имя ребенка: <span class="c-obligatory-field">*</span></label>
+                                                                        <input :class="['c-input', {'error': errors.child_name}]" type="text" required="" placeholder="Имя ребенка" name="child_name" v-model="state.clientKidName">
                                                                         <div class="party-editor__form__error" v-if="errors.child_name">{{ errors.child_name }}</div>
                                                                     </div>
                                                                     <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-6">
-                                                                        <label class="party-editor__form__label" for="holiday-builder-email">E-mail: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.email}]" type="text" id="holiday-builder-email" required="" placeholder="...@..." name="email" v-model="state.clientEmail">
+                                                                        <label class="party-editor__form__label">E-mail: <span class="c-obligatory-field">*</span></label>
+                                                                        <input :class="['c-input', {'error': errors.email}]" type="text" required="" placeholder="...@..." name="email" v-model="state.clientEmail">
                                                                         <div class="party-editor__form__error" v-if="errors.email">{{ errors.email }}</div>
                                                                     </div>
                                                                     <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-6">
-                                                                        <label class="party-editor__form__label" for="holiday-builder-phone">Телефон: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', 'js-input--tel', {'error': errors.phone}]" type="text" id="holiday-builder-phone" required="" placeholder="+7 () -  -" maxlength="15" name="phone" v-model="state.clientPhone">
+                                                                        <label class="party-editor__form__label">Телефон: <span class="c-obligatory-field">*</span></label>
+                                                                        <input :class="['c-input', 'js-input--tel', {'error': errors.phone}]" type="text" required="" placeholder="+7 () -  -" maxlength="15" name="phone" v-model="state.clientPhone">
                                                                         <div class="party-editor__form__error" v-if="errors.phone">{{ errors.phone }}</div>
                                                                     </div>
                                                                 </div>
@@ -1354,7 +1352,123 @@
                                                         </div>
 
                                                         <div v-show="state.selectedGettingWay == 1">
-                                                            
+                                                            <div class="holiday-space-list">
+                                                                <div class="holiday">
+                                                                    <div class="holiday-space">
+                                                                        <div class="loft-booking loft-booking__nopad">
+                                                                            <div class="holiday-space-list">
+                                                                                <div class="loft-booking loft-booking__nopad">
+                                                                                    <div class="loft-booking__body">
+                                                                                        <div class="calendar">
+                                                                                            <div class="calendar-title">
+                                                                                                <div class="calendar-selector_wrapper">
+                                                                                                    <div class="calendar-title__wrapper">
+                                                                                                        <div class="calendar-title__caption">Для того, чтобы забронировать зал, выберите кафе</div>
+                                                                                                        <div class="calendar-title__control">
+                                                                                                            <svg class="c-symbol symbol-narrow-down">
+                                                                                                                <use xlink:href="/data/include/sprites/some.svg#symbol-narrow-down"/>
+                                                                                                            </svg>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div id="hsl-addr-selector" class="calendar-selector calendar-selector_hidden">
+                                                                                                        <div class="calendar-selector__head"></div>
+                                                                                                        <div class="calendar-selector__body">
+                                                                                                            <div class="calendar-selector__control">
+                                                                                                                <input type="text" name="calendar-selector__address" class="calendar-selector__input" autocomplete="off" placeholder="Все">
+                                                                                                            </div>
+                                                                                                            <ul class="calendar-selector__list">
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="388">АндерСон «Пятая Авеню» на Маршала Бирюзова</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="379">АндерСон Братиславская</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="165560">АндерСон Бутово</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="61959">АндерСон в Воронеже</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="375">АндерСон в ЖК Каскад на набережной Туполева</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="121735">АндерСон в Краснодаре</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="408">АндерСон в Московском</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="414">АндерСон в Тюмени</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="162341">АндерСон Воронцовский парк</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="403">АндерСон Гагаринский</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="162342">АндерСон Галерея Аэропорт</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="372">АндерСон Гиляровского</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="131807">АндерСон Домодедово</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="87426">АндерСон Донской Олимп</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="396">АндерСон ЖК Шуваловский</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="61949">АндерСон Жулебино ТЦ «Динамит»</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="393">АндерСон Королев</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="387">АндерСон Красносельская</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="411">АндерСон Крылатское</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="166031">АндерСон Кунцево Плаза</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="402">АндерСон Медведково</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="56079">АндерСон Митино ТРЦ «Ладья»</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="84817">АндерСон на Большой Семеновской</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="395">АндерСон на Даче. ВДНХ.</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="400">АндерСон на Кусковской</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="85784">АндерСон на Льва Толстого</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="85786">АндерСон на Маршала Жукова</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="386">АндерСон на Обручева</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="376">АндерСон Островитянова</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="412">АндерСон парк Царицыно</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="151517">АндерСон Пушкино</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="371">АндерСон Сокол</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="120806">АндерСон Таганская улица 36</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="390">АндерСон Таганский парк</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="158190">АндерСон ТРК «FORT ЯСЕНЕВО»</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="162343">АндерСон ТЦ Калужский</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="134309">Андерсон Фили Град</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="381">АндерСон Формула Кино в ТРЦ «Фестиваль»</a>
+                                                                                                                </li>
+                                                                                                                <li class="calendar-selector__item"><a href="#" data-cafe="85785">Вилла АндерСон</a>
+                                                                                                                </li>
+                                                                                                            </ul>
+                                                                                                        </div>
+                                                                                                        <div class="calendar-selector__footer"></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -1611,8 +1725,8 @@
                                             
                                                         <div class="party-editor__comment">
 
-                                                            <label class="party-editor__form__label text-center" for="event-builder-comment">Вы можете добавить комментарий к своему заказу:</label>
-                                                            <textarea class="event-builder-input__textarea" id="event-builder-comment" v-model="state.comment"></textarea>
+                                                            <label class="party-editor__form__label text-center">Вы можете добавить комментарий к своему заказу:</label>
+                                                            <textarea class="event-builder-input__textarea" v-model="state.comment"></textarea>
 
                                                             <div class="event-builder-summary">
                                                                 <span class="event-builder-icon__summary"></span>
@@ -1624,8 +1738,8 @@
                                                                 <div class="c-personal-data">
                                                                     <div class="c-personal-data__item">
                                                                         <label data-bx-user-consent="{&quot;id&quot;:1,&quot;sec&quot;:&quot;ois5kl&quot;,&quot;autoSave&quot;:true,&quot;actionUrl&quot;:&quot;\/bitrix\/components\/bitrix\/main.userconsent.request\/ajax.php&quot;,&quot;replace&quot;:{&quot;button_caption&quot;:&quot;\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f!&quot;,&quot;fields&quot;:[&quot;Email&quot;,&quot;\u0422\u0435\u043b\u0435\u0444\u043e\u043d&quot;,&quot;\u0418\u043c\u044f&quot;,&quot;IP-\u0430\u0434\u0440\u0435\u0441&quot;]},&quot;url&quot;:null}" class="main-user-consent-request">
-                                                                            <input type="checkbox" name="regulations" id="regulations" value="Y" >
-                                                                            <label class="c-checkbox" for="regulations"><a>С условиями</a> предоставления услуги ознакомлен.</label>
+                                                                            <input type="checkbox" name="party-editor__checkbox-aggree">
+                                                                            <label class="c-checkbox" for="party-editor__checkbox-aggree"><a>С условиями</a> предоставления услуги ознакомлен.</label>
                                                                         </label>
 
                                                                         <div type="text/html" data-bx-template="main-user-consent-request-loader" style="display: none">
@@ -1724,20 +1838,8 @@
                                                     <div class="event-builder-check__hr"></div>
 
                                                     <div class="event-builder-check-result">
-
                                                         <div class="event-builder-check-result__text">ИТОГО:</div>
                                                         <div class="event-builder-check-result__price">{{ formatPrice(totalPrice) }}</div>
-                                                    </div>
-
-                                                    <div class="promocode__block">
-                                                        <div class="input">
-                                                            <input type="text" class="c-input" placeholder="Промокод">
-                                                            <a href="javascript:void(0)" id="set_coupon" class="c-button c-button__default btn-in_input">
-                                                                <svg id="symbol-arr-right" viewBox="0 0 10 17.8">
-                                                                    <path d="M8.17,5.39,4.13.81C2.65-.85-.11,1.24,1.37,2.92L4.45,6.4,6,8.15c.15.17.41.4.64.64-.35.33-.78.65-1,.87-.63.64-1.26,1.28-1.86,1.94a24.15,24.15,0,0,0-3,4.08C-.35,17.6,2.86,18.94,4,17a22.77,22.77,0,0,1,3.27-4.09c1-1,2.83-2.26,3.17-3.71S9.08,6.41,8.17,5.39" transform="translate(-0.54 -0.2)"></path>
-                                                                </svg>
-                                                            </a>
-                                                        </div>
                                                     </div>
 
                                                     <div v-show="state.isEditingEnabled">
