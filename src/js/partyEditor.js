@@ -163,6 +163,7 @@ $(function () {
 					clientEmail: "",
 					clientPhone: "",
 
+					selectedGettingWay: 0,
 					selectedDeliveryWay: 0,
 					selectedAnimations: [],
 					selectedDishes: {},
