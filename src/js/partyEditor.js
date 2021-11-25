@@ -1,3 +1,5 @@
+import Notify from "./modules/Notify";
+
 const PartyEditor = {
 	_$tooltips: $(),
 
@@ -138,6 +140,60 @@ PartyEditor.Calendar = {
 		this.toggleDropdown();
 	},
 
+	_handleOutsideClick(e) {
+		if (!$(e.target).closest(".party-editor__clndr__dropdown").length) {
+			this.closeDropdown();
+		}
+	},
+
+	_handleInputKeyup(e) {
+		const $input = $(e.currentTarget).find("input");
+		const inputValue = $input.val().trim().toLowerCase();
+
+		$("#party-editor__clndr__dropdown__list a").each(function () {
+			const itemText = $(this).text().trim().toLowerCase();
+			if (itemText.indexOf(inputValue) === -1) {
+				$(this).hide();
+			} else {
+				$(this).show();
+			}
+		});
+	},
+
+	_handleDropdownItem(e) {
+		e.preventDefault();
+
+		const cafeId = $(e.currentTarget).data("cafe");
+		const url = $("#party-editor__clndr").data("url") + "?cafeId=" + cafeId;
+
+		this.showLoader();
+		this.closeDropdown();
+
+		$.get(url)
+			.done((data) => {
+				$("#party-editor__clndr__body").html(data);
+			})
+			.fail((xhr) => {
+				console.log(error);
+				Notify.error(`GET: ${url}, ${xhr.status}, ${xhr.statusText}`);
+			})
+			.always(() => {
+				this.hideLoader();
+			});
+	},
+
+	_handleLoaderClick(e) {
+		e.stopPropagation();
+	},
+
+	showLoader() {
+		$("#party-editor__clndr__loader").addClass("active");
+	},
+
+	hideLoader() {
+		$("#party-editor__clndr__loader").removeClass("active");
+	},
+
 	openDropdown() {
 		$("#party-editor__clndr__dropdown").addClass("active");
 	},
@@ -157,6 +213,25 @@ PartyEditor.Calendar = {
 			".party-editor__clndr__dropdown__button",
 			this._handleDropdownButton.bind(this)
 		);
+
+		$(document).on(
+			"keyup",
+			".party-editor__clndr__dropdown__filter",
+			$.debounce(250, this._handleInputKeyup.bind(this))
+		);
+
+		$(document).on(
+			"click",
+			".party-editor__clndr__dropdown__list a",
+			this._handleDropdownItem.bind(this)
+		);
+
+		$(".party-editor__clndr__loader").on(
+			"click",
+			this._handleLoaderClick.bind(this)
+		);
+
+		$(document).on("click", this._handleOutsideClick.bind(this));
 	},
 };
 

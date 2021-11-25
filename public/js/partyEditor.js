@@ -86,13 +86,58 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/modules/Notify.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/Notify.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Notify = {
+  _counter: 0,
+  _handleItemClick: function _handleItemClick(e) {
+    e.preventDefault();
+    $(e.currentTarget).remove();
+  },
+  _notify: function _notify(message, colorType) {
+    var uniqueId = ++this._counter;
+    $('<div id="notify-' + uniqueId + '" class="notify__item notify__item--' + colorType + '">' + message + "</div>").prependTo($("#notify"));
+    setTimeout(function () {
+      $("#notify-" + uniqueId).remove();
+    }, 8000);
+  },
+  error: function error(message) {
+    this._notify(message, "error");
+  },
+  warning: function warning(message) {
+    this._notify(message, "warning");
+  },
+  success: function success(message) {
+    this._notify(message, "success");
+  },
+  init: function init() {
+    $(document).on("click", ".notify__item", this._handleItemClick.bind(this));
+  }
+};
+$(function () {
+  Notify.init();
+});
+/* harmony default export */ __webpack_exports__["default"] = (Notify);
+
+/***/ }),
+
 /***/ "./src/js/partyEditor.js":
 /*!*******************************!*\
   !*** ./src/js/partyEditor.js ***!
   \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modules_Notify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Notify */ "./src/js/modules/Notify.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -104,6 +149,7 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 var PartyEditor = {
   _$tooltips: $(),
@@ -213,6 +259,50 @@ PartyEditor.Calendar = {
     e.preventDefault();
     this.toggleDropdown();
   },
+  _handleOutsideClick: function _handleOutsideClick(e) {
+    if (!$(e.target).closest(".party-editor__clndr__dropdown").length) {
+      this.closeDropdown();
+    }
+  },
+  _handleInputKeyup: function _handleInputKeyup(e) {
+    var $input = $(e.currentTarget).find("input");
+    var inputValue = $input.val().trim().toLowerCase();
+    $("#party-editor__clndr__dropdown__list a").each(function () {
+      var itemText = $(this).text().trim().toLowerCase();
+
+      if (itemText.indexOf(inputValue) === -1) {
+        $(this).hide();
+      } else {
+        $(this).show();
+      }
+    });
+  },
+  _handleDropdownItem: function _handleDropdownItem(e) {
+    var _this2 = this;
+
+    e.preventDefault();
+    var cafeId = $(e.currentTarget).data("cafe");
+    var url = $("#party-editor__clndr").data("url") + "?cafeId=" + cafeId;
+    this.showLoader();
+    this.closeDropdown();
+    $.get(url).done(function (data) {
+      $("#party-editor__clndr__body").html(data);
+    }).fail(function (xhr) {
+      console.log(error);
+      _modules_Notify__WEBPACK_IMPORTED_MODULE_0__["default"].error("GET: ".concat(url, ", ").concat(xhr.status, ", ").concat(xhr.statusText));
+    }).always(function () {
+      _this2.hideLoader();
+    });
+  },
+  _handleLoaderClick: function _handleLoaderClick(e) {
+    e.stopPropagation();
+  },
+  showLoader: function showLoader() {
+    $("#party-editor__clndr__loader").addClass("active");
+  },
+  hideLoader: function hideLoader() {
+    $("#party-editor__clndr__loader").removeClass("active");
+  },
   openDropdown: function openDropdown() {
     $("#party-editor__clndr__dropdown").addClass("active");
   },
@@ -225,6 +315,10 @@ PartyEditor.Calendar = {
   },
   init: function init() {
     $(document).on("click", ".party-editor__clndr__dropdown__button", this._handleDropdownButton.bind(this));
+    $(document).on("keyup", ".party-editor__clndr__dropdown__filter", $.debounce(250, this._handleInputKeyup.bind(this)));
+    $(document).on("click", ".party-editor__clndr__dropdown__list a", this._handleDropdownItem.bind(this));
+    $(".party-editor__clndr__loader").on("click", this._handleLoaderClick.bind(this));
+    $(document).on("click", this._handleOutsideClick.bind(this));
   }
 };
 $(function () {
@@ -302,13 +396,13 @@ $(function () {
         return selected;
       },
       selectedAnimations: function selectedAnimations() {
-        var _this2 = this;
+        var _this3 = this;
 
         var selected = JSON.parse(JSON.stringify(this.animations.filter(function (program) {
           return program.selected;
         })));
         return selected.map(function (program) {
-          program.newKidsPrice = _this2.state.kidsCount && _this2.state.kidsCount > program.maxKidsCount ? (_this2.state.kidsCount - program.maxKidsCount) * program.newKidsPrice : 0;
+          program.newKidsPrice = _this3.state.kidsCount && _this3.state.kidsCount > program.maxKidsCount ? (_this3.state.kidsCount - program.maxKidsCount) * program.newKidsPrice : 0;
           return program;
         });
       }
@@ -366,13 +460,13 @@ $(function () {
         });
       },
       confirmData: function confirmData(event) {
-        var _this3 = this;
+        var _this4 = this;
 
         this.validate();
 
         if (Object.keys(this.errors).length) {
           setTimeout(function () {
-            _this3.showTooltip("#party-editor__errors-tooltip", event);
+            _this4.showTooltip("#party-editor__errors-tooltip", event);
           }, 100);
           return;
         }
@@ -416,7 +510,7 @@ $(function () {
         program.selected = !program.selected;
       },
       showTooltip: function showTooltip(selector, event) {
-        var _this4 = this;
+        var _this5 = this;
 
         clearTimeout(this.tooltipTimers[selector]);
         var $tooltip = $(selector);
@@ -447,7 +541,7 @@ $(function () {
         });
         PartyEditor.setTooltipWasOpen();
         this.tooltipTimers[selector] = setTimeout(function () {
-          _this4.hideTooltip(selector);
+          _this5.hideTooltip(selector);
         }, 5000);
       },
       hideTooltip: function hideTooltip(selector) {
@@ -490,7 +584,7 @@ $(function () {
       }
     },
     beforeMount: function beforeMount() {
-      var _this5 = this;
+      var _this6 = this;
 
       if (Modernizr.localstorage) {
         var storageData = localStorage.getItem("party-editor");
@@ -503,15 +597,15 @@ $(function () {
       var serverData = JSON.parse($("#party-editor-data").text());
       this.animations = serverData.animations;
       this.animations.forEach(function (program) {
-        if (_this5.state.selectedAnimations.includes(program.id)) {
+        if (_this6.state.selectedAnimations.includes(program.id)) {
           program.selected = true;
         }
       });
       this.dishes = serverData.dishes;
       this.dishes.forEach(function (category) {
         category.items.forEach(function (product) {
-          if (product.id in _this5.state.selectedDishes) {
-            product.count = _this5.state.selectedDishes[product.id].count;
+          if (product.id in _this6.state.selectedDishes) {
+            product.count = _this6.state.selectedDishes[product.id].count;
           }
         });
       });

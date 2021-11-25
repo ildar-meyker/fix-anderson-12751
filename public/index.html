@@ -1354,7 +1354,10 @@
                                                         </div>
 
                                                         <div v-show="state.selectedGettingWay == 1">
-                                                            <aside class="party-editor__clndr">
+                                                            <aside id="party-editor__clndr" class="party-editor__clndr" data-url="data/clndr.html">
+                                                                <div id="party-editor__clndr__loader" class="party-editor__clndr__loader">
+                                                                    <div class="loader"></div>
+                                                                </div>
                                                                 <div class="party-editor__clndr__header">
                                                                     <div class="party-editor__clndr__dropdown" id="party-editor__clndr__dropdown">
                                                                         <button class="party-editor__clndr__dropdown__button">
@@ -1373,50 +1376,51 @@
                                                                             <div class="party-editor__clndr__dropdown__filter">
                                                                                 <input type="text" placeholder="Все">
                                                                             </div>
-                                                                            <div class="party-editor__clndr__dropdown__list" data-simplebar>
-                                                                                <div><a href="#">АндерСон «Пятая Авеню» на Маршала Бирюзова</a></div> 
-                                                                                <div><a href="#">АндерСон Братиславская</a></div> 
-                                                                                <div><a href="#">АндерСон Бутово</a></div> 
-                                                                                <div><a href="#">АндерСон в Воронеже</a></div> 
-                                                                                <div><a href="#">АндерСон в ЖК Каскад на набережной Туполева</a></div> 
-                                                                                <div><a href="#">АндерСон в Краснодаре</a></div> 
-                                                                                <div><a href="#">АндерСон в Московском</a></div> 
-                                                                                <div><a href="#">АндерСон в Тюмени</a></div> 
-                                                                                <div><a href="#">АндерСон Воронцовский парк</a></div> 
-                                                                                <div><a href="#">АндерСон Гагаринский</a></div> 
-                                                                                <div><a href="#">АндерСон Галерея Аэропорт</a></div> 
-                                                                                <div><a href="#">АндерСон Гиляровского</a></div> 
-                                                                                <div><a href="#">АндерСон Домодедово</a></div> 
-                                                                                <div><a href="#">АндерСон Донской Олимп</a></div> 
-                                                                                <div><a href="#">АндерСон ЖК Шуваловский</a></div> 
-                                                                                <div><a href="#">АндерСон Жулебино ТЦ «Динамит»</a></div> 
-                                                                                <div><a href="#">АндерСон Королев</a></div> 
-                                                                                <div><a href="#">АндерСон Красносельская</a></div> 
-                                                                                <div><a href="#">АндерСон Крылатское</a></div> 
-                                                                                <div><a href="#">АндерСон Кунцево Плаза</a></div> 
-                                                                                <div><a href="#">АндерСон Медведково</a></div> 
-                                                                                <div><a href="#">АндерСон Митино ТРЦ «Ладья»</a></div> 
-                                                                                <div><a href="#">АндерСон на Большой Семеновской</a></div> 
-                                                                                <div><a href="#">АндерСон на Даче. ВДНХ.</a></div> 
-                                                                                <div><a href="#">АндерСон на Кусковской</a></div> 
-                                                                                <div><a href="#">АндерСон на Льва Толстого</a></div> 
-                                                                                <div><a href="#">АндерСон на Маршала Жукова</a></div> 
-                                                                                <div><a href="#">АндерСон на Обручева</a></div> 
-                                                                                <div><a href="#">АндерСон Островитянова</a></div> 
-                                                                                <div><a href="#">АндерСон парк Царицыно</a></div> 
-                                                                                <div><a href="#">АндерСон Пушкино</a></div> 
-                                                                                <div><a href="#">АндерСон Сокол</a></div> 
-                                                                                <div><a href="#">АндерСон Таганская улица 36</a></div> 
-                                                                                <div><a href="#">АндерСон Таганский парк</a></div> 
-                                                                                <div><a href="#">АндерСон ТРК «FORT ЯСЕНЕВО»</a></div> 
-                                                                                <div><a href="#">АндерСон ТЦ Калужский</a></div> 
-                                                                                <div><a href="#">Андерсон Фили Град</a></div> 
-                                                                                <div><a href="#">АндерСон Формула Кино в ТРЦ «Фестиваль»</a></div> 
-                                                                                <div><a href="#">Вилла АндерСон</a></div> 
+                                                                            <div id="party-editor__clndr__dropdown__list" class="party-editor__clndr__dropdown__list" data-simplebar>
+                                                                                <a href="#" data-cafe="388">АндерСон «Пятая Авеню» на Маршала Бирюзова</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Братиславская</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Бутово</a>
+                                                                                <a href="#" data-cafe="388">АндерСон в Воронеже</a>
+                                                                                <a href="#" data-cafe="388">АндерСон в ЖК Каскад на набережной Туполева</a>
+                                                                                <a href="#" data-cafe="388">АндерСон в Краснодаре</a>
+                                                                                <a href="#" data-cafe="388">АндерСон в Московском</a>
+                                                                                <a href="#" data-cafe="388">АндерСон в Тюмени</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Воронцовский парк</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Гагаринский</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Галерея Аэропорт</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Гиляровского</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Домодедово</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Донской Олимп</a>
+                                                                                <a href="#" data-cafe="388">АндерСон ЖК Шуваловский</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Жулебино ТЦ «Динамит»</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Королев</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Красносельская</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Крылатское</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Кунцево Плаза</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Медведково</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Митино ТРЦ «Ладья»</a>
+                                                                                <a href="#" data-cafe="388">АндерСон на Большой Семеновской</a>
+                                                                                <a href="#" data-cafe="388">АндерСон на Даче. ВДНХ.</a>
+                                                                                <a href="#" data-cafe="388">АндерСон на Кусковской</a>
+                                                                                <a href="#" data-cafe="388">АндерСон на Льва Толстого</a>
+                                                                                <a href="#" data-cafe="388">АндерСон на Маршала Жукова</a>
+                                                                                <a href="#" data-cafe="388">АндерСон на Обручева</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Островитянова</a>
+                                                                                <a href="#" data-cafe="388">АндерСон парк Царицыно</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Пушкино</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Сокол</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Таганская улица 36</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Таганский парк</a>
+                                                                                <a href="#" data-cafe="388">АндерСон ТРК «FORT ЯСЕНЕВО»</a>
+                                                                                <a href="#" data-cafe="388">АндерСон ТЦ Калужский</a>
+                                                                                <a href="#" data-cafe="388">Андерсон Фили Град</a>
+                                                                                <a href="#" data-cafe="388">АндерСон Формула Кино в ТРЦ «Фестиваль»</a>
+                                                                                <a href="#" data-cafe="388">Вилла АндерСон</a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div id="party-editor__clndr__body"></div>
                                                             </aside>
                                                         </div>
 
@@ -2280,7 +2284,8 @@
     </div>
 
     <div class="cd-top"></div>
- 
+    
+    <div id="notify" class="notify"></div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/jquery-throttle-debounce@1.0.0/jquery.ba-throttle-debounce.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sticksy@0.2.0/dist/sticksy.min.js"></script>

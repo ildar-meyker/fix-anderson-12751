@@ -1,3 +1,25 @@
+.notify {
+  position: fixed;
+  z-index: 700;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  max-width: 300px;
+  max-height: 100%;
+  overflow: auto; }
+  .notify__item {
+    margin: 10px;
+    padding: 15px;
+    opacity: 0.8;
+    border-radius: 5px;
+    color: #fff; }
+    .notify__item--success {
+      background: #b7e968; }
+    .notify__item--warning {
+      background: #ffb922; }
+    .notify__item--error {
+      background: #ec4949; }
+
 .event-builder--party-editor {
   margin-right: 0 !important;
   margin-left: 0 !important; }
@@ -27,9 +49,21 @@
   .party-editor .nowrap {
     white-space: nowrap; }
   .party-editor__clndr {
+    position: relative;
     background: #fff;
     border: 3px solid #c44890;
     border-radius: 5px; }
+    .party-editor__clndr__loader {
+      position: absolute;
+      z-index: 999999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.5);
+      display: none; }
+      .party-editor__clndr__loader.active {
+        display: block; }
     .party-editor__clndr__header {
       padding: 25px 0;
       text-align: center; }

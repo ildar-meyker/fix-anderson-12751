@@ -1,5 +1,3 @@
-import $ from "jquery";
-
 const Notify = {
 	_counter: 0,
 
