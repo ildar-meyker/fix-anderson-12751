@@ -236,6 +236,12 @@ PartyEditor.Calendar = {
 		});
 	},
 
+	refreshHallsSlider() {
+		$(
+			"#party-editor__clndr__halls .party-editor__clndr__halls__list"
+		).slick("setPosition");
+	},
+
 	_handleBeforeChange(event, slick, currentSlide, nextSlide) {
 		this.setActiveGrid(nextSlide);
 	},
@@ -424,6 +430,14 @@ $(function () {
 					}
 				},
 				deep: true,
+			},
+
+			"state.selectedGettingWay"(newValue) {
+				if (newValue === "1") {
+					setTimeout(() => {
+						PartyEditor.Calendar.refreshHallsSlider();
+					}, 0);
+				}
 			},
 
 			selectedAnimations: {

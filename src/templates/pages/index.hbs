@@ -1637,6 +1637,33 @@
                                                                     </div>
                                                                 </div>
                                                             </aside>
+
+                                                            <div>
+                                                                <div class="party-editor__group__title">Контакты заказчика</div>
+                                                                <div class="party-editor__form__row">
+                                                                    <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-12">
+                                                                        <label class="party-editor__form__label">Ваше имя: <span class="c-obligatory-field">*</span></label>
+                                                                        <input :class="['c-input', {'error': errors.user_name}]" type="text" required="" placeholder="Ваше имя" name="user_name" v-model="state.clientName">
+                                                                        <div class="party-editor__form__error" v-if="errors.user_name">\{{ errors.user_name }}</div>
+                                                                    </div>
+                                                                    <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-12">
+                                                                        <label class="party-editor__form__label">Имя ребенка: <span class="c-obligatory-field">*</span></label>
+                                                                        <input :class="['c-input', {'error': errors.child_name}]" type="text" required="" placeholder="Имя ребенка" name="child_name" v-model="state.clientKidName">
+                                                                        <div class="party-editor__form__error" v-if="errors.child_name">\{{ errors.child_name }}</div>
+                                                                    </div>
+                                                                    <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-6">
+                                                                        <label class="party-editor__form__label">E-mail: <span class="c-obligatory-field">*</span></label>
+                                                                        <input :class="['c-input', {'error': errors.email}]" type="text" required="" placeholder="...@..." name="email" v-model="state.clientEmail">
+                                                                        <div class="party-editor__form__error" v-if="errors.email">\{{ errors.email }}</div>
+                                                                    </div>
+                                                                    <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-6">
+                                                                        <label class="party-editor__form__label">Телефон: <span class="c-obligatory-field">*</span></label>
+                                                                        <input :class="['c-input', 'js-input--tel', {'error': errors.phone}]" type="text" required="" placeholder="+7 () -  -" maxlength="15" name="phone" v-model="state.clientPhone">
+                                                                        <div class="party-editor__form__error" v-if="errors.phone">\{{ errors.phone }}</div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
                                                         </div>
 
                                                     </div>

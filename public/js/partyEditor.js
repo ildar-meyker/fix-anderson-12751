@@ -336,6 +336,9 @@ PartyEditor.Calendar = {
       nextArrow: $root.find(".party-editor__clndr__halls__next")
     });
   },
+  refreshHallsSlider: function refreshHallsSlider() {
+    $("#party-editor__clndr__halls .party-editor__clndr__halls__list").slick("setPosition");
+  },
   _handleBeforeChange: function _handleBeforeChange(event, slick, currentSlide, nextSlide) {
     this.setActiveGrid(nextSlide);
   },
@@ -450,6 +453,13 @@ $(function () {
           }
         },
         deep: true
+      },
+      "state.selectedGettingWay": function stateSelectedGettingWay(newValue) {
+        if (newValue === "1") {
+          setTimeout(function () {
+            PartyEditor.Calendar.refreshHallsSlider();
+          }, 0);
+        }
       },
       selectedAnimations: {
         handler: function handler(newValue) {
