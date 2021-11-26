@@ -49,6 +49,7 @@
 		background: #fff;
 		border: 3px solid #c44890;
 		border-radius: 5px;
+		margin-bottom: 30px;
 
 		&__loader {
 			position: absolute;
@@ -244,7 +245,7 @@
 		}
 
 		&__halls {
-			margin: 30px 0;
+			margin-top: 30px;
 			position: relative;
 			overflow: hidden;
 
@@ -261,7 +262,7 @@
 
 			&__slide {
 				height: 120px;
-				padding: 0 50px;
+				padding: 0 30px;
 				background-size: cover;
 				background-repeat: no-repeat;
 				background-position: 50% 50%;
@@ -277,6 +278,7 @@
 				font-family: "BebasNeue";
 				font-size: 23px;
 				font-weight: bold;
+				line-height: 1;
 				text-align: center;
 				color: #604e42;
 			}
@@ -313,12 +315,141 @@
 			}
 		}
 
-		&__grid {
-			display: none;
+		&__grids {
+			&__item {
+				display: none;
+				overflow: hidden;
 
-			&.active {
-				display: block;
+				&.active {
+					display: block;
+				}
 			}
+
+			.simplebar-content {
+				padding-right: 0 !important;
+			}
+		}
+
+		&__row {
+			display: flex;
+			text-align: center;
+
+			&--days {
+				> div {
+					border-right: 1px solid rgba(#000, 0.2);
+					background: #c44890;
+					color: #ffc7e8;
+
+					&:last-child {
+						border-color: transparent;
+					}
+				}
+			}
+
+			> div {
+				flex: 0 0 auto;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				padding: 10px;
+				width: 85/7 * 1%;
+				min-width: 120px;
+				height: 90px;
+				font-size: 15px;
+
+				&:first-child {
+					width: 15%;
+				}
+			}
+		}
+
+		&__cell-phone {
+			background: linear-gradient(
+				34.7deg,
+				#e8e8e8 0%,
+				#e8e8e8 50%,
+				#ddd 51%,
+				#ddd 100%
+			);
+			font-style: italic;
+		}
+
+		&__cell-free {
+			position: relative;
+			background: #81c15f;
+			box-shadow: inset -1px -1px 0px rgba(#fff, 0.1);
+			font-style: italic;
+
+			&:hover {
+				.party-editor__clndr__book {
+					transform: scale(1.2);
+					visibility: visible;
+				}
+			}
+		}
+
+		&__cell-busy {
+			background: #5f5256
+				url(../images//party-editor/svg-icons/unicorn.svg) no-repeat
+				250% -100%;
+			box-shadow: inset -1px -1px 0px rgba(#fff, 0.1);
+			background-size: auto 120%;
+			font-style: italic;
+			color: #8a8a8a;
+		}
+
+		&__time-icon {
+			font-size: 25px;
+			line-height: 0;
+
+			svg {
+				width: 1em;
+				height: 1em;
+				fill: #ffc7e8;
+			}
+		}
+
+		&__time-title {
+			font-size: 17px;
+			font-weight: 700;
+		}
+
+		&__time-value {
+		}
+
+		&__date {
+			font-family: "BebasNeue";
+			font-size: 40px;
+			font-weight: 700;
+			line-height: 1;
+		}
+
+		&__day {
+			font-size: 11px;
+		}
+
+		&__book {
+			transition: transform 0.2s;
+			display: flex;
+			justify-content: center;
+			visibility: hidden;
+			position: absolute;
+			z-index: 10;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			padding: 10px;
+			background: #fff url(../images/party-editor/svg-icons/cat.svg)
+				no-repeat 50% 100%;
+			box-shadow: 0 0 10px rgba(#000, 0.2);
+			background-size: auto 60%;
+			border-radius: 4px;
+			cursor: pointer;
+			font-family: "BebasNeue";
+			font-size: 23px;
+			color: #81c15f;
 		}
 	}
 
@@ -976,7 +1107,7 @@
 			display: flex;
 			align-items: center;
 			text-transform: uppercase;
-			font-weight: bold;
+			font-weight: 700;
 			color: #c44890;
 
 			&--bottom {

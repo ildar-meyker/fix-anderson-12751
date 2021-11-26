@@ -343,7 +343,7 @@ PartyEditor.Calendar = {
     this.setActiveGrid(nextSlide);
   },
   setActiveGrid: function setActiveGrid(index) {
-    $("#party-editor__clndr__data").children().removeClass("active").eq(index).addClass("active");
+    $("#party-editor__clndr__grids").children().removeClass("active").eq(index).addClass("active");
   },
   init: function init() {
     this.initHallsSlider();

@@ -247,7 +247,7 @@ PartyEditor.Calendar = {
 	},
 
 	setActiveGrid(index) {
-		$("#party-editor__clndr__data")
+		$("#party-editor__clndr__grids")
 			.children()
 			.removeClass("active")
 			.eq(index)
