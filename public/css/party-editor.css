@@ -88,6 +88,7 @@
         .party-editor__clndr__dropdown__button span {
           padding-top: 0.2em; }
         .party-editor__clndr__dropdown__button svg {
+          flex: 0 0 auto;
           margin-left: 10px;
           width: 0.33333em;
           height: 0.33333em;
@@ -179,7 +180,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 20px; }
+      font-size: 20px;
+      text-align: center; }
       .party-editor__clndr__weeks__prev, .party-editor__clndr__weeks__next {
         padding: 10px;
         line-height: 0; }
@@ -189,6 +191,48 @@
           fill: #907b6c; }
       .party-editor__clndr__weeks__text {
         color: #bb2b7f; }
+    .party-editor__clndr__halls {
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden; }
+      .party-editor__clndr__halls__item {
+        height: 120px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        justify-content: center;
+        align-items: center;
+        padding: 0 50px;
+        display: none; }
+        .party-editor__clndr__halls__item:first-child {
+          display: flex; }
+      .party-editor__clndr__halls__name {
+        padding: 0.6em 0.8em 0.4em 0.8em;
+        border-radius: 4px;
+        background: #fff;
+        font-family: "BebasNeue";
+        font-size: 23px;
+        font-weight: bold;
+        text-align: center;
+        color: #604e42; }
+      .party-editor__clndr__halls__next, .party-editor__clndr__halls__prev {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+        padding: 1em 0.8em;
+        border-radius: 50%;
+        background: #fff;
+        font-size: 20px;
+        line-height: 0; }
+        .party-editor__clndr__halls__next svg, .party-editor__clndr__halls__prev svg {
+          width: 0.5em;
+          height: 0.5em;
+          fill: #907b6c; }
+      .party-editor__clndr__halls__prev {
+        left: -0.5em; }
+      .party-editor__clndr__halls__next {
+        right: -0.5em; }
   .party-editor__center {
     max-width: 1300px;
     margin: 0 auto;
