@@ -252,18 +252,22 @@
 			}
 
 			&__item {
-				height: 120px;
-				background-size: cover;
-				background-repeat: no-repeat;
-				background-position: 50% 50%;
-				justify-content: center;
-				align-items: center;
-				padding: 0 50px;
 				display: none;
 
 				&:first-child {
-					display: flex;
+					display: block;
 				}
+			}
+
+			&__slide {
+				height: 120px;
+				padding: 0 50px;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: 50% 50%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 			}
 
 			&__name {
@@ -280,6 +284,7 @@
 			&__next,
 			&__prev {
 				position: absolute;
+				z-index: 10;
 				top: 50%;
 				transform: translateY(-50%);
 				padding: 1em 0.8em;
@@ -287,6 +292,10 @@
 				background: #fff;
 				font-size: 20px;
 				line-height: 0;
+
+				&.slick-disabled {
+					opacity: 0.8;
+				}
 
 				svg {
 					width: 0.5em;
@@ -301,6 +310,14 @@
 
 			&__next {
 				right: -0.5em;
+			}
+		}
+
+		&__grid {
+			display: none;
+
+			&.active {
+				display: block;
 			}
 		}
 	}

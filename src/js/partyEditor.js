@@ -141,6 +141,10 @@ PartyEditor.Calendar = {
 	},
 
 	_handleOutsideClick(e) {
+		if ($(e.target).closest(".party-editor__clndr__loader").length) {
+			return;
+		}
+
 		if (!$(e.target).closest(".party-editor__clndr__dropdown").length) {
 			this.closeDropdown();
 		}
@@ -177,7 +181,7 @@ PartyEditor.Calendar = {
 
 		$.get(url)
 			.done((data) => {
-				$("#party-editor__clndr__body").html(data);
+				$("#party-editor__clndr").html(data);
 			})
 			.fail((xhr) => {
 				console.log(error);
@@ -186,10 +190,6 @@ PartyEditor.Calendar = {
 			.always(() => {
 				this.hideLoader();
 			});
-	},
-
-	_handleLoaderClick(e) {
-		e.stopPropagation();
 	},
 
 	_handleMonthButton(e) {
@@ -227,7 +227,18 @@ PartyEditor.Calendar = {
 		$("#party-editor__clndr__months__dropdown").removeClass("active");
 	},
 
+	initHallsSlider() {
+		const $root = $("#party-editor__clndr__halls");
+		$root.find(".party-editor__clndr__halls__list").slick({
+			infinite: false,
+			prevArrow: $root.find(".party-editor__clndr__halls__prev"),
+			nextArrow: $root.find(".party-editor__clndr__halls__next"),
+		});
+	},
+
 	init() {
+		this.initHallsSlider();
+
 		$(document).on(
 			"click",
 			".party-editor__clndr__dropdown__button",
@@ -250,11 +261,6 @@ PartyEditor.Calendar = {
 			"click",
 			".party-editor__clndr__months__button",
 			this._handleMonthButton.bind(this)
-		);
-
-		$(".party-editor__clndr__loader").on(
-			"click",
-			this._handleLoaderClick.bind(this)
 		);
 
 		$(document).on("click", this._handleOutsideClick.bind(this));

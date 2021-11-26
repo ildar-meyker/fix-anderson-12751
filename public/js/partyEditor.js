@@ -260,6 +260,10 @@ PartyEditor.Calendar = {
     this.toggleDropdown();
   },
   _handleOutsideClick: function _handleOutsideClick(e) {
+    if ($(e.target).closest(".party-editor__clndr__loader").length) {
+      return;
+    }
+
     if (!$(e.target).closest(".party-editor__clndr__dropdown").length) {
       this.closeDropdown();
     }
@@ -290,16 +294,13 @@ PartyEditor.Calendar = {
     this.showLoader();
     this.closeDropdown();
     $.get(url).done(function (data) {
-      $("#party-editor__clndr__body").html(data);
+      $("#party-editor__clndr").html(data);
     }).fail(function (xhr) {
       console.log(error);
       _modules_Notify__WEBPACK_IMPORTED_MODULE_0__["default"].error("GET: ".concat(url, ", ").concat(xhr.status, ", ").concat(xhr.statusText));
     }).always(function () {
       _this2.hideLoader();
     });
-  },
-  _handleLoaderClick: function _handleLoaderClick(e) {
-    e.stopPropagation();
   },
   _handleMonthButton: function _handleMonthButton(e) {
     e.preventDefault();
@@ -327,12 +328,20 @@ PartyEditor.Calendar = {
   closeMonthDropdown: function closeMonthDropdown() {
     $("#party-editor__clndr__months__dropdown").removeClass("active");
   },
+  initHallsSlider: function initHallsSlider() {
+    var $root = $("#party-editor__clndr__halls");
+    $root.find(".party-editor__clndr__halls__list").slick({
+      infinite: false,
+      prevArrow: $root.find(".party-editor__clndr__halls__prev"),
+      nextArrow: $root.find(".party-editor__clndr__halls__next")
+    });
+  },
   init: function init() {
+    this.initHallsSlider();
     $(document).on("click", ".party-editor__clndr__dropdown__button", this._handleDropdownButton.bind(this));
     $(document).on("keyup", ".party-editor__clndr__dropdown__filter", $.debounce(250, this._handleInputKeyup.bind(this)));
     $(document).on("click", ".party-editor__clndr__dropdown__list a", this._handleDropdownItem.bind(this));
     $(document).on("click", ".party-editor__clndr__months__button", this._handleMonthButton.bind(this));
-    $(".party-editor__clndr__loader").on("click", this._handleLoaderClick.bind(this));
     $(document).on("click", this._handleOutsideClick.bind(this));
   }
 };
