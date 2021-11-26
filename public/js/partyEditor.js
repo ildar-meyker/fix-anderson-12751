@@ -263,6 +263,10 @@ PartyEditor.Calendar = {
     if (!$(e.target).closest(".party-editor__clndr__dropdown").length) {
       this.closeDropdown();
     }
+
+    if (!$(e.target).closest(".party-editor__clndr__months__center").length) {
+      this.closeMonthDropdown();
+    }
   },
   _handleInputKeyup: function _handleInputKeyup(e) {
     var $input = $(e.currentTarget).find("input");
@@ -297,6 +301,10 @@ PartyEditor.Calendar = {
   _handleLoaderClick: function _handleLoaderClick(e) {
     e.stopPropagation();
   },
+  _handleMonthButton: function _handleMonthButton(e) {
+    e.preventDefault();
+    this.openMonthDropdown();
+  },
   showLoader: function showLoader() {
     $("#party-editor__clndr__loader").addClass("active");
   },
@@ -313,10 +321,17 @@ PartyEditor.Calendar = {
     var $dropdown = $("#party-editor__clndr__dropdown");
     $dropdown.toggleClass("active", !$dropdown.hasClass("active"));
   },
+  openMonthDropdown: function openMonthDropdown() {
+    $("#party-editor__clndr__months__dropdown").addClass("active");
+  },
+  closeMonthDropdown: function closeMonthDropdown() {
+    $("#party-editor__clndr__months__dropdown").removeClass("active");
+  },
   init: function init() {
     $(document).on("click", ".party-editor__clndr__dropdown__button", this._handleDropdownButton.bind(this));
     $(document).on("keyup", ".party-editor__clndr__dropdown__filter", $.debounce(250, this._handleInputKeyup.bind(this)));
     $(document).on("click", ".party-editor__clndr__dropdown__list a", this._handleDropdownItem.bind(this));
+    $(document).on("click", ".party-editor__clndr__months__button", this._handleMonthButton.bind(this));
     $(".party-editor__clndr__loader").on("click", this._handleLoaderClick.bind(this));
     $(document).on("click", this._handleOutsideClick.bind(this));
   }

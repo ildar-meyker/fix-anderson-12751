@@ -1420,7 +1420,153 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div id="party-editor__clndr__body"></div>
+                                                                <div id="party-editor__clndr__body">
+                                                                    <div class="party-editor__clndr__content">
+                                                                        <div class="party-editor__clndr__months">
+                                                                            <div class="party-editor__clndr__months__center">
+                                                                                <button type="button" class="party-editor__clndr__months__button">Ноябрь 2021</button>
+                                                                                <div id="party-editor__clndr__months__dropdown" class="party-editor__clndr__months__dropdown">
+                                                                                    <div class="disabled">янв</div>
+                                                                                    <div class="disabled">фев</div>
+                                                                                    <div class="disabled">мар</div>
+                                                                                    <div class="disabled">апр</div>
+                                                                                    <div class="disabled">май</div>
+                                                                                    <div class="disabled">июн</div>
+                                                                                    <div class="disabled">июл</div>
+                                                                                    <div class="disabled">авг</div>
+                                                                                    <div class="disabled">сен</div>
+                                                                                    <div class="disabled">окт</div>
+                                                                                    <div class="active">ноя</div>
+                                                                                    <div>дек</div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="party-editor__clndr__weeks">
+                                                                            <div class="party-editor__clndr__weeks__left">
+                                                                                <a href="#" class="party-editor__clndr__weeks__prev">19 ноября 2021 - 25 ноября 2021</a>
+                                                                            </div>
+                                                                            <div class="party-editor__clndr__weeks__center">
+                                                                                <nav class="party-editor__clndr__nav-weeks">
+                                                                                    <a href="#" class="party-editor__clndr__nav-weeks__prev">
+                                                                                        <svg>
+                                                                                            <use xlink:href="data/include/sprites/promo.svg#symbol-arr-left"></use>
+                                                                                        </svg>
+                                                                                    </a>
+                                                                                    <a href="#" class="party-editor__clndr__nav-weeks__this">26 ноября 2021 - 02 декабря 2021</a>
+                                                                                    <a href="#" class="party-editor__clndr__nav-weeks__next">
+                                                                                        <svg>
+                                                                                            <use xlink:href="data/include/sprites/promo.svg#symbol-arr-right"></use>
+                                                                                        </svg>
+                                                                                    </a>
+                                                                                </nav>
+                                                                            </div>
+                                                                            <div class="party-editor__clndr__weeks__right">
+                                                                                <a href="#" class="party-editor__clndr__weeks__next">03 декабря 2021 - 09 декабря 2021</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="party-editor__clndr__days">
+                                                                            <div class="party-editor__clndr__days__cell-hall">
+                                                                                <div class="party-editor__clndr__days__hall">Зал</div>
+                                                                            </div>
+                                                                            <div class="party-editor__clndr__days__cell-time">
+                                                                                <svg>
+                                                                                    <use xlink:href="data/include/sprites/some.svg#symbol-clock-3"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="party-editor__clndr__days__cell-day">
+                                                                                <div class="party-editor__clndr__days__value">26</div>
+                                                                                <div class="party-editor__clndr__days__name">Пятница</div>
+                                                                            </div>
+                                                                            <div class="party-editor__clndr__days__cell-day">
+                                                                                <div class="party-editor__clndr__days__value">27</div>
+                                                                                <div class="party-editor__clndr__days__name">Суббота</div>
+                                                                            </div>
+                                                                            <div class="party-editor__clndr__days__cell-day">
+                                                                                <div class="party-editor__clndr__days__value">28</div>
+                                                                                <div class="party-editor__clndr__days__name">Воскресенье</div>
+                                                                            </div>
+                                                                            <div class="party-editor__clndr__days__cell-day">
+                                                                                <div class="party-editor__clndr__days__value">29</div>
+                                                                                <div class="party-editor__clndr__days__name">Понедельник</div>
+                                                                            </div>
+                                                                            <div class="party-editor__clndr__days__cell-day">
+                                                                                <div class="party-editor__clndr__days__value">30</div>
+                                                                                <div class="party-editor__clndr__days__name">Вторник</div>
+                                                                            </div>
+                                                                            <div class="party-editor__clndr__days__cell-day">
+                                                                                <div class="party-editor__clndr__days__value">01</div>
+                                                                                <div class="party-editor__clndr__days__name">Среда</div>
+                                                                            </div>
+                                                                            <div class="party-editor__clndr__days__cell-day">
+                                                                                <div class="party-editor__clndr__days__value">02</div>
+                                                                                <div class="party-editor__clndr__days__name">Четверг</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="party-editor__clndr__grids">
+                                                                            {{#repeat 3}}
+                                                                            <div class="party-editor__clndr__grids__item">
+                                                                                <div class="party-editor__clndr__col-hall">
+                                                                                    <div class="party-editor__clndr__hall-name">Праздничный зал "Берлога Густава" до 15 человек</div>
+                                                                                </div>
+                                                                                <div class="party-editor__clndr__col-grid">
+                                                                                    {{#repeat 3}}
+                                                                                    <div class="party-editor__clndr__row">
+                                                                                        <div class="party-editor__clndr__cell-time">
+                                                                                            <div class="party-editor__clndr__time-title">Утро</div>
+                                                                                            <div class="party-editor__clndr__time-value">11:00 — 14:00</div>
+                                                                                        </div>
+                                                                                        <div class="party-editor__clndr__cell-phone">
+                                                                                            <a href="#" class="party-editor__clndr__phone">+7 495-221-93-63</a>
+                                                                                        </div>
+                                                                                        <div class="party-editor__clndr__cell-free">
+                                                                                            <div class="party-editor__clndr__status">Свободно</div>
+                                                                                            <button type="button" class="party-editor__clndr__book">
+                                                                                                Бронировать
+                                                                                            </button>
+                                                                                        </div>
+                                                                                        <div class="party-editor__clndr__cell-free">
+                                                                                            <div class="party-editor__clndr__status">Свободно</div>
+                                                                                            <div class="party-editor__clndr__book">
+                                                                                                <button type="button" class="party-editor__clndr__book__text">
+                                                                                                    Бронировать
+                                                                                                </button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="party-editor__clndr__cell-free">
+                                                                                            <div class="party-editor__clndr__status">Свободно</div>
+                                                                                            <div class="party-editor__clndr__book">
+                                                                                                <button type="button" class="party-editor__clndr__book__text">
+                                                                                                    Бронировать
+                                                                                                </button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="party-editor__clndr__cell-free">
+                                                                                            <div class="party-editor__clndr__status">Свободно</div>
+                                                                                            <div class="party-editor__clndr__book">
+                                                                                                <button type="button" class="party-editor__clndr__book__text">
+                                                                                                    Бронировать
+                                                                                                </button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="party-editor__clndr__cell-free">
+                                                                                            <div class="party-editor__clndr__status">Свободно</div>
+                                                                                            <div class="party-editor__clndr__book">
+                                                                                                <button type="button" class="party-editor__clndr__book__text">
+                                                                                                    Бронировать
+                                                                                                </button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="party-editor__clndr__cell-busy">
+                                                                                            <div class="party-editor__clndr__status">В резерве</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    {{/repeat}}
+                                                                                </div>
+                                                                            </div>
+                                                                            {{/repeat}}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </aside>
                                                         </div>
 

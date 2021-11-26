@@ -159,6 +159,64 @@
 				}
 			}
 		}
+
+		&__months {
+			position: relative;
+			text-align: center;
+
+			&__center {
+				display: inline-block;
+			}
+
+			&__button {
+				border-bottom: 1px dashed #9b806f;
+				font-family: "BebasNeue";
+				font-size: 25px;
+				color: #9b806f;
+				cursor: pointer;
+			}
+
+			&__dropdown {
+				position: absolute;
+				z-index: 10;
+				top: -10px;
+				left: 50%;
+				width: 180px;
+				transform: translateX(-50%);
+				background: #fff;
+				box-shadow: 0 10px 30px 0 rgba(#000, 0.2);
+				border: 1px solid #c44890;
+				border-radius: 5px;
+				display: none;
+
+				&.active {
+					display: block;
+				}
+
+				> div {
+					float: left;
+					width: 33.33%;
+					padding: 10px 0;
+					border-radius: 5px;
+					font-size: 14px;
+					cursor: pointer;
+
+					&:hover {
+						background: #eee;
+					}
+
+					&.disabled {
+						background: none;
+						cursor: default;
+						color: #ccc;
+					}
+
+					&.active {
+						color: #c44890;
+					}
+				}
+			}
+		}
 	}
 
 	&__center {
@@ -1301,6 +1359,14 @@
 
 			&__title {
 				font-size: 40px;
+			}
+		}
+
+		&__clndr {
+			&__dropdown {
+				&__button {
+					font-size: 27px;
+				}
 			}
 		}
 

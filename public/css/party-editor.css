@@ -134,6 +134,47 @@
           .party-editor__clndr__dropdown__list a:hover {
             background: #67af26;
             color: #fff; }
+    .party-editor__clndr__months {
+      position: relative;
+      text-align: center; }
+      .party-editor__clndr__months__center {
+        display: inline-block; }
+      .party-editor__clndr__months__button {
+        border-bottom: 1px dashed #9b806f;
+        font-family: "BebasNeue";
+        font-size: 25px;
+        color: #9b806f;
+        cursor: pointer; }
+      .party-editor__clndr__months__dropdown {
+        position: absolute;
+        z-index: 10;
+        top: -10px;
+        left: 50%;
+        width: 180px;
+        -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
+        background: #fff;
+        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+        border: 1px solid #c44890;
+        border-radius: 5px;
+        display: none; }
+        .party-editor__clndr__months__dropdown.active {
+          display: block; }
+        .party-editor__clndr__months__dropdown > div {
+          float: left;
+          width: 33.33%;
+          padding: 10px 0;
+          border-radius: 5px;
+          font-size: 14px;
+          cursor: pointer; }
+          .party-editor__clndr__months__dropdown > div:hover {
+            background: #eee; }
+          .party-editor__clndr__months__dropdown > div.disabled {
+            background: none;
+            cursor: default;
+            color: #ccc; }
+          .party-editor__clndr__months__dropdown > div.active {
+            color: #c44890; }
   .party-editor__center {
     max-width: 1300px;
     margin: 0 auto;
@@ -874,6 +915,8 @@
     padding-left: 15px; }
   .party-editor__popup__title {
     font-size: 40px; }
+  .party-editor__clndr__dropdown__button {
+    font-size: 27px; }
   .party-editor__btn-apply {
     font-size: 14px; }
   .party-editor__btn-pink {

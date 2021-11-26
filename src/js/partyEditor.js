@@ -144,6 +144,12 @@ PartyEditor.Calendar = {
 		if (!$(e.target).closest(".party-editor__clndr__dropdown").length) {
 			this.closeDropdown();
 		}
+
+		if (
+			!$(e.target).closest(".party-editor__clndr__months__center").length
+		) {
+			this.closeMonthDropdown();
+		}
 	},
 
 	_handleInputKeyup(e) {
@@ -186,6 +192,12 @@ PartyEditor.Calendar = {
 		e.stopPropagation();
 	},
 
+	_handleMonthButton(e) {
+		e.preventDefault();
+
+		this.openMonthDropdown();
+	},
+
 	showLoader() {
 		$("#party-editor__clndr__loader").addClass("active");
 	},
@@ -207,6 +219,14 @@ PartyEditor.Calendar = {
 		$dropdown.toggleClass("active", !$dropdown.hasClass("active"));
 	},
 
+	openMonthDropdown() {
+		$("#party-editor__clndr__months__dropdown").addClass("active");
+	},
+
+	closeMonthDropdown() {
+		$("#party-editor__clndr__months__dropdown").removeClass("active");
+	},
+
 	init() {
 		$(document).on(
 			"click",
@@ -224,6 +244,12 @@ PartyEditor.Calendar = {
 			"click",
 			".party-editor__clndr__dropdown__list a",
 			this._handleDropdownItem.bind(this)
+		);
+
+		$(document).on(
+			"click",
+			".party-editor__clndr__months__button",
+			this._handleMonthButton.bind(this)
 		);
 
 		$(".party-editor__clndr__loader").on(
