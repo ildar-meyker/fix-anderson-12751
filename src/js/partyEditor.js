@@ -236,6 +236,18 @@ PartyEditor.Calendar = {
 		});
 	},
 
+	_handleBeforeChange(event, slick, currentSlide, nextSlide) {
+		this.setActiveGrid(nextSlide);
+	},
+
+	setActiveGrid(index) {
+		$("#party-editor__clndr__data")
+			.children()
+			.removeClass("active")
+			.eq(index)
+			.addClass("active");
+	},
+
 	init() {
 		this.initHallsSlider();
 
@@ -261,6 +273,11 @@ PartyEditor.Calendar = {
 			"click",
 			".party-editor__clndr__months__button",
 			this._handleMonthButton.bind(this)
+		);
+		$(document).on(
+			"beforeChange",
+			".party-editor__clndr__halls",
+			this._handleBeforeChange.bind(this)
 		);
 
 		$(document).on("click", this._handleOutsideClick.bind(this));

@@ -336,12 +336,19 @@ PartyEditor.Calendar = {
       nextArrow: $root.find(".party-editor__clndr__halls__next")
     });
   },
+  _handleBeforeChange: function _handleBeforeChange(event, slick, currentSlide, nextSlide) {
+    this.setActiveGrid(nextSlide);
+  },
+  setActiveGrid: function setActiveGrid(index) {
+    $("#party-editor__clndr__data").children().removeClass("active").eq(index).addClass("active");
+  },
   init: function init() {
     this.initHallsSlider();
     $(document).on("click", ".party-editor__clndr__dropdown__button", this._handleDropdownButton.bind(this));
     $(document).on("keyup", ".party-editor__clndr__dropdown__filter", $.debounce(250, this._handleInputKeyup.bind(this)));
     $(document).on("click", ".party-editor__clndr__dropdown__list a", this._handleDropdownItem.bind(this));
     $(document).on("click", ".party-editor__clndr__months__button", this._handleMonthButton.bind(this));
+    $(document).on("beforeChange", ".party-editor__clndr__halls", this._handleBeforeChange.bind(this));
     $(document).on("click", this._handleOutsideClick.bind(this));
   }
 };
