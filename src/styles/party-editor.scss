@@ -193,13 +193,12 @@
 					display: block;
 				}
 
-				> div {
+				> a {
 					float: left;
 					width: 33.33%;
 					padding: 10px 0;
 					border-radius: 5px;
 					font-size: 14px;
-					cursor: pointer;
 
 					&:hover {
 						background: #eee;
@@ -215,6 +214,30 @@
 						color: #c44890;
 					}
 				}
+			}
+		}
+
+		&__weeks {
+			margin-top: 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 20px;
+
+			&__prev,
+			&__next {
+				padding: 10px;
+				line-height: 0;
+
+				svg {
+					width: 0.5em;
+					height: 0.5em;
+					fill: #907b6c;
+				}
+			}
+
+			&__text {
+				color: #bb2b7f;
 			}
 		}
 	}
