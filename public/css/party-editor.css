@@ -122,7 +122,7 @@
           .party-editor__clndr__dropdown__filter input::placeholder {
             color: #999; }
       .party-editor__clndr__dropdown__list {
-        max-height: 300px;
+        max-height: 180px;
         overflow: hidden;
         margin: 0 -25px; }
         .party-editor__clndr__dropdown__list a {
