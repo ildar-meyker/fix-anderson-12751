@@ -2079,8 +2079,9 @@
                                                     <div v-show="state.isEditingEnabled">
                                                         <a href="#" class="event-builder-check__button" @click.prevent="scrollToPrev()" v-show="state.currentPage > 1">Назад</a>
                                                         <a href="#" class="event-builder-check__button" @click.prevent="scrollToNext()" v-show="state.currentPage < 5 && state.currentPage > 1">Далее</a>
-                                                        <a href="#" class="event-builder-check__button" @click.prevent="reset()">Сбросить</a>
                                                     </div>
+
+                                                    <a href="#" class="event-builder-check__button" @click.prevent="reset()">Сбросить</a>
 
                                                 </div>
                                             </div>

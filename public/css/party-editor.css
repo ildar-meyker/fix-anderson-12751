@@ -45,7 +45,9 @@
       border-color: #b62922;
       background-image: none; }
     .party-editor .c-input.readonly {
-      cursor: default; }
+      background: #fbfbfb;
+      cursor: default;
+      opacity: 0.8; }
       .party-editor .c-input.readonly:focus {
         border-color: #d2cdc4;
         box-shadow: none; }

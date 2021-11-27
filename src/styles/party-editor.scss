@@ -36,7 +36,9 @@
 		}
 
 		&.readonly {
+			background: #fbfbfb;
 			cursor: default;
+			opacity: 0.8;
 
 			&:focus {
 				border-color: #d2cdc4;
