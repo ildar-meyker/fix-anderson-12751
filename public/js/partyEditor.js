@@ -312,11 +312,14 @@ PartyEditor.Calendar = {
     e.preventDefault();
     var cafeName = $("#party-editor__clndr__dropdown > button").text().trim();
     var time = $(e.currentTarget).data("time");
-    PartyEditor.Vue.setBookingInfo(cafeName + ", " + time);
+    PartyEditor.Vue.state.bookingInfo = cafeName + ", " + time;
   },
   _handleBookingReset: function _handleBookingReset(e) {
     e.preventDefault();
-    PartyEditor.Vue.setBookingInfo("");
+    PartyEditor.Vue.state.bookingInfo = "";
+    setTimeout(function () {
+      PartyEditor.Calendar.refreshHallsSlider();
+    }, 0);
   },
   showLoader: function showLoader() {
     $("#party-editor__clndr__loader").addClass("active");
@@ -638,9 +641,6 @@ $(function () {
         if (window.matchMedia("(max-width: 1199.98px)").matches) {
           $("html, body").scrollTop($("#party-editor__nav-mobile").offset().top);
         }
-      },
-      setBookingInfo: function setBookingInfo(value) {
-        this.state.bookingInfo = value;
       },
       formatPrice: function formatPrice(value) {
         return new Intl.NumberFormat("ru-RU", {

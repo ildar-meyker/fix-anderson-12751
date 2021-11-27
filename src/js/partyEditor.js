@@ -211,13 +211,17 @@ PartyEditor.Calendar = {
 			.trim();
 		const time = $(e.currentTarget).data("time");
 
-		PartyEditor.Vue.setBookingInfo(cafeName + ", " + time);
+		PartyEditor.Vue.state.bookingInfo = cafeName + ", " + time;
 	},
 
 	_handleBookingReset(e) {
 		e.preventDefault();
 
-		PartyEditor.Vue.setBookingInfo("");
+		PartyEditor.Vue.state.bookingInfo = "";
+
+		setTimeout(() => {
+			PartyEditor.Calendar.refreshHallsSlider();
+		}, 0);
 	},
 
 	showLoader() {
@@ -681,10 +685,6 @@ $(function () {
 						$("#party-editor__nav-mobile").offset().top
 					);
 				}
-			},
-
-			setBookingInfo(value) {
-				this.state.bookingInfo = value;
 			},
 
 			formatPrice(value) {
