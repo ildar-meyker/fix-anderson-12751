@@ -152,7 +152,21 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 var PartyEditor = {
+  scrollTop: function scrollTop(offset) {
+    $("html, body").animate({
+      scrollTop: offset
+    });
+  },
+  init: function init() {
+    new Sticksy(".js-party-editor-sticky-total", {
+      topSpacing: 20,
+      listen: true
+    });
+  }
+};
+PartyEditor.Tooltips = {
   _$tooltips: $(),
+  _timers: {},
   _isTooltipWasOpen: false,
   _handleWindowScroll: function _handleWindowScroll(e) {
     this.closeAllTooltips();
@@ -164,20 +178,44 @@ var PartyEditor = {
 
     this._isTooltipWasOpen = false;
   },
-  setTooltipWasOpen: function setTooltipWasOpen() {
-    this._isTooltipWasOpen = true;
-  },
-  scrollTop: function scrollTop(offset) {
-    $("html, body").animate({
-      scrollTop: offset
+  showTooltip: function showTooltip(selector, target) {
+    clearTimeout(this._timers[selector]);
+    var $tooltip = $(selector);
+    var tooltipWidth = $tooltip.outerWidth();
+    var windowWidth = $(window).width();
+    var $target = $(target);
+    var targetOffset = $target.offset();
+    var targetWidth = $target.outerWidth();
+    var left = targetOffset.left + targetWidth / 2;
+    var top = targetOffset.top;
+    var calcLeft = left - 30;
+    var calcRight = left + tooltipWidth - 30;
+    var fixLeft = 0;
+
+    if (calcLeft < 15) {
+      fixLeft = 15 - calcLeft;
+    }
+
+    if (calcRight > windowWidth - 15) {
+      fixLeft = windowWidth - 15 - calcRight;
+    }
+
+    $tooltip.css({
+      top: top,
+      left: left + fixLeft
+    }).addClass("active").find(".party-editor__tooltip__angle").css({
+      marginLeft: -fixLeft
     });
+    this._isTooltipWasOpen = true;
+    this._timers[selector] = setTimeout(function () {
+      PartyEditor.Tooltips.hideTooltip(selector);
+    }, 5000);
+  },
+  hideTooltip: function hideTooltip(selector) {
+    $(selector).removeClass("active");
   },
   init: function init() {
     this._$tooltips = $(".party-editor__tooltip");
-    new Sticksy(".js-party-editor-sticky-total", {
-      topSpacing: 20,
-      listen: true
-    });
     $(window).on("scroll", $.throttle(250, this._handleWindowScroll.bind(this)));
   }
 };
@@ -393,7 +431,6 @@ $(function () {
         errors: {},
         isPopupOpen: false,
         popupProgram: {},
-        tooltipTimers: {},
         state: {
           currentPage: 1,
           isEditorStarted: false,
@@ -534,13 +571,11 @@ $(function () {
         });
       },
       confirmData: function confirmData(event) {
-        var _this4 = this;
-
         this.validate();
 
         if (Object.keys(this.errors).length) {
           setTimeout(function () {
-            _this4.showTooltip("#party-editor__errors-tooltip", event);
+            PartyEditor.Tooltips.showTooltip("#party-editor__errors-tooltip", event.target);
           }, 100);
           return;
         }
@@ -551,7 +586,7 @@ $(function () {
       },
       increaseCount: function increaseCount(product, event) {
         if (!this.state.isDataConfirmed) {
-          this.showTooltip("#party-editor__confirm-tooltip", event);
+          PartyEditor.Tooltips.showTooltip("#party-editor__confirm-tooltip", event.target);
           return;
         }
 
@@ -559,7 +594,7 @@ $(function () {
       },
       decreaseCount: function decreaseCount(product, event) {
         if (!this.state.isDataConfirmed) {
-          this.showTooltip("#party-editor__confirm-tooltip", event);
+          PartyEditor.Tooltips.showTooltip("#party-editor__confirm-tooltip", event.target);
           return;
         }
 
@@ -569,57 +604,19 @@ $(function () {
       openProgramInPopup: function openProgramInPopup(program) {
         this.popupProgram = program;
         this.isPopupOpen = true;
-        this.hideTooltip("#party-editor__confirm-tooltip");
+        PartyEditor.Tooltips.hideTooltip("#party-editor__confirm-tooltip");
       },
       closePopup: function closePopup() {
         this.isPopupOpen = false;
-        this.hideTooltip("#party-editor__confirm-tooltip");
+        PartyEditor.Tooltips.hideTooltip("#party-editor__confirm-tooltip");
       },
       toggleAnimation: function toggleAnimation(program, event) {
         if (!this.state.isDataConfirmed) {
-          this.showTooltip("#party-editor__confirm-tooltip", event);
+          PartyEditor.Tooltips.showTooltip("#party-editor__confirm-tooltip", event.target);
           return;
         }
 
         program.selected = !program.selected;
-      },
-      showTooltip: function showTooltip(selector, event) {
-        var _this5 = this;
-
-        clearTimeout(this.tooltipTimers[selector]);
-        var $tooltip = $(selector);
-        var tooltipWidth = $tooltip.outerWidth();
-        var windowWidth = $(window).width();
-        var $target = $(event.target);
-        var targetOffset = $target.offset();
-        var targetWidth = $target.outerWidth();
-        var left = targetOffset.left + targetWidth / 2;
-        var top = targetOffset.top;
-        var calcLeft = left - 30;
-        var calcRight = left + tooltipWidth - 30;
-        var fixLeft = 0;
-
-        if (calcLeft < 15) {
-          fixLeft = 15 - calcLeft;
-        }
-
-        if (calcRight > windowWidth - 15) {
-          fixLeft = windowWidth - 15 - calcRight;
-        }
-
-        $tooltip.css({
-          top: top,
-          left: left + fixLeft
-        }).addClass("active").find(".party-editor__tooltip__angle").css({
-          marginLeft: -fixLeft
-        });
-        PartyEditor.setTooltipWasOpen();
-        this.tooltipTimers[selector] = setTimeout(function () {
-          _this5.hideTooltip(selector);
-        }, 5000);
-      },
-      hideTooltip: function hideTooltip(selector) {
-        $(selector).removeClass("active");
       },
       scrollToNext: function scrollToNext() {
         var newPageId = this.state.currentPage + 1;
@@ -658,7 +655,7 @@ $(function () {
       }
     },
     beforeMount: function beforeMount() {
-      var _this6 = this;
+      var _this4 = this;
 
       if (Modernizr.localstorage) {
         var storageData = localStorage.getItem("party-editor");
@@ -671,15 +668,15 @@ $(function () {
       var serverData = JSON.parse($("#party-editor-data").text());
       this.animations = serverData.animations;
       this.animations.forEach(function (program) {
-        if (_this6.state.selectedAnimations.includes(program.id)) {
+        if (_this4.state.selectedAnimations.includes(program.id)) {
           program.selected = true;
         }
       });
       this.dishes = serverData.dishes;
       this.dishes.forEach(function (category) {
         category.items.forEach(function (product) {
-          if (product.id in _this6.state.selectedDishes) {
-            product.count = _this6.state.selectedDishes[product.id].count;
+          if (product.id in _this4.state.selectedDishes) {
+            product.count = _this4.state.selectedDishes[product.id].count;
           }
         });
       });
@@ -687,6 +684,7 @@ $(function () {
     mounted: function mounted() {
       PartyEditor.NavMobile.init(this.state.currentPage - 2);
       PartyEditor.NavDesktop.init();
+      PartyEditor.Tooltips.init();
       PartyEditor.Calendar.init();
       PartyEditor.init();
     }

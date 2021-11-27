@@ -1,7 +1,24 @@
 import Notify from "./modules/Notify";
 
 const PartyEditor = {
+	scrollTop(offset) {
+		$("html, body").animate({
+			scrollTop: offset,
+		});
+	},
+
+	init() {
+		new Sticksy(".js-party-editor-sticky-total", {
+			topSpacing: 20,
+			listen: true,
+		});
+	},
+};
+
+PartyEditor.Tooltips = {
 	_$tooltips: $(),
+
+	_timers: {},
 
 	_isTooltipWasOpen: false,
 
@@ -16,23 +33,57 @@ const PartyEditor = {
 		this._isTooltipWasOpen = false;
 	},
 
-	setTooltipWasOpen() {
+	showTooltip(selector, target) {
+		clearTimeout(this._timers[selector]);
+
+		const $tooltip = $(selector);
+		const tooltipWidth = $tooltip.outerWidth();
+		const windowWidth = $(window).width();
+
+		const $target = $(target);
+		const targetOffset = $target.offset();
+		const targetWidth = $target.outerWidth();
+
+		let left = targetOffset.left + targetWidth / 2;
+		let top = targetOffset.top;
+
+		const calcLeft = left - 30;
+		const calcRight = left + tooltipWidth - 30;
+
+		let fixLeft = 0;
+
+		if (calcLeft < 15) {
+			fixLeft = 15 - calcLeft;
+		}
+
+		if (calcRight > windowWidth - 15) {
+			fixLeft = windowWidth - 15 - calcRight;
+		}
+
+		$tooltip
+			.css({
+				top: top,
+				left: left + fixLeft,
+			})
+			.addClass("active")
+			.find(".party-editor__tooltip__angle")
+			.css({
+				marginLeft: -fixLeft,
+			});
+
 		this._isTooltipWasOpen = true;
+
+		this._timers[selector] = setTimeout(() => {
+			PartyEditor.Tooltips.hideTooltip(selector);
+		}, 5000);
 	},
 
-	scrollTop(offset) {
-		$("html, body").animate({
-			scrollTop: offset,
-		});
+	hideTooltip(selector) {
+		$(selector).removeClass("active");
 	},
 
 	init() {
 		this._$tooltips = $(".party-editor__tooltip");
-
-		new Sticksy(".js-party-editor-sticky-total", {
-			topSpacing: 20,
-			listen: true,
-		});
 
 		$(window).on(
 			"scroll",
@@ -359,8 +410,6 @@ $(function () {
 				isPopupOpen: false,
 				popupProgram: {},
 
-				tooltipTimers: {},
-
 				state: {
 					currentPage: 1,
 					isEditorStarted: false,
@@ -555,9 +604,9 @@ $(function () {
 
 				if (Object.keys(this.errors).length) {
 					setTimeout(() => {
-						this.showTooltip(
+						PartyEditor.Tooltips.showTooltip(
 							"#party-editor__errors-tooltip",
-							event
+							event.target
 						);
 					}, 100);
 					return;
@@ -571,7 +620,10 @@ $(function () {
 
 			increaseCount(product, event) {
 				if (!this.state.isDataConfirmed) {
-					this.showTooltip("#party-editor__confirm-tooltip", event);
+					PartyEditor.Tooltips.showTooltip(
+						"#party-editor__confirm-tooltip",
+						event.target
+					);
 					return;
 				}
 
@@ -580,7 +632,10 @@ $(function () {
 
 			decreaseCount(product, event) {
 				if (!this.state.isDataConfirmed) {
-					this.showTooltip("#party-editor__confirm-tooltip", event);
+					PartyEditor.Tooltips.showTooltip(
+						"#party-editor__confirm-tooltip",
+						event.target
+					);
 					return;
 				}
 
@@ -591,70 +646,28 @@ $(function () {
 			openProgramInPopup(program) {
 				this.popupProgram = program;
 				this.isPopupOpen = true;
-				this.hideTooltip("#party-editor__confirm-tooltip");
+				PartyEditor.Tooltips.hideTooltip(
+					"#party-editor__confirm-tooltip"
+				);
 			},
 
 			closePopup() {
 				this.isPopupOpen = false;
-				this.hideTooltip("#party-editor__confirm-tooltip");
+				PartyEditor.Tooltips.hideTooltip(
+					"#party-editor__confirm-tooltip"
+				);
 			},
 
 			toggleAnimation(program, event) {
 				if (!this.state.isDataConfirmed) {
-					this.showTooltip("#party-editor__confirm-tooltip", event);
+					PartyEditor.Tooltips.showTooltip(
+						"#party-editor__confirm-tooltip",
+						event.target
+					);
 					return;
 				}
 
 				program.selected = !program.selected;
-			},
-
-			showTooltip(selector, event) {
-				clearTimeout(this.tooltipTimers[selector]);
-
-				const $tooltip = $(selector);
-				const tooltipWidth = $tooltip.outerWidth();
-				const windowWidth = $(window).width();
-
-				const $target = $(event.target);
-				const targetOffset = $target.offset();
-				const targetWidth = $target.outerWidth();
-
-				let left = targetOffset.left + targetWidth / 2;
-				let top = targetOffset.top;
-
-				const calcLeft = left - 30;
-				const calcRight = left + tooltipWidth - 30;
-
-				let fixLeft = 0;
-
-				if (calcLeft < 15) {
-					fixLeft = 15 - calcLeft;
-				}
-
-				if (calcRight > windowWidth - 15) {
-					fixLeft = windowWidth - 15 - calcRight;
-				}
-
-				$tooltip
-					.css({
-						top: top,
-						left: left + fixLeft,
-					})
-					.addClass("active")
-					.find(".party-editor__tooltip__angle")
-					.css({
-						marginLeft: -fixLeft,
-					});
-
-				PartyEditor.setTooltipWasOpen();
-
-				this.tooltipTimers[selector] = setTimeout(() => {
-					this.hideTooltip(selector);
-				}, 5000);
-			},
-
-			hideTooltip(selector) {
-				$(selector).removeClass("active");
 			},
 
 			scrollToNext() {
@@ -736,6 +749,7 @@ $(function () {
 		mounted() {
 			PartyEditor.NavMobile.init(this.state.currentPage - 2);
 			PartyEditor.NavDesktop.init();
+			PartyEditor.Tooltips.init();
 			PartyEditor.Calendar.init();
 			PartyEditor.init();
 		},
