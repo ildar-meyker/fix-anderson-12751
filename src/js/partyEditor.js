@@ -134,6 +134,8 @@ PartyEditor.NavDesktop = {
 };
 
 PartyEditor.Calendar = {
+	_cafeId: null,
+
 	_handleDropdownButton(e) {
 		e.preventDefault();
 
@@ -173,23 +175,22 @@ PartyEditor.Calendar = {
 	_handleDropdownItem(e) {
 		e.preventDefault();
 
-		const cafeId = $(e.currentTarget).data("cafe");
-		const url = $("#party-editor__clndr").data("url") + "?cafeId=" + cafeId;
+		const cafeId = (this._cafeId = $(e.currentTarget).data("cafe"));
+		const url = $("#party-editor__clndr").data("url");
+		const query = "?cafeId=" + cafeId;
 
-		this.showLoader();
 		this.closeDropdown();
+		this.loadNewClndr(url + query);
+	},
 
-		$.get(url)
-			.done((data) => {
-				$("#party-editor__clndr").html(data);
-			})
-			.fail((xhr) => {
-				console.log(error);
-				Notify.error(`GET: ${url}, ${xhr.status}, ${xhr.statusText}`);
-			})
-			.always(() => {
-				this.hideLoader();
-			});
+	_handleClndrLoad(e) {
+		e.preventDefault();
+
+		const time = $(e.currentTarget).data("time");
+		const url = $("#party-editor__clndr").data("url");
+		const query = "?cafeId=" + this._cafeId + "&time=" + time;
+
+		this.loadNewClndr(url + query);
 	},
 
 	_handleMonthButton(e) {
@@ -198,12 +199,50 @@ PartyEditor.Calendar = {
 		this.openMonthDropdown();
 	},
 
+	_handleBeforeChange(event, slick, currentSlide, nextSlide) {
+		this.setActiveGrid(nextSlide);
+	},
+
+	_handleBookingApply(e) {
+		e.preventDefault();
+
+		const cafeName = $("#party-editor__clndr__dropdown > button")
+			.text()
+			.trim();
+		const time = $(e.currentTarget).data("time");
+
+		PartyEditor.Vue.setBookingInfo(cafeName + ", " + time);
+	},
+
+	_handleBookingReset(e) {
+		e.preventDefault();
+
+		PartyEditor.Vue.setBookingInfo("");
+	},
+
 	showLoader() {
 		$("#party-editor__clndr__loader").addClass("active");
 	},
 
 	hideLoader() {
 		$("#party-editor__clndr__loader").removeClass("active");
+	},
+
+	loadNewClndr(url) {
+		this.showLoader();
+
+		$.get(url)
+			.done((data) => {
+				$("#party-editor__clndr__data").html(data);
+				this.initHallsSlider();
+			})
+			.fail((xhr) => {
+				console.log(xhr);
+				Notify.error(`GET: ${url}, ${xhr.status}, ${xhr.statusText}`);
+			})
+			.always(() => {
+				this.hideLoader();
+			});
 	},
 
 	openDropdown() {
@@ -242,10 +281,6 @@ PartyEditor.Calendar = {
 		).slick("setPosition");
 	},
 
-	_handleBeforeChange(event, slick, currentSlide, nextSlide) {
-		this.setActiveGrid(nextSlide);
-	},
-
 	setActiveGrid(index) {
 		$("#party-editor__clndr__grids")
 			.children()
@@ -280,10 +315,29 @@ PartyEditor.Calendar = {
 			".party-editor__clndr__months__button",
 			this._handleMonthButton.bind(this)
 		);
+
 		$(document).on(
 			"beforeChange",
 			".party-editor__clndr__halls",
 			this._handleBeforeChange.bind(this)
+		);
+
+		$(document).on(
+			"click",
+			".js-party-editor-clndr-load",
+			this._handleClndrLoad.bind(this)
+		);
+
+		$(document).on(
+			"click",
+			".party-editor__clndr__book",
+			this._handleBookingApply.bind(this)
+		);
+
+		$(document).on(
+			"click",
+			".party-editor__booking__reset a",
+			this._handleBookingReset.bind(this)
 		);
 
 		$(document).on("click", this._handleOutsideClick.bind(this));
@@ -308,6 +362,8 @@ $(function () {
 					isEditorStarted: false,
 					isEditingEnabled: false,
 					isDataConfirmed: false,
+
+					bookingInfo: "",
 
 					kidsCount: 1,
 					kidsAgeFrom: "",
@@ -623,6 +679,10 @@ $(function () {
 						$("#party-editor__nav-mobile").offset().top
 					);
 				}
+			},
+
+			setBookingInfo(value) {
+				this.state.bookingInfo = value;
 			},
 
 			formatPrice(value) {

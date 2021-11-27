@@ -255,6 +255,7 @@ PartyEditor.NavDesktop = {
   }
 };
 PartyEditor.Calendar = {
+  _cafeId: null,
   _handleDropdownButton: function _handleDropdownButton(e) {
     e.preventDefault();
     this.toggleDropdown();
@@ -286,31 +287,57 @@ PartyEditor.Calendar = {
     });
   },
   _handleDropdownItem: function _handleDropdownItem(e) {
-    var _this2 = this;
-
     e.preventDefault();
-    var cafeId = $(e.currentTarget).data("cafe");
-    var url = $("#party-editor__clndr").data("url") + "?cafeId=" + cafeId;
-    this.showLoader();
+    var cafeId = this._cafeId = $(e.currentTarget).data("cafe");
+    var url = $("#party-editor__clndr").data("url");
+    var query = "?cafeId=" + cafeId;
     this.closeDropdown();
-    $.get(url).done(function (data) {
-      $("#party-editor__clndr").html(data);
-    }).fail(function (xhr) {
-      console.log(error);
-      _modules_Notify__WEBPACK_IMPORTED_MODULE_0__["default"].error("GET: ".concat(url, ", ").concat(xhr.status, ", ").concat(xhr.statusText));
-    }).always(function () {
-      _this2.hideLoader();
-    });
+    this.loadNewClndr(url + query);
+  },
+  _handleClndrLoad: function _handleClndrLoad(e) {
+    e.preventDefault();
+    var time = $(e.currentTarget).data("time");
+    var url = $("#party-editor__clndr").data("url");
+    var query = "?cafeId=" + this._cafeId + "&time=" + time;
+    this.loadNewClndr(url + query);
   },
   _handleMonthButton: function _handleMonthButton(e) {
     e.preventDefault();
     this.openMonthDropdown();
+  },
+  _handleBeforeChange: function _handleBeforeChange(event, slick, currentSlide, nextSlide) {
+    this.setActiveGrid(nextSlide);
+  },
+  _handleBookingApply: function _handleBookingApply(e) {
+    e.preventDefault();
+    var cafeName = $("#party-editor__clndr__dropdown > button").text().trim();
+    var time = $(e.currentTarget).data("time");
+    PartyEditor.Vue.setBookingInfo(cafeName + ", " + time);
+  },
+  _handleBookingReset: function _handleBookingReset(e) {
+    e.preventDefault();
+    PartyEditor.Vue.setBookingInfo("");
   },
   showLoader: function showLoader() {
     $("#party-editor__clndr__loader").addClass("active");
   },
   hideLoader: function hideLoader() {
     $("#party-editor__clndr__loader").removeClass("active");
+  },
+  loadNewClndr: function loadNewClndr(url) {
+    var _this2 = this;
+
+    this.showLoader();
+    $.get(url).done(function (data) {
+      $("#party-editor__clndr__data").html(data);
+
+      _this2.initHallsSlider();
+    }).fail(function (xhr) {
+      console.log(xhr);
+      _modules_Notify__WEBPACK_IMPORTED_MODULE_0__["default"].error("GET: ".concat(url, ", ").concat(xhr.status, ", ").concat(xhr.statusText));
+    }).always(function () {
+      _this2.hideLoader();
+    });
   },
   openDropdown: function openDropdown() {
     $("#party-editor__clndr__dropdown").addClass("active");
@@ -339,9 +366,6 @@ PartyEditor.Calendar = {
   refreshHallsSlider: function refreshHallsSlider() {
     $("#party-editor__clndr__halls .party-editor__clndr__halls__list").slick("setPosition");
   },
-  _handleBeforeChange: function _handleBeforeChange(event, slick, currentSlide, nextSlide) {
-    this.setActiveGrid(nextSlide);
-  },
   setActiveGrid: function setActiveGrid(index) {
     $("#party-editor__clndr__grids").children().removeClass("active").eq(index).addClass("active");
   },
@@ -352,6 +376,9 @@ PartyEditor.Calendar = {
     $(document).on("click", ".party-editor__clndr__dropdown__list a", this._handleDropdownItem.bind(this));
     $(document).on("click", ".party-editor__clndr__months__button", this._handleMonthButton.bind(this));
     $(document).on("beforeChange", ".party-editor__clndr__halls", this._handleBeforeChange.bind(this));
+    $(document).on("click", ".js-party-editor-clndr-load", this._handleClndrLoad.bind(this));
+    $(document).on("click", ".party-editor__clndr__book", this._handleBookingApply.bind(this));
+    $(document).on("click", ".party-editor__booking__reset a", this._handleBookingReset.bind(this));
     $(document).on("click", this._handleOutsideClick.bind(this));
   }
 };
@@ -369,6 +396,7 @@ $(function () {
           isEditorStarted: false,
           isEditingEnabled: false,
           isDataConfirmed: false,
+          bookingInfo: "",
           kidsCount: 1,
           kidsAgeFrom: "",
           kidsAgeTo: "",
@@ -608,6 +636,9 @@ $(function () {
         if (window.matchMedia("(max-width: 1199.98px)").matches) {
           $("html, body").scrollTop($("#party-editor__nav-mobile").offset().top);
         }
+      },
+      setBookingInfo: function setBookingInfo(value) {
+        this.state.bookingInfo = value;
       },
       formatPrice: function formatPrice(value) {
         return new Intl.NumberFormat("ru-RU", {

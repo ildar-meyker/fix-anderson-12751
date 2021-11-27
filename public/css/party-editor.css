@@ -44,16 +44,29 @@
       box-shadow: none;
       border-color: #b62922;
       background-image: none; }
+    .party-editor .c-input.readonly {
+      background: #f3f3f3;
+      opacity: 0.9;
+      cursor: default; }
+      .party-editor .c-input.readonly:focus {
+        border-color: #d2cdc4;
+        box-shadow: none; }
   .party-editor .text-center {
     text-align: center !important; }
   .party-editor .nowrap {
     white-space: nowrap; }
+  .party-editor__booking__result.hidden {
+    height: 0;
+    overflow: hidden; }
+  .party-editor__booking__reset {
+    margin-top: 10px; }
+  .party-editor__booking__fields {
+    margin-top: 30px; }
   .party-editor__clndr {
     position: relative;
     background: #fff;
     border: 3px solid #c44890;
-    border-radius: 5px;
-    margin-bottom: 30px; }
+    border-radius: 5px; }
     .party-editor__clndr__loader {
       position: absolute;
       z-index: 999999;
@@ -1068,6 +1081,14 @@
     font-size: 40px; }
   .party-editor__clndr__dropdown__button {
     font-size: 27px; }
+  .party-editor__clndr__weeks {
+    font-size: 17px; }
+  .party-editor__clndr__halls__slide {
+    height: 150px; }
+  .party-editor__clndr__row--days > div {
+    height: 70px; }
+  .party-editor__clndr__date {
+    font-size: 30px; }
   .party-editor__btn-apply {
     font-size: 14px; }
   .party-editor__btn-pink {

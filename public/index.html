@@ -1354,628 +1354,81 @@
                                                         </div>
 
                                                         <div v-show="state.selectedGettingWay == 1">
-                                                            <aside id="party-editor__clndr" class="party-editor__clndr" data-url="data/clndr.html">
+
+                                                            <div :class="['party-editor__booking__result', {'hidden': state.bookingInfo === ''}]">
+                                                                <input type="text" name="booking_info" class="c-input readonly" v-model="state.bookingInfo" required readonly>
+
+                                                                <div class="party-editor__booking__reset">
+                                                                    <a href="#">
+                                                                        Сбросить бронь
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+
+                                                            <aside id="party-editor__clndr" class="party-editor__clndr" data-url="data/clndr.html" v-show="state.bookingInfo === ''">
                                                                 <div id="party-editor__clndr__loader" class="party-editor__clndr__loader">
                                                                     <div class="loader"></div>
                                                                 </div>
-                                                                <div class="party-editor__clndr__header">
-                                                                    <div class="party-editor__clndr__dropdown" id="party-editor__clndr__dropdown">
-                                                                        <button class="party-editor__clndr__dropdown__button">
-                                                                            <span>Для того, чтобы забронировать зал, выберите кафе</span>
-                                                                            <svg>
-                                                                                <use xlink:href="data/include/sprites/some.svg#symbol-narrow-down"></use>
-                                                                            </svg>
-                                                                        </button>
-                                                                        <div class="party-editor__clndr__dropdown__panel">
+                                                                <div id="party-editor__clndr__data">
+                                                                    
+                                                                    <div class="party-editor__clndr__header">
+                                                                        <div class="party-editor__clndr__dropdown" id="party-editor__clndr__dropdown">
                                                                             <button class="party-editor__clndr__dropdown__button">
                                                                                 <span>Для того, чтобы забронировать зал, выберите кафе</span>
                                                                                 <svg>
                                                                                     <use xlink:href="data/include/sprites/some.svg#symbol-narrow-down"></use>
                                                                                 </svg>
                                                                             </button>
-                                                                            <div class="party-editor__clndr__dropdown__filter">
-                                                                                <input type="text" placeholder="Все">
-                                                                            </div>
-                                                                            <div id="party-editor__clndr__dropdown__list" class="party-editor__clndr__dropdown__list" data-simplebar>
-                                                                                <a href="#" data-cafe="388">АндерСон «Пятая Авеню» на Маршала Бирюзова</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Братиславская</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Бутово</a>
-                                                                                <a href="#" data-cafe="388">АндерСон в Воронеже</a>
-                                                                                <a href="#" data-cafe="388">АндерСон в ЖК Каскад на набережной Туполева</a>
-                                                                                <a href="#" data-cafe="388">АндерСон в Краснодаре</a>
-                                                                                <a href="#" data-cafe="388">АндерСон в Московском</a>
-                                                                                <a href="#" data-cafe="388">АндерСон в Тюмени</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Воронцовский парк</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Гагаринский</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Галерея Аэропорт</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Гиляровского</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Домодедово</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Донской Олимп</a>
-                                                                                <a href="#" data-cafe="388">АндерСон ЖК Шуваловский</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Жулебино ТЦ «Динамит»</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Королев</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Красносельская</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Крылатское</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Кунцево Плаза</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Медведково</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Митино ТРЦ «Ладья»</a>
-                                                                                <a href="#" data-cafe="388">АндерСон на Большой Семеновской</a>
-                                                                                <a href="#" data-cafe="388">АндерСон на Даче. ВДНХ.</a>
-                                                                                <a href="#" data-cafe="388">АндерСон на Кусковской</a>
-                                                                                <a href="#" data-cafe="388">АндерСон на Льва Толстого</a>
-                                                                                <a href="#" data-cafe="388">АндерСон на Маршала Жукова</a>
-                                                                                <a href="#" data-cafe="388">АндерСон на Обручева</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Островитянова</a>
-                                                                                <a href="#" data-cafe="388">АндерСон парк Царицыно</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Пушкино</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Сокол</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Таганская улица 36</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Таганский парк</a>
-                                                                                <a href="#" data-cafe="388">АндерСон ТРК «FORT ЯСЕНЕВО»</a>
-                                                                                <a href="#" data-cafe="388">АндерСон ТЦ Калужский</a>
-                                                                                <a href="#" data-cafe="388">Андерсон Фили Град</a>
-                                                                                <a href="#" data-cafe="388">АндерСон Формула Кино в ТРЦ «Фестиваль»</a>
-                                                                                <a href="#" data-cafe="388">Вилла АндерСон</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="party-editor__clndr__content">
-                                                                    <div class="party-editor__clndr__months">
-                                                                        <div class="party-editor__clndr__months__center">
-                                                                            <button type="button" class="party-editor__clndr__months__button">Ноябрь 2021</button>
-                                                                            <nav id="party-editor__clndr__months__dropdown" class="party-editor__clndr__months__dropdown">
-                                                                                <a href="#" class="disabled">янв</a>
-                                                                                <a href="#" class="disabled">фев</a>
-                                                                                <a href="#" class="disabled">мар</a>
-                                                                                <a href="#" class="disabled">апр</a>
-                                                                                <a href="#" class="disabled">май</a>
-                                                                                <a href="#" class="disabled">июн</a>
-                                                                                <a href="#" class="disabled">июл</a>
-                                                                                <a href="#" class="disabled">авг</a>
-                                                                                <a href="#" class="disabled">сен</a>
-                                                                                <a href="#" class="disabled">окт</a>
-                                                                                <a href="#" class="active">ноя</a>
-                                                                                <a href="#">дек</a>
-                                                                            </nav>
-                                                                        </div>
-                                                                    </div>
-                                                                    <nav class="party-editor__clndr__weeks">
-                                                                        <a href="#" class="party-editor__clndr__weeks__prev">
-                                                                            <svg>
-                                                                                <use xlink:href="data/include/sprites/promo.svg#symbol-arr-left"></use>
-                                                                            </svg>
-                                                                        </a>
-                                                                        <span class="party-editor__clndr__weeks__text">
-                                                                            <span class="nowrap">26 ноября 2021</span> - 
-                                                                            <span class="nowrap">02 декабря 2021</span>
-                                                                        </span>
-                                                                        <a href="#" class="party-editor__clndr__weeks__next">
-                                                                            <svg>
-                                                                                <use xlink:href="data/include/sprites/promo.svg#symbol-arr-right"></use>
-                                                                            </svg>
-                                                                        </a>
-                                                                    </nav>
-                                                                    <div id="party-editor__clndr__halls" class="party-editor__clndr__halls">
-                                                                        <a href="#" class="party-editor__clndr__halls__prev">
-                                                                            <svg>
-                                                                                <use xlink:href="data/include/sprites/promo.svg#symbol-arr-left"></use>
-                                                                            </svg>
-                                                                        </a>
-                                                                        <div class="party-editor__clndr__halls__list">
-                                                                            <div class="party-editor__clndr__halls__item">
-                                                                                <div class="party-editor__clndr__halls__slide" style="background-image: url(images/party-editor/temp/halls/1.png);">
-                                                                                    <div class="party-editor__clndr__halls__name">Праздничный зал «Кошкин дом» до 30 гостей</div>
+                                                                            <div class="party-editor__clndr__dropdown__panel">
+                                                                                <button class="party-editor__clndr__dropdown__button">
+                                                                                    <span>Для того, чтобы забронировать зал, выберите кафе</span>
+                                                                                    <svg>
+                                                                                        <use xlink:href="data/include/sprites/some.svg#symbol-narrow-down"></use>
+                                                                                    </svg>
+                                                                                </button>
+                                                                                <div class="party-editor__clndr__dropdown__filter">
+                                                                                    <input type="text" placeholder="Все">
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="party-editor__clndr__halls__item">
-                                                                                <div class="party-editor__clndr__halls__slide" style="background-image: url(images/party-editor/temp/halls/1.png);">
-                                                                                    <div class="party-editor__clndr__halls__name">Праздничное пространство, до 20 гостей (стол №5-7, за стеллажом у окна)</div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="party-editor__clndr__halls__item">
-                                                                                <div class="party-editor__clndr__halls__slide" style="background-image: url(images/party-editor/temp/halls/1.png);">
-                                                                                    <div class="party-editor__clndr__halls__name">Праздничное пространство, до 15 гостей (стол №2-3, возле окна)</div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <a href="#" class="party-editor__clndr__halls__next">
-                                                                            <svg>
-                                                                                <use xlink:href="data/include/sprites/promo.svg#symbol-arr-right"></use>
-                                                                            </svg>
-                                                                        </a>
-                                                                    </div>
-                                                                    
-                                                                    <div id="party-editor__clndr__grids" class="party-editor__clndr__grids">
-                                                                        <div class="party-editor__clndr__grids__item active" data-simplebar>
-                                                                            <div class="party-editor__clndr__table">
-                                                                                <div class="party-editor__clndr__row party-editor__clndr__row--days">
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__time-icon">
-                                                                                            <svg>
-                                                                                                <use xlink:href="data/include/sprites/some.svg#symbol-clock-3"></use>
-                                                                                            </svg>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">26</div>
-                                                                                        <div class="party-editor__clndr__day">Пятница</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">27</div>
-                                                                                        <div class="party-editor__clndr__day">Суббота</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">28</div>
-                                                                                        <div class="party-editor__clndr__day">Воскресенье</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">29</div>
-                                                                                        <div class="party-editor__clndr__day">Понедельник</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">30</div>
-                                                                                        <div class="party-editor__clndr__day">Вторник</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">01</div>
-                                                                                        <div class="party-editor__clndr__day">Среда</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">02</div>
-                                                                                        <div class="party-editor__clndr__day">Четверг</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="party-editor__clndr__row">
-                                                                                    <div class="party-editor__clndr__cell-time">
-                                                                                        <div class="party-editor__clndr__time-title">Утро</div>
-                                                                                        <div class="party-editor__clndr__time-value">11:00 — 14:00</div>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-phone">
-                                                                                        <a href="#" class="party-editor__clndr__phone">+7 495-221-93-63</a>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-busy">
-                                                                                        <div>Занято</div>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-busy">
-                                                                                        <div>Занято</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="party-editor__clndr__row">
-                                                                                    <div class="party-editor__clndr__cell-time">
-                                                                                        <div class="party-editor__clndr__time-title">Утро</div>
-                                                                                        <div class="party-editor__clndr__time-value">11:00 — 14:00</div>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-phone">
-                                                                                        <a href="#" class="party-editor__clndr__phone">+7 495-221-93-63</a>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-busy">
-                                                                                        <div>Занято</div>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-busy">
-                                                                                        <div>Занято</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="party-editor__clndr__row">
-                                                                                    <div class="party-editor__clndr__cell-time">
-                                                                                        <div class="party-editor__clndr__time-title">Утро</div>
-                                                                                        <div class="party-editor__clndr__time-value">11:00 — 14:00</div>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-phone">
-                                                                                        <a href="#" class="party-editor__clndr__phone">+7 495-221-93-63</a>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-busy">
-                                                                                        <div>Занято</div>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-busy">
-                                                                                        <div>Занято</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="party-editor__clndr__grids__item" data-simplebar>
-                                                                            <div class="party-editor__clndr__table">
-                                                                                <div class="party-editor__clndr__row party-editor__clndr__row--days">
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__time-icon">
-                                                                                            <svg>
-                                                                                                <use xlink:href="data/include/sprites/some.svg#symbol-clock-3"></use>
-                                                                                            </svg>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">26</div>
-                                                                                        <div class="party-editor__clndr__day">Пятница</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">27</div>
-                                                                                        <div class="party-editor__clndr__day">Суббота</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">28</div>
-                                                                                        <div class="party-editor__clndr__day">Воскресенье</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">29</div>
-                                                                                        <div class="party-editor__clndr__day">Понедельник</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">30</div>
-                                                                                        <div class="party-editor__clndr__day">Вторник</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">01</div>
-                                                                                        <div class="party-editor__clndr__day">Среда</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">02</div>
-                                                                                        <div class="party-editor__clndr__day">Четверг</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="party-editor__clndr__row">
-                                                                                    <div class="party-editor__clndr__cell-time">
-                                                                                        <div class="party-editor__clndr__time-title">Утро</div>
-                                                                                        <div class="party-editor__clndr__time-value">11:00 — 14:00</div>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-phone">
-                                                                                        <a href="#" class="party-editor__clndr__phone">+7 495-221-93-63</a>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-busy">
-                                                                                        <div>Занято</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="party-editor__clndr__row">
-                                                                                    <div class="party-editor__clndr__cell-time">
-                                                                                        <div class="party-editor__clndr__time-title">Утро</div>
-                                                                                        <div class="party-editor__clndr__time-value">11:00 — 14:00</div>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-phone">
-                                                                                        <a href="#" class="party-editor__clndr__phone">+7 495-221-93-63</a>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-busy">
-                                                                                        <div>Занято</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="party-editor__clndr__row">
-                                                                                    <div class="party-editor__clndr__cell-time">
-                                                                                        <div class="party-editor__clndr__time-title">Утро</div>
-                                                                                        <div class="party-editor__clndr__time-value">11:00 — 14:00</div>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-phone">
-                                                                                        <a href="#" class="party-editor__clndr__phone">+7 495-221-93-63</a>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-busy">
-                                                                                        <div>Занято</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="party-editor__clndr__grids__item" data-simplebar>
-                                                                            <div class="party-editor__clndr__table">
-                                                                                <div class="party-editor__clndr__row party-editor__clndr__row--days">
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__time-icon">
-                                                                                            <svg>
-                                                                                                <use xlink:href="data/include/sprites/some.svg#symbol-clock-3"></use>
-                                                                                            </svg>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">26</div>
-                                                                                        <div class="party-editor__clndr__day">Пятница</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">27</div>
-                                                                                        <div class="party-editor__clndr__day">Суббота</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">28</div>
-                                                                                        <div class="party-editor__clndr__day">Воскресенье</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">29</div>
-                                                                                        <div class="party-editor__clndr__day">Понедельник</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">30</div>
-                                                                                        <div class="party-editor__clndr__day">Вторник</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">01</div>
-                                                                                        <div class="party-editor__clndr__day">Среда</div>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <div class="party-editor__clndr__date">02</div>
-                                                                                        <div class="party-editor__clndr__day">Четверг</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="party-editor__clndr__row">
-                                                                                    <div class="party-editor__clndr__cell-time">
-                                                                                        <div class="party-editor__clndr__time-title">Утро</div>
-                                                                                        <div class="party-editor__clndr__time-value">11:00 — 14:00</div>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-phone">
-                                                                                        <a href="#" class="party-editor__clndr__phone">+7 495-221-93-63</a>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-busy">
-                                                                                        <div>Занято</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="party-editor__clndr__row">
-                                                                                    <div class="party-editor__clndr__cell-time">
-                                                                                        <div class="party-editor__clndr__time-title">Утро</div>
-                                                                                        <div class="party-editor__clndr__time-value">11:00 — 14:00</div>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-phone">
-                                                                                        <a href="#" class="party-editor__clndr__phone">+7 495-221-93-63</a>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-busy">
-                                                                                        <div>Занято</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="party-editor__clndr__row">
-                                                                                    <div class="party-editor__clndr__cell-time">
-                                                                                        <div class="party-editor__clndr__time-title">Утро</div>
-                                                                                        <div class="party-editor__clndr__time-value">11:00 — 14:00</div>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-phone">
-                                                                                        <a href="#" class="party-editor__clndr__phone">+7 495-221-93-63</a>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-free">
-                                                                                        <div>Свободно</div>
-                                                                                        <button type="button" class="party-editor__clndr__book">
-                                                                                            Бронировать
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="party-editor__clndr__cell-busy">
-                                                                                        <div>Занято</div>
-                                                                                    </div>
+                                                                                <div id="party-editor__clndr__dropdown__list" class="party-editor__clndr__dropdown__list" data-simplebar>
+                                                                                    <a href="#" data-cafe="388">АндерСон «Пятая Авеню» на Маршала Бирюзова</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Братиславская</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Бутово</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон в Воронеже</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон в ЖК Каскад на набережной Туполева</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон в Краснодаре</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон в Московском</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон в Тюмени</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Воронцовский парк</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Гагаринский</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Галерея Аэропорт</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Гиляровского</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Домодедово</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Донской Олимп</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон ЖК Шуваловский</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Жулебино ТЦ «Динамит»</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Королев</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Красносельская</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Крылатское</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Кунцево Плаза</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Медведково</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Митино ТРЦ «Ладья»</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон на Большой Семеновской</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон на Даче. ВДНХ.</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон на Кусковской</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон на Льва Толстого</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон на Маршала Жукова</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон на Обручева</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Островитянова</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон парк Царицыно</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Пушкино</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Сокол</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Таганская улица 36</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Таганский парк</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон ТРК «FORT ЯСЕНЕВО»</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон ТЦ Калужский</a>
+                                                                                    <a href="#" data-cafe="388">Андерсон Фили Град</a>
+                                                                                    <a href="#" data-cafe="388">АндерСон Формула Кино в ТРЦ «Фестиваль»</a>
+                                                                                    <a href="#" data-cafe="388">Вилла АндерСон</a>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1983,7 +1436,9 @@
                                                                 </div>
                                                             </aside>
 
-                                                            <div>
+                                                            <div class="party-editor__form__error" v-if="errors.booking_info">{{ errors.booking_info }}</div>
+
+                                                            <div class="party-editor__booking__fields">
                                                                 <div class="party-editor__group__title">Контакты заказчика</div>
                                                                 <div class="party-editor__form__row">
                                                                     <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-12">
@@ -2007,7 +1462,6 @@
                                                                         <div class="party-editor__form__error" v-if="errors.phone">{{ errors.phone }}</div>
                                                                     </div>
                                                                 </div>
-
                                                             </div>
                                                         </div>
 

@@ -34,6 +34,17 @@
 			border-color: #b62922;
 			background-image: none;
 		}
+
+		&.readonly {
+			background: #f3f3f3;
+			opacity: 0.9;
+			cursor: default;
+
+			&:focus {
+				border-color: #d2cdc4;
+				box-shadow: none;
+			}
+		}
 	}
 
 	.text-center {
@@ -44,12 +55,28 @@
 		white-space: nowrap;
 	}
 
+	&__booking {
+		&__result {
+			&.hidden {
+				height: 0;
+				overflow: hidden;
+			}
+		}
+
+		&__reset {
+			margin-top: 10px;
+		}
+
+		&__fields {
+			margin-top: 30px;
+		}
+	}
+
 	&__clndr {
 		position: relative;
 		background: #fff;
 		border: 3px solid #c44890;
 		border-radius: 5px;
-		margin-bottom: 30px;
 
 		&__loader {
 			position: absolute;
@@ -1601,6 +1628,28 @@
 				&__button {
 					font-size: 27px;
 				}
+			}
+
+			&__weeks {
+				font-size: 17px;
+			}
+
+			&__halls {
+				&__slide {
+					height: 150px;
+				}
+			}
+
+			&__row {
+				&--days {
+					> div {
+						height: 70px;
+					}
+				}
+			}
+
+			&__date {
+				font-size: 30px;
 			}
 		}
 
