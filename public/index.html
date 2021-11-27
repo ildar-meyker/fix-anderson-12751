@@ -1264,13 +1264,13 @@
                                                             <div class="event-builder-contact-price">
                                                                 <div class="event-builder-contact-price__item">
                                                                     <div class="c-radio-custom-2">
-                                                                        <input id="party-editor__radio-gettingWay1" type="radio" name="gettingWay" value="0" v-model="state.selectedGettingWay">
+                                                                        <input id="party-editor__radio-gettingWay1" type="radio" name="gettingWay" value="delivery" v-model="state.selectedGettingWay">
                                                                         <label for="party-editor__radio-gettingWay1">Доставка</label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="event-builder-contact-price__item">
                                                                     <div class="c-radio-custom-2">
-                                                                        <input id="party-editor__radio-gettingWay2" type="radio" name="gettingWay" value="1" v-model="state.selectedGettingWay">
+                                                                        <input id="party-editor__radio-gettingWay2" type="radio" name="gettingWay" value="booking" v-model="state.selectedGettingWay">
                                                                         <label for="party-editor__radio-gettingWay2">Забронировать заказ</label>
                                                                     </div>
                                                                 </div>
@@ -1278,7 +1278,7 @@
                                                         </div>
                                                         <div class="party-editor__sep"></div>
 
-                                                        <div v-show="state.selectedGettingWay == 0">
+                                                        <div v-show="state.selectedGettingWay === 'delivery'">
                                                             <div>
                                                                 <div class="party-editor__group__title">1. Доставка</div>
                                                                 
@@ -1353,7 +1353,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div v-show="state.selectedGettingWay == 1">
+                                                        <div v-show="state.selectedGettingWay === 'booking'">
 
                                                             <div :class="['party-editor__booking__result', {'hidden': state.bookingInfo === ''}]">
                                                                 <input type="text" name="bookingInfo" class="c-input readonly" v-model="state.bookingInfo" required readonly>

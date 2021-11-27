@@ -447,7 +447,7 @@ $(function () {
           clientKidName: "",
           clientEmail: "",
           clientPhone: "",
-          selectedGettingWay: "0",
+          selectedGettingWay: "delivery",
           selectedDeliveryWay: "0",
           selectedAnimations: [],
           selectedDishes: {},
@@ -483,6 +483,10 @@ $(function () {
         return total;
       },
       deliveryPrice: function deliveryPrice() {
+        if (this.state.selectedGettingWay === "booking") {
+          return 0;
+        }
+
         return this.deliveryWays[this.state.selectedDeliveryWay].price;
       },
       totalPrice: function totalPrice() {
@@ -523,7 +527,7 @@ $(function () {
         deep: true
       },
       "state.selectedGettingWay": function stateSelectedGettingWay(newValue) {
-        if (newValue === "1") {
+        if (newValue === "booking") {
           setTimeout(function () {
             PartyEditor.Calendar.refreshHallsSlider();
           }, 0);
