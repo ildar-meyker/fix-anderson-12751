@@ -397,7 +397,7 @@ $(function () {
           isEditingEnabled: false,
           isDataConfirmed: false,
           bookingInfo: "",
-          kidsCount: 1,
+          kidsCount: "1",
           kidsAgeFrom: "",
           kidsAgeTo: "",
           deliveryStreetName: "",
@@ -407,8 +407,8 @@ $(function () {
           clientKidName: "",
           clientEmail: "",
           clientPhone: "",
-          selectedGettingWay: 0,
-          selectedDeliveryWay: 0,
+          selectedGettingWay: "0",
+          selectedDeliveryWay: "0",
           selectedAnimations: [],
           selectedDishes: {},
           comment: ""
@@ -523,8 +523,10 @@ $(function () {
         this.errors = {};
         var self = this;
         $("#party-editor input[required]:visible").each(function () {
-          if ($(this).val().trim() === "") {
-            self.errors[$(this).attr("name")] = "Поле не заполнено";
+          var key = $(this).attr("name");
+
+          if (self.state[key].trim() === "") {
+            self.errors[key] = "Поле не заполнено";
           }
         });
       },

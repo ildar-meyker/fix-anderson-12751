@@ -1308,19 +1308,19 @@
                                                                 <div class="party-editor__form__row">
                                                                     <div class="party-editor__form__col party-editor__form__col--sm-12">
                                                                         <label class="party-editor__form__label">Улица: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.street}]" type="text" required="" placeholder="Улица" name="street" v-model="state.deliveryStreetName">
-                                                                        <div class="party-editor__form__error" v-if="errors.street">{{ errors.street }}</div>
+                                                                        <input :class="['c-input', {'error': errors.deliveryStreetName}]" type="text" required="" placeholder="Улица" name="deliveryStreetName" v-model="state.deliveryStreetName">
+                                                                        <div class="party-editor__form__error" v-if="errors.deliveryStreetName">{{ errors.deliveryStreetName }}</div>
                                                                     </div>
                                                                     <div class="party-editor__form__col party-editor__form__col--sm-6">
                                                                         <label class="party-editor__form__label">Дом: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.house}]" type="text" required="" placeholder="Дом" name="house" v-model="state.deliveryBuildingNumber">
-                                                                        <div class="party-editor__form__error" v-if="errors.house">{{ errors.house }}</div>
+                                                                        <input :class="['c-input', {'error': errors.deliveryBuildingNumber}]" type="text" required="" placeholder="Дом" name="deliveryBuildingNumber" v-model="state.deliveryBuildingNumber">
+                                                                        <div class="party-editor__form__error" v-if="errors.deliveryBuildingNumber">{{ errors.deliveryBuildingNumber }}</div>
 
                                                                     </div>
                                                                     <div class="party-editor__form__col party-editor__form__col--sm-6">
                                                                         <label class="party-editor__form__label">Квартира: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.flat}]" type="text" required="" placeholder="Квартира" name="flat" v-model="state.deliveryFlatNumber">
-                                                                        <div class="party-editor__form__error" v-if="errors.flat">{{ errors.flat }}</div>
+                                                                        <input :class="['c-input', {'error': errors.deliveryFlatNumber}]" type="text" required="" placeholder="Квартира" name="deliveryFlatNumber" v-model="state.deliveryFlatNumber">
+                                                                        <div class="party-editor__form__error" v-if="errors.deliveryFlatNumber">{{ errors.deliveryFlatNumber }}</div>
                                                                     </div>
                                                                 </div>
 
@@ -1330,23 +1330,23 @@
                                                                 <div class="party-editor__form__row">
                                                                     <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-12">
                                                                         <label class="party-editor__form__label">Ваше имя: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.user_name}]" type="text" required="" placeholder="Ваше имя" name="user_name" v-model="state.clientName">
-                                                                        <div class="party-editor__form__error" v-if="errors.user_name">{{ errors.user_name }}</div>
+                                                                        <input :class="['c-input', {'error': errors.clientName}]" type="text" required="" placeholder="Ваше имя" name="clientName" v-model="state.clientName">
+                                                                        <div class="party-editor__form__error" v-if="errors.clientName">{{ errors.clientName }}</div>
                                                                     </div>
                                                                     <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-12">
                                                                         <label class="party-editor__form__label">Имя ребенка: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.child_name}]" type="text" required="" placeholder="Имя ребенка" name="child_name" v-model="state.clientKidName">
-                                                                        <div class="party-editor__form__error" v-if="errors.child_name">{{ errors.child_name }}</div>
+                                                                        <input :class="['c-input', {'error': errors.clientKidName}]" type="text" required="" placeholder="Имя ребенка" name="clientKidName" v-model="state.clientKidName">
+                                                                        <div class="party-editor__form__error" v-if="errors.clientKidName">{{ errors.clientKidName }}</div>
                                                                     </div>
                                                                     <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-6">
                                                                         <label class="party-editor__form__label">E-mail: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.email}]" type="text" required="" placeholder="...@..." name="email" v-model="state.clientEmail">
-                                                                        <div class="party-editor__form__error" v-if="errors.email">{{ errors.email }}</div>
+                                                                        <input :class="['c-input', {'error': errors.clientEmail}]" type="text" required="" placeholder="...@..." name="clientEmail" v-model="state.clientEmail">
+                                                                        <div class="party-editor__form__error" v-if="errors.clientEmail">{{ errors.clientEmail }}</div>
                                                                     </div>
                                                                     <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-6">
                                                                         <label class="party-editor__form__label">Телефон: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', 'js-input--tel', {'error': errors.phone}]" type="text" required="" placeholder="+7 () -  -" maxlength="15" name="phone" v-model="state.clientPhone">
-                                                                        <div class="party-editor__form__error" v-if="errors.phone">{{ errors.phone }}</div>
+                                                                        <input :class="['c-input', 'js-input--tel', {'error': errors.clientPhone}]" type="text" required="" placeholder="+7 () -  -" maxlength="15" name="clientPhone" v-model="state.clientPhone">
+                                                                        <div class="party-editor__form__error" v-if="errors.clientPhone">{{ errors.clientPhone }}</div>
                                                                     </div>
                                                                 </div>
 
@@ -1356,7 +1356,7 @@
                                                         <div v-show="state.selectedGettingWay == 1">
 
                                                             <div :class="['party-editor__booking__result', {'hidden': state.bookingInfo === ''}]">
-                                                                <input type="text" name="booking_info" class="c-input readonly" v-model="state.bookingInfo" required readonly>
+                                                                <input type="text" name="bookingInfo" class="c-input readonly" v-model="state.bookingInfo" required readonly>
 
                                                                 <div class="party-editor__booking__reset">
                                                                     <a href="#">
@@ -1436,30 +1436,30 @@
                                                                 </div>
                                                             </aside>
 
-                                                            <div class="party-editor__form__error" v-if="errors.booking_info">{{ errors.booking_info }}</div>
+                                                            <div class="party-editor__form__error" v-if="errors.bookingInfo">{{ errors.bookingInfo }}</div>
 
                                                             <div class="party-editor__booking__fields">
                                                                 <div class="party-editor__group__title">Контакты заказчика</div>
                                                                 <div class="party-editor__form__row">
                                                                     <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-12">
                                                                         <label class="party-editor__form__label">Ваше имя: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.user_name}]" type="text" required="" placeholder="Ваше имя" name="user_name" v-model="state.clientName">
-                                                                        <div class="party-editor__form__error" v-if="errors.user_name">{{ errors.user_name }}</div>
+                                                                        <input :class="['c-input', {'error': errors.clientName}]" type="text" required="" placeholder="Ваше имя" name="clientName" v-model="state.clientName">
+                                                                        <div class="party-editor__form__error" v-if="errors.clientName">{{ errors.clientName }}</div>
                                                                     </div>
                                                                     <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-12">
                                                                         <label class="party-editor__form__label">Имя ребенка: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.child_name}]" type="text" required="" placeholder="Имя ребенка" name="child_name" v-model="state.clientKidName">
-                                                                        <div class="party-editor__form__error" v-if="errors.child_name">{{ errors.child_name }}</div>
+                                                                        <input :class="['c-input', {'error': errors.clientKidName}]" type="text" required="" placeholder="Имя ребенка" name="clientKidName" v-model="state.clientKidName">
+                                                                        <div class="party-editor__form__error" v-if="errors.clientKidName">{{ errors.clientKidName }}</div>
                                                                     </div>
                                                                     <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-6">
                                                                         <label class="party-editor__form__label">E-mail: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', {'error': errors.email}]" type="text" required="" placeholder="...@..." name="email" v-model="state.clientEmail">
-                                                                        <div class="party-editor__form__error" v-if="errors.email">{{ errors.email }}</div>
+                                                                        <input :class="['c-input', {'error': errors.clientEmail}]" type="text" required="" placeholder="...@..." name="clientEmail" v-model="state.clientEmail">
+                                                                        <div class="party-editor__form__error" v-if="errors.clientEmail">{{ errors.clientEmail }}</div>
                                                                     </div>
                                                                     <div class="party-editor__form__col party-editor__form__col--lg-3  party-editor__form__col--sm-6">
                                                                         <label class="party-editor__form__label">Телефон: <span class="c-obligatory-field">*</span></label>
-                                                                        <input :class="['c-input', 'js-input--tel', {'error': errors.phone}]" type="text" required="" placeholder="+7 () -  -" maxlength="15" name="phone" v-model="state.clientPhone">
-                                                                        <div class="party-editor__form__error" v-if="errors.phone">{{ errors.phone }}</div>
+                                                                        <input :class="['c-input', 'js-input--tel', {'error': errors.clientPhone}]" type="text" required="" placeholder="+7 () -  -" maxlength="15" name="clientPhone" v-model="state.clientPhone">
+                                                                        <div class="party-editor__form__error" v-if="errors.clientPhone">{{ errors.clientPhone }}</div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1482,22 +1482,22 @@
                                                                             <div class="event-builder-when-guest__item">
                                                                                 <div class="party-editor__group__title">Сколько будет маленьких гостей?</div>
                                                                                 <div class="event-builder-when-guest__count">
-                                                                                    <input :class="['c-input', {'error': errors.kids_count}]" type="text" name="kids_count" required v-model="state.kidsCount">
-                                                                                    <div class="party-editor__form__error" v-if="errors.kids_count">{{ errors.kids_count }}</div>
+                                                                                    <input :class="['c-input', {'error': errors.kidsCount}]" type="text" name="kidsCount" required v-model="state.kidsCount">
+                                                                                    <div class="party-editor__form__error" v-if="errors.kidsCount">{{ errors.kidsCount }}</div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="event-builder-when-guest__item">
                                                                                 <div class="party-editor__group__title">Возраст от</div>
                                                                                 <div class="event-builder-when-guest__count">
-                                                                                    <input :class="['c-input', {'error': errors.kids_age_from}]" type="text" name="kids_age_from" required v-model="state.kidsAgeFrom">
-                                                                                    <div class="party-editor__form__error" v-if="errors.kids_age_from">{{ errors.kids_age_from }}</div>
+                                                                                    <input :class="['c-input', {'error': errors.kidsAgeFrom}]" type="text" name="kidsAgeFrom" required v-model="state.kidsAgeFrom">
+                                                                                    <div class="party-editor__form__error" v-if="errors.kidsAgeFrom">{{ errors.kidsAgeFrom }}</div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="event-builder-when-guest__item">
                                                                                 <div class="party-editor__group__title">до</div>
                                                                                 <div class="event-builder-when-guest__count">
-                                                                                    <input :class="['c-input', {'error': errors.kids_age_to}]" type="text" name="kids_age_to" required v-model="state.kidsAgeTo">
-                                                                                    <div class="party-editor__form__error" v-if="errors.kids_age_to">{{ errors.kids_age_to }}</div>
+                                                                                    <input :class="['c-input', {'error': errors.kidsAgeTo}]" type="text" name="kidsAgeTo" required v-model="state.kidsAgeTo">
+                                                                                    <div class="party-editor__form__error" v-if="errors.kidsAgeTo">{{ errors.kidsAgeTo }}</div>
                                                                                 </div>
                                                                             </div>
                                                             
