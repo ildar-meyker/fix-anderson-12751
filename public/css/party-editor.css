@@ -45,11 +45,11 @@
       border-color: #b62922;
       background-image: none; }
     .party-editor .c-input.readonly {
-      background: #fbfbfb;
+      background: #c3478f;
+      border-color: transparent !important;
       cursor: default;
-      opacity: 0.8; }
+      color: #fff; }
       .party-editor .c-input.readonly:focus {
-        border-color: #d2cdc4;
         box-shadow: none; }
   .party-editor .text-center {
     text-align: center !important; }
