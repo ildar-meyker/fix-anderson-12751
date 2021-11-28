@@ -478,7 +478,7 @@ $(function () {
       animationsPrice: function animationsPrice() {
         var total = 0;
         this.selectedAnimations.forEach(function (program) {
-          total += program.price + program.newKidsPrice;
+          total += program.price + program.extraPrice;
         });
         return total;
       },
@@ -501,6 +501,17 @@ $(function () {
         });
         return selected;
       },
+      availableAnimations: function availableAnimations() {
+        if (!this.state.isDataConfirmed) {
+          return this.animations;
+        }
+
+        var from = parseInt(this.state.kidsAgeFrom) || 0;
+        var to = parseInt(this.state.kidsAgeTo) || Infinity;
+        return this.animations.filter(function (program) {
+          return program.age[0] >= from && program.age[0] <= to || program.age[1] >= from && program.age[1] <= to;
+        });
+      },
       selectedAnimations: function selectedAnimations() {
         var _this3 = this;
 
@@ -508,7 +519,7 @@ $(function () {
           return program.selected;
         })));
         return selected.map(function (program) {
-          program.newKidsPrice = _this3.state.kidsCount && _this3.state.kidsCount > program.maxKidsCount ? (_this3.state.kidsCount - program.maxKidsCount) * program.newKidsPrice : 0;
+          program.extraPrice = _this3.state.kidsCount && _this3.state.kidsCount > program.maxKidsCount ? (_this3.state.kidsCount - program.maxKidsCount) * program.pricePerOne : 0;
           return program;
         });
       }

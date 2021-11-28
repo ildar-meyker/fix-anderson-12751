@@ -472,7 +472,7 @@ $(function () {
 				let total = 0;
 
 				this.selectedAnimations.forEach((program) => {
-					total += program.price + program.newKidsPrice;
+					total += program.price + program.extraPrice;
 				});
 
 				return total;
@@ -506,6 +506,22 @@ $(function () {
 				return selected;
 			},
 
+			availableAnimations() {
+				if (!this.state.isDataConfirmed) {
+					return this.animations;
+				}
+
+				const from = parseInt(this.state.kidsAgeFrom) || 0;
+				const to = parseInt(this.state.kidsAgeTo) || Infinity;
+
+				return this.animations.filter((program) => {
+					return (
+						(program.age[0] >= from && program.age[0] <= to) ||
+						(program.age[1] >= from && program.age[1] <= to)
+					);
+				});
+			},
+
 			selectedAnimations() {
 				const selected = JSON.parse(
 					JSON.stringify(
@@ -516,11 +532,11 @@ $(function () {
 				);
 
 				return selected.map((program) => {
-					program.newKidsPrice =
+					program.extraPrice =
 						this.state.kidsCount &&
 						this.state.kidsCount > program.maxKidsCount
 							? (this.state.kidsCount - program.maxKidsCount) *
-							  program.newKidsPrice
+							  program.pricePerOne
 							: 0;
 
 					return program;
