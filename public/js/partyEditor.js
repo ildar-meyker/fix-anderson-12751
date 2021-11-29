@@ -317,7 +317,7 @@ PartyEditor.Calendar = {
     $("#party-editor__clndr__dropdown__list a").each(function () {
       var itemText = $(this).text().trim().toLowerCase();
 
-      if (itemText.indexOf(inputValue) === -1) {
+      if (!itemText.includes(inputValue)) {
         $(this).hide();
       } else {
         $(this).show();
@@ -512,15 +512,39 @@ $(function () {
           return program.age[0] >= from && program.age[0] <= to || program.age[1] >= from && program.age[1] <= to;
         });
       },
-      selectedAnimations: function selectedAnimations() {
+      availableAnimationsIds: function availableAnimationsIds() {
+        return this.availableAnimations.map(function (program) {
+          return program.id;
+        });
+      },
+      hiddenAnimations: function hiddenAnimations() {
         var _this3 = this;
 
-        var selected = JSON.parse(JSON.stringify(this.animations.filter(function (program) {
-          return program.selected;
-        })));
-        return selected.map(function (program) {
-          program.extraPrice = _this3.state.kidsCount && _this3.state.kidsCount > program.maxKidsCount ? (_this3.state.kidsCount - program.maxKidsCount) * program.pricePerOne : 0;
-          return program;
+        return this.animations.filter(function (program) {
+          return !_this3.availableAnimationsIds.includes(program.id);
+        });
+      },
+      hiddenAnimationsIds: function hiddenAnimationsIds() {
+        return this.hiddenAnimations.map(function (program) {
+          return program.id;
+        });
+      },
+      selectedAnimations: function selectedAnimations() {
+        var _this4 = this;
+
+        var selected = this.animations.filter(function (program) {
+          return program.selected === true;
+        });
+        selected.forEach(function (program) {
+          program.extraPrice = _this4.state.kidsCount && _this4.state.kidsCount > program.maxKidsCount ? (_this4.state.kidsCount - program.maxKidsCount) * program.pricePerOne : 0;
+        });
+        return selected;
+      },
+      selectedHiddenAnimations: function selectedHiddenAnimations() {
+        var _this5 = this;
+
+        return this.selectedAnimations.filter(function (program) {
+          return _this5.hiddenAnimationsIds.includes(program.id);
         });
       }
     },
@@ -543,6 +567,14 @@ $(function () {
             PartyEditor.Calendar.refreshHallsSlider();
           }, 0);
         }
+      },
+      "state.kidsAgeFrom": function stateKidsAgeFrom() {
+        var target = $('#party-editor input[name="kidsAgeFrom"]')[0];
+        this.deselectHiddenAnimations(target);
+      },
+      "state.kidsAgeTo": function stateKidsAgeTo() {
+        var target = $('#party-editor input[name="kidsAgeTo"]')[0];
+        this.deselectHiddenAnimations(target);
       },
       selectedAnimations: {
         handler: function handler(newValue) {
@@ -633,6 +665,18 @@ $(function () {
 
         program.selected = !program.selected;
       },
+      deselectHiddenAnimations: function deselectHiddenAnimations(target) {
+        if (this.selectedHiddenAnimations.length) {
+          this.selectedHiddenAnimations.forEach(function (program) {
+            program.selected = false;
+          });
+          PartyEditor.Tooltips.showTooltip("#party-editor__new-age-tooltip", target);
+        }
+      },
+      onKidsAgeChange: function onKidsAgeChange(event) {
+        var key = event.target.getAttribute("name");
+        this.state[key] = event.target.value;
+      },
       scrollToNext: function scrollToNext() {
         var newPageId = this.state.currentPage + 1;
         if (newPageId > 5) return;
@@ -670,7 +714,7 @@ $(function () {
       }
     },
     beforeMount: function beforeMount() {
-      var _this4 = this;
+      var _this6 = this;
 
       if (Modernizr.localstorage) {
         var storageData = localStorage.getItem("party-editor");
@@ -683,15 +727,15 @@ $(function () {
       var serverData = JSON.parse($("#party-editor-data").text());
       this.animations = serverData.animations;
       this.animations.forEach(function (program) {
-        if (_this4.state.selectedAnimations.includes(program.id)) {
+        if (_this6.state.selectedAnimations.includes(program.id)) {
           program.selected = true;
         }
       });
       this.dishes = serverData.dishes;
       this.dishes.forEach(function (category) {
         category.items.forEach(function (product) {
-          if (product.id in _this4.state.selectedDishes) {
-            product.count = _this4.state.selectedDishes[product.id].count;
+          if (product.id in _this6.state.selectedDishes) {
+            product.count = _this6.state.selectedDishes[product.id].count;
           }
         });
       });

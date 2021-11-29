@@ -1729,14 +1729,14 @@
                                                                             <div class="event-builder-when-guest__item">
                                                                                 <div class="party-editor__group__title">Возраст от</div>
                                                                                 <div class="event-builder-when-guest__count">
-                                                                                    <input :class="['c-input', {'error': errors.kidsAgeFrom}]" type="text" name="kidsAgeFrom" required v-model="state.kidsAgeFrom" v-maska="'#*'">
+                                                                                    <input type="text" name="kidsAgeFrom" :class="['c-input', {'error': errors.kidsAgeFrom}]" :value="state.kidsAgeFrom" @change="onKidsAgeChange($event)" v-maska="'#*'" required>
                                                                                     <div class="party-editor__form__error" v-if="errors.kidsAgeFrom">\{{ errors.kidsAgeFrom }}</div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="event-builder-when-guest__item">
                                                                                 <div class="party-editor__group__title">до</div>
                                                                                 <div class="event-builder-when-guest__count">
-                                                                                    <input :class="['c-input', {'error': errors.kidsAgeTo}]" type="text" name="kidsAgeTo" required v-model="state.kidsAgeTo" v-maska="'#*'">
+                                                                                    <input type="text" name="kidsAgeTo"  :class="['c-input', {'error': errors.kidsAgeTo}]" :value="state.kidsAgeTo" @change="onKidsAgeChange($event)" v-maska="'#*'" required>
                                                                                     <div class="party-editor__form__error" v-if="errors.kidsAgeTo">\{{ errors.kidsAgeTo }}</div>
                                                                                 </div>
                                                                             </div>

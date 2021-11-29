@@ -215,7 +215,7 @@ PartyEditor.Calendar = {
 
 		$("#party-editor__clndr__dropdown__list a").each(function () {
 			const itemText = $(this).text().trim().toLowerCase();
-			if (itemText.indexOf(inputValue) === -1) {
+			if (!itemText.includes(inputValue)) {
 				$(this).hide();
 			} else {
 				$(this).show();
@@ -522,24 +522,44 @@ $(function () {
 				});
 			},
 
-			selectedAnimations() {
-				const selected = JSON.parse(
-					JSON.stringify(
-						this.animations.filter((program) => {
-							return program.selected;
-						})
-					)
-				);
+			availableAnimationsIds() {
+				return this.availableAnimations.map((program) => {
+					return program.id;
+				});
+			},
 
-				return selected.map((program) => {
+			hiddenAnimations() {
+				return this.animations.filter((program) => {
+					return !this.availableAnimationsIds.includes(program.id);
+				});
+			},
+
+			hiddenAnimationsIds() {
+				return this.hiddenAnimations.map((program) => {
+					return program.id;
+				});
+			},
+
+			selectedAnimations() {
+				const selected = this.animations.filter((program) => {
+					return program.selected === true;
+				});
+
+				selected.forEach((program) => {
 					program.extraPrice =
 						this.state.kidsCount &&
 						this.state.kidsCount > program.maxKidsCount
 							? (this.state.kidsCount - program.maxKidsCount) *
 							  program.pricePerOne
 							: 0;
+				});
 
-					return program;
+				return selected;
+			},
+
+			selectedHiddenAnimations() {
+				return this.selectedAnimations.filter((program) => {
+					return this.hiddenAnimationsIds.includes(program.id);
 				});
 			},
 		},
@@ -567,6 +587,16 @@ $(function () {
 						PartyEditor.Calendar.refreshHallsSlider();
 					}, 0);
 				}
+			},
+
+			"state.kidsAgeFrom"() {
+				const target = $('#party-editor input[name="kidsAgeFrom"]')[0];
+				this.deselectHiddenAnimations(target);
+			},
+
+			"state.kidsAgeTo"() {
+				const target = $('#party-editor input[name="kidsAgeTo"]')[0];
+				this.deselectHiddenAnimations(target);
 			},
 
 			selectedAnimations: {
@@ -688,6 +718,24 @@ $(function () {
 				}
 
 				program.selected = !program.selected;
+			},
+
+			deselectHiddenAnimations(target) {
+				if (this.selectedHiddenAnimations.length) {
+					this.selectedHiddenAnimations.forEach((program) => {
+						program.selected = false;
+					});
+
+					PartyEditor.Tooltips.showTooltip(
+						"#party-editor__new-age-tooltip",
+						target
+					);
+				}
+			},
+
+			onKidsAgeChange(event) {
+				const key = event.target.getAttribute("name");
+				this.state[key] = event.target.value;
 			},
 
 			scrollToNext() {
